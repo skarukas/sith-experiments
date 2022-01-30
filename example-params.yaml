@@ -1,0 +1,10 @@
+---
+# experiment
+Model: SITH
+Dropout:
+- 0
+- 0.2
+- 0.5
+Optimizer:
+  Type: Adam
+  LearningRate: 0.0001
