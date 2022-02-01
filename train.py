@@ -1,5 +1,4 @@
 import sys
-from time import sleep
 import yaml
 from os.path import join
 import os
@@ -10,27 +9,24 @@ import shutil
 from datetime import datetime
 from tqdm import trange
 
-import models.sithcon_utils as sutil
+from models import get_model
 from dataloading import FileDataset
 from util import Average
 
 import torch
+from torch.utils.data import DataLoader
 
 # global parameters, automatically saved on exit
 train_history = None
 model = None
-train_params = None
+config = None
 
 
-def train_loop():
-    train_history = []
-    train_dataloader = None
-    optimizer = None
-    num_epochs = 10
-    val_dataloader = None
-    
+def train_loop(model, train_dataloader, config, val_dataloader=None):
+    lr = config['optimizer']['params']['lr']
+    optimizer = torch.optim.Adam(model.parameters(), lr)
+    epochs = trange(config['num_epochs'], bar_format='{l_bar}{bar:10}{r_bar}{bar:-510}')
 
-    epochs = trange(num_epochs, bar_format='{l_bar}{bar:10}{r_bar}{bar:-510}')
     for epoch in epochs:
         train_loss = Average()
         val_loss = Average()
@@ -77,16 +73,30 @@ def train_loop():
             }
 
         train_history.append(epoch_stats)
-        train_params['execution']['epochs_completed'] += 1
+        config['execution']['epochs_completed'] += 1
         epochs.set_postfix(epoch_stats)
             
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out_dir", type=str, default="out", help="Output directory for this experiment only.")
+    default_out_dir = f"out/{curr_time_str()}"
+    parser.add_argument("--out_dir", type=str, default=default_out_dir, help="Output directory for this experiment only.")
     parser.add_argument("--param", type=str, help="Base parameter file")
     parsed = parser.parse_args()
     return vars(parsed)
+
+
+def create_dir(dir):
+    try:
+        os.makedirs(dir, exist_ok=False)
+        print(f"Created output directory '{dir}'")
+    except OSError:
+        overwrite = input(f"Warning: directory '{dir}' exists. Are you sure you want to overwrite its contents? [y/n] ")
+        if overwrite.lower() in ("yes", "y"):
+            shutil.rmtree(dir)
+            os.makedirs(dir, exist_ok=False)
+        else:
+            sys.exit(1)
     
 
 # store model and history on program exit
@@ -95,9 +105,9 @@ def cleanup():
     store_variable(model, 'model_checkpoint')
 
     # output parameter file within the folder
-    train_params['execution']['local_stop'] = curr_time_str()
-    f = open(join(out_dir, 'train_params.yaml'), "w")
-    yaml.safe_dump(train_params, f)
+    config['execution']['local_stop'] = curr_time_str()
+    f = open(join(out_dir, 'train_config.yaml'), "w")
+    yaml.safe_dump(config, f)
 
 
 def store_variable(var, fname):
@@ -107,7 +117,7 @@ def store_variable(var, fname):
 
 def curr_time_str():
     now = datetime.now().replace(microsecond=0)
-    return now.isoformat(sep=' ')
+    return now.isoformat(sep='_')
 
 
 if __name__ == "__main__":
@@ -118,38 +128,43 @@ if __name__ == "__main__":
 
     # import param file as dict
     train_params = yaml.safe_load(f)
-    
-    train_params['execution'] = {
-        'epochs_completed': 0,
-        'local_start': curr_time_str()
-    }
-    train_data_dir = train_params['train_data_dir']
-    val_data_dir = train_params.get('val_data_dir')
     print(f"Loaded {param_file}")
+    
+    config = {
+        **train_params,
+        **config,
+        'execution': {
+            'epochs_completed': 0,
+            'local_start': curr_time_str(),
+            'program_exit': 'FAILURE'
+        }
+    }
+    train_data_dir = config['train_data_dir']
+    val_data_dir = config.get('val_data_dir')
 
-    # make output directory for the experiment
-    try:
-        os.makedirs(out_dir, exist_ok=False)
-        print(f"Created output directory '{out_dir}'")
-    except OSError:
-        overwrite = input(f"Warning: directory '{out_dir}' exists. Are you sure you want to overwrite its contents? [y/n] ")
-        if overwrite.lower() in ("yes", "y"):
-            shutil.rmtree(out_dir)
-            os.makedirs(out_dir, exist_ok=False)
-        else:
-            sys.exit(1)
+
+    # make output directory solely for the experiment
+    create_dir(out_dir)
 
     atexit.register(cleanup)
+
     config['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Training using {config['device']}")
 
     # load data
     print("Loading training data")
     train_data = FileDataset(train_data_dir, device=config['device'])
+    train_dataloader = DataLoader(train_data, config['batch_size'], shuffle=True)
     if val_data_dir is not None:
         print("Loading validation data")
         val_data = FileDataset(val_data_dir, device=config['device'])
+        val_dataloader = DataLoader(val_data, config['batch_size'], shuffle=True)
     else:
         print("No validation dataset given.")
 
-    train_loop()
+
+    model = get_model(config['model']).to(config['device'])
+    train_history = []
+    train_loop(model)
+
+    config['execution']['program_exit'] = 'SUCCESS'
