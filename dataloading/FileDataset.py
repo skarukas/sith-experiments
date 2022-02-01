@@ -2,7 +2,8 @@ from torch.utils.data import Dataset
 import torch
 
 from os import path
-from glob import glob
+import glob
+
 
 class FileDataset(Dataset):
     """
@@ -10,10 +11,10 @@ class FileDataset(Dataset):
     """
     def __init__(self, dir, device='cpu'):
         self.device = device
-        gb_path = path.join(dir, "**/*")
+        gb_path = path.join(glob.escape(dir), "**/*")
         print(f"Using glob '{gb_path}'...", end=" ")
 
-        gb = glob(gb_path, recursive=True)
+        gb = glob.glob(gb_path, recursive=True)
         self.files = [f for f in gb if path.isfile(f)]
         print(f"found {len(self.files)} files")
 

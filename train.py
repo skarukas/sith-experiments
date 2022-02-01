@@ -1,6 +1,6 @@
 import sys
 import yaml
-from os.path import join
+from os.path import join, abspath
 import os
 import argparse
 import atexit
@@ -123,7 +123,7 @@ def curr_time_str():
 if __name__ == "__main__":
     config = parse_args()
     param_file = config['param']
-    out_dir = config['out_dir']
+    out_dir = config['out_dir'] = abspath(config['out_dir'])
     f = open(param_file)
 
     # import param file as dict
@@ -139,8 +139,11 @@ if __name__ == "__main__":
             'program_exit': 'FAILURE'
         }
     }
-    train_data_dir = config['train_data_dir']
-    val_data_dir = config.get('val_data_dir')
+    train_data_dir = config['train_data_dir'] = abspath(config['train_data_dir'])
+    if 'val_data_dir' in config:
+        val_data_dir = config['val_data_dir'] = abspath(config['val_data_dir'])
+    else:
+        val_data_dir = None
 
 
     # make output directory solely for the experiment
