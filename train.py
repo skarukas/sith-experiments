@@ -10,8 +10,7 @@ from datetime import datetime
 from tqdm import trange
 
 from models import get_model
-from dataloading import FileDataset
-from util import Average
+from util import Average, FileDataset
 
 import torch
 from torch.utils.data import DataLoader
