@@ -1,0 +1,14 @@
+execution:
+  epochs_completed: 10
+  local_start: '2022-02-01 13:04:29'
+  local_stop: '2022-02-01 13:04:30'
+model:
+  dropout:
+  - 0
+  - 0.2
+  - 0.5
+  type: sithcon
+optimizer:
+  learning_rate: 0.0001
+  type: adam
+train_data_dir: data/example_dataset

@@ -4,8 +4,8 @@
 #SBATCH --ntasks=3
 #SBATCH --cpus-per-task=1
 #SBATCH --time=09:30:00
-#SBATCH -o out/%j_%A_%a.out
-#SBATCH -e out/%j_%A_%a.err
+#SBATCH -o out/%j/%A/%a/log/%a.out
+#SBATCH -e out/%j/%A/%a/log/%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
 #SBATCH --array=0-5
@@ -20,4 +20,4 @@ echo Task ID: $SLURM_ARRAY_TASK_ID
 echo "Using params from $ParamFile"
 cat ${ParamFile}
 
-srun python train.py --param ${ParamFile} --out_dir "out/$SLURM_JOB_ID/$SLURM_ARRAY_TASK_ID"
+srun python train.py --param ${ParamFile} --out_dir "out/$SLURM_JOB_NAME/$SLURM_JOB_ID/$SLURM_ARRAY_TASK_ID"

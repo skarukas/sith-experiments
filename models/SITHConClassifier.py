@@ -1,8 +1,8 @@
 import torch.nn as nn
 from .sithcon_utils.tctct import TCTCT_Layer
-import torch.functional as F
+import torch.nn.functional as F
 
-# model taken from SITHCon code
+# model adapted from SITHCon code
 class SITHConClassifier(nn.Module):
     def __init__(self, out_classes, layer_params, 
                  act_func=nn.ReLU, batch_norm=False,
@@ -29,3 +29,11 @@ class SITHConClassifier(nn.Module):
         x = x.transpose(2,3)[:, 0, :, :]
         x = self.to_out(x)
         return x
+
+
+    def loss_function(self, prediction, label):
+        return F.nll_loss(prediction, label)
+
+
+    def accuracy(self, prediction, label):
+        return (prediction.argmax(dim=-1) == label).mean()
