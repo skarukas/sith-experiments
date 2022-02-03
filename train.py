@@ -8,12 +8,14 @@ import dill
 import shutil
 from datetime import datetime
 from tqdm import trange
+import random
 
-from models import get_model
+from models.util import get_model
 from util import Average, FileDataset
 
 import torch
 from torch.utils.data import DataLoader
+
 
 # global parameters, automatically saved on exit
 train_history = None
@@ -97,11 +99,14 @@ def create_dir(dir):
         else:
             sys.exit(1)
     
+WARNING = '\033[93m'
+ENDC = '\033[0m'
 
 # store model and history on program exit
 def cleanup():
+    print(f"{WARNING}Program terminated -- saving training progress...{ENDC}")
     store_variable(train_history, 'train_history')
-    store_variable(model, 'model_checkpoint')
+    torch.save(model.state_dict(), join(out_dir, config['model']['classname'] + ".pt"))
 
     # output parameter file within the folder
     config['execution']['local_stop'] = curr_time_str()
@@ -111,12 +116,21 @@ def cleanup():
 
 def store_variable(var, fname):
     if var is not None:
-        dill.dump(var, join(out_dir, f"{fname}.dill"))
+        f = open(join(out_dir, f"{fname}.dill"), "wb")
+        dill.dump(var, f)
 
 
 def curr_time_str():
     now = datetime.now().replace(microsecond=0)
     return now.isoformat(sep='_')
+
+
+def generate_synthetic_data(dirname, n=100, num_classes=35, shape=(1, 50, 128)):
+    for i in range(n):
+        X = torch.randn(shape)
+        label = random.randint(0, num_classes-1)
+        obj = (X, label)
+        torch.save(obj, join(dirname, f"example_file_{i}.pt"))
 
 
 if __name__ == "__main__":
@@ -157,6 +171,7 @@ if __name__ == "__main__":
     print("Loading training data")
     train_data = FileDataset(train_data_dir, device=config['device'])
     train_dataloader = DataLoader(train_data, config['batch_size'], shuffle=True)
+    val_dataloader = None
     if val_data_dir is not None:
         print("Loading validation data")
         val_data = FileDataset(val_data_dir, device=config['device'])
@@ -164,9 +179,10 @@ if __name__ == "__main__":
     else:
         print("No validation dataset given.")
 
-
-    model = get_model(config['model']).to(config['device'])
+    
+    model = get_model(config)
+    config['model']['classname'] = model.__class__.__name__
     train_history = []
-    train_loop(model)
+    train_loop(model, train_dataloader, config, val_dataloader)
 
     config['execution']['program_exit'] = 'SUCCESS'
