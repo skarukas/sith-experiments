@@ -136,6 +136,8 @@ def curr_time_str():
 
 
 def generate_synthetic_data(dirname, n=100, num_classes=35, shape=None):
+    shutil.rmtree(dirname, ignore_errors=True)
+    os.makedirs(dirname, exist_ok=False)
     for i in range(n):
         if shape is None:
             i_shape = (1, 50, random.randint(64, 256))
@@ -201,7 +203,6 @@ if __name__ == "__main__":
         val_data_dir = config['val_data_dir'] = abspath(config['val_data_dir'])
     else:
         val_data_dir = None
-
 
     # make output directory solely for the experiment
     create_dir(out_dir)
