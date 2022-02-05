@@ -2,4 +2,4 @@
 
 module unload deeplearning
 
-srun -p dl --gpus-per-node v100:1 --time=02:00:00 --pty bash
+srun -p dl --gpus-per-node p100:1 --time=03:00:00 --pty bash
