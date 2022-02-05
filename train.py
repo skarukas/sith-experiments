@@ -167,8 +167,9 @@ def collate_examples_pad(data):
     lengths = [tens.shape[-1] for tens in inp]
     max_len = max(lengths)
     shape = (batch_size, *inp[0].shape[:-1], max_len)
-
-    padded = torch.FloatTensor(*shape, device=config['device']).fill_(0)
+    TensorType = torch.cuda.FloatTensor if config['device'] == 'cuda' else torch.FloatTensor
+    
+    padded = TensorType(*shape).fill_(0)
     for i in range(batch_size):
         l = lengths[i]
         padded[i, ..., -l:] = inp[i]
