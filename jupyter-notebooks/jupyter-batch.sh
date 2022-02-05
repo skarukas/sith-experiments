@@ -19,6 +19,7 @@ module load deeplearning
 ssh -fN -R 1133:localhost:1133 skarukas@h2.carbonate.uits.iu.edu
 
 # run notebook on port 1133
+cd ..
 jupyter notebook --no-browser --port=1133
 
 # make sure local port forwarding is being used from h2.carbonate too

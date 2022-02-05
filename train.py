@@ -7,7 +7,7 @@ import atexit
 import dill
 import shutil
 from datetime import datetime
-from tqdm import trange
+from tqdm import trange, tqdm
 import random
 
 from models.util import get_model
@@ -26,18 +26,19 @@ config = None
 def train_loop(model, train_dataloader, config, val_dataloader=None):
     lr = config['optimizer']['params']['lr']
     optimizer = torch.optim.Adam(model.parameters(), lr)
-    epochs = trange(config['num_epochs'], bar_format='{l_bar}{bar:10}{r_bar}{bar:-510}')
+    epochs = trange(config['num_epochs'], desc="Epoch")
 
     for epoch in epochs:
+        epoch_stats = {}
         train_loss = Average()
         val_loss = Average()
         train_acc = Average()
         val_acc = Average()
         
         model.train()
-        for (X, label) in train_dataloader:
+        batches = tqdm(train_dataloader, leave=False, desc="Batch")
+        for (X, label) in batches:
             optimizer.zero_grad()
-
             # compute training loss
             prediction = model(X)
             loss = model.loss_function(prediction, label)
@@ -49,11 +50,18 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
             # compute training accuracy
             acc = model.accuracy(prediction, label)
             train_acc.update(acc.item())
+            batch_stats = {
+                "train_loss": loss.item(),
+                "train_acc":  acc.item()
+            }
 
+            batches.set_postfix(batch_stats)
+        
         epoch_stats = {
             "train_loss": train_loss.get(),
             "train_acc":  train_acc.get()
         }
+        
 
         if val_dataloader:
             model.eval()
@@ -80,7 +88,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    default_out_dir = f"out/{curr_time_str()}"
+    default_out_dir = f"out/test_out/{curr_time_str()}"
     parser.add_argument("--out_dir", type=str, default=default_out_dir, help="Output directory for this experiment only.")
     parser.add_argument("--param", type=str, help="Base parameter file")
     parsed = parser.parse_args()
@@ -104,7 +112,6 @@ ENDC = '\033[0m'
 
 # store model and history on program exit
 def cleanup():
-    print(f"{WARNING}Program terminated -- saving training progress...{ENDC}")
     store_variable(train_history, 'train_history')
     torch.save(model.state_dict(), join(out_dir, config['model']['classname'] + ".pt"))
 
