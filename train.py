@@ -166,11 +166,13 @@ def collate_examples_pad(data):
     batch_size = len(inp)
     lengths = [tens.shape[-1] for tens in inp]
     max_len = max(lengths)
-    padded = torch.zeros((batch_size, *inp[0].shape[:-1], max_len), dtype=inp[0].dtype)
+    shape = (batch_size, *inp[0].shape[:-1], max_len)
+
+    padded = torch.FloatTensor(*shape, device=config['device']).fill_(0)
     for i in range(batch_size):
         l = lengths[i]
         padded[i, ..., -l:] = inp[i]
-    targets = torch.tensor(targets)
+    targets = torch.tensor(targets, device=config['device'])
     return padded, targets
 
 
