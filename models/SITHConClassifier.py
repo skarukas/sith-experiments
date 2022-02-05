@@ -3,15 +3,19 @@ from .sithcon_utils.tctct import TCTCT_Layer
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 
 
 # model adapted from SITHCon code
 class SITHConClassifier(nn.Module):
     def __init__(self, out_classes, layer_params, 
                  act_func='relu', batch_norm=False,
-                 dropout=0, **kwargs):
+                 dropout=0, collate='batch', **kwargs):
         super(SITHConClassifier, self).__init__()
+
         self.act_func = act_func.lower()
+        self.out_classes = out_classes
+        self.collate = collate.lower()
 
         if self.act_func == "sigmoid":
             Activation = nn.Sigmoid
@@ -28,23 +32,51 @@ class SITHConClassifier(nn.Module):
         self.to_out = nn.Linear(last_channels, out_classes)
 
         self.init_weights()
-        
-        
+
+
     def forward(self, inp):
-        
+        if self.collate == 'single':
+            return self._forward_single(inp)
+        else:
+            return self._forward_batch(inp)
+
+
+    def _forward_batch(self, inp):
+        """
+        Take in a tensor of size (batch, num_channels, num_features, seq_length)
+            which may be zero-padded at the beginning.
+        """
         x = inp
-        #out = []
+
         for i in range(len(self.sithcon_layers)):
             x = self.sithcon_layers[i](x)
-            
             x = F.relu(self.transform_linears[i](x[:,0,:,:].transpose(1,2)))
             x = x.unsqueeze(1).transpose(2,3)
-
-            #out.append(x.clone())
+        
         x = x.transpose(2,3)[:, 0, :, :]
         x = self.to_out(x)
-
+        
         return x[:, -1]
+
+    
+    def _forward_single(self, inp):
+        """
+        Take in a list of (num_channels, num_features, seq_length) tensors.
+            Apply to each data point independently.
+        """
+        batch_size = len(inp)
+        out = torch.zeros((batch_size, self.out_classes))
+        for idx in range(batch_size):
+            x = inp[idx][np.newaxis]
+            for i in range(len(self.sithcon_layers)):
+                x = self.sithcon_layers[i](x)
+                x = F.relu(self.transform_linears[i](x[:,0,:,:].transpose(1,2)))
+                x = x.unsqueeze(1).transpose(2,3)
+            x = x.transpose(2,3)[:, 0, :, :]
+            x = self.to_out(x)
+            out[idx] = x[:, -1]
+            
+        return out
 
 
     def loss_function(self, prediction, label):

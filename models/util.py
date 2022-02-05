@@ -11,7 +11,7 @@ def get_model(config):
         
         for layer in model_params['layer_params']:
             layer['ttype'] = ttype
-        model = SITHConClassifier(**model_params)
+        model = SITHConClassifier(**model_params, collate=config.get('collate', 'batch'))
     else:
         raise "Model not recognized."
     
