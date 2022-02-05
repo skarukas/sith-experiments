@@ -17,6 +17,9 @@ import torch
 from torch.utils.data import DataLoader
 
 
+CHECKPOINT_FREQ = 1
+CHECKPOINT_DIRNAME = "checkpoints"
+
 # global parameters, automatically saved on exit
 train_history = None
 model = None
@@ -84,6 +87,14 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
         train_history.append(epoch_stats)
         config['execution']['epochs_completed'] += 1
         epochs.set_postfix(epoch_stats)
+
+        if (epoch+1) % CHECKPOINT_FREQ == 0:
+            checkpoint_dir = join(out_dir, CHECKPOINT_DIRNAME)
+            os.makedirs(checkpoint_dir, exist_ok=True)
+            model_class = config['model']['classname']
+            torch.save(model.state_dict(), join(checkpoint_dir, f"{model_class}_epoch{epoch}.pt"))
+            save_progress()
+
             
 
 def parse_args():
@@ -112,8 +123,8 @@ def create_dir(dir):
 WARNING = '\033[93m'
 ENDC = '\033[0m'
 
-# store model and history on program exit
-def cleanup():
+# store model and history on checkpoint / program exit
+def save_progress():
     if model is not None:
         model_class = config['model']['classname']
         torch.save(model.state_dict(), join(out_dir, model_class + ".pt"))
@@ -140,7 +151,7 @@ def generate_synthetic_data(dirname, n=100, num_classes=35, shape=None):
     os.makedirs(dirname, exist_ok=False)
     for i in range(n):
         if shape is None:
-            i_shape = (1, 50, random.randint(64, 256))
+            i_shape = (1, 50, random.randint(4, 10))
         X = torch.randn(i_shape)
         label = random.randint(0, num_classes-1)
         obj = (X, label)
@@ -207,7 +218,7 @@ if __name__ == "__main__":
     # make output directory solely for the experiment
     create_dir(out_dir)
 
-    atexit.register(cleanup)
+    atexit.register(save_progress)
 
     config['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Training using {config['device']}")
