@@ -111,8 +111,8 @@ def create_dir(dir):
     try:
         os.makedirs(dir, exist_ok=False)
         print(f"Created output directory '{dir}'")
-    except OSError:
-        overwrite = input(f"Warning: directory '{dir}' exists. "
+    except:
+        overwrite = input(f"Warning: directory '{dir}' exists. " \
             + "Are you sure you want to overwrite its contents? [y/n] ")
         if overwrite.lower() in ("yes", "y"):
             shutil.rmtree(dir)
