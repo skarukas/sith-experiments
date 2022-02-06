@@ -3,6 +3,7 @@ import torch
 
 from os import path
 import glob
+import sys
 
 
 class Average:
@@ -39,3 +40,20 @@ class FileDataset(Dataset):
 
     def __len__(self):
         return len(self.files)
+
+
+# modified from https://stackoverflow.com/questions/14906764/how-to-redirect-stdout-to-both-file-and-console-with-scripting
+class Logger(object):
+    def __init__(self, fname, terminal_out=sys.stdout):
+        self.terminal = terminal_out
+        self.log = open(fname, "a")
+   
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)  
+
+    def flush(self):
+        # this flush method is needed for python 3 compatibility.
+        # this handles the flush command by doing nothing.
+        # you might want to specify some extra behavior here.
+        pass

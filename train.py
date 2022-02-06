@@ -11,7 +11,7 @@ from tqdm import trange, tqdm
 import random
 
 from models.util import get_model
-from util import Average, FileDataset
+from util import Average, FileDataset, Logger
 
 import torch
 from torch.utils.data import DataLoader
@@ -55,7 +55,9 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
             train_acc.update(acc.item())
             batch_stats = {
                 "train_loss": loss.item(),
-                "train_acc":  acc.item()
+                "train_acc":  acc.item(),
+                "avg_tr_acc": train_acc.get(),
+                "avg_tr_loss": train_loss.get()
             }
 
             batches.set_postfix(batch_stats)
@@ -218,8 +220,15 @@ if __name__ == "__main__":
     else:
         val_data_dir = None
 
-    # make output directory solely for the experiment
-    create_dir(out_dir)
+    # (recursively) make output directory, solely for the experiment
+    log_dir = join(out_dir, "log")
+    create_dir(log_dir)
+
+    # hacky way to redirect to special output files, 
+    #   as shell redirection with slurm was getting odd with all the
+    #   directories that needed to exists
+    sys.stderr = Logger(join(log_dir, "stderr.txt"), sys.stderr)
+    sys.stdout = Logger(join(log_dir, "stdout.txt"), sys.stdout)
 
     atexit.register(save_progress)
 
