@@ -1,0 +1,46 @@
+batch_size: 64
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 2
+  local_start: 2022-02-05_20:19:45
+  local_stop: 2022-02-05_21:17:33
+  program_exit: FAILURE
+model:
+  act_func: relu
+  batch_norm: false
+  classname: SITHConClassifier
+  layer_params:
+  - buff_max: 6500
+    channels: 35
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 50
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  - buff_max: 6500
+    channels: 35
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 35
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  out_classes: 35
+  type: sithcon
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/SITH_train/sithcon_dropout_comparison_0_0
+param: base-sithcon-params.yaml
+train_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed/train
+val_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed/val

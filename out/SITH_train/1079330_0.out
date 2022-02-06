@@ -1,0 +1,8 @@
+Task ID: 0
+Using params from base-sithcon-params.yaml
+Loaded base-sithcon-params.yaml
+Warning: directory '/geode2/home/u080/skarukas/Carbonate/SITH/out/SITH_train/sithcon_gsc_3layer_lr_0_1079330' exists. Are you sure you want to overwrite its contents? [y/n] Training using cuda
+Loading training data
+Using glob '/geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed/train/**/*'... found 84843 files
+Loading validation data
+Using glob '/geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed/val/**/*'... found 9981 files
