@@ -256,6 +256,8 @@ if __name__ == "__main__":
 
     
     model = get_model(config)
+    print("Model Architecture:")
+    print(model)
     config['model']['classname'] = model.__class__.__name__
     train_history = []
     train_loop(model, train_dataloader, config, val_dataloader)
