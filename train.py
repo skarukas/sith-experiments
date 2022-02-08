@@ -133,17 +133,14 @@ def save_progress():
     if model is not None:
         model_class = config['model']['classname']
         torch.save(model.state_dict(), join(out_dir, model_class + ".pt"))
-        store_variable(train_history, 'train_history')
+        if train_history is not None and len(train_history) > 0:
+            f = open(join(train_history, "train_history.dill"), "wb")
+            dill.dump(train_history, f)
+            config['execution']['stats'] = train_history[-1]
         # output parameter file within the folder
         config['execution']['local_stop'] = curr_time_str()
         f = open(join(out_dir, 'train_config.yaml'), "w")
         yaml.safe_dump(config, f)
-
-
-def store_variable(var, fname):
-    if var is not None:
-        f = open(join(out_dir, f"{fname}.dill"), "wb")
-        dill.dump(var, f)
 
 
 def curr_time_str():
@@ -259,6 +256,7 @@ if __name__ == "__main__":
     print("Model Architecture:")
     print(model)
     config['model']['classname'] = model.__class__.__name__
+    config['model']['num_params'] = sum(p.numel() for p in model.parameters() if p.requires_grad)
     train_history = []
     train_loop(model, train_dataloader, config, val_dataloader)
 
