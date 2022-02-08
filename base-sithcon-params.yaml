@@ -48,7 +48,7 @@ optimizer:
     lr: 0.001
 num_epochs: 40
 batch_size: 32
-train_data_dir: "data/SpeechCommands/processed/train"
+train_data_dir: "data/SpeechCommands/processed/train" #"data/example_dataset" 
 collate: batch   # 'single' or 'batch'
 val_data_dir: "data/SpeechCommands/processed/val"
 

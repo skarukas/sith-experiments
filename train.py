@@ -134,7 +134,7 @@ def save_progress():
         model_class = config['model']['classname']
         torch.save(model.state_dict(), join(out_dir, model_class + ".pt"))
         if train_history is not None and len(train_history) > 0:
-            f = open(join(train_history, "train_history.dill"), "wb")
+            f = open(join(out_dir, "train_history.dill"), "wb")
             dill.dump(train_history, f)
             config['execution']['stats'] = train_history[-1]
         # output parameter file within the folder
@@ -217,6 +217,8 @@ if __name__ == "__main__":
     else:
         val_data_dir = None
 
+    #generate_synthetic_data(train_data_dir, 10)
+    
     # (recursively) make output directory, solely for the experiment
     log_dir = join(out_dir, "log")
     create_dir(log_dir)
