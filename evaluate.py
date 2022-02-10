@@ -5,7 +5,7 @@ from os.path import join
 import argparse
 
 from models.util import get_model
-from train import collate_examples_list
+from util import collate_examples_list
 
 import torch
 from torch.utils.data import DataLoader

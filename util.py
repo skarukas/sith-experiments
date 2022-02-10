@@ -6,12 +6,14 @@ from os import path
 import glob
 import sys
 from math import log2
+from datetime import datetime
 
 from audiotsm import phasevocoder
 from audiotsm.io.wav import WavReader
 from audiotsm.io.array import ArrayWriter
 import librosa
 import matplotlib.pyplot as plt
+
 
 class Average:
     """
@@ -26,6 +28,43 @@ class Average:
 
     def get(self):
         return self.sum / self.n if self.n else 0
+
+
+def collate_examples_list(data):
+    """
+    Collate tensors with different sequence lengths 
+        by collecting them into a list
+    """
+    X = [t[0] for t in data]
+    targets = torch.tensor([t[1] for t in data])
+    return (X, targets)
+
+
+def collate_examples_pad(data):
+    """
+    Collate tensors with different sequence lengths by padding
+        the beginning with zeros
+    """
+    inp, targets = zip(*data)
+
+    # zero-pad input at beginning 
+    batch_size = len(inp)
+    lengths = [tens.shape[-1] for tens in inp]
+    max_len = max(lengths)
+    shape = (batch_size, *inp[0].shape[:-1], max_len)
+    TensorType = torch.cuda.FloatTensor if inp.device == 'cuda' else torch.FloatTensor
+    
+    padded = TensorType(*shape).fill_(0)
+    for i in range(batch_size):
+        l = lengths[i]
+        padded[i, ..., -l:] = inp[i]
+    targets = torch.tensor(targets, device=inp.device)
+    return padded, targets
+
+
+def curr_time_str():
+    now = datetime.now().replace(microsecond=0)
+    return now.isoformat(sep='_')
 
 
 class FileDataset(Dataset):
