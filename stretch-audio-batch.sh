@@ -11,6 +11,7 @@
 #SBATCH --mail-type=ALL,ARRAY_TASKS
 #SBATCH --array=0-7
 
+# make sure you have enough disk space before running this script!
 module load deeplearning/2.6.0
 
 Speeds=("10.00" "05.00" "02.50" "01.25" "00.80" "00.40" "00.20" "00.10")
