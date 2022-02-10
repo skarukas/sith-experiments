@@ -5,8 +5,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=09:30:00
-#SBATCH -o out/%J_%a.out
-#SBATCH -e out/%J_%a.out
+#SBATCH -o out/stretch_gsc_%a.out
+#SBATCH -e out/stretch_gsc_%a.out
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
 #SBATCH --array=0-7
