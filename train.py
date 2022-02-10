@@ -6,11 +6,11 @@ import argparse
 import atexit
 import dill
 import shutil
-from datetime import datetime
 from tqdm import trange, tqdm
 import random
 
 from models.util import get_model
+import util
 from util import Average, FileDataset, Logger
 from evaluate import evaluate
 
@@ -90,7 +90,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    default_out_dir = f"out/test_out/{curr_time_str()}"
+    default_out_dir = f"out/test_out/{util.curr_time_str()}"
     parser.add_argument("--out_dir", type=str, default=default_out_dir, 
         help="Output directory for this experiment only.")
     parser.add_argument("--param", type=str, help="Base parameter file")
@@ -127,14 +127,9 @@ def save_progress():
             dill.dump(train_history, f)
             config['execution']['stats'] = train_history[-1]
         # output parameter file within the folder
-        config['execution']['local_stop'] = curr_time_str()
+        config['execution']['local_stop'] = util.curr_time_str()
         f = open(join(out_dir, 'train_config.yaml'), "w")
         yaml.safe_dump(config, f)
-
-
-def curr_time_str():
-    now = datetime.now().replace(microsecond=0)
-    return now.isoformat(sep='_')
 
 
 def generate_synthetic_data(dirname, n=100, num_classes=35, shape=None):
@@ -147,38 +142,6 @@ def generate_synthetic_data(dirname, n=100, num_classes=35, shape=None):
         label = random.randint(0, num_classes-1)
         obj = (X, label)
         torch.save(obj, join(dirname, f"example_file_{i}.pt"))
-
-
-def collate_examples_list(data):
-    """
-    Collate tensors with different sequence lengths 
-        by collecting them into a list
-    """
-    X = [t[0] for t in data]
-    targets = torch.tensor([t[1] for t in data])
-    return (X, targets)
-
-
-def collate_examples_pad(data):
-    """
-    Collate tensors with different sequence lengths by padding
-        the beginning with zeros
-    """
-    inp, targets = zip(*data)
-
-    # zero-pad input at beginning
-    batch_size = len(inp)
-    lengths = [tens.shape[-1] for tens in inp]
-    max_len = max(lengths)
-    shape = (batch_size, *inp[0].shape[:-1], max_len)
-    TensorType = torch.cuda.FloatTensor if config['device'] == 'cuda' else torch.FloatTensor
-    
-    padded = TensorType(*shape).fill_(0)
-    for i in range(batch_size):
-        l = lengths[i]
-        padded[i, ..., -l:] = inp[i]
-    targets = torch.tensor(targets, device=config['device'])
-    return padded, targets
 
 
 if __name__ == "__main__":
@@ -196,7 +159,7 @@ if __name__ == "__main__":
         **config,
         'execution': {
             'epochs_completed': 0,
-            'local_start': curr_time_str(),
+            'local_start': util.curr_time_str(),
             'program_exit': 'FAILURE'
         }
     }
@@ -223,7 +186,8 @@ if __name__ == "__main__":
     config['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Training using {config['device']}")
 
-    collate = collate_examples_list if config.get('collate') == 'single' else collate_examples_pad
+    collate = util.collate_examples_list if config.get('collate') == 'single' \
+        else util.collate_examples_pad
     # load data
     print("Loading training data")
     train_data = FileDataset(train_data_dir, device=config['device'])
