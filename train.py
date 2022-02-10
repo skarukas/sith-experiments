@@ -12,6 +12,7 @@ import random
 
 from models.util import get_model
 from util import Average, FileDataset, Logger
+from evaluate import evaluate
 
 import torch
 from torch.utils.data import DataLoader
@@ -34,9 +35,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
     for epoch in epochs:
         epoch_stats = {}
         train_loss = Average()
-        val_loss = Average()
         train_acc = Average()
-        val_acc = Average()
         
         model.train()
         batches = tqdm(train_dataloader, leave=False, desc="Batch")
@@ -69,21 +68,11 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
         
 
         if val_dataloader:
-            model.eval()
-            for (X, label) in val_dataloader:
-                # compute validation loss
-                prediction = model(X)
-                vloss = model.loss_function(prediction, label)
-                val_loss.update(vloss.item())
-
-                # compute validation accuracy
-                acc = model.accuracy(prediction, label)
-                val_acc.update(acc.item())
-
+            val_stats = evaluate(model, val_dataloader)
             epoch_stats = {
                 **epoch_stats,
-                "val_loss":   val_loss.get(),
-                "val_acc":    val_acc.get(),
+                "val_loss": val_stats['loss'],
+                "val_acc":  val_stats['acc']
             }
 
         train_history.append(epoch_stats)
