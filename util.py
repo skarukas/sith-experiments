@@ -82,6 +82,7 @@ class StretchAudioDataset(Dataset):
         label_idx = self.label_to_idx[label]
         X = constant_q(stretched, sr=sr, **self.cqparams)
         X = normalize(X, self.norm)
+        X = X.to(self.device)
         return (X, label_idx)
 
     def __len__(self):
