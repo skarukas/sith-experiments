@@ -2,17 +2,21 @@ from torch.utils.data import Dataset
 import torch
 import numpy as np
 
+import os
 from os import path
 import glob
 import sys
 from math import log2
 from datetime import datetime
+from scipy.stats import zscore
 
 from audiotsm import phasevocoder
 from audiotsm.io.wav import WavReader
 from audiotsm.io.array import ArrayWriter
 import librosa
 import matplotlib.pyplot as plt
+from torchaudio.datasets import SPEECHCOMMANDS
+import torchaudio
 
 
 class Average:
@@ -52,13 +56,13 @@ def collate_examples_pad(data):
     lengths = [tens.shape[-1] for tens in inp]
     max_len = max(lengths)
     shape = (batch_size, *inp[0].shape[:-1], max_len)
-    TensorType = torch.cuda.FloatTensor if inp.device == 'cuda' else torch.FloatTensor
+    TensorType = torch.cuda.FloatTensor if 'cuda' in str(inp[0].device) else torch.FloatTensor
     
     padded = TensorType(*shape).fill_(0)
     for i in range(batch_size):
         l = lengths[i]
         padded[i, ..., -l:] = inp[i]
-    targets = torch.tensor(targets, device=inp.device)
+    targets = torch.tensor(targets, device=inp[0].device)
     return padded, targets
 
 
@@ -128,12 +132,88 @@ class StretchAudioDataset(Dataset):
         return len(self.files)
 
 
+# modified version of 
+#.  https://pytorch.org/tutorials/intermediate/speech_command_classification_with_torchaudio_tutorial.html
+class SubsetSC(SPEECHCOMMANDS):
+    def __init__(self, root_dir, subset: str = None):
+        super().__init__(root_dir, download=True)
+
+        def load_list(filename):
+            filepath = os.path.join(self._path, filename)
+            with open(filepath) as fileobj:
+                return [os.path.join(self._path, line.strip()) for line in fileobj]
+
+        if subset == "validation":
+            self._walker = load_list("validation_list.txt")
+        elif subset == "testing":
+            self._walker = load_list("testing_list.txt")
+        elif subset == "training":
+            excludes = load_list("validation_list.txt") + load_list("testing_list.txt")
+            excludes = set(map(os.path.abspath, excludes))
+            self._walker = [w for w in self._walker if os.path.abspath(w) not in excludes]
+    
+    def __getitem__(self, idx):
+      fname = self._walker[idx]
+      x = torchaudio.load(fname)[0]
+      split = fname.split("/")
+      word = split[-2]
+      id = split[-1].rstrip(".wav")
+      return (x, word, id)
+
+
+class SCStretch(SPEECHCOMMANDS):
+    def __init__(self, subset: str, root_dir: str, speed: float, label_to_idx: dict, 
+            norm: str='minmax', cqparams: dict={}, device='cpu'):
+        super().__init__(root_dir, download=False)
+
+        def load_list(filename):
+            filepath = path.join(self._path, filename)
+            with open(filepath) as fileobj:
+                return [path.join(self._path, line.strip()) for line in fileobj]
+
+        if subset == "validation":
+            self.files = load_list("validation_list.txt")
+        elif subset == "testing":
+            self.files = load_list("testing_list.txt")
+        elif subset == "training":
+            excludes = load_list("validation_list.txt") + load_list("testing_list.txt")
+            excludes = set(map(path.abspath, excludes))
+            self.files = [w for w in self._walker if path.abspath(w) not in excludes]
+        
+        self.device = device
+        self.num_channels = 1
+        self.tsm = phasevocoder(self.num_channels, speed=speed)
+        self.label_to_idx = label_to_idx
+        self.cqparams = cqparams
+        self.norm = norm
+        print(f"found {len(self.files)} files")
+    
+
+    def __getitem__(self, idx):
+        fname = self.files[idx]
+        with WavReader(fname) as reader:
+            writer = ArrayWriter(self.num_channels)
+            self.tsm.run(reader, writer)
+            sr = reader.samplerate
+            stretched = writer.data[0]
+        label = fname.split("/")[-2]
+        label_idx = self.label_to_idx[label]
+        X = constant_q(stretched, sr=sr, **self.cqparams)
+        X = normalize(X, self.norm)
+        X = X.to(self.device)
+        return (X, label_idx)
+
+
+    def __len__(self):
+        return len(self.files)
+
+
 ## audio methods
 def normalize(X, method='minmax'):
     if method is None:
         return X
     elif method == "zscore":
-        raise "No Zscore implemented"
+        return zscore(X, axis=1)
     else:
         # minmax
         d = X.max() - X.min()
@@ -144,7 +224,12 @@ def normalize(X, method='minmax'):
 def constant_q(x, sr=16000, fmin=100, fmax=6000, bins=50, hop_length=64):
     bins_per_octave = int(bins / log2(fmax/fmin) + 0.5)
     x = x.flatten()
-    X = librosa.cqt(x, sr=sr, hop_length=hop_length, fmin=fmin, n_bins=bins, bins_per_octave=bins_per_octave)
+    if len(x) == 0:
+        x = np.zeros(128)
+    X = librosa.cqt(
+        x, sr=sr, hop_length=hop_length, fmin=fmin, n_bins=bins, 
+        bins_per_octave=bins_per_octave, pad_mode='constant'
+    )
     X = torch.tensor(X[np.newaxis]).abs()
     return X
 
