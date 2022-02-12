@@ -4,9 +4,10 @@
 module load deeplearning
 
 PORT=1133
+USERNAME=skarukas
 
 # port forward requests on port 1133 on carbonate to port 1133 here
-ssh -fN -R $PORT:localhost:$PORT skarukas@h2.carbonate.uits.iu.edu
+ssh -fN -R $PORT:localhost:$PORT ${USERNAME}@h2.carbonate.uits.iu.edu
 
 # run notebook on port 1133
 cd ..
