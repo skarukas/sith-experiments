@@ -10,7 +10,7 @@ import numpy as np
 class SITHConClassifier(nn.Module):
     def __init__(self, out_classes, layer_params, 
                  act_func='relu', batch_norm=False,
-                 dropout=0, collate='batch', **kwargs):
+                 dropout=0, collate='batch', seqloss=False, **kwargs):
         super(SITHConClassifier, self).__init__()
 
         self.act_func = act_func.lower()
@@ -32,13 +32,21 @@ class SITHConClassifier(nn.Module):
         self.to_out = nn.Linear(last_channels, out_classes)
 
         self.init_weights()
+        if self.collate == 'single':
+            # not supported for single collate
+            assert not seqloss
+        self.seqloss = seqloss
 
 
     def forward(self, inp):
         if self.collate == 'single':
-            return self._forward_single(inp)
+            out = self._forward_single(inp)
+            return out
         else:
-            return self._forward_batch(inp)
+            out = self._forward_batch(inp)
+            if self.seqloss:
+                self.temp_outseq = out
+            return out[:, -1]
 
 
     def _forward_batch(self, inp):
@@ -56,7 +64,7 @@ class SITHConClassifier(nn.Module):
         x = x.transpose(2,3)[:, 0, :, :]
         x = self.to_out(x)
         
-        return x[:, -1]
+        return x
 
     
     def _forward_single(self, inp):
@@ -80,7 +88,21 @@ class SITHConClassifier(nn.Module):
 
 
     def loss_function(self, prediction, label):
-        return F.cross_entropy(prediction, label)
+        if self.seqloss:
+            # sum over all time points, with higher weight for later points
+            out = self.temp_outseq
+            seqlen = out.shape[-1]
+            h = 10
+            eps = 0.01
+            loss_scale = torch.exp((torch.arange(seqlen)-(seqlen-1)) / h)
+            loss = sum(
+                loss_scale[i] * F.cross_entropy(out[:, i], label) 
+                for i in range(seqlen) if loss_scale[i] > eps
+            )
+            
+            return loss
+        else:
+            return F.cross_entropy(prediction, label)
 
 
     def accuracy(self, prediction, label):

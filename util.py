@@ -213,7 +213,7 @@ def normalize(X, method='minmax'):
     if method is None:
         return X
     elif method == "zscore":
-        return zscore(X, axis=1)
+        return zscore(X, axis=-1)
     else:
         # minmax
         d = X.max() - X.min()

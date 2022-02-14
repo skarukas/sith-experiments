@@ -43,7 +43,7 @@ def evaluate(model, dataloader, progress_bar=False):
 def parse_args():
     parser = argparse.ArgumentParser()
     default_data_dir = "data/"
-    default_experiment_path = "out/SITH_train/sithcon_gsc_3layer_lr_0_1079330"
+    default_experiment_path = "out/SITH_train/sithcon_gsc_cqt_zscore_1095126"
 
     parser.add_argument("--ddir", 
         type=str, default=default_data_dir, 

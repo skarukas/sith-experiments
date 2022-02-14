@@ -1,0 +1,64 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 11
+  local_start: 2022-02-13_15:15:26
+  local_stop: 2022-02-14_02:57:52
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.412432083847525
+    train_loss: 22.23153258125167
+    val_acc: 0.3901794595490716
+    val_loss: 22.193741654738403
+model:
+  act_func: relu
+  batch_norm: false
+  classname: SITHConClassifier
+  layer_params:
+  - buff_max: 6500
+    channels: 50
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 50
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  - buff_max: 6500
+    channels: 50
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 50
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  - buff_max: 6500
+    channels: 35
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 50
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  num_params: 163005
+  out_classes: 35
+  seqloss: true
+  type: sithcon
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/SITH_train/sithcon_gsc_cqt_seqloss_1095400/1
+param: base-sithcon-params-lg-cqt-seqloss.yaml
+train_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed_cqt_zscore/train
+val_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/SpeechCommands/processed_cqt_zscore/val

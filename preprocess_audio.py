@@ -1,9 +1,11 @@
-from util import SubsetSC, normalize
-from os.path import join
+from util import SubsetSC, normalize, constant_q
+import os
+from os.path import join, exists
 import numpy as np
 import yaml
 from collections import defaultdict
 
+import torch
 from torch.utils.data import Dataset
 from scipy import signal
 from tqdm import tqdm
@@ -82,34 +84,44 @@ def transform(data, params):
     currl = len(x)
     dat = np.pad(x, (int(np.floor((maxl - currl)/2)),
                 int(np.ceil((maxl - currl)/2))), 'constant')
-    print(dat.shape)
-    # compute morlet transform
-    X = phase_pow_multi(
-        transform_params['morlet_freqs'], dat, samplerates=sr, widths=5,
-        to_return='power', time_axis=-1,
-        conv_dtype=np.complex64, freq_name='freqs'
-    )
-    # resample morlet data
+
+    if transform_params['method'] == "morlet":
+        # compute morlet transform
+        X = phase_pow_multi(
+            transform_params['morlet_freqs'], dat, samplerates=sr, widths=5,
+            to_return='power', time_axis=-1,
+            conv_dtype=np.complex64, freq_name='freqs'
+        )
+    else:
+        # constant-Q transform
+        X = constant_q(
+            dat, sr=sr, 
+            fmin=transform_params['fmin'], fmax=transform_params['fmax'], 
+            bins=transform_params['nbins'], hop_length=transform_params['hop_length']
+        )[0]
+    # resample 2D features
     resample_factor = transform_params['resample_factor']
-    if resample_factor:
+    if resample_factor is not None:
         X = signal.resample(X, X.shape[1]//resample_factor, axis=1)
     
     X = normalize(X, transform_params['norm_method'])
+    X = torch.tensor(X)
+    if len(X.shape) == 2:
+        X = X[np.newaxis]
     return (X, label_idx, id)
 
 
 def transform_and_save(dirname, transform_params, data):
     x, label, id = data
     path = join(dirname, label, id + ".pt") # out_dir/label1/myfile0b83a31b.pt
-    if True: #not exists(path): 
+    if not exists(path): 
         (X, label_idx, id) = transform(data, transform_params)
-        print(X.shape, path)
-        plt.imshow(X, aspect='auto')
-        plt.savefig('example.png')
-        sys.exit(0)
-        if False:
-            item = (X, label_idx)
-            torch.save(item, path)
+        #plt.imshow(X, aspect='auto')
+        #plt.savefig('example.png')
+        #sys.exit(0)
+        
+        item = (X, label_idx)
+        torch.save(item, path)
 
 
 def save_data(dataset, dirname, transform_params, num_workers=4):
@@ -135,43 +147,62 @@ if __name__ == "__main__":
     # load datasets, expect in form (x, label, id), where id is filename
     #   or (x, label, id, sr)
     sc_root_dir = "data"
-    train, val, test = SubsetSC(sc_root_dir, "training"), SubsetSC(sc_root_dir, "validation"), SubsetSC(sc_root_dir, "training")
+    train, val, test = SubsetSC(sc_root_dir, "training"), SubsetSC(sc_root_dir, "validation"), SubsetSC(sc_root_dir, "testing")
 
     # output format = torch.saved (X, target_idx) saved with id filename, in target folders
     #   e.g. out_dir/train/label1/example.pt
-    out_dir = join(sc_root_dir, "SpeechCommands/processed_morlet_zscore")
+    out_dir = join(sc_root_dir, "SpeechCommands/processed_cqt_zscore")
 
     # assign indices based on training data
     print("Getting all labels")
     maxl = 16000
-    label_idx = defaultdict(lambda: 0)
+    label_idx = {}
+    for i, lab in enumerate(['backward', 'bed', 'bird', 'cat', 'dog', 'down', 'eight', 'five', 'follow', 'forward', 'four', 'go', 'happy', 'house', 'learn', 'left', 'marvin', 'nine', 'no', 'off', 'on', 'one', 'right', 'seven', 'sheila', 'six', 'stop', 'three', 'tree', 'two', 'up', 'visual', 'wow', 'yes', 'zero']):
+        label_idx[lab] = i
     #label_idx, maxl = get_label_indices(train)
     labels = list(label_idx.keys())
     print("Num labels:", len(labels))
     print(labels)
+    print("maxl:", maxl)
 
+    # cqt zscore
     transform_params = {
+        "method": "constant_q",
+        "fmin": 100,
+        "fmax": 8000, # Nyquist of 16000Hz
+        "nbins": 50,
+        "hop_length": 64,
+        "norm_method": "zscore",
+        "maxl": maxl,
+        "resample_factor": None,
+        "label_to_idx": label_idx
+    } 
+
+    # morlet zscore
+    """ transform_params = {
         "method": "morlet",
         "fmin": 100,
-        "fmax": 8000,
+        "fmax": 8000, # Nyquist of 16000Hz
         "nbins": 50,
         "norm_method": "zscore",
         "maxl": maxl,
         "resample_factor": 100,
         "label_to_idx": label_idx
-    }
+    } """
 
-    transform_params['morlet_freqs'] = np.logspace(
-        transform_params['fmin'], 
-        transform_params['fmax'], 
-        transform_params['nbins'], 
-        base=np.e
-    )
-
-    save_data(train, join(out_dir, "train"), transform_params)
-    save_data(val, join(out_dir, "val"), transform_params)
-    save_data(test, join(out_dir, "test"), transform_params)
-
+    os.makedirs(out_dir, exist_ok=True)
     # write out transformation details
-    f = open(join(out_dir, "transform_params.dill"), "w")
+    f = open(join(out_dir, "transform_params.yaml"), "w")
     yaml.safe_dump(transform_params, f)
+
+    if transform_params['method'] == "morlet":
+        transform_params['morlet_freqs'] = np.logspace(
+            np.log(transform_params['fmin']), 
+            np.log(transform_params['fmax']), 
+            transform_params['nbins'], 
+            base=np.e
+        )
+
+    #save_data(train, join(out_dir, "train"), transform_params)
+    #save_data(val, join(out_dir, "val"), transform_params)
+    save_data(test, join(out_dir, "test"), transform_params)

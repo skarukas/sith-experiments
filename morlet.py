@@ -293,7 +293,6 @@ def phase_pow_multi(freqs, dat,  samplerates=None, widths=5,
 
     # generate list of wavelets:
     wavelets = morlet_multi(freqs,widths,samplerates,**kwargs)
-        
     # make sure we have at least as many data samples as wavelet samples
     if (np.max([len(i) for i in wavelets]) >  dat.shape[time_axis]):
         raise ValueError("The number of data samples is insufficient compared "+
