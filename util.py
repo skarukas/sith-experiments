@@ -100,8 +100,7 @@ class StretchAudioDataset(Dataset):
     Stretches the audio then applies a constant-Q transform and normalization.
     Not very efficient and maybe should only be used during testing.
     """
-    def __init__(self, root_dir: str, speed: float, label_to_idx: dict, 
-            norm: str='minmax', cqparams: dict={}, device='cpu'):
+    def __init__(self, root_dir: str, speed: float, transform_params: dict, device='cpu'):
         self.device = device
         gb_path = path.join(glob.escape(root_dir), "**/*")
         print(f"Using glob '{gb_path}'...", end=" ")
@@ -109,23 +108,22 @@ class StretchAudioDataset(Dataset):
         self.files = [f for f in gb if path.isfile(f)]
         self.num_channels = 1
         self.tsm = phasevocoder(self.num_channels, speed=speed)
-        self.label_to_idx = label_to_idx
-        self.cqparams = cqparams
-        self.norm = norm
+        self.transform_params = transform_params
         print(f"found {len(self.files)} files")
 
     def __getitem__(self, idx):
         fname = self.files[idx]
+        # stretch audio
         with WavReader(fname) as reader:
             writer = ArrayWriter(self.num_channels)
             self.tsm.run(reader, writer)
             sr = reader.samplerate
             stretched = writer.data
-        label = fname.split("/")[-2]
-        label_idx = self.label_to_idx[label]
-        X = constant_q(stretched, sr=sr, **self.cqparams)
-        X = normalize(X, self.norm)
-        X = X.to(self.device)
+
+        # extract features
+        label, id = fname.split("/")[-2:]
+        id = id.rstrip(".wav")
+        (X, label_idx, id) = transform((stretched, label, id), self.transform_params)
         return (X, label_idx)
 
     def __len__(self):
@@ -159,53 +157,6 @@ class SubsetSC(SPEECHCOMMANDS):
       word = split[-2]
       id = split[-1].rstrip(".wav")
       return (x, word, id)
-
-
-class SCStretch(SPEECHCOMMANDS):
-    def __init__(self, subset: str, root_dir: str, speed: float, label_to_idx: dict, 
-            norm: str='minmax', cqparams: dict={}, device='cpu'):
-        super().__init__(root_dir, download=False)
-
-        def load_list(filename):
-            filepath = path.join(self._path, filename)
-            with open(filepath) as fileobj:
-                return [path.join(self._path, line.strip()) for line in fileobj]
-
-        if subset == "validation":
-            self.files = load_list("validation_list.txt")
-        elif subset == "testing":
-            self.files = load_list("testing_list.txt")
-        elif subset == "training":
-            excludes = load_list("validation_list.txt") + load_list("testing_list.txt")
-            excludes = set(map(path.abspath, excludes))
-            self.files = [w for w in self._walker if path.abspath(w) not in excludes]
-        
-        self.device = device
-        self.num_channels = 1
-        self.tsm = phasevocoder(self.num_channels, speed=speed)
-        self.label_to_idx = label_to_idx
-        self.cqparams = cqparams
-        self.norm = norm
-        print(f"found {len(self.files)} files")
-    
-
-    def __getitem__(self, idx):
-        fname = self.files[idx]
-        with WavReader(fname) as reader:
-            writer = ArrayWriter(self.num_channels)
-            self.tsm.run(reader, writer)
-            sr = reader.samplerate
-            stretched = writer.data[0]
-        label = fname.split("/")[-2]
-        label_idx = self.label_to_idx[label]
-        X = constant_q(stretched, sr=sr, **self.cqparams)
-        X = normalize(X, self.norm)
-        X = X.to(self.device)
-        return (X, label_idx)
-
-
-    def __len__(self):
-        return len(self.files)
 
 
 ## audio methods

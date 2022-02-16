@@ -1,0 +1,386 @@
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+Using cuda
+found 11005 files
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+ello
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+tensor([[nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        ...,
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan]])
+tensor([])
+Using cuda
+found 11005 files
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan])
+Using cuda
+Using cuda
+found 11005 files
+Using cuda
+found 11005 files
+0
+475b61f1_nohash_0
+tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]])
+tensor([nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan])
+Using cuda
+found 11005 files
+0
+475b61f1_nohash_0
+0
+220ee1ef_nohash_0
+512
+4a0e2c16_nohash_1
+512
+4a0e2c16_nohash_0
+0
+a4383927_nohash_0
+0
+220ee1ef_nohash_0
+0
+475b61f1_nohash_0
+0
+220ee1ef_nohash_0
+Using cuda
+found 11005 files
+visual 220ee1ef_nohash_0
+nine a4383927_nohash_0
+bird 220ee1ef_nohash_0
+bed 220ee1ef_nohash_0
+go 475b61f1_nohash_0
+yes 4a0e2c16_nohash_0
+For speed=10, acc=0.0476, loss=4.7386372293744765
+found 11005 files
+bed 220ee1ef_nohash_0
+For speed=5, acc=0.1150036231884058, loss=3.877231124518574
+found 11005 files
+For speed=2.5, acc=0.4028482286634462, loss=2.3083663634631946
+found 11005 files
+Using cuda
+found 9981 files
+Using cuda
+found 9981 files
+Using cuda
+found 9981 files
+Using cuda
+found 9981 files
+Using cuda
+Using glob 'data/SpeechCommands/processed_cqt_zscore/test/**/*'... found 11005 files
+Using cuda
+Using glob 'data/SpeechCommands/processed_cqt_zscore/test/**/*'... found 11005 files

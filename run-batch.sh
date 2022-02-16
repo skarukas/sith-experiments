@@ -10,12 +10,12 @@
 #SBATCH -e out/SITH_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-1
+#SBATCH --array=0-0
 
 module load deeplearning/2.6.0
 
-ParamFiles=(base-sithcon-params-lg-cqt.yaml base-sithcon-params-lg-cqt-seqloss.yaml)
-ExperimentName="sithcon_gsc_cqt_seqloss"
+ParamFiles=(base-sithcon-params-vlg-cqt.yaml base-sithcon-params-lg-cqt.yaml base-sithcon-params-lg-cqt-bnorm.yaml)
+ExperimentName="sithcon_gsc_cqt_new"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentName}_${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}"

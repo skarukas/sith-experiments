@@ -1,0 +1,30 @@
+Using cuda
+found 11005 files
+sheila 4a0e2c16_nohash_1
+bed 220ee1ef_nohash_0
+cat 475b61f1_nohash_1
+stop 475b61f1_nohash_0
+go 475b61f1_nohash_0
+yes 4a0e2c16_nohash_0
+nine a4383927_nohash_0
+three a4383927_nohash_0
+visual 220ee1ef_nohash_0
+bird 220ee1ef_nohash_0
+For speed=10, acc=0.04900000000000001, loss=5.466447189876011
+found 11005 files
+bed 220ee1ef_nohash_0
+For speed=5, acc=0.10894927536231884, loss=4.169505088225655
+found 11005 files
+For speed=2.5, acc=0.3792572463768115, loss=2.4882970789204473
+found 11005 files
+For speed=1.25, acc=0.6819746376811596, loss=1.1653879411194636
+found 11005 files
+For speed=1, acc=0.8877524809542904, loss=0.39711383713387644
+found 11005 files
+For speed=0.8, acc=0.7601814058956925, loss=0.8587990217333208
+found 11005 files
+For speed=0.4, acc=0.7866739288307912, loss=0.7789312063847609
+found 11005 files
+For speed=0.2, acc=0.7945504087193438, loss=0.7614970522946666
+found 11005 files
+For speed=0.1, acc=0.7938584537112673, loss=0.7602706328792129
