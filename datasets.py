@@ -1,10 +1,12 @@
 from torch.utils.data import Dataset
 import torch
 import numpy as np
+import random
 
 import os
 from os import path
 import sys
+import glob
 
 from audiotsm import phasevocoder
 from audiotsm.io.wav import WavReader
@@ -16,6 +18,10 @@ import torchaudio
 from morlet import phase_pow_multi
 from scipy import signal
 from util import constant_q, normalize
+
+
+MAX_INT16 = 2**15
+DEFAULT_SR = 16000
 
 
 class SCStretch(SPEECHCOMMANDS):
@@ -37,9 +43,7 @@ class SCStretch(SPEECHCOMMANDS):
             self.files = [w for w in self._walker if path.abspath(w) not in excludes]
         
         self.device = device
-        self.num_channels = 1
         self.speed = speed
-        self.tsm = phasevocoder(self.num_channels, speed=speed)
         self.transform_params = transform_params
         print(f"found {len(self.files)} files")
     
@@ -52,18 +56,13 @@ class SCStretch(SPEECHCOMMANDS):
         x = np.pad(x, (int(np.floor((maxl - x.shape[0])/2)),
                 int(np.ceil((maxl - x.shape[0])/2))), 'constant')
 
-        factor = 1 / self.speed
-        reader = ArrayReader(x[np.newaxis])
-        writer = ArrayWriter(self.num_channels)
-        self.tsm.run(reader, writer)
-
-        stretched = writer.data[0].astype(np.int16)*factor
-        stretched /= MAX_INT16
+        stretched = stretch_audio(x, self.speed)
 
         # extract features
         label, id = fname.split("/")[-2:]
         id = id.rstrip(".wav")
-        (X, label_idx, id) = transform((stretched, label, id), self.transform_params)
+        label_idx = self.transform_params['label_to_idx'][label]
+        X = transform(stretched, self.transform_params, sr)
         X = X.to(self.device)
 
         return (X, label, label_idx, id)
@@ -72,16 +71,77 @@ class SCStretch(SPEECHCOMMANDS):
     def __len__(self):
         return len(self.files)
 
-MAX_INT16 = 2**15
-DEFAULT_SR = 16000
+SHUFFLE_SEED = 11111
 
-def transform(data, transform_params):
+
+class StretchedAudioMNIST(Dataset):
+    """
+    Expects that root_dir contains a bunch of wav files that have the
+         class as the first char of the filename
+    Has the same output format as StretchSC
+    """
+    def __init__(self, subset: str, root_dir: str, speed: float, transform_params: dict, device='cpu', split=(0.7, 0.15, 0.15)):
+        self.device = device
+        gb_path = path.join(glob.escape(root_dir), "**/*")
+        print(f"Using glob '{gb_path}'...", end=" ")
+        gb = glob.glob(gb_path, recursive=True)
+        
+        allfiles = [f for f in gb if path.isfile(f) and f.endswith(".wav")]
+        # apply fixed random tr/te/val split
+        random.seed(SHUFFLE_SEED)
+        random.shuffle(allfiles)
+        nfiles = len(allfiles)
+        s0 = int(split[0] * nfiles)
+        s1 = int((split[0]+split[1]) * nfiles)
+        splitfiles = allfiles[:s0], allfiles[s0:s1], allfiles[s1:]
+        print([*map(len, splitfiles)])
+        idx = ["training", "validation", "testing"].index(subset)
+
+        self.files = splitfiles[idx]
+        self.transform_params = transform_params
+        self.speed = speed
+        print(f"found {len(self.files)} files")
+
+
+    def __getitem__(self, idx):
+        fname = self.files[idx]
+        sr, x = wavfile.read(fname)
+        maxl = self.transform_params['maxl']
+        x = np.pad(x, (int(np.floor((maxl - x.shape[0])/2)),
+                int(np.ceil((maxl - x.shape[0])/2))), 'constant')
+
+        stretched = stretch_audio(x, self.speed)
+
+        # extract features
+        short_name = fname.split("/")[-1]
+        label = short_name.split("_")[0]
+        label_idx = self.transform_params['label_to_idx'][label]
+
+        id = short_name.rstrip(".wav")
+        
+        X = transform(stretched, self.transform_params, sr)
+        X = X.to(self.device)
+
+        return (X, label, label_idx, id)
+
+    def __len__(self):
+        return len(self.files)
+
+
+def stretch_audio(x, speed):
+    factor = 1 / speed
+    reader = ArrayReader(x[np.newaxis])
+    writer = ArrayWriter(1)
+    tsm = phasevocoder(1, speed=speed)
+    tsm.run(reader, writer)
+    stretched = writer.data[0].astype(np.int16)*factor
+    return stretched
+
+
+def transform(x, transform_params, sr=DEFAULT_SR):
     """
     Code adapted from AudioMNIST notebook
     """
-    (x, label, id) = data[:3]
-    sr = data[3] if len(data) > 3 else DEFAULT_SR
-    label_idx = transform_params['label_to_idx'][label]
 
     # pad audio data (not strictly necessary, 
     #   but helps short files not run into issues during morlet transform)
@@ -107,10 +167,8 @@ def transform(data, transform_params):
     
     X_norm = normalize(X, transform_params['norm_method'])
     X_norm = torch.tensor(X_norm)
-    if not X_norm.isfinite().all():
-        print(label, id)
-        X_norm = torch.zeros_like(X_norm)
+    X_norm[~X_norm.isfinite()] = 0
 
     if len(X_norm.shape) == 2:
         X_norm = X_norm[np.newaxis]
-    return (X_norm, label_idx, id)
+    return X_norm

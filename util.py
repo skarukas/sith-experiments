@@ -93,43 +93,6 @@ class FileDataset(Dataset):
         return len(self.files)
 
 
-class StretchAudioDataset(Dataset):
-    """
-    Expects that root_dir contains a bunch of wav files in directories 
-        named by class. 
-    Stretches the audio then applies a constant-Q transform and normalization.
-    Not very efficient and maybe should only be used during testing.
-    """
-    def __init__(self, root_dir: str, speed: float, transform_params: dict, device='cpu'):
-        self.device = device
-        gb_path = path.join(glob.escape(root_dir), "**/*")
-        print(f"Using glob '{gb_path}'...", end=" ")
-        gb = glob.glob(gb_path, recursive=True)
-        self.files = [f for f in gb if path.isfile(f)]
-        self.num_channels = 1
-        self.tsm = phasevocoder(self.num_channels, speed=speed)
-        self.transform_params = transform_params
-        print(f"found {len(self.files)} files")
-
-    def __getitem__(self, idx):
-        fname = self.files[idx]
-        # stretch audio
-        with WavReader(fname) as reader:
-            writer = ArrayWriter(self.num_channels)
-            self.tsm.run(reader, writer)
-            sr = reader.samplerate
-            stretched = writer.data
-
-        # extract features
-        label, id = fname.split("/")[-2:]
-        id = id.rstrip(".wav")
-        (X, label_idx, id) = transform((stretched, label, id), self.transform_params)
-        return (X, label_idx)
-
-    def __len__(self):
-        return len(self.files)
-
-
 # modified version of 
 #.  https://pytorch.org/tutorials/intermediate/speech_command_classification_with_torchaudio_tutorial.html
 class SubsetSC(SPEECHCOMMANDS):

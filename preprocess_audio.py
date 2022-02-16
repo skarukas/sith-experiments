@@ -1,5 +1,5 @@
 from util import SubsetSC, normalize, constant_q
-from datasets import SCStretch
+from datasets import SCStretch, StretchedAudioMNIST
 import os
 from os.path import join, exists
 import numpy as np
@@ -31,57 +31,11 @@ def get_label_indices(dataset):
     return label_idx, maxl
 
 
-max_int16 = 2**15
-"""
-class ProcessedDataset(Dataset):
-    def __init__(self, inner: Dataset, transform_params: dict):
-        self.inner = inner
-        self.transform_params = transform_params
-        self.freqs = np.logspace(
-            np.log(transform_params['fmin']), 
-            np.log(transform_params['fmax']), 
-            transform_params['nbins'], 
-            base=np.e
-        )
-
-    def __getitem__(self, idx):
-        item = self.inner[idx]
-        (x, label, id) = item[:3]
-        sr = item[3] if len(item) > 3 else DEFAULT_SR
-        label_idx = self.transform_params['label_to_idx'][label]
-        dat = x / max_int16
-        maxl = self.transform_params['maxl']
-        dat = np.pad(dat, (int(np.floor((maxl - dat.shape[0])/2)),
-                    int(np.ceil((maxl - dat.shape[0])/2))), 'constant')
-        X = phase_pow_multi(
-            self.freqs, dat,  samplerates=sr, widths=5,
-            to_return='power', time_axis=-1,
-            conv_dtype=np.complex64, freq_name='freqs',
-        )
-        resample_factor = self.transform_params['resample_factor']
-        X = signal.resample(X, X.shape[1]//resample_factor, axis=1)
-        X = normalize(X, self.transform_params['norm_method'])
-        return (X, label_idx, id)
-
-
-    def __len__(self, idx):
-        return len(self.inner)
-"""
-
-
-
-
 def transform_and_save(dirname, transform_params, data):
     (X, label, label_idx, id) = data
     path = join(dirname, label, id + ".pt") # out_dir/label1/myfile0b83a31b.pt
-    if not exists(path): 
-        #(X, label_idx, id) = transform(data, transform_params)
-        #plt.imshow(X, aspect='auto')
-        #plt.savefig('example.png')
-        #sys.exit(0)
-        
-        item = (X, label_idx)
-        torch.save(item, path)
+    item = (X, label_idx)
+    torch.save(item, path)
 
 
 def save_data(dataset, dirname, transform_params, num_workers=4):
@@ -94,24 +48,17 @@ def save_data(dataset, dirname, transform_params, num_workers=4):
     func = functools.partial(transform_and_save, dirname, transform_params)
     batch_size = 16
     dataloader = DataLoader(dataset, batch_size, num_workers=num_workers, collate_fn=lambda x: x)
-    mapper = tqdm(
-        map(func, dataloader),
-        #pool.imap_unordered(func, dataset),
-        total=len(dataset),
-        leave=False
-    )
     # iterate through
     for b in tqdm(dataloader):
         for x in b:
             func(x)
-        #_ = [*mapper]
 
 
 
 if __name__ == "__main__":
 
     # assign indices based on training data
-    print("Getting all labels")
+    """     print("Getting all labels")
     maxl = 16000
     label_idx = {}
     for i, lab in enumerate(['backward', 'bed', 'bird', 'cat', 'dog', 'down', 'eight', 'five', 'follow', 'forward', 'four', 'go', 'happy', 'house', 'learn', 'left', 'marvin', 'nine', 'no', 'off', 'on', 'one', 'right', 'seven', 'sheila', 'six', 'stop', 'three', 'tree', 'two', 'up', 'visual', 'wow', 'yes', 'zero']):
@@ -133,7 +80,7 @@ if __name__ == "__main__":
         "maxl": maxl,
         "resample_factor": None,
         "label_to_idx": label_idx
-    } 
+    }  """
 
     # morlet zscore
     """ transform_params = {
@@ -147,17 +94,43 @@ if __name__ == "__main__":
         "label_to_idx": label_idx
     } """
 
+    # audiomnist params
+    label_idx = {}
+    for i in range(10):
+        label_idx[str(i)] = i
+
+    transform_params = {
+        "method": "morlet",
+        "fmin": 1000,
+        "fmax": 24000, # Nyquist of 48k
+        "nbins": 50,
+        "norm_method": "zscore",
+        "maxl": 50000,
+        "resample_factor": 200,
+        "label_to_idx": label_idx
+    }
+
 
     # load datasets, expect in form (x, label, id), where id is filename
     #   or (x, label, id, sr)
-    sc_root_dir = "data"
+    """     sc_root_dir = "data"
     train = SCStretch("training", sc_root_dir, 1.0, transform_params, 'cpu')
     val = SCStretch("validation", sc_root_dir, 1.0, transform_params, 'cpu')
-    test = SCStretch("testing", sc_root_dir, 1.0, transform_params, 'cpu')
+    test = SCStretch("testing", sc_root_dir, 1.0, transform_params, 'cpu') """
+
+    # audioMNIST stuff
+    amn_root = "data/AudioMNIST"
+    amn_raw = join(amn_root, "raw")
+    split = (0.7, 0.15, 0.15)
+    train = StretchedAudioMNIST("training", amn_raw, 1.0, transform_params, 'cpu', split)
+    val = StretchedAudioMNIST("validation", amn_raw, 1.0, transform_params, 'cpu', split)
+    test = StretchedAudioMNIST("testing", amn_raw, 1.0, transform_params, 'cpu', split)
+    
 
     # output format = torch.saved (X, target_idx) saved with id filename, in target folders
     #   e.g. out_dir/train/label1/example.pt
-    out_dir = join(sc_root_dir, "SpeechCommands/processed_cqt_zscore")
+    #out_dir = join(sc_root_dir, "SpeechCommands/processed_cqt_zscore")
+    out_dir = join(amn_root, "processed")
 
     os.makedirs(out_dir, exist_ok=True)
     # write out transformation details
