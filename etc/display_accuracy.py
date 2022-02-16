@@ -18,15 +18,15 @@ with sn.plotting_context("notebook", font_scale=3):
     #        linewidth=5, ax=ax)
 
     ax.set_xscale('log')
-
+    #plt.title('Speech Command Classification with SITHCon')
     ax.set_ylim(-0.05,1.05)
     #plt.xticks([.1, .2, .4, .8, 1.0, 1.25, 2.5, 5.0, 10.], 
     #           [.1, .2, .4,"", 1.0, "", 2.5, 5.0, 10.])
-    ax.set_xticks([.1,.2,.4,1.0,1.25, 2.5,5.,10.])
-    ax.set_xticklabels([.1,.2,.4,1.0,1.25, 2.5,5.,10.], 
+    ax.set_xticks([.1,.2,.4,.8,1.0,1.25, 2.5,5.,10.])
+    ax.set_xticklabels([.1,.2,.4,.8,1.0,1.25, 2.5,5.,10.], 
                         )
     ax.set_xlabel('Scale')
-    ax.set_ylabel('Accuracy')
+    ax.set_ylabel('Test Accuracy')
     ax.grid()
 
     ax.plot(speeds, acc, linewidth=5)
