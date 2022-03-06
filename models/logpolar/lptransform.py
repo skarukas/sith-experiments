@@ -10,9 +10,9 @@ import util
 
 class LogPolarTransform(torch.nn.Module):
     def __init__(self, tau_min=.1, tau_max=100., buff_max=None, k=50, 
-                 ntau=50, dt=1, g=0.0, stride=1, num_angles=10,
-                 window_shape="concentric", localization="step", 
-                 gaussian_sharpness=1, focus_points=None, device='cpu', 
+                 ntau=50, dt=1, g=0.0, num_angles=10,
+                 window_shape="arc", localization="step", gaussian_sharpness=1, 
+                 focus_points=None, stride=1, device='cpu', 
                  **kwargs):
         """
         A module for computing compressed log-polar transforms centered at various
@@ -50,23 +50,22 @@ class LogPolarTransform(torch.nn.Module):
             - stride: int
                 The stride at which the focus points will be chosen. If greater than 1,
                 the output will be effectively downsampled.
+            - focus_points: Iterable[Tuple[int, int]]
+                The specific points at which to perform the transformation.
             - device: str | torch.Device
                 What device the computation is taking place on.
-            - window_shape: 'concentric' | 'straight'
-                How the log-polar should expand outward from the center
+            - window_shape: 'arc' | 'line'
+                Determines the shape of the receptive field as we move away 
+                from a tau_star axis.
             - localization: 'gaussian' | 'step'
-                The shape of the window with a focus at a certain taustar. 'step' means the window
-                entends with equal strength until the surrounding angles.
+                How to consolidate the information from all the 
+                pixels in the receptive field of a certain (tau_star, theta) pair
+                    - 'step' : equal-weighting over the area after SITH impulse response
+                    - 'gaussian': give a higher weight to the information 'on' the axis after SITH impulse response
+                NOTE: For both choices, the shape of the window in the tau_star direction is the SITH impulse response.
             - gaussian_sharpness: int
-                The sharpness of the orthogonal window when localization is 'gaussian'. This is 
-                specifically the number of standard deviations between each consecutive angle.
-            -// ttype: Torch Tensor
-                This is the type we set the internal mechanism of the model to before running. 
-                In order to calculate the filters, we must use a DoubleTensor, but this is no 
-                longer necessary after they are calculated. By default we set the filters to 
-                be FloatTensors. NOTE: If you plan to use CUDA, you need to pass in a 
-                cuda.FloatTensor as the ttype, as using .cuda() will not put these filters on 
-                the gpu.                 
+                The sharpness of the receptive field when localization is 'gaussian'. This is 
+                specifically the number of standard deviations between each tau_star axis.           
         """
         super(LogPolarTransform, self).__init__()
 
@@ -116,42 +115,43 @@ class LogPolarTransform(torch.nn.Module):
         A = ((1/tau_star)*(torch.exp(a-b))*(tau_star**self.g))
         A = util.unsqueeze_except(A, ndim, dim=0)
         
-        # how to window in the main axis
-        if window_shape == "concentric":
-          # tau axis : Euclidian distance from center
-          # 'orthogonal' axis : geodesic distance from a certain 
-          #    point on the surface of a circle
+        # The 'orthogonal' axis is the line or arc that stretches to the edge 
+        #   of the receptive field for a given (tau_star, theta) pair
+        if window_shape == "arc":
+            # tau axis : Euclidian distance from center
+            # 'orthogonal' axis : arc length from a certain (tau_star, theta) center point
 
-          # the geodesic distance traveled before meeting another window
-          lp_window_width = tau_star * dtheta/2
-          tau = np.sqrt(centered_x**2 + centered_y**2)
-          
-          # geodesic distances
-          grid_theta = torch.atan2(centered_y, centered_x)
-          d1 = (theta - grid_theta).abs()
-          d2 = (theta - (grid_theta-2*np.pi)).abs()
-          theta_dist = torch.minimum(d1, d2)
-          tau_orth = theta_dist * tau
+            # the arc length between each tau_star axis
+            axis_distance = tau_star * dtheta/2
+            tau = np.sqrt(centered_x**2 + centered_y**2)
+            
+            # arc length
+            grid_theta = torch.atan2(centered_y, centered_x)
+            clockwise_dist = (theta - grid_theta).abs()
+            cclockwise_dist = (theta - (grid_theta-2*np.pi)).abs()
+            unit_circle_dist = torch.minimum(clockwise_dist, cclockwise_dist)
+            tau_orth = unit_circle_dist * tau
 
-          tau, tau_orth = torch.broadcast_tensors(tau, tau_orth)
-        else:
-          # tau axis : rotated straight axis pointing away from center
-          # 'orthogonal' axis : orthogonal direction of above
+            tau, tau_orth = torch.broadcast_tensors(tau, tau_orth)
+        else: # window_shape == line
+            # tau axis : rotated straight axis pointing away from center
+            # 'orthogonal' axis : orthogonal direction of above
 
-          # the distance traveled in the orthogonal direction before meeting another window
-          lp_window_width = tau_star * math.tan(dtheta/2) 
+            # the distance traveled in the orthogonal direction between each tau_star axis
+            axis_distance = tau_star * math.tan(dtheta/2) 
 
-          tau = torch.cos(theta)*centered_x - torch.sin(theta)*centered_y
-          tau_orth = torch.cos(theta_orth)*centered_x - torch.sin(theta_orth)*centered_y
+            tau = torch.cos(theta)*centered_x - torch.sin(theta)*centered_y
+            tau_orth = torch.cos(theta_orth)*centered_x - torch.sin(theta_orth)*centered_y
         
 
-        ## window in the opposite direction
         if localization == "gaussian":
-          sd = (lp_window_width / self.sd_scale)**2 # put this many sd's in this space
-          gaussian_scale_factor = 1/np.sqrt(np.pi*2*sd)
-          orthogonal_window = gaussian_scale_factor * np.exp(-tau_orth**2 / sd)
+            # put 'self.sd_scale' standard deviations between each 
+            sd = (axis_distance / self.sd_scale)**2 
+            gaussian_scale_factor = 1/np.sqrt(np.pi*2*sd)
+            orthogonal_window = gaussian_scale_factor * np.exp(-tau_orth**2 / sd)
         elif localization == "step":
-          orthogonal_window = tau_orth.abs() <= lp_window_width
+            radius = np.sqrt(centered_x**2 + centered_y**2)
+            orthogonal_window = tau_orth.abs() / (radius / tau_star) <= axis_distance
   
         tau[tau <= 0] = 0
         tau_prime = tau / tau_star
