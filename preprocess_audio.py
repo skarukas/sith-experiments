@@ -1,4 +1,3 @@
-from util import SubsetSC, normalize, constant_q
 from datasets import SCStretch, StretchedAudioMNIST
 import os
 from os.path import join, exists
@@ -7,14 +6,9 @@ import yaml
 from collections import defaultdict
 
 import torch
-from torch.utils.data import Dataset, DataLoader
-from scipy import signal
+from torch.utils.data import DataLoader
 from tqdm import tqdm
 import functools
-from multiprocess import Pool
-from morlet import phase_pow_multi
-import matplotlib.pyplot as plt
-import sys
 
 
 def get_label_indices(dataset):

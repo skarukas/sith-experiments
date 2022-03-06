@@ -11,8 +11,9 @@ import random
 
 from models.util import get_model
 import util
-from util import Average, FileDataset, Logger
+from util import Average, Logger
 from evaluate import evaluate
+from datasets import get_dataset
 
 import torch
 from torch.utils.data import DataLoader
@@ -190,7 +191,7 @@ if __name__ == "__main__":
         else util.collate_examples_pad
     # load data
     print("Loading training data")
-    train_data = FileDataset(train_data_dir, device=config['device'])
+    train_data = get_dataset(train_data_dir, device=config['device'])
     train_dataloader = DataLoader(
         train_data, config['batch_size'], shuffle=True, 
         collate_fn=collate
@@ -198,7 +199,7 @@ if __name__ == "__main__":
     val_dataloader = None
     if val_data_dir is not None:
         print("Loading validation data")
-        val_data = FileDataset(val_data_dir, device=config['device'])
+        val_data = get_dataset(val_data_dir, device=config['device'])
         val_dataloader = DataLoader(
             val_data, config['batch_size'], shuffle=True, 
             collate_fn=collate

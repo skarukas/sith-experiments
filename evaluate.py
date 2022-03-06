@@ -5,7 +5,7 @@ import argparse
 from tqdm import tqdm
 
 from models.util import get_model
-from util import Average, collate_examples_pad, Logger, FileDataset
+from util import Average, collate_examples_pad, Logger
 from datasets import SCStretch
 
 import numpy as np

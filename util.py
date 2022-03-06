@@ -2,21 +2,12 @@ from torch.utils.data import Dataset
 import torch
 import numpy as np
 
-import os
-from os import path
-import glob
 import sys
 from math import log2
 from datetime import datetime
 from scipy.stats import zscore
 
-from audiotsm import phasevocoder
-from audiotsm.io.wav import WavReader
-from audiotsm.io.array import ArrayWriter
 import librosa
-import matplotlib.pyplot as plt
-from torchaudio.datasets import SPEECHCOMMANDS
-import torchaudio
 
 
 class Average:
@@ -71,57 +62,6 @@ def curr_time_str():
     return now.isoformat(sep='_')
 
 
-class FileDataset(Dataset):
-    """
-    Expects that dir contains a bunch of "torch.saved" files 
-        in subdirectories.
-    """
-    def __init__(self, dir, device='cpu'):
-        self.device = device
-        gb_path = path.join(glob.escape(dir), "**/*")
-        print(f"Using glob '{gb_path}'...", end=" ")
-
-        gb = glob.glob(gb_path, recursive=True)
-        self.files = [f for f in gb if path.isfile(f)]
-        print(f"found {len(self.files)} files")
-
-    def __getitem__(self, idx):
-        with open(self.files[idx], "rb") as f:
-            return torch.load(f, map_location=self.device)
-
-    def __len__(self):
-        return len(self.files)
-
-
-# modified version of 
-#.  https://pytorch.org/tutorials/intermediate/speech_command_classification_with_torchaudio_tutorial.html
-class SubsetSC(SPEECHCOMMANDS):
-    def __init__(self, root_dir, subset: str = None):
-        super().__init__(root_dir, download=True)
-
-        def load_list(filename):
-            filepath = os.path.join(self._path, filename)
-            with open(filepath) as fileobj:
-                return [os.path.join(self._path, line.strip()) for line in fileobj]
-
-        if subset == "validation":
-            self._walker = load_list("validation_list.txt")
-        elif subset == "testing":
-            self._walker = load_list("testing_list.txt")
-        elif subset == "training":
-            excludes = load_list("validation_list.txt") + load_list("testing_list.txt")
-            excludes = set(map(os.path.abspath, excludes))
-            self._walker = [w for w in self._walker if os.path.abspath(w) not in excludes]
-    
-    def __getitem__(self, idx):
-      fname = self._walker[idx]
-      x = torchaudio.load(fname)[0]
-      split = fname.split("/")
-      word = split[-2]
-      id = split[-1].rstrip(".wav")
-      return (x, word, id)
-
-
 ## audio methods
 def normalize(X, method='minmax'):
     if method is None:
@@ -163,15 +103,3 @@ class Logger(object):
         # this handles the flush command by doing nothing.
         # you might want to specify some extra behavior here.
         pass
-
-
-
-if __name__ == "__main__":
-    # test stretch dataset
-    label_to_idx = {
-        "one": 0,
-        "two": 1,
-    }
-    st = StretchAudioDataset("data/wav_dataset", 1, label_to_idx=label_to_idx)
-    plt.imshow(st[0][0][0], aspect="auto")
-    plt.show()

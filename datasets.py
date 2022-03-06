@@ -3,17 +3,14 @@ import torch
 import numpy as np
 import random
 
-import os
 from os import path
-import sys
 import glob
 
+from torchvision.datasets import MNIST
 from audiotsm import phasevocoder
-from audiotsm.io.wav import WavReader
 from audiotsm.io.array import ArrayWriter, ArrayReader
 import scipy.io.wavfile as wavfile
 from torchaudio.datasets import SPEECHCOMMANDS
-import torchaudio
 
 from morlet import phase_pow_multi
 from scipy import signal
@@ -22,6 +19,16 @@ from util import constant_q, normalize
 
 MAX_INT16 = 2**15
 DEFAULT_SR = 16000
+
+
+def get_dataset(dataset_str, device):
+    # Specify MNIST and data dir, e.g. "MNIST data"
+    if dataset_str.startswith('MNIST'):
+        root = dataset_str.lstrip('MNIST').lstrip()
+        return FastMNIST(root, device=device)
+    else:
+        root = dataset_str
+        return FileDataset(root, device=device)
 
 
 class SCStretch(SPEECHCOMMANDS):
@@ -172,3 +179,52 @@ def transform(x, transform_params, sr=DEFAULT_SR):
     if len(X_norm.shape) == 2:
         X_norm = X_norm[np.newaxis]
     return X_norm
+
+
+class FileDataset(Dataset):
+    """
+    Expects that dir contains a bunch of "torch.saved" files 
+        in subdirectories.
+    """
+    def __init__(self, dir, device='cpu'):
+        self.device = device
+        gb_path = path.join(glob.escape(dir), "**/*")
+        print(f"Using glob '{gb_path}'...", end=" ")
+
+        gb = glob.glob(gb_path, recursive=True)
+        self.files = [f for f in gb if path.isfile(f)]
+        print(f"found {len(self.files)} files")
+
+    def __getitem__(self, idx):
+        with open(self.files[idx], "rb") as f:
+            return torch.load(f, map_location=self.device)
+
+    def __len__(self):
+        return len(self.files)
+
+
+class FastMNIST(MNIST):
+    def __init__(self, root, device='cpu', *args, **kwargs):
+        super().__init__(root, *args, **kwargs)
+        
+        # Scale data to [0,1]
+        self.data = self.data.unsqueeze(1).float().div(255)
+
+        # Normalize it with the usual MNIST mean and std
+        self.data = self.data.sub_(0.1307).div_(0.3081)
+
+        # Put both data and targets on device in advance
+        self.data, self.targets = self.data.to(device), self.targets.to(device)
+
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (image, target) where target is index of the target class.
+        """
+        img, target = self.data[index], self.targets[index]
+
+        return img, target
