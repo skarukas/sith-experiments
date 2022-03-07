@@ -1,4 +1,5 @@
 from .SITHConClassifier import SITHConClassifier
+from .DeepLogPolarClassifier import DeepLogPolarClassifier
 import torch
 from copy import deepcopy
 
@@ -12,6 +13,8 @@ def get_model(config):
         for layer in model_params['layer_params']:
             layer['ttype'] = ttype
         model = SITHConClassifier(**model_params, collate=config.get('collate', 'batch'))
+    elif model_type == "logpolar":
+        model = DeepLogPolarClassifier(**model_params, collate=config.get('collate', 'batch'), device=config['device'])
     else:
         raise "Model not recognized."
     

@@ -21,14 +21,20 @@ MAX_INT16 = 2**15
 DEFAULT_SR = 16000
 
 
-def get_dataset(dataset_str, device):
-    # Specify MNIST and data dir, e.g. "MNIST data"
-    if dataset_str.startswith('MNIST'):
-        root = dataset_str.lstrip('MNIST').lstrip()
-        return FastMNIST(root, device=device)
-    else:
-        root = dataset_str
+def get_dataset(dataset_params, device):
+    if isinstance(dataset_params, str):
+        root = dataset_params
         return FileDataset(root, device=device)
+    else:
+        # create instance of dataset class
+        dataset_type = dataset_params['type'].lower()
+        class_map = {
+            "fastmnist": FastMNIST
+        }
+        DatasetClass = class_map[dataset_type]
+        return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)
+        
+        
 
 
 class SCStretch(SPEECHCOMMANDS):
@@ -226,5 +232,6 @@ class FastMNIST(MNIST):
             tuple: (image, target) where target is index of the target class.
         """
         img, target = self.data[index], self.targets[index]
+        img = img.unsqueeze(0)
 
         return img, target
