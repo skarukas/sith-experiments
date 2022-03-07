@@ -1,0 +1,35 @@
+Training using cuda
+Loading training data
+Using glob '/geode2/home/u080/skarukas/Carbonate/SITH/data/AudioMNIST/processed/train/**/*'... found 21000 files
+Loading validation data
+Using glob '/geode2/home/u080/skarukas/Carbonate/SITH/data/AudioMNIST/processed/val/**/*'... found 4500 files
+Model Architecture:
+SITHConClassifier(
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=35, out_features=35, bias=True)
+    (1): Linear(in_features=35, out_features=35, bias=True)
+  )
+  (sithcon_layers): ModuleList(
+    (0): TCTCT_Layer(
+      (tctct): _TCTCT_Core(
+        (sith): iSITH(ntau=400, tau_min=1, tau_max=4000, buff_max=6500, dt=1, k=35, g=0.0)
+        (conv): Conv2d(1, 35, kernel_size=(50, 23), stride=(1, 1), dilation=(1, 2), bias=False)
+        (maxp): MaxPool1d(kernel_size=356, stride=356, padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (batch_norm): BatchNorm1d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (dropout): Dropout(p=0, inplace=False)
+    )
+    (1): TCTCT_Layer(
+      (tctct): _TCTCT_Core(
+        (sith): iSITH(ntau=400, tau_min=1, tau_max=4000, buff_max=6500, dt=1, k=35, g=0.0)
+        (conv): Conv2d(1, 35, kernel_size=(35, 23), stride=(1, 1), dilation=(1, 2), bias=False)
+        (maxp): MaxPool1d(kernel_size=356, stride=356, padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (batch_norm): BatchNorm1d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (dropout): Dropout(p=0, inplace=False)
+    )
+  )
+  (to_out): Linear(in_features=35, out_features=35, bias=True)
+)

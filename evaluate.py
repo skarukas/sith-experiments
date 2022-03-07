@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from models.util import get_model
 from util import Average, collate_examples_pad, Logger
-from datasets import SCStretch
+from datasets import SCStretch, StretchedAudioMNIST, FileDataset
 
 import numpy as np
 import torch
@@ -44,8 +44,8 @@ def evaluate(model, dataloader, progress_bar=False):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    default_data_dir = "data/"
-    default_experiment_path = "out/SITH_train/sithcon_gsc_cqt_new_1098838/1"
+    default_data_dir = "data/AudioMNIST/raw"
+    default_experiment_path = "out/SITH_train/sithcon_audmn_1103609/0"
 
     parser.add_argument("--ddir", 
         type=str, default=default_data_dir, 
@@ -104,7 +104,8 @@ if __name__ == "__main__":
     experiment_path = argp['mpath']
     test_data_dir = argp['ddir']
     
-    transform_params_path = "data/SpeechCommands/processed_cqt_zscore/transform_params.yaml"
+    #transform_params_path = "data/SpeechCommands/processed_cqt_zscore/transform_params.yaml"
+    transform_params_path = "data/AudioMNIST/processed/transform_params.yaml"
     f = open(transform_params_path)
     transform_params = yaml.safe_load(f)
 
@@ -145,12 +146,16 @@ if __name__ == "__main__":
     batch_size_normal_speed = 32
     for speed in reversed(speeds):
         # create stretched version of SpeechCommands dataset
-        dataset = SCStretch(
+        """ dataset = SCStretch(
             "testing", test_data_dir, speed, 
             transform_params=transform_params, 
             device=config['device']
-        )
-        batch_size = int(speed * batch_size_normal_speed) 
+        ) """
+        split = (0.7, 0.15, 0.15)
+        dataset = StretchedAudioMNIST(
+            "testing", test_data_dir, speed, 
+            transform_params, config['device'], split)
+        batch_size = int(speed * batch_size_normal_speed)
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
             collate_fn=lambda data: collate_examples_pad([(x[0], x[2]) for x in data])

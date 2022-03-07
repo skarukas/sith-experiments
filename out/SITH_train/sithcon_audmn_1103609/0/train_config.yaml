@@ -1,0 +1,52 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 40
+  local_start: 2022-02-16_16:52:08
+  local_stop: 2022-02-16_22:27:10
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.9973363774733638
+    train_loss: 0.007554379415565602
+    val_acc: 0.9909131205673759
+    val_loss: 0.039636273356065545
+model:
+  act_func: relu
+  batch_norm: true
+  classname: SITHConClassifier
+  layer_params:
+  - buff_max: 6500
+    channels: 35
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 50
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  - buff_max: 6500
+    channels: 35
+    dilation: 2
+    dt: 1
+    g: 0.0
+    in_features: 35
+    k: 35
+    kernel_width: 23
+    ntau: 400
+    tau_max: 4000
+    tau_min: 1
+  num_params: 72415
+  out_classes: 35
+  type: sithcon
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/SITH_train/sithcon_audmn_1103609/0
+param: audmn-params.yaml
+train_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/AudioMNIST/processed/train
+val_data_dir: /geode2/home/u080/skarukas/Carbonate/SITH/data/AudioMNIST/processed/val
