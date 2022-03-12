@@ -248,7 +248,8 @@ class TransformedMNIST(MNIST):
         self.max_scale = max_scale
         self.device = device
         self.targets = self.targets.to(device)
-        self.imsize = (max_scale*28, max_scale*28) if out_size is None else out_size
+        size = max_scale*(28 + 2*max_translate)
+        self.imsize = (size, size) if out_size is None else out_size
 
 
     def __getitem__(self, index):
@@ -264,20 +265,32 @@ class TransformedMNIST(MNIST):
         image.paste(inner_image, offset)
 
         mat = (
-            scale, 0, t_x,
-            0, scale, t_y
+            1, 0, t_x,
+            0, 1, t_y
         )
         image = image.rotate(angle, fillcolor=0)
         image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
-
+        image = rescale_centered(image, scale)
+        
         image = torch.tensor(np.array(image), dtype=float, device=self.device).unsqueeze(0)
         image = image.div(255)
         image = (image - 0.1307) / 0.3081
         return image, target
 
 
+def rescale_centered(image, scale):
+    width, height = image.width, image.height
+    image = image.resize((int(width*scale), int(height*scale)))
+    left = (image.width - width) // 2
+    top = (image.height - height) // 2
+    right = left + width
+    bottom = top + height
+
+    return image.crop((left, top, right, bottom))
+
+
 if __name__ == "__main__":
-    dataset = TransformedMNIST("data", max_translate=6, max_angle_deg=45, min_scale=0.5, max_scale=2)
+    dataset = TransformedMNIST("data", max_translate=20, max_angle_deg=15, min_scale=0.4, max_scale=1)
     for i in range(10):
         image, target = dataset[i]
         plt.imshow(image.numpy()[0])
