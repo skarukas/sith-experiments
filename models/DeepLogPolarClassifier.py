@@ -66,7 +66,7 @@ class DeepLogPolarClassifier(nn.Module):
             x = x.permute((0, 3, 1, 2))
         
         # middle pixel
-        return x[..., x.shape[1] // 2, x.shape[2] // 2]
+        return x[..., x.shape[-2] // 2, x.shape[-1] // 2]
 
     
     def _forward_single(self, inp):
@@ -87,7 +87,7 @@ class DeepLogPolarClassifier(nn.Module):
                 x = x.permute((0, 3, 1, 2))
 
             # grab center pixel
-            out[idx] = x[..., x.shape[1] // 2, x.shape[2] // 2]
+            out[idx] = x[..., x.shape[-2] // 2, x.shape[-1] // 2]
             
         return out
 

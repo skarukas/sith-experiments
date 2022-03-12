@@ -9,8 +9,7 @@ import torch.nn.functional as F
 from torch.nn.utils import weight_norm
 import math
 
-from .util import TWO_PI
-import util
+from .util import TWO_PI, prod, pad_periodic
 from .lptransform import LogPolarTransform
 
 class _LogPolar_Core(nn.Module):
@@ -29,7 +28,7 @@ class _LogPolar_Core(nn.Module):
         self.logpolar = LogPolarTransform(**kwargs, device=device)
         self.in_channels = in_channels
         self.out_channels = out_channels
-        self.kernel_size = kernel_size if isinstance(kernel_size, tuple) else (kernel_size, kernel_size)
+        self.kernel_size = kernel_size if isinstance(kernel_size, tuple) or isinstance(kernel_size, list) else (kernel_size, kernel_size)
 
         self.ntau = self.logpolar.ntau
         self.num_angles = self.logpolar.num_angles
@@ -94,9 +93,9 @@ class _LogPolar_Core(nn.Module):
         batchxy_shape = x.shape[:3]
         x = x.reshape((-1, *x.shape[3:]))
         # pad with other side so kernels can 'wrap around' the theta dimension
-        x = util.pad_periodic(x, self.theta_padding_conv, dim=-1)
+        x = pad_periodic(x, self.theta_padding_conv, dim=-1)
         x = self.conv(x)
-        x = util.pad_periodic(x, self.theta_padding_pool, dim=-1)
+        x = pad_periodic(x, self.theta_padding_pool, dim=-1)
         x = self.pool(x)
         # unflatten batch/x/y and reshape to output
         x = x.reshape((*batchxy_shape, *x.shape[1:]))
@@ -129,7 +128,7 @@ class LogPolarConv(nn.Module):
         
         self.dropout = nn.Dropout(p=dropout)
         self.in_channels = self.lpconv.in_channels
-        self.out_channels = util.prod(self.lpconv.output_shape)
+        self.out_channels = prod(self.lpconv.output_shape)
         
     
     def forward(self, inp):

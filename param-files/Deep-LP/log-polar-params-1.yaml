@@ -8,7 +8,9 @@ model:
       tau_max: 60
       ntau: 40
       k: 35
-      kernel_size: [5, 5]
+      kernel_size: 
+        - 5
+        - 5
       stride: 2
       num_angles: 10
       theta_pooling: 2
@@ -19,7 +21,22 @@ model:
       tau_max: 60
       ntau: 40
       k: 35
-      kernel_size: [5, 5]
+      kernel_size: 
+        - 5
+        - 5
+      stride: 2
+      num_angles: 10
+      theta_pooling: 2
+    # layer 3
+    - in_channels: 10
+      out_channels: 10
+      tau_min: 1
+      tau_max: 60
+      ntau: 40
+      k: 35
+      kernel_size: 
+        - 5
+        - 5
       stride: 2
       num_angles: 10
       theta_pooling: 2

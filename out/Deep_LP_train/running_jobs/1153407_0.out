@@ -1,0 +1,44 @@
+Task ID: 0
+Using params from param-files/Deep-LP/log-polar-params-1.yaml
+Loaded param-files/Deep-LP/log-polar-params-1.yaml
+Created output directory '/geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/lp_mnist_med_1153406/0/log'
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransform(ntau=40, tau_min=1, tau_max=60, buff_max=180, dt=1, k=35, g=0.0)
+        (conv): Conv2d(1, 5, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (pool): MaxPool2d(kernel_size=(36, 2), stride=(36, 2), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransform(ntau=40, tau_min=1, tau_max=60, buff_max=180, dt=1, k=35, g=0.0)
+        (conv): Conv2d(10, 10, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (pool): MaxPool2d(kernel_size=(36, 2), stride=(36, 2), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransform(ntau=40, tau_min=1, tau_max=60, buff_max=180, dt=1, k=35, g=0.0)
+        (conv): Conv2d(10, 10, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (pool): MaxPool2d(kernel_size=(36, 2), stride=(36, 2), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=25, out_features=10, bias=True)
+    (1): Linear(in_features=50, out_features=10, bias=True)
+    (2): Linear(in_features=50, out_features=10, bias=True)
+  )
+)

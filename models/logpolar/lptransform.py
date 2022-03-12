@@ -1,7 +1,7 @@
 import torch
 import math
 import numpy as np
-import util
+from .util import TWO_PI, unsqueeze_except
 
 ## TODO: implement sparse convolution (via matrix multiplication). The existing 
 ##     convolution kernels are sparse but very large (we'll run out of memory)
@@ -94,26 +94,26 @@ class LogPolarTransform(torch.nn.Module):
         # the center point for each filter
         c_x = c_y = (buff_max+dt) // 2
 
-        dtheta = 2*torch.pi / num_angles
+        dtheta = TWO_PI / num_angles
         theta = torch.arange(num_angles) * dtheta - np.pi
         tau_star = tau_min*(1+self.c)**torch.arange(ntau).type(torch.DoubleTensor)
 
         # we'll need ALL combinations of (x, y, theta, tau_star), so make 
         #   all tensors broadcastable to that shape
         ndim = 4
-        x = util.unsqueeze_except(x, ndim, dim=0)
-        y = util.unsqueeze_except(y, ndim, dim=1)
+        x = unsqueeze_except(x, ndim, dim=0)
+        y = unsqueeze_except(y, ndim, dim=1)
         centered_x = x - c_x
         centered_y = y - c_y
-        theta = util.unsqueeze_except(theta, ndim, dim=2)
-        theta_orth = theta + torch.pi / 2
-        tau_star = util.unsqueeze_except(tau_star, ndim, dim=3)
+        theta = unsqueeze_except(theta, ndim, dim=2)
+        theta_orth = theta + np.pi / 2
+        tau_star = unsqueeze_except(tau_star, ndim, dim=3)
 
         a = math.log(k)*k
         b = torch.log(torch.arange(2,k).type(torch.DoubleTensor)).sum()
         
         A = ((1/tau_star)*(torch.exp(a-b))*(tau_star**self.g))
-        A = util.unsqueeze_except(A, ndim, dim=0)
+        A = unsqueeze_except(A, ndim, dim=0)
         
         # The 'orthogonal' axis is the line or arc that stretches to the edge 
         #   of the receptive field for a given (tau_star, theta) pair
@@ -167,7 +167,7 @@ class LogPolarTransform(torch.nn.Module):
         # normalize so each sums to 1
         eps = 1e-8
         filter_sum = (self.filters.sum((1, 2)) + eps)
-        self.filters = self.filters / util.unsqueeze_except(filter_sum, n_dim=3, dim=0)
+        self.filters = self.filters / unsqueeze_except(filter_sum, n_dim=3, dim=0)
         self.filters = self.filters.unsqueeze(1).to(device).float()
     
 

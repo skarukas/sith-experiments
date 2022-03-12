@@ -164,9 +164,13 @@ if __name__ == "__main__":
             'program_exit': 'FAILURE'
         }
     }
-    train_data_dir = config['train_data_dir'] = abspath(config['train_data_dir'])
+    train_data_dir = config['train_data_dir']
+    if isinstance(train_data_dir, str):
+        train_data_dir = config['train_data_dir'] = abspath(config['train_data_dir'])
     if 'val_data_dir' in config:
-        val_data_dir = config['val_data_dir'] = abspath(config['val_data_dir'])
+        val_data_dir = config['val_data_dir']
+        if isinstance(val_data_dir, str):
+            val_data_dir = config['val_data_dir'] = abspath(config['val_data_dir'])
     else:
         val_data_dir = None
 

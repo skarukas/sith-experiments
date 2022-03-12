@@ -210,8 +210,8 @@ class FileDataset(Dataset):
 
 
 class FastMNIST(MNIST):
-    def __init__(self, root, device='cpu', *args, **kwargs):
-        super().__init__(root, *args, **kwargs)
+    def __init__(self, root, device='cpu', download=True, *args, **kwargs):
+        super().__init__(root, download=download, *args, **kwargs)
         
         # Scale data to [0,1]
         self.data = self.data.unsqueeze(1).float().div(255)
@@ -232,6 +232,4 @@ class FastMNIST(MNIST):
             tuple: (image, target) where target is index of the target class.
         """
         img, target = self.data[index], self.targets[index]
-        img = img.unsqueeze(0)
-
         return img, target
