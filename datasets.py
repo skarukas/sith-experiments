@@ -11,10 +11,12 @@ from audiotsm import phasevocoder
 from audiotsm.io.array import ArrayWriter, ArrayReader
 import scipy.io.wavfile as wavfile
 from torchaudio.datasets import SPEECHCOMMANDS
+from PIL import Image
 
 from morlet import phase_pow_multi
 from scipy import signal
 from util import constant_q, normalize
+import matplotlib.pyplot as plt
 
 
 MAX_INT16 = 2**15
@@ -233,3 +235,50 @@ class FastMNIST(MNIST):
         """
         img, target = self.data[index], self.targets[index]
         return img, target
+
+
+class TransformedMNIST(MNIST):
+    def __init__(self, root, device='cpu', download=True, max_translate=0, 
+                max_angle_deg=0, min_scale=1, max_scale=1, out_size=None,
+                *args, **kwargs):
+        super().__init__(root, download=download, *args, **kwargs)
+        self.max_translate = max_translate
+        self.max_angle_deg = max_angle_deg
+        self.min_scale = min_scale
+        self.max_scale = max_scale
+        self.device = device
+        self.targets = self.targets.to(device)
+        self.imsize = (max_scale*28, max_scale*28) if out_size is None else out_size
+
+
+    def __getitem__(self, index):
+        image, target = self.data[index], self.targets[index]
+        angle = random.uniform(-self.max_angle_deg, self.max_angle_deg)
+        t_x = random.randint(-self.max_translate, self.max_translate)
+        t_y = random.randint(-self.max_translate, self.max_translate)
+        scale = random.uniform(self.min_scale, self.max_scale)
+
+        inner_image = Image.fromarray(image.numpy()) 
+        image = Image.new("L", size=self.imsize)
+        offset = ((image.width - inner_image.width) // 2, (image.height - inner_image.height) // 2)
+        image.paste(inner_image, offset)
+
+        mat = (
+            scale, 0, t_x,
+            0, scale, t_y
+        )
+        image = image.rotate(angle, fillcolor=0)
+        image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
+
+        image = torch.tensor(np.array(image), dtype=float, device=self.device).unsqueeze(0)
+        image = image.div(255)
+        image = (image - 0.1307) / 0.3081
+        return image, target
+
+
+if __name__ == "__main__":
+    dataset = TransformedMNIST("data", max_translate=6, max_angle_deg=45, min_scale=0.5, max_scale=2)
+    for i in range(10):
+        image, target = dataset[i]
+        plt.imshow(image.numpy()[0])
+        plt.show()
