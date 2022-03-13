@@ -1,0 +1,73 @@
+/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/lptransform.py:156: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /Users/distiller/project/conda/conda-bld/pytorch_1607370249289/work/aten/src/ATen/native/TensorAdvancedIndexing.cpp:300.)
+  tau[tau <= 0] = 0
+Traceback (most recent call last):
+  File "evaluate_2d.py", line 33, in <module>
+    state_dict = torch.load(open(state_dict_path, "rb"))
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 594, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 853, in _load
+    result = unpickler.load()
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 845, in persistent_load
+    load_tensor(data_type, size, key, _maybe_decode_ascii(location))
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 834, in load_tensor
+    loaded_storages[key] = restore_location(storage, location)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 175, in default_restore_location
+    result = fn(storage, location)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 151, in _cuda_deserialize
+    device = validate_cuda_device(location)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/serialization.py", line 135, in validate_cuda_device
+    raise RuntimeError('Attempting to deserialize object on a CUDA '
+RuntimeError: Attempting to deserialize object on a CUDA device but torch.cuda.is_available() is False. If you are running on a CPU-only machine, please use torch.load with map_location=torch.device('cpu') to map your storages to the CPU.
+/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/lptransform.py:156: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /Users/distiller/project/conda/conda-bld/pytorch_1607370249289/work/aten/src/ATen/native/TensorAdvancedIndexing.cpp:300.)
+  tau[tau <= 0] = 0
+  0%|          | 0/18 [00:00<?, ?it/s]
+Evaluation:   0%|          | 0/313 [00:00<?, ?it/s][A
+                                                   [A  0%|          | 0/18 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "evaluate_2d.py", line 75, in <module>
+    stats = evaluate(model, dataloader, progress_bar=True)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/evaluate.py", line 26, in evaluate
+    for (X, label) in dataloader:
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/tqdm/std.py", line 1129, in __iter__
+    for obj in iterable:
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 475, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/datasets.py", line 263, in __getitem__
+    image = Image.new("L", size=self.imsize)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/PIL/Image.py", line 2613, in new
+    return im._new(core.fill(mode, size, color))
+TypeError: integer argument expected, got float
+/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/lptransform.py:156: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /Users/distiller/project/conda/conda-bld/pytorch_1607370249289/work/aten/src/ATen/native/TensorAdvancedIndexing.cpp:300.)
+  tau[tau <= 0] = 0
+  0%|          | 0/18 [00:00<?, ?it/s]
+Evaluation:   0%|          | 0/313 [00:00<?, ?it/s][A
+                                                   [A  0%|          | 0/18 [00:52<?, ?it/s]
+Traceback (most recent call last):
+  File "evaluate_2d.py", line 75, in <module>
+    stats = evaluate(model, dataloader, progress_bar=True)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/evaluate.py", line 28, in evaluate
+    prediction = model(X)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/DeepLogPolarClassifier.py", line 50, in forward
+    out = self._forward_batch(inp)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/DeepLogPolarClassifier.py", line 62, in _forward_batch
+    x = self.lpconv_layers[i](x)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/layers.py", line 141, in forward
+    inp = self.lpconv(inp)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/layers.py", line 86, in forward
+    x = self.logpolar(inp)
+  File "/Users/skarukas/opt/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+  File "/Users/skarukas/Box Sync/Research/Research Assistant 2022 [Tiganj-SITH]/code/speech recognition/sith-experiments/models/logpolar/lptransform.py", line 188, in forward
+    out = torch.conv2d(inp_reshaped, self.filters, 
+KeyboardInterrupt
