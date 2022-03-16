@@ -17,7 +17,8 @@ class _LogPolar_Core(nn.Module):
     Includes a convolution and pool over scale and rotation.
     """
     def __init__(self, in_channels=1, out_channels=5, 
-                kernel_size=5, tau_pooling=None, theta_pooling=None,
+                kernel_size=5, tau_pooling=None, 
+                theta_pooling=None, spatial_pooling=None,
                 pooling="max", device='cpu',
                 **kwargs):
         super(_LogPolar_Core, self).__init__()
@@ -50,8 +51,8 @@ class _LogPolar_Core(nn.Module):
 
         # pooling enforces invariance
         Pooling2D = nn.AvgPool2d if pooling == "average" else nn.MaxPool2d
-        self.pool = Pooling2D((tau_pooling, theta_pooling))
-
+        self.depth_pool = Pooling2D((tau_pooling, theta_pooling))
+        self.spatial_pool = None if spatial_pooling is None else Pooling2D(spatial_pooling)
 
         # output of conv should be size num_angles
         self.theta_padding_conv = self.kernel_size[1]-1
@@ -75,7 +76,7 @@ class _LogPolar_Core(nn.Module):
         Input: (Batch, features, x, y)
         Output: (Batch, x', y', features', tau', theta') 
             - (x', y')
-                (x, y) if LP stride=1, otherwise the dimension is reduced.
+                (x, y) if LP stride=1 and spatial_pooling=1, otherwise the dimension is reduced.
             - tau'
                 The output of convolution and pooling on the ntau dimension.
             - theta'
@@ -96,10 +97,23 @@ class _LogPolar_Core(nn.Module):
         x = pad_periodic(x, self.theta_padding_conv, dim=-1)
         x = self.conv(x)
         x = pad_periodic(x, self.theta_padding_pool, dim=-1)
-        x = self.pool(x)
-        # unflatten batch/x/y and reshape to output
-        x = x.reshape((*batchxy_shape, *x.shape[1:]))
+        x = self.depth_pool(x)
 
+        # [features, tau, theta]
+        depthwise_dims = x.shape[1:]
+
+        if self.spatial_pool is None:
+            # unflatten batch/x/y and reshape to output
+            x = x.reshape((*batchxy_shape, *depthwise_dims))
+        else:
+            # reshape to [Batch, features'*tau'*theta', x', y']
+            x = x.reshape((*batchxy_shape, -1))
+            x = x.permute((0, 3, 1, 2))
+            x = self.spatial_pool(x)
+            # reshape to [Batch, x', y', features', tau', theta']
+            x = x.permute((0, 2, 3, 1))
+            x = x.reshape((*x.shape[:3], *depthwise_dims))
+            
         return x
 
     

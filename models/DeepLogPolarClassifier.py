@@ -12,12 +12,14 @@ class DeepLogPolarClassifier(nn.Module):
     def __init__(self, out_classes, layer_params, 
                  act_func='relu', batch_norm=False,
                  dropout=0, collate='batch', device='cpu', 
+                 output="center",
                  **kwargs):
         super(DeepLogPolarClassifier, self).__init__()
 
         self.act_func = act_func.lower()
         self.out_classes = out_classes
         self.collate = collate.lower()
+        self.output = output.lower()
 
         if self.act_func == "sigmoid":
             Activation = nn.Sigmoid
@@ -51,6 +53,26 @@ class DeepLogPolarClassifier(nn.Module):
             return out
 
 
+    def _to_output(self, x):
+        """
+            Choose the output logits from the map of size [Batch, logits, x, y]
+        """
+        if self.output == "center":
+            # grab center pixel
+            logits = x[..., x.shape[-2] // 2, x.shape[-1] // 2]
+        elif self.output == "average":
+            # average over the entire image
+            logits = x.mean((-2, -1))
+        elif self.output == "random":
+            # choose a random pixel
+            batch = x.shape[0]
+            i = torch.randint(x.shape[-2], size=(batch,))
+            j = torch.randint(x.shape[-1], size=(batch,))
+            logits = x[..., i, j]
+        
+        return logits
+    
+
     def _forward_batch(self, inp):
         """
         Take in a tensor of size (batch, channels, x, y)
@@ -65,8 +87,7 @@ class DeepLogPolarClassifier(nn.Module):
             x = self.transform_linears[i](x)
             x = x.permute((0, 3, 1, 2))
         
-        # middle pixel
-        return x[..., x.shape[-2] // 2, x.shape[-1] // 2]
+        return self._to_output(x)
 
     
     def _forward_single(self, inp):
@@ -87,7 +108,7 @@ class DeepLogPolarClassifier(nn.Module):
                 x = x.permute((0, 3, 1, 2))
 
             # grab center pixel
-            out[idx] = x[..., x.shape[-2] // 2, x.shape[-1] // 2]
+            out[idx] = self._to_output(x)
             
         return out
 
