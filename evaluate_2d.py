@@ -36,16 +36,8 @@ if __name__ == "__main__":
     
     ## evaluate
     transforms = [
-        # mix
-        dict(max_translate=5, min_scale=0.8, max_scale=1.5, max_angle_deg=15),
-        dict(max_translate=20, min_scale=0.2, max_scale=2, max_angle_deg=90),
-        # scale
-        dict(max_scale=0.2, min_scale=0.2),
-        dict(max_scale=0.5, min_scale=0.5),
-        dict(max_scale=0.8, min_scale=0.8),
-        dict(max_scale=1, min_scale=1),
-        dict(max_scale=1.5, min_scale=1.5),
-        dict(max_scale=2, min_scale=2),
+        # normal
+        dict(),
         # angle
         dict(max_angle_deg=5),
         dict(max_angle_deg=15),
@@ -53,6 +45,12 @@ if __name__ == "__main__":
         dict(max_angle_deg=45),
         dict(max_angle_deg=60),
         dict(max_angle_deg=90),
+        # scale
+        dict(max_scale=0.2, min_scale=0.2),
+        dict(max_scale=0.5, min_scale=0.5),
+        dict(max_scale=0.8, min_scale=0.8),
+        dict(max_scale=1.5, min_scale=1.5),
+        dict(max_scale=2, min_scale=2),
         # translation
         dict(max_translate=2),
         dict(max_translate=5),
@@ -65,7 +63,7 @@ if __name__ == "__main__":
         # create stretched version of SpeechCommands dataset
         dataset = TransformedMNIST(
             data_dir, device=config['device'], 
-            download=False, train=False,
+            download=True, train=False,
             **transform_dict
         )
         dataloader = DataLoader(
@@ -73,7 +71,7 @@ if __name__ == "__main__":
             collate_fn=collate_examples_pad
         )
         stats = evaluate(model, dataloader, progress_bar=True)
-        print(f"For transform={transform_dict}:\n acc={stats['acc']}, loss={stats['loss']}")
+        print(f"\nFor transform={transform_dict}:\n acc={stats['acc']}, loss={stats['loss']}")
         # write after every transform just in case
         results.append({ "transform": transform_dict,  **stats })
         yaml.safe_dump(results, results_file)

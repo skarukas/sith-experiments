@@ -1,3 +1,84 @@
 Using cpu
 Using cpu
 Using cpu
+Using cuda
+Using cuda
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to data/TransformedMNIST/raw/train-images-idx3-ubyte.gz
+Extracting data/TransformedMNIST/raw/train-images-idx3-ubyte.gz to data/TransformedMNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to data/TransformedMNIST/raw/train-labels-idx1-ubyte.gz
+Extracting data/TransformedMNIST/raw/train-labels-idx1-ubyte.gz to data/TransformedMNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to data/TransformedMNIST/raw/t10k-images-idx3-ubyte.gz
+Extracting data/TransformedMNIST/raw/t10k-images-idx3-ubyte.gz to data/TransformedMNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to data/TransformedMNIST/raw/t10k-labels-idx1-ubyte.gz
+Extracting data/TransformedMNIST/raw/t10k-labels-idx1-ubyte.gz to data/TransformedMNIST/raw
+
+For transform={'max_translate': 5, 'min_scale': 0.8, 'max_scale': 1.5, 'max_angle_deg': 15}:
+ acc=0.20097843450479233, loss=3.721940544085762
+Using cuda
+For transform={'max_scale': 0.2, 'min_scale': 0.2}:
+ acc=0.09335063897763578, loss=3.447840613679002
+For transform={'max_scale': 0.5, 'min_scale': 0.5}:
+ acc=0.12190495207667731, loss=5.0369462159495
+For transform={'max_scale': 0.8, 'min_scale': 0.8}:
+ acc=0.31958865814696485, loss=4.056394647104671
+For transform={'max_scale': 1, 'min_scale': 1}:
+ acc=0.9715455271565495, loss=0.09727618287257202
+Using cuda
+For transform={'max_scale': 0.2, 'min_scale': 0.2}:
+ acc=0.09564696485623003, loss=2.8218964517306975
+Using cuda
+
+For transform={}:
+ acc=0.9714456869009584, loss=0.09744302922571167
+
+For transform={'max_angle_deg': 5}:
+ acc=0.9695487220447284, loss=0.10043222621974414
+
+For transform={'max_angle_deg': 15}:
+ acc=0.9583666134185304, loss=0.14481258136443437
+
+For transform={'max_angle_deg': 30}:
+ acc=0.9111421725239617, loss=0.3193458211563599
+
+For transform={'max_angle_deg': 45}:
+ acc=0.8282747603833865, loss=0.68952881567442
+
+For transform={'max_angle_deg': 60}:
+ acc=0.7319289137380192, loss=1.2208545373651547
+
+For transform={'max_angle_deg': 90}:
+ acc=0.5630990415335463, loss=2.4180194882158275
+
+For transform={'max_scale': 0.2, 'min_scale': 0.2}:
+ acc=0.09574680511182108, loss=2.8217654662391247
+
+For transform={'max_scale': 0.5, 'min_scale': 0.5}:
+ acc=0.3226837060702875, loss=2.4801591318636276
+
+For transform={'max_scale': 0.8, 'min_scale': 0.8}:
+ acc=0.9011581469648562, loss=0.2860133107989646
+
+For transform={'max_scale': 1.5, 'min_scale': 1.5}:
+ acc=0.32617811501597443, loss=3.5977081323203186
+
+For transform={'max_scale': 2, 'min_scale': 2}:
+ acc=0.1251996805111821, loss=4.270761600317665
+
+For transform={'max_translate': 2}:
+ acc=0.6754193290734825, loss=1.371191077815077
+
+For transform={'max_translate': 5}:
+ acc=0.32607827476038337, loss=3.404242263434413
+
+For transform={'max_translate': 10}:
+ acc=0.18869808306709265, loss=4.056657139104776
+
+For transform={'max_translate': 20}:
+ acc=0.13378594249201278, loss=4.370648800755461

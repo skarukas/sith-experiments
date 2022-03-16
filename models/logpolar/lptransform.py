@@ -155,20 +155,22 @@ class LogPolarTransform(torch.nn.Module):
   
         tau[tau <= 0] = 0
         tau_prime = tau / tau_star
-
+        
         self.filters = A*torch.exp(torch.log(tau_prime)*(k+1) - k*tau_prime)
         self.filters = self.filters * orthogonal_window
         self.filters[tau_prime <= 0] = 0
 
         # reshape to filter with ntau*num_angles channels
         self.filters = self.filters.permute(2, 3, 0, 1) 
-        self.filters = self.filters.reshape((ntau*num_angles, filter_width, filter_width))
+        self.filters = self.filters.reshape((num_angles*ntau, filter_width, filter_width))
 
         # normalize so each sums to 1
         eps = 1e-8
         filter_sum = (self.filters.sum((1, 2)) + eps)
-        self.filters = self.filters / unsqueeze_except(filter_sum, n_dim=3, dim=0)
+        print(self.filters.shape)
+        #self.filters = self.filters / unsqueeze_except(filter_sum, n_dim=3, dim=0)
         self.filters = self.filters.unsqueeze(1).to(device).float()
+        # shape: num_angles*ntau, buff_max, buff_max
     
 
     def extra_repr(self):
@@ -187,5 +189,5 @@ class LogPolarTransform(torch.nn.Module):
         inp_reshaped = inp.reshape((inp.shape[0]*inp.shape[1], 1, *inp.shape[2:]))
         out = torch.conv2d(inp_reshaped, self.filters, 
                            stride=self.stride, padding=self.padding)
-
-        return out.reshape((inp.shape[0], inp.shape[1], self.ntau, self.num_angles, *out.shape[-2:]))
+        out = out.reshape((inp.shape[0], inp.shape[1], self.num_angles, self.ntau, *out.shape[-2:]))
+        return out.permute((0, 1, 3, 2, 4, 5))

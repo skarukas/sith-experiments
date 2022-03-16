@@ -248,7 +248,7 @@ class TransformedMNIST(MNIST):
         self.max_scale = max_scale
         self.device = device
         self.targets = self.targets.to(device)
-        size = int(max_scale*(28 + 2*max_translate))
+        size = max(int(max_scale*(28 + 2*max_translate)), 28)
         self.imsize = (size, size) if out_size is None else out_size
 
 

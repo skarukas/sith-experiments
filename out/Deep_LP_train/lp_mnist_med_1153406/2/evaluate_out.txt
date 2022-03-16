@@ -1,0 +1,27 @@
+Using cuda
+For transform={'max_scale': 0.2, 'min_scale': 0.2}:
+ acc=0.09015575079872204, loss=5.6477855097371545
+For transform={'max_scale': 0.5, 'min_scale': 0.5}:
+ acc=0.3660143769968051, loss=2.519937680933041
+For transform={'max_scale': 0.8, 'min_scale': 0.8}:
+ acc=0.9152356230031949, loss=0.31297474355695726
+For transform={'max_scale': 1, 'min_scale': 1}:
+ acc=0.9763378594249201, loss=0.08719204786149012
+For transform={'max_scale': 1.5, 'min_scale': 1.5}:
+ acc=0.3448482428115016, loss=4.01156034561011
+For transform={'max_scale': 2, 'min_scale': 2}:
+ acc=0.1560503194888179, loss=6.531694171527704
+For transform={'max_angle_deg': 5}:
+ acc=0.9744408945686901, loss=0.09487661234078595
+For transform={'max_angle_deg': 15}:
+ acc=0.9634584664536742, loss=0.13984450111768176
+For transform={'max_angle_deg': 30}:
+ acc=0.9346046325878594, loss=0.2753075704548713
+For transform={'max_angle_deg': 45}:
+ acc=0.8814896166134185, loss=0.5432415097213972
+For transform={'max_angle_deg': 60}:
+ acc=0.8117012779552716, loss=0.9412232246190405
+For transform={'max_angle_deg': 90}:
+ acc=0.6887979233226837, loss=1.730761480407593
+For transform={'max_translate': 2}:
+ acc=0.5638977635782748, loss=2.9848421080805623
