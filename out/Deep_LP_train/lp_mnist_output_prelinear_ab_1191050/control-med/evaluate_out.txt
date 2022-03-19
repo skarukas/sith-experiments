@@ -49,3 +49,6 @@ For transform={'max_translate': 5}:
 
 For transform={'max_translate': 10}:
  acc=0.2751597444089457, loss=14.44412994689454
+
+For transform={'max_translate': 20}:
+ acc=0.1178115015974441, loss=46.47750247553134

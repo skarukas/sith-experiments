@@ -67,3 +67,7 @@
   loss: 14.44412994689454
   transform:
     max_translate: 10
+- acc: 0.1178115015974441
+  loss: 46.47750247553134
+  transform:
+    max_translate: 20
