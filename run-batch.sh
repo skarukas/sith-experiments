@@ -2,7 +2,7 @@
 
 #SBATCH -J Deep_LP_train
 #SBATCH -p dl
-#SBATCH --gpus-per-node v100:1
+#SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=9:00:00
@@ -10,16 +10,17 @@
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-2
+#SBATCH --array=0-0
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(log-polar-params-1.yaml log-polar-params-2.yaml log-polar-params-2-stride3.yaml)
-ExperimentName="lp_mnist_med"
+ParamFiles=(combo-quick-4-med-augt)
+ExperimentName="lp_mnist_combo_quick_augt_med"
 
-ParamFile=param-files/Deep-LP/${ParamFiles[$SLURM_ARRAY_TASK_ID]}
-EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentName}_${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}"
+ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
+EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentName}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
+ParamFile=param-files/Deep-LP/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR
 

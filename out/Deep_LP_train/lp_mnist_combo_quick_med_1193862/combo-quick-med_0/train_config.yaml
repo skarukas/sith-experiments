@@ -1,0 +1,67 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 40
+  local_start: 2022-03-18_23:27:28
+  local_stop: 2022-03-19_03:19:55
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.9915666666666667
+    train_loss: 0.022797762635905626
+    val_acc: 0.9819289137380192
+    val_loss: 0.07430542747617958
+model:
+  act_func: relu
+  batch_norm: true
+  classname: DeepLogPolarClassifier
+  layer_params:
+  - gaussian_sharpness: 2
+    in_channels: 1
+    k: 35
+    kernel_size:
+    - 5
+    - 5
+    localization: gaussian
+    ntau: 40
+    num_angles: 10
+    out_channels: 20
+    stride: 3
+    tau_max: 60
+    tau_min: 1
+    theta_pooling: 4
+  - gaussian_sharpness: 2
+    in_channels: 20
+    k: 35
+    kernel_size:
+    - 5
+    - 5
+    localization: gaussian
+    ntau: 40
+    num_angles: 10
+    out_channels: 20
+    stride: 3
+    tau_max: 60
+    tau_min: 1
+    theta_pooling: 4
+  num_params: 12450
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/lp_mnist_combo_quick_med_1193862/combo-quick-med_0
+param: param-files/Deep-LP/combo-quick-med.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: FastMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: FastMNIST

@@ -53,11 +53,11 @@ class DeepLogPolarClassifier(nn.Module):
             return out
 
 
-    def _to_output(self, x):
+    def reduce_spatial_dims(self, x):
         """
             Choose the output logits from the map of size [Batch, logits, x, y]
         """
-        if self.output == "center":
+        if self.output == "center" or self.output == "random" and not self.training:
             # grab center pixel
             logits = x[..., x.shape[-2] // 2, x.shape[-1] // 2]
         elif self.output == "average":
@@ -68,8 +68,11 @@ class DeepLogPolarClassifier(nn.Module):
             batch = x.shape[0]
             i = torch.randint(x.shape[-2], size=(batch,))
             j = torch.randint(x.shape[-1], size=(batch,))
-            logits = x[..., i, j]
-        
+            a = torch.arange(batch)
+            logits = x[a, :, i, j]
+        elif self.output == "max":
+            # get pixel with maximum response across each feature
+            logits = x.max(-1).values.max(-1).values
         return logits
     
 
@@ -80,37 +83,27 @@ class DeepLogPolarClassifier(nn.Module):
         """
         x = inp
 
-        for i in range(len(self.lpconv_layers)):
+        for i in range(len(self.lpconv_layers)-1):
             x = self.lpconv_layers[i](x)
-            x = x.permute((0, 2, 3, 1))
             # linear over channel dim
+            x = x.permute((0, 2, 3, 1))
             x = self.transform_linears[i](x)
             x = x.permute((0, 3, 1, 2))
-        
-        return self._to_output(x)
+
+        # final layer = LP, reduction, then linear
+        x = self.lpconv_layers[-1](x)
+        x = self.reduce_spatial_dims(x)
+        x = self.transform_linears[-1](x)
+
+        return x
 
     
     def _forward_single(self, inp):
         """
         Take in a list of (channels, x, y) tensors.
             Apply to each data point independently.
-        """
-        batch_size = len(inp)
-        out = torch.zeros((batch_size, self.out_classes))
-        for idx in range(batch_size):
-            x = inp[idx][np.newaxis]
-            for i in range(len(self.lpconv_layers)):
-                x = self.lpconv_layers[i](x)
-                x = x.permute((0, 2, 3, 1))
-                # linear over channel dim
-                x = self.transform_linears[i](x)
-                # reshape to image shape
-                x = x.permute((0, 3, 1, 2))
-
-            # grab center pixel
-            out[idx] = self._to_output(x)
-            
-        return out
+        """ 
+        return torch.stack([self._forward_batch(x[np.newaxis]) for x in inp]) 
 
 
     def loss_function(self, prediction, label):

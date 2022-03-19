@@ -1,0 +1,51 @@
+Using cuda
+torch.Size([400, 180, 180])
+torch.Size([400, 180, 180])
+
+For transform={}:
+ acc=0.9857228434504792, loss=0.04554127828691817
+
+For transform={'max_angle_deg': 5}:
+ acc=0.9845247603833865, loss=0.050907266512889744
+
+For transform={'max_angle_deg': 15}:
+ acc=0.9790335463258786, loss=0.07520175501848572
+
+For transform={'max_angle_deg': 30}:
+ acc=0.9433905750798722, loss=0.24907538648798896
+
+For transform={'max_angle_deg': 45}:
+ acc=0.8607228434504792, loss=0.743696861361085
+
+For transform={'max_angle_deg': 60}:
+ acc=0.744508785942492, loss=1.6196692343146657
+
+For transform={'max_angle_deg': 90}:
+ acc=0.5614017571884984, loss=3.534819879470923
+
+For transform={'max_scale': 0.2, 'min_scale': 0.2}:
+ acc=0.11371805111821086, loss=12.514411621581251
+
+For transform={'max_scale': 0.5, 'min_scale': 0.5}:
+ acc=0.31809105431309903, loss=4.736830967302901
+
+For transform={'max_scale': 0.8, 'min_scale': 0.8}:
+ acc=0.9553714057507987, loss=0.15216492796644046
+
+For transform={'max_scale': 1.5, 'min_scale': 1.5}:
+ acc=0.9874201277955271, loss=0.07346164153833641
+
+For transform={'max_scale': 2, 'min_scale': 2}:
+ acc=0.9864217252396166, loss=0.14327174760183736
+
+For transform={'max_translate': 2}:
+ acc=0.9703474440894568, loss=0.12144269523999417
+
+For transform={'max_translate': 5}:
+ acc=0.8333666134185304, loss=1.0792892291344487
+
+For transform={'max_translate': 10}:
+ acc=0.44538738019169327, loss=10.211654574726337
+
+For transform={'max_translate': 20}:
+ acc=0.1755191693290735, loss=39.466246717654094

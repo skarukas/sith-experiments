@@ -12,7 +12,7 @@ from models.util import get_model
 
 
 if __name__ == "__main__":
-    experiment_path = "out/Deep_LP_train/lp_mnist_med_1153406/0"
+    experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
     results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
@@ -51,6 +51,7 @@ if __name__ == "__main__":
         dict(max_scale=0.8, min_scale=0.8),
         dict(max_scale=1.5, min_scale=1.5),
         dict(max_scale=2, min_scale=2),
+        dict(max_scale=4, min_scale=4),
         # translation
         dict(max_translate=2),
         dict(max_translate=5),
@@ -74,4 +75,6 @@ if __name__ == "__main__":
         print(f"\nFor transform={transform_dict}:\n acc={stats['acc']}, loss={stats['loss']}")
         # write after every transform just in case
         results.append({ "transform": transform_dict,  **stats })
+        results_file.seek(0)
         yaml.safe_dump(results, results_file)
+        results_file.truncate()

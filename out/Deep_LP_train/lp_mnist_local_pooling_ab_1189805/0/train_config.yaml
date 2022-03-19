@@ -1,0 +1,62 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 17
+  local_start: 2022-03-17_01:26:12
+  local_stop: 2022-03-17_10:12:03
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.9900166666666667
+    train_loss: 0.0316130913946797
+    val_acc: 0.9886182108626198
+    val_loss: 0.036634240773539564
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  layer_params:
+  - in_channels: 1
+    k: 35
+    kernel_size:
+    - 5
+    - 5
+    ntau: 40
+    num_angles: 10
+    out_channels: 20
+    spatial_pooling: 2
+    tau_max: 60
+    tau_min: 1
+    theta_pooling: 2
+  - in_channels: 20
+    k: 35
+    kernel_size:
+    - 5
+    - 5
+    ntau: 40
+    num_angles: 10
+    out_channels: 20
+    spatial_pooling: 2
+    tau_max: 60
+    tau_min: 1
+    theta_pooling: 2
+  num_params: 13570
+  out_classes: 10
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/lp_mnist_local_pooling_ab_1189805/0
+param: param-files/Deep-LP/pooling-med.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: FastMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: FastMNIST

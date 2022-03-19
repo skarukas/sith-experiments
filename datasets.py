@@ -31,7 +31,8 @@ def get_dataset(dataset_params, device):
         # create instance of dataset class
         dataset_type = dataset_params['type'].lower()
         class_map = {
-            "fastmnist": FastMNIST
+            "fastmnist": FastMNIST,
+            "transformedmnist": TransformedMNIST
         }
         DatasetClass = class_map[dataset_type]
         return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)

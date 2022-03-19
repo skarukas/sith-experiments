@@ -1,0 +1,11 @@
+gcc version 6.3.0 unloaded.
+gcc version 9.1.0 loaded.
+openmpi version 4.0.1 loaded.
+Deep Learning stack for Cuda 11.2 loaded
+Traceback (most recent call last):
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 198, in <module>
+    train_data = get_dataset(train_data_dir, device=config['device'])
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/datasets.py", line 36, in get_dataset
+    DatasetClass = class_map[dataset_type]
+KeyError: 'transformedmnist'
+srun: error: dl3: task 0: Exited with exit code 1

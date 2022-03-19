@@ -1,0 +1,19 @@
+/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /pytorch/torch/csrc/utils/tensor_numpy.cpp:180.)
+  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/logpolar/lptransform.py:156: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /pytorch/aten/src/ATen/native/TensorAdvancedIndexing.cpp:395.)
+  tau[tau <= 0] = 0
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Batch:   0%|          | 0/1875 [00:00<?, ?it/s][A/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+
+                                               [AEpoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 221, in <module>
+    train_loop(model, train_dataloader, config, val_dataloader)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 47, in train_loop
+    loss = model.loss_function(prediction, label)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/DeepLogPolarClassifier.py", line 117, in loss_function
+    return F.cross_entropy(prediction, label)
+  File "/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torch/nn/functional.py", line 2824, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: Expected target size [32, 32], got [32]
