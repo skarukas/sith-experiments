@@ -6,7 +6,7 @@ import random
 from os import path
 import glob
 
-from torchvision.datasets import MNIST
+from torchvision.datasets import MNIST, CIFAR10
 from audiotsm import phasevocoder
 from audiotsm.io.array import ArrayWriter, ArrayReader
 import scipy.io.wavfile as wavfile
@@ -32,7 +32,8 @@ def get_dataset(dataset_params, device):
         dataset_type = dataset_params['type'].lower()
         class_map = {
             "fastmnist": FastMNIST,
-            "transformedmnist": TransformedMNIST
+            "transformedmnist": TransformedMNIST,
+            "cifar10": CIFAR10
         }
         DatasetClass = class_map[dataset_type]
         return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)
