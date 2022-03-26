@@ -165,9 +165,9 @@ class LogPolarTransform(torch.nn.Module):
         self.filters = self.filters.reshape((num_angles*ntau, filter_width, filter_width))
 
         # normalize so each sums to 1
-        eps = 1e-8
-        filter_sum = (self.filters.sum((1, 2)) + eps)
-        print(self.filters.shape)
+        #eps = 1e-8
+        #filter_sum = (self.filters.sum((1, 2)) + eps)
+        #print(self.filters.shape) 
         #self.filters = self.filters / unsqueeze_except(filter_sum, n_dim=3, dim=0)
         self.filters = self.filters.unsqueeze(1).to(device).float()
         # shape: num_angles*ntau, buff_max, buff_max
