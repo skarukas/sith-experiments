@@ -10,17 +10,17 @@
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-0
+#SBATCH --array=0-2
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(combo-quick-4-med-augt)
-ExperimentName="lp_mnist_combo_quick_augt_med"
+ParamFiles=(maxout-med maxout-large maxout-larger)
+ExperimentRelativePath="cifar10/maxout_less_pooling"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
-EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentName}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
-ParamFile=param-files/Deep-LP/${ParamFile}.yaml
+EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
+ParamFile=param-files/Deep-LP/CIFAR10/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR
 

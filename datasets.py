@@ -33,7 +33,7 @@ def get_dataset(dataset_params, device):
         class_map = {
             "fastmnist": FastMNIST,
             "transformedmnist": TransformedMNIST,
-            "cifar10": CIFAR10
+            "cifar10": CIFAR10_Tensor
         }
         DatasetClass = class_map[dataset_type]
         return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)
@@ -287,8 +287,26 @@ def rescale_centered(image, scale):
     top = (image.height - height) // 2
     right = left + width
     bottom = top + height
-
     return image.crop((left, top, right, bottom))
+
+
+class CIFAR10_Tensor(CIFAR10):
+    def __init__(self, root, device='cpu', download=True, *args, **kwargs):
+        super().__init__(root, download=download, *args, **kwargs)
+        self.device = device
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (image, target) where target is index of the target class.
+        """
+        img, target = super().__getitem__(index)
+        img = torch.tensor(np.array(img)).float().div(255)
+        img = img.permute(2, 1, 0) # put channels first
+        return img.to(self.device), target
 
 
 if __name__ == "__main__":

@@ -191,8 +191,8 @@ if __name__ == "__main__":
     config['device'] = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Training using {config['device']}")
 
-    collate = util.collate_examples_list if config.get('collate') == 'single' \
-        else util.collate_examples_pad
+    collate = None # util.collate_examples_list if config.get('collate') == 'single' \
+    #else util.collate_examples_pad
     # load data
     print("Loading training data")
     train_data = get_dataset(train_data_dir, device=config['device'])
@@ -217,6 +217,7 @@ if __name__ == "__main__":
     print(model)
     config['model']['classname'] = model.__class__.__name__
     config['model']['num_params'] = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print("Total parameters:", config['model']['num_params'])
     train_history = []
     train_loop(model, train_dataloader, config, val_dataloader)
 

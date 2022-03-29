@@ -107,10 +107,12 @@ class DeepLogPolarClassifier(nn.Module):
 
 
     def loss_function(self, prediction, label):
+        label = label.to(prediction.device)
         return F.cross_entropy(prediction, label)
 
 
     def accuracy(self, prediction, label):
+        label = label.to(prediction.device)
         return (prediction.argmax(dim=-1) == label).double().mean()
 
 
