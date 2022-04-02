@@ -5,18 +5,18 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=9:00:00
+#SBATCH --time=4:00:00
 #SBATCH -o out/Deep_LP_train/running_jobs/%J_%a.out
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-2
+#SBATCH --array=0-3
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(maxout-med maxout-large maxout-larger)
-ExperimentRelativePath="cifar10/maxout_less_pooling"
+ParamFiles=(tau10 tau20 tau30 tau40)
+ExperimentRelativePath="cifar10/ntau_ab_7x7"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"

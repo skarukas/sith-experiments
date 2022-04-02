@@ -1,0 +1,1048 @@
+/geode2/home/u080/skarukas/Carbonate/SITH/models/logpolar/lptransform.py:156: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /pytorch/aten/src/ATen/native/TensorAdvancedIndexing.cpp:395.)
+  tau[tau <= 0] = 0
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+
+Batch:   0%|          | 0/1563 [00:01<?, ?it/s, train_loss=2.58, train_acc=0.188, avg_tr_acc=0.188, avg_tr_loss=2.58][A
+Batch:   0%|          | 1/1563 [00:01<43:52,  1.69s/it, train_loss=2.58, train_acc=0.188, avg_tr_acc=0.188, avg_tr_loss=2.58][A
+Batch:   0%|          | 1/1563 [00:03<43:52,  1.69s/it, train_loss=3.35, train_acc=0.219, avg_tr_acc=0.203, avg_tr_loss=2.96][A
+Batch:   0%|          | 2/1563 [00:03<43:01,  1.65s/it, train_loss=3.35, train_acc=0.219, avg_tr_acc=0.203, avg_tr_loss=2.96][A
+Batch:   0%|          | 2/1563 [00:04<43:01,  1.65s/it, train_loss=2.69, train_acc=0.188, avg_tr_acc=0.198, avg_tr_loss=2.87][A
+Batch:   0%|          | 3/1563 [00:04<42:43,  1.64s/it, train_loss=2.69, train_acc=0.188, avg_tr_acc=0.198, avg_tr_loss=2.87][A
+Batch:   0%|          | 3/1563 [00:06<42:43,  1.64s/it, train_loss=2.41, train_acc=0.0625, avg_tr_acc=0.164, avg_tr_loss=2.76][A
+Batch:   0%|          | 4/1563 [00:06<42:32,  1.64s/it, train_loss=2.41, train_acc=0.0625, avg_tr_acc=0.164, avg_tr_loss=2.76][A
+Batch:   0%|          | 4/1563 [00:08<42:32,  1.64s/it, train_loss=2.62, train_acc=0.0625, avg_tr_acc=0.144, avg_tr_loss=2.73][A
+Batch:   0%|          | 5/1563 [00:08<42:25,  1.63s/it, train_loss=2.62, train_acc=0.0625, avg_tr_acc=0.144, avg_tr_loss=2.73][A
+Batch:   0%|          | 5/1563 [00:09<42:25,  1.63s/it, train_loss=2.39, train_acc=0.156, avg_tr_acc=0.146, avg_tr_loss=2.67] [A
+Batch:   0%|          | 6/1563 [00:09<42:21,  1.63s/it, train_loss=2.39, train_acc=0.156, avg_tr_acc=0.146, avg_tr_loss=2.67][A
+Batch:   0%|          | 6/1563 [00:11<42:21,  1.63s/it, train_loss=2.25, train_acc=0.125, avg_tr_acc=0.143, avg_tr_loss=2.61][A
+Batch:   0%|          | 7/1563 [00:11<42:18,  1.63s/it, train_loss=2.25, train_acc=0.125, avg_tr_acc=0.143, avg_tr_loss=2.61][A
+Batch:   0%|          | 7/1563 [00:13<42:18,  1.63s/it, train_loss=2.47, train_acc=0.0938, avg_tr_acc=0.137, avg_tr_loss=2.59][A
+Batch:   1%|          | 8/1563 [00:13<42:15,  1.63s/it, train_loss=2.47, train_acc=0.0938, avg_tr_acc=0.137, avg_tr_loss=2.59][A
+Batch:   1%|          | 8/1563 [00:14<42:15,  1.63s/it, train_loss=2.27, train_acc=0.219, avg_tr_acc=0.146, avg_tr_loss=2.56] [A
+Batch:   1%|          | 9/1563 [00:14<42:13,  1.63s/it, train_loss=2.27, train_acc=0.219, avg_tr_acc=0.146, avg_tr_loss=2.56][A
+Batch:   1%|          | 9/1563 [00:16<42:13,  1.63s/it, train_loss=2.44, train_acc=0.0625, avg_tr_acc=0.138, avg_tr_loss=2.55][A
+Batch:   1%|          | 10/1563 [00:16<42:12,  1.63s/it, train_loss=2.44, train_acc=0.0625, avg_tr_acc=0.138, avg_tr_loss=2.55][A
+Batch:   1%|          | 10/1563 [00:17<42:12,  1.63s/it, train_loss=2.34, train_acc=0.0938, avg_tr_acc=0.134, avg_tr_loss=2.53][A
+Batch:   1%|          | 11/1563 [00:17<42:10,  1.63s/it, train_loss=2.34, train_acc=0.0938, avg_tr_acc=0.134, avg_tr_loss=2.53][A
+Batch:   1%|          | 11/1563 [00:19<42:10,  1.63s/it, train_loss=2.29, train_acc=0.0938, avg_tr_acc=0.13, avg_tr_loss=2.51] [A
+Batch:   1%|          | 12/1563 [00:19<42:08,  1.63s/it, train_loss=2.29, train_acc=0.0938, avg_tr_acc=0.13, avg_tr_loss=2.51][A
+Batch:   1%|          | 12/1563 [00:21<42:08,  1.63s/it, train_loss=2.29, train_acc=0.156, avg_tr_acc=0.132, avg_tr_loss=2.49][A
+Batch:   1%|          | 13/1563 [00:21<42:06,  1.63s/it, train_loss=2.29, train_acc=0.156, avg_tr_acc=0.132, avg_tr_loss=2.49][A
+Batch:   1%|          | 13/1563 [00:22<42:06,  1.63s/it, train_loss=2.31, train_acc=0.0938, avg_tr_acc=0.129, avg_tr_loss=2.48][A
+Batch:   1%|          | 14/1563 [00:22<42:04,  1.63s/it, train_loss=2.31, train_acc=0.0938, avg_tr_acc=0.129, avg_tr_loss=2.48][A
+Batch:   1%|          | 14/1563 [00:24<42:04,  1.63s/it, train_loss=2.35, train_acc=0.125, avg_tr_acc=0.129, avg_tr_loss=2.47] [A
+Batch:   1%|          | 15/1563 [00:24<42:02,  1.63s/it, train_loss=2.35, train_acc=0.125, avg_tr_acc=0.129, avg_tr_loss=2.47][A
+Batch:   1%|          | 15/1563 [00:26<42:02,  1.63s/it, train_loss=2.27, train_acc=0.156, avg_tr_acc=0.131, avg_tr_loss=2.46][A
+Batch:   1%|1         | 16/1563 [00:26<42:00,  1.63s/it, train_loss=2.27, train_acc=0.156, avg_tr_acc=0.131, avg_tr_loss=2.46][A
+Batch:   1%|1         | 16/1563 [00:27<42:00,  1.63s/it, train_loss=2.32, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.45][A
+Batch:   1%|1         | 17/1563 [00:27<41:59,  1.63s/it, train_loss=2.32, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.45][A
+Batch:   1%|1         | 17/1563 [00:29<41:59,  1.63s/it, train_loss=2.26, train_acc=0.125, avg_tr_acc=0.13, avg_tr_loss=2.44] [A
+Batch:   1%|1         | 18/1563 [00:29<41:57,  1.63s/it, train_loss=2.26, train_acc=0.125, avg_tr_acc=0.13, avg_tr_loss=2.44][A
+Batch:   1%|1         | 18/1563 [00:31<41:57,  1.63s/it, train_loss=2.31, train_acc=0.0625, avg_tr_acc=0.127, avg_tr_loss=2.43][A
+Batch:   1%|1         | 19/1563 [00:31<41:56,  1.63s/it, train_loss=2.31, train_acc=0.0625, avg_tr_acc=0.127, avg_tr_loss=2.43][A
+Batch:   1%|1         | 19/1563 [00:32<41:56,  1.63s/it, train_loss=2.34, train_acc=0.0625, avg_tr_acc=0.123, avg_tr_loss=2.43][A
+Batch:   1%|1         | 20/1563 [00:32<41:54,  1.63s/it, train_loss=2.34, train_acc=0.0625, avg_tr_acc=0.123, avg_tr_loss=2.43][A
+Batch:   1%|1         | 20/1563 [00:34<41:54,  1.63s/it, train_loss=2.31, train_acc=0.0938, avg_tr_acc=0.122, avg_tr_loss=2.42][A
+Batch:   1%|1         | 21/1563 [00:34<41:53,  1.63s/it, train_loss=2.31, train_acc=0.0938, avg_tr_acc=0.122, avg_tr_loss=2.42][A
+Batch:   1%|1         | 21/1563 [00:35<41:53,  1.63s/it, train_loss=2.26, train_acc=0.0625, avg_tr_acc=0.119, avg_tr_loss=2.41][A
+Batch:   1%|1         | 22/1563 [00:35<41:51,  1.63s/it, train_loss=2.26, train_acc=0.0625, avg_tr_acc=0.119, avg_tr_loss=2.41][A
+Batch:   1%|1         | 22/1563 [00:37<41:51,  1.63s/it, train_loss=2.31, train_acc=0.0625, avg_tr_acc=0.117, avg_tr_loss=2.41][A
+Batch:   1%|1         | 23/1563 [00:37<41:50,  1.63s/it, train_loss=2.31, train_acc=0.0625, avg_tr_acc=0.117, avg_tr_loss=2.41][A
+Batch:   1%|1         | 23/1563 [00:39<41:50,  1.63s/it, train_loss=2.32, train_acc=0.0312, avg_tr_acc=0.113, avg_tr_loss=2.41][A
+Batch:   2%|1         | 24/1563 [00:39<41:47,  1.63s/it, train_loss=2.32, train_acc=0.0312, avg_tr_acc=0.113, avg_tr_loss=2.41][A
+Batch:   2%|1         | 24/1563 [00:40<41:47,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.116, avg_tr_loss=2.4]  [A
+Batch:   2%|1         | 25/1563 [00:40<41:46,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.116, avg_tr_loss=2.4][A
+Batch:   2%|1         | 25/1563 [00:42<41:46,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.115, avg_tr_loss=2.4][A
+Batch:   2%|1         | 26/1563 [00:42<41:44,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.115, avg_tr_loss=2.4][A
+Batch:   2%|1         | 26/1563 [00:44<41:44,  1.63s/it, train_loss=2.35, train_acc=0.0312, avg_tr_acc=0.112, avg_tr_loss=2.39][A
+Batch:   2%|1         | 27/1563 [00:44<41:42,  1.63s/it, train_loss=2.35, train_acc=0.0312, avg_tr_acc=0.112, avg_tr_loss=2.39][A
+Batch:   2%|1         | 27/1563 [00:45<41:42,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.115, avg_tr_loss=2.39] [A
+Batch:   2%|1         | 28/1563 [00:45<41:41,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.115, avg_tr_loss=2.39][A
+Batch:   2%|1         | 28/1563 [00:47<41:41,  1.63s/it, train_loss=2.27, train_acc=0.0938, avg_tr_acc=0.114, avg_tr_loss=2.39][A
+Batch:   2%|1         | 29/1563 [00:47<41:39,  1.63s/it, train_loss=2.27, train_acc=0.0938, avg_tr_acc=0.114, avg_tr_loss=2.39][A
+Batch:   2%|1         | 29/1563 [00:48<41:39,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.117, avg_tr_loss=2.38] [A
+Batch:   2%|1         | 30/1563 [00:48<41:37,  1.63s/it, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.117, avg_tr_loss=2.38][A
+Batch:   2%|1         | 30/1563 [00:50<41:37,  1.63s/it, train_loss=2.3, train_acc=0.0938, avg_tr_acc=0.116, avg_tr_loss=2.38][A
+Batch:   2%|1         | 31/1563 [00:50<41:35,  1.63s/it, train_loss=2.3, train_acc=0.0938, avg_tr_acc=0.116, avg_tr_loss=2.38][A
+Batch:   2%|1         | 31/1563 [00:52<41:35,  1.63s/it, train_loss=2.25, train_acc=0.0312, avg_tr_acc=0.113, avg_tr_loss=2.37][A
+Batch:   2%|2         | 32/1563 [00:52<41:34,  1.63s/it, train_loss=2.25, train_acc=0.0312, avg_tr_acc=0.113, avg_tr_loss=2.37][A
+Batch:   2%|2         | 32/1563 [00:53<41:34,  1.63s/it, train_loss=2.27, train_acc=0.156, avg_tr_acc=0.115, avg_tr_loss=2.37] [A
+Batch:   2%|2         | 33/1563 [00:53<41:32,  1.63s/it, train_loss=2.27, train_acc=0.156, avg_tr_acc=0.115, avg_tr_loss=2.37][A
+Batch:   2%|2         | 33/1563 [00:55<41:32,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.114, avg_tr_loss=2.37][A
+Batch:   2%|2         | 34/1563 [00:55<41:30,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.114, avg_tr_loss=2.37][A
+Batch:   2%|2         | 34/1563 [00:57<41:30,  1.63s/it, train_loss=2.19, train_acc=0.156, avg_tr_acc=0.115, avg_tr_loss=2.36] [A
+Batch:   2%|2         | 35/1563 [00:57<41:30,  1.63s/it, train_loss=2.19, train_acc=0.156, avg_tr_acc=0.115, avg_tr_loss=2.36][A
+Batch:   2%|2         | 35/1563 [00:58<41:30,  1.63s/it, train_loss=2.28, train_acc=0.125, avg_tr_acc=0.115, avg_tr_loss=2.36][A
+Batch:   2%|2         | 36/1563 [00:58<41:29,  1.63s/it, train_loss=2.28, train_acc=0.125, avg_tr_acc=0.115, avg_tr_loss=2.36][A
+Batch:   2%|2         | 36/1563 [01:00<41:29,  1.63s/it, train_loss=2.22, train_acc=0.219, avg_tr_acc=0.118, avg_tr_loss=2.36][A
+Batch:   2%|2         | 37/1563 [01:00<41:28,  1.63s/it, train_loss=2.22, train_acc=0.219, avg_tr_acc=0.118, avg_tr_loss=2.36][A
+Batch:   2%|2         | 37/1563 [01:01<41:28,  1.63s/it, train_loss=2.16, train_acc=0.0938, avg_tr_acc=0.118, avg_tr_loss=2.35][A
+Batch:   2%|2         | 38/1563 [01:01<41:26,  1.63s/it, train_loss=2.16, train_acc=0.0938, avg_tr_acc=0.118, avg_tr_loss=2.35][A
+Batch:   2%|2         | 38/1563 [01:03<41:26,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.122, avg_tr_loss=2.34] [A
+Batch:   2%|2         | 39/1563 [01:03<41:23,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.122, avg_tr_loss=2.34][A
+Batch:   2%|2         | 39/1563 [01:05<41:23,  1.63s/it, train_loss=2.41, train_acc=0.125, avg_tr_acc=0.122, avg_tr_loss=2.35][A
+Batch:   3%|2         | 40/1563 [01:05<41:22,  1.63s/it, train_loss=2.41, train_acc=0.125, avg_tr_acc=0.122, avg_tr_loss=2.35][A
+Batch:   3%|2         | 40/1563 [01:06<41:22,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.123, avg_tr_loss=2.34][A
+Batch:   3%|2         | 41/1563 [01:06<41:20,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.123, avg_tr_loss=2.34][A
+Batch:   3%|2         | 41/1563 [01:08<41:20,  1.63s/it, train_loss=2.24, train_acc=0.188, avg_tr_acc=0.125, avg_tr_loss=2.34][A
+Batch:   3%|2         | 42/1563 [01:08<41:18,  1.63s/it, train_loss=2.24, train_acc=0.188, avg_tr_acc=0.125, avg_tr_loss=2.34][A
+Batch:   3%|2         | 42/1563 [01:10<41:18,  1.63s/it, train_loss=2.21, train_acc=0.0938, avg_tr_acc=0.124, avg_tr_loss=2.33][A
+Batch:   3%|2         | 43/1563 [01:10<41:16,  1.63s/it, train_loss=2.21, train_acc=0.0938, avg_tr_acc=0.124, avg_tr_loss=2.33][A
+Batch:   3%|2         | 43/1563 [01:11<41:16,  1.63s/it, train_loss=2.2, train_acc=0.125, avg_tr_acc=0.124, avg_tr_loss=2.33]  [A
+Batch:   3%|2         | 44/1563 [01:11<41:14,  1.63s/it, train_loss=2.2, train_acc=0.125, avg_tr_acc=0.124, avg_tr_loss=2.33][A
+Batch:   3%|2         | 44/1563 [01:13<41:14,  1.63s/it, train_loss=2.21, train_acc=0.156, avg_tr_acc=0.125, avg_tr_loss=2.33][A
+Batch:   3%|2         | 45/1563 [01:13<41:12,  1.63s/it, train_loss=2.21, train_acc=0.156, avg_tr_acc=0.125, avg_tr_loss=2.33][A
+Batch:   3%|2         | 45/1563 [01:15<41:12,  1.63s/it, train_loss=2.15, train_acc=0.219, avg_tr_acc=0.127, avg_tr_loss=2.32][A
+Batch:   3%|2         | 46/1563 [01:15<41:10,  1.63s/it, train_loss=2.15, train_acc=0.219, avg_tr_acc=0.127, avg_tr_loss=2.32][A
+Batch:   3%|2         | 46/1563 [01:16<41:10,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.126, avg_tr_loss=2.32][A
+Batch:   3%|3         | 47/1563 [01:16<41:09,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.126, avg_tr_loss=2.32][A
+Batch:   3%|3         | 47/1563 [01:18<41:09,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.129, avg_tr_loss=2.32]  [A
+Batch:   3%|3         | 48/1563 [01:18<41:08,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.129, avg_tr_loss=2.32][A
+Batch:   3%|3         | 48/1563 [01:19<41:08,  1.63s/it, train_loss=1.97, train_acc=0.25, avg_tr_acc=0.131, avg_tr_loss=2.31][A
+Batch:   3%|3         | 49/1563 [01:19<41:07,  1.63s/it, train_loss=1.97, train_acc=0.25, avg_tr_acc=0.131, avg_tr_loss=2.31][A
+Batch:   3%|3         | 49/1563 [01:21<41:07,  1.63s/it, train_loss=2.14, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.31][A
+Batch:   3%|3         | 50/1563 [01:21<41:05,  1.63s/it, train_loss=2.14, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.31][A
+Batch:   3%|3         | 50/1563 [01:23<41:05,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.3] [A
+Batch:   3%|3         | 51/1563 [01:23<41:03,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.131, avg_tr_loss=2.3][A
+Batch:   3%|3         | 51/1563 [01:24<41:03,  1.63s/it, train_loss=2.06, train_acc=0.25, avg_tr_acc=0.133, avg_tr_loss=2.3] [A
+Batch:   3%|3         | 52/1563 [01:24<41:02,  1.63s/it, train_loss=2.06, train_acc=0.25, avg_tr_acc=0.133, avg_tr_loss=2.3][A
+Batch:   3%|3         | 52/1563 [01:26<41:02,  1.63s/it, train_loss=2.01, train_acc=0.156, avg_tr_acc=0.134, avg_tr_loss=2.29][A
+Batch:   3%|3         | 53/1563 [01:26<41:00,  1.63s/it, train_loss=2.01, train_acc=0.156, avg_tr_acc=0.134, avg_tr_loss=2.29][A
+Batch:   3%|3         | 53/1563 [01:28<41:00,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.135, avg_tr_loss=2.29][A
+Batch:   3%|3         | 54/1563 [01:28<40:59,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.135, avg_tr_loss=2.29][A
+Batch:   3%|3         | 54/1563 [01:29<40:59,  1.63s/it, train_loss=2.22, train_acc=0.0625, avg_tr_acc=0.134, avg_tr_loss=2.29][A
+Batch:   4%|3         | 55/1563 [01:29<40:59,  1.63s/it, train_loss=2.22, train_acc=0.0625, avg_tr_acc=0.134, avg_tr_loss=2.29][A
+Batch:   4%|3         | 55/1563 [01:31<40:59,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.133, avg_tr_loss=2.29][A
+Batch:   4%|3         | 56/1563 [01:31<40:57,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.133, avg_tr_loss=2.29][A
+Batch:   4%|3         | 56/1563 [01:32<40:57,  1.63s/it, train_loss=2.33, train_acc=0.188, avg_tr_acc=0.134, avg_tr_loss=2.29] [A
+Batch:   4%|3         | 57/1563 [01:32<40:55,  1.63s/it, train_loss=2.33, train_acc=0.188, avg_tr_acc=0.134, avg_tr_loss=2.29][A
+Batch:   4%|3         | 57/1563 [01:34<40:55,  1.63s/it, train_loss=2.03, train_acc=0.188, avg_tr_acc=0.135, avg_tr_loss=2.28][A
+Batch:   4%|3         | 58/1563 [01:34<40:53,  1.63s/it, train_loss=2.03, train_acc=0.188, avg_tr_acc=0.135, avg_tr_loss=2.28][A
+Batch:   4%|3         | 58/1563 [01:36<40:53,  1.63s/it, train_loss=2.16, train_acc=0.156, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|3         | 59/1563 [01:36<40:51,  1.63s/it, train_loss=2.16, train_acc=0.156, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|3         | 59/1563 [01:37<40:51,  1.63s/it, train_loss=2.06, train_acc=0.188, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|3         | 60/1563 [01:37<40:49,  1.63s/it, train_loss=2.06, train_acc=0.188, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|3         | 60/1563 [01:39<40:49,  1.63s/it, train_loss=2.1, train_acc=0.312, avg_tr_acc=0.139, avg_tr_loss=2.28] [A
+Batch:   4%|3         | 61/1563 [01:39<40:47,  1.63s/it, train_loss=2.1, train_acc=0.312, avg_tr_acc=0.139, avg_tr_loss=2.28][A
+Batch:   4%|3         | 61/1563 [01:41<40:47,  1.63s/it, train_loss=2.45, train_acc=0.125, avg_tr_acc=0.139, avg_tr_loss=2.28][A
+Batch:   4%|3         | 62/1563 [01:41<40:45,  1.63s/it, train_loss=2.45, train_acc=0.125, avg_tr_acc=0.139, avg_tr_loss=2.28][A
+Batch:   4%|3         | 62/1563 [01:42<40:45,  1.63s/it, train_loss=2.36, train_acc=0.0312, avg_tr_acc=0.137, avg_tr_loss=2.28][A
+Batch:   4%|4         | 63/1563 [01:42<40:43,  1.63s/it, train_loss=2.36, train_acc=0.0312, avg_tr_acc=0.137, avg_tr_loss=2.28][A
+Batch:   4%|4         | 63/1563 [01:44<40:43,  1.63s/it, train_loss=2.27, train_acc=0.188, avg_tr_acc=0.138, avg_tr_loss=2.28] [A
+Batch:   4%|4         | 64/1563 [01:44<40:41,  1.63s/it, train_loss=2.27, train_acc=0.188, avg_tr_acc=0.138, avg_tr_loss=2.28][A
+Batch:   4%|4         | 64/1563 [01:45<40:41,  1.63s/it, train_loss=2.2, train_acc=0.156, avg_tr_acc=0.138, avg_tr_loss=2.28] [A
+Batch:   4%|4         | 65/1563 [01:45<40:40,  1.63s/it, train_loss=2.2, train_acc=0.156, avg_tr_acc=0.138, avg_tr_loss=2.28][A
+Batch:   4%|4         | 65/1563 [01:47<40:40,  1.63s/it, train_loss=2.26, train_acc=0.0625, avg_tr_acc=0.137, avg_tr_loss=2.28][A
+Batch:   4%|4         | 66/1563 [01:47<40:40,  1.63s/it, train_loss=2.26, train_acc=0.0625, avg_tr_acc=0.137, avg_tr_loss=2.28][A
+Batch:   4%|4         | 66/1563 [01:49<40:40,  1.63s/it, train_loss=2.32, train_acc=0.0625, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|4         | 67/1563 [01:49<40:39,  1.63s/it, train_loss=2.32, train_acc=0.0625, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|4         | 67/1563 [01:50<40:39,  1.63s/it, train_loss=2.25, train_acc=0.0938, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|4         | 68/1563 [01:50<40:36,  1.63s/it, train_loss=2.25, train_acc=0.0938, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|4         | 68/1563 [01:52<40:36,  1.63s/it, train_loss=2.24, train_acc=0.156, avg_tr_acc=0.136, avg_tr_loss=2.28] [A
+Batch:   4%|4         | 69/1563 [01:52<40:34,  1.63s/it, train_loss=2.24, train_acc=0.156, avg_tr_acc=0.136, avg_tr_loss=2.28][A
+Batch:   4%|4         | 69/1563 [01:54<40:34,  1.63s/it, train_loss=2.28, train_acc=0.0625, avg_tr_acc=0.135, avg_tr_loss=2.28][A
+Batch:   4%|4         | 70/1563 [01:54<40:31,  1.63s/it, train_loss=2.28, train_acc=0.0625, avg_tr_acc=0.135, avg_tr_loss=2.28][A
+Batch:   4%|4         | 70/1563 [01:55<40:31,  1.63s/it, train_loss=2.23, train_acc=0.0625, avg_tr_acc=0.134, avg_tr_loss=2.28][A
+Batch:   5%|4         | 71/1563 [01:55<40:30,  1.63s/it, train_loss=2.23, train_acc=0.0625, avg_tr_acc=0.134, avg_tr_loss=2.28][A
+Batch:   5%|4         | 71/1563 [01:57<40:30,  1.63s/it, train_loss=2.23, train_acc=0.156, avg_tr_acc=0.134, avg_tr_loss=2.28] [A
+Batch:   5%|4         | 72/1563 [01:57<40:29,  1.63s/it, train_loss=2.23, train_acc=0.156, avg_tr_acc=0.134, avg_tr_loss=2.28][A
+Batch:   5%|4         | 72/1563 [01:59<40:29,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 73/1563 [01:59<40:27,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 73/1563 [02:00<40:27,  1.63s/it, train_loss=2.21, train_acc=0.125, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 74/1563 [02:00<40:25,  1.63s/it, train_loss=2.21, train_acc=0.125, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 74/1563 [02:02<40:25,  1.63s/it, train_loss=2.27, train_acc=0.125, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 75/1563 [02:02<40:25,  1.63s/it, train_loss=2.27, train_acc=0.125, avg_tr_acc=0.135, avg_tr_loss=2.27][A
+Batch:   5%|4         | 75/1563 [02:03<40:25,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.137, avg_tr_loss=2.27] [A
+Batch:   5%|4         | 76/1563 [02:03<40:23,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|4         | 76/1563 [02:05<40:23,  1.63s/it, train_loss=2.1, train_acc=0.25, avg_tr_acc=0.138, avg_tr_loss=2.27] [A
+Batch:   5%|4         | 77/1563 [02:05<40:22,  1.63s/it, train_loss=2.1, train_acc=0.25, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|4         | 77/1563 [02:07<40:22,  1.63s/it, train_loss=2.24, train_acc=0.125, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|4         | 78/1563 [02:07<40:21,  1.63s/it, train_loss=2.24, train_acc=0.125, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|4         | 78/1563 [02:08<40:21,  1.63s/it, train_loss=2.2, train_acc=0.188, avg_tr_acc=0.138, avg_tr_loss=2.27] [A
+Batch:   5%|5         | 79/1563 [02:08<40:18,  1.63s/it, train_loss=2.2, train_acc=0.188, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|5         | 79/1563 [02:10<40:18,  1.63s/it, train_loss=2.06, train_acc=0.125, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|5         | 80/1563 [02:10<40:16,  1.63s/it, train_loss=2.06, train_acc=0.125, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|5         | 80/1563 [02:12<40:16,  1.63s/it, train_loss=2.42, train_acc=0.0312, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 81/1563 [02:12<40:14,  1.63s/it, train_loss=2.42, train_acc=0.0312, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 81/1563 [02:13<40:14,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.138, avg_tr_loss=2.27] [A
+Batch:   5%|5         | 82/1563 [02:13<40:13,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.138, avg_tr_loss=2.27][A
+Batch:   5%|5         | 82/1563 [02:15<40:13,  1.63s/it, train_loss=2.42, train_acc=0.0625, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 83/1563 [02:15<40:11,  1.63s/it, train_loss=2.42, train_acc=0.0625, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 83/1563 [02:16<40:11,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 84/1563 [02:16<40:09,  1.63s/it, train_loss=2.22, train_acc=0.0938, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 84/1563 [02:18<40:09,  1.63s/it, train_loss=2.25, train_acc=0.156, avg_tr_acc=0.137, avg_tr_loss=2.27] [A
+Batch:   5%|5         | 85/1563 [02:18<40:09,  1.63s/it, train_loss=2.25, train_acc=0.156, avg_tr_acc=0.137, avg_tr_loss=2.27][A
+Batch:   5%|5         | 85/1563 [02:20<40:09,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.138, avg_tr_loss=2.26] [A
+Batch:   6%|5         | 86/1563 [02:20<40:07,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.138, avg_tr_loss=2.26][A
+Batch:   6%|5         | 86/1563 [02:21<40:07,  1.63s/it, train_loss=2.04, train_acc=0.219, avg_tr_acc=0.139, avg_tr_loss=2.26][A
+Batch:   6%|5         | 87/1563 [02:21<40:06,  1.63s/it, train_loss=2.04, train_acc=0.219, avg_tr_acc=0.139, avg_tr_loss=2.26][A
+Batch:   6%|5         | 87/1563 [02:23<40:06,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.138, avg_tr_loss=2.26][A
+Batch:   6%|5         | 88/1563 [02:23<40:04,  1.63s/it, train_loss=2.28, train_acc=0.0938, avg_tr_acc=0.138, avg_tr_loss=2.26][A
+Batch:   6%|5         | 88/1563 [02:25<40:04,  1.63s/it, train_loss=2.14, train_acc=0.219, avg_tr_acc=0.139, avg_tr_loss=2.26] [A
+Batch:   6%|5         | 89/1563 [02:25<40:02,  1.63s/it, train_loss=2.14, train_acc=0.219, avg_tr_acc=0.139, avg_tr_loss=2.26][A
+Batch:   6%|5         | 89/1563 [02:26<40:02,  1.63s/it, train_loss=2.22, train_acc=0.188, avg_tr_acc=0.14, avg_tr_loss=2.26] [A
+Batch:   6%|5         | 90/1563 [02:26<40:00,  1.63s/it, train_loss=2.22, train_acc=0.188, avg_tr_acc=0.14, avg_tr_loss=2.26][A
+Batch:   6%|5         | 90/1563 [02:28<40:00,  1.63s/it, train_loss=2.12, train_acc=0.125, avg_tr_acc=0.14, avg_tr_loss=2.26][A
+Batch:   6%|5         | 91/1563 [02:28<39:58,  1.63s/it, train_loss=2.12, train_acc=0.125, avg_tr_acc=0.14, avg_tr_loss=2.26][A
+Batch:   6%|5         | 91/1563 [02:29<39:58,  1.63s/it, train_loss=2.14, train_acc=0.188, avg_tr_acc=0.14, avg_tr_loss=2.26][A
+Batch:   6%|5         | 92/1563 [02:29<39:56,  1.63s/it, train_loss=2.14, train_acc=0.188, avg_tr_acc=0.14, avg_tr_loss=2.26][A
+Batch:   6%|5         | 92/1563 [02:31<39:56,  1.63s/it, train_loss=2.07, train_acc=0.25, avg_tr_acc=0.141, avg_tr_loss=2.26][A
+Batch:   6%|5         | 93/1563 [02:31<39:55,  1.63s/it, train_loss=2.07, train_acc=0.25, avg_tr_acc=0.141, avg_tr_loss=2.26][A
+Batch:   6%|5         | 93/1563 [02:33<39:55,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   6%|6         | 94/1563 [02:33<39:53,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   6%|6         | 94/1563 [02:34<39:53,  1.63s/it, train_loss=2.2, train_acc=0.125, avg_tr_acc=0.142, avg_tr_loss=2.25][A
+Batch:   6%|6         | 95/1563 [02:34<39:51,  1.63s/it, train_loss=2.2, train_acc=0.125, avg_tr_acc=0.142, avg_tr_loss=2.25][A
+Batch:   6%|6         | 95/1563 [02:36<39:51,  1.63s/it, train_loss=2.15, train_acc=0.125, avg_tr_acc=0.142, avg_tr_loss=2.25][A
+Batch:   6%|6         | 96/1563 [02:36<39:50,  1.63s/it, train_loss=2.15, train_acc=0.125, avg_tr_acc=0.142, avg_tr_loss=2.25][A
+Batch:   6%|6         | 96/1563 [02:38<39:50,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   6%|6         | 97/1563 [02:38<39:49,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   6%|6         | 97/1563 [02:39<39:49,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.144, avg_tr_loss=2.25] [A
+Batch:   6%|6         | 98/1563 [02:39<39:46,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.144, avg_tr_loss=2.25][A
+Batch:   6%|6         | 98/1563 [02:41<39:46,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.144, avg_tr_loss=2.25][A
+Batch:   6%|6         | 99/1563 [02:41<39:45,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.144, avg_tr_loss=2.25][A
+Batch:   6%|6         | 99/1563 [02:43<39:45,  1.63s/it, train_loss=2.08, train_acc=0.219, avg_tr_acc=0.145, avg_tr_loss=2.25][A
+Batch:   6%|6         | 100/1563 [02:43<39:43,  1.63s/it, train_loss=2.08, train_acc=0.219, avg_tr_acc=0.145, avg_tr_loss=2.25][A
+Batch:   6%|6         | 100/1563 [02:44<39:43,  1.63s/it, train_loss=2.38, train_acc=0.0625, avg_tr_acc=0.144, avg_tr_loss=2.25][A
+Batch:   6%|6         | 101/1563 [02:44<39:41,  1.63s/it, train_loss=2.38, train_acc=0.0625, avg_tr_acc=0.144, avg_tr_loss=2.25][A
+Batch:   6%|6         | 101/1563 [02:46<39:41,  1.63s/it, train_loss=2.16, train_acc=0.0938, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   7%|6         | 102/1563 [02:46<39:39,  1.63s/it, train_loss=2.16, train_acc=0.0938, avg_tr_acc=0.143, avg_tr_loss=2.25][A
+Batch:   7%|6         | 102/1563 [02:47<39:39,  1.63s/it, train_loss=2.11, train_acc=0.281, avg_tr_acc=0.145, avg_tr_loss=2.25] [A
+Batch:   7%|6         | 103/1563 [02:47<39:37,  1.63s/it, train_loss=2.11, train_acc=0.281, avg_tr_acc=0.145, avg_tr_loss=2.25][A
+Batch:   7%|6         | 103/1563 [02:49<39:37,  1.63s/it, train_loss=2.19, train_acc=0.156, avg_tr_acc=0.145, avg_tr_loss=2.24][A
+Batch:   7%|6         | 104/1563 [02:49<39:36,  1.63s/it, train_loss=2.19, train_acc=0.156, avg_tr_acc=0.145, avg_tr_loss=2.24][A
+Batch:   7%|6         | 104/1563 [02:51<39:36,  1.63s/it, train_loss=2.27, train_acc=0.25, avg_tr_acc=0.146, avg_tr_loss=2.24] [A
+Batch:   7%|6         | 105/1563 [02:51<39:35,  1.63s/it, train_loss=2.27, train_acc=0.25, avg_tr_acc=0.146, avg_tr_loss=2.24][A
+Batch:   7%|6         | 105/1563 [02:52<39:35,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.147, avg_tr_loss=2.24][A
+Batch:   7%|6         | 106/1563 [02:52<39:34,  1.63s/it, train_loss=2.16, train_acc=0.25, avg_tr_acc=0.147, avg_tr_loss=2.24][A
+Batch:   7%|6         | 106/1563 [02:54<39:34,  1.63s/it, train_loss=2.09, train_acc=0.156, avg_tr_acc=0.147, avg_tr_loss=2.24][A
+Batch:   7%|6         | 107/1563 [02:54<39:31,  1.63s/it, train_loss=2.09, train_acc=0.156, avg_tr_acc=0.147, avg_tr_loss=2.24][A
+Batch:   7%|6         | 107/1563 [02:56<39:31,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.148, avg_tr_loss=2.24] [A
+Batch:   7%|6         | 108/1563 [02:56<39:30,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.148, avg_tr_loss=2.24][A
+Batch:   7%|6         | 108/1563 [02:57<39:30,  1.63s/it, train_loss=2.09, train_acc=0.219, avg_tr_acc=0.149, avg_tr_loss=2.24][A
+Batch:   7%|6         | 109/1563 [02:57<39:29,  1.63s/it, train_loss=2.09, train_acc=0.219, avg_tr_acc=0.149, avg_tr_loss=2.24][A
+Batch:   7%|6         | 109/1563 [02:59<39:29,  1.63s/it, train_loss=2.2, train_acc=0.219, avg_tr_acc=0.149, avg_tr_loss=2.24] [A
+Batch:   7%|7         | 110/1563 [02:59<39:27,  1.63s/it, train_loss=2.2, train_acc=0.219, avg_tr_acc=0.149, avg_tr_loss=2.24][A
+Batch:   7%|7         | 110/1563 [03:00<39:27,  1.63s/it, train_loss=2.16, train_acc=0.219, avg_tr_acc=0.15, avg_tr_loss=2.24][A
+Batch:   7%|7         | 111/1563 [03:00<39:26,  1.63s/it, train_loss=2.16, train_acc=0.219, avg_tr_acc=0.15, avg_tr_loss=2.24][A
+Batch:   7%|7         | 111/1563 [03:02<39:26,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.151, avg_tr_loss=2.24][A
+Batch:   7%|7         | 112/1563 [03:02<39:24,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.151, avg_tr_loss=2.24][A
+Batch:   7%|7         | 112/1563 [03:04<39:24,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.152, avg_tr_loss=2.24][A
+Batch:   7%|7         | 113/1563 [03:04<39:21,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.152, avg_tr_loss=2.24][A
+Batch:   7%|7         | 113/1563 [03:05<39:21,  1.63s/it, train_loss=2.01, train_acc=0.281, avg_tr_acc=0.153, avg_tr_loss=2.23][A
+Batch:   7%|7         | 114/1563 [03:05<39:19,  1.63s/it, train_loss=2.01, train_acc=0.281, avg_tr_acc=0.153, avg_tr_loss=2.23][A
+Batch:   7%|7         | 114/1563 [03:07<39:19,  1.63s/it, train_loss=2.21, train_acc=0.156, avg_tr_acc=0.153, avg_tr_loss=2.23][A
+Batch:   7%|7         | 115/1563 [03:07<39:18,  1.63s/it, train_loss=2.21, train_acc=0.156, avg_tr_acc=0.153, avg_tr_loss=2.23][A
+Batch:   7%|7         | 115/1563 [03:09<39:18,  1.63s/it, train_loss=2.05, train_acc=0.125, avg_tr_acc=0.152, avg_tr_loss=2.23][A
+Batch:   7%|7         | 116/1563 [03:09<39:16,  1.63s/it, train_loss=2.05, train_acc=0.125, avg_tr_acc=0.152, avg_tr_loss=2.23][A
+Batch:   7%|7         | 116/1563 [03:10<39:16,  1.63s/it, train_loss=2.17, train_acc=0.281, avg_tr_acc=0.154, avg_tr_loss=2.23][A
+Batch:   7%|7         | 117/1563 [03:10<39:15,  1.63s/it, train_loss=2.17, train_acc=0.281, avg_tr_acc=0.154, avg_tr_loss=2.23][A
+Batch:   7%|7         | 117/1563 [03:12<39:15,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.154, avg_tr_loss=2.23] [A
+Batch:   8%|7         | 118/1563 [03:12<39:14,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.154, avg_tr_loss=2.23][A
+Batch:   8%|7         | 118/1563 [03:13<39:14,  1.63s/it, train_loss=2.24, train_acc=0.125, avg_tr_acc=0.154, avg_tr_loss=2.23][A
+Batch:   8%|7         | 119/1563 [03:13<39:12,  1.63s/it, train_loss=2.24, train_acc=0.125, avg_tr_acc=0.154, avg_tr_loss=2.23][A
+Batch:   8%|7         | 119/1563 [03:15<39:12,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.155, avg_tr_loss=2.23] [A
+Batch:   8%|7         | 120/1563 [03:15<39:11,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.155, avg_tr_loss=2.23][A
+Batch:   8%|7         | 120/1563 [03:17<39:11,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.156, avg_tr_loss=2.23][A
+Batch:   8%|7         | 121/1563 [03:17<39:09,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.156, avg_tr_loss=2.23][A
+Batch:   8%|7         | 121/1563 [03:18<39:09,  1.63s/it, train_loss=2.1, train_acc=0.219, avg_tr_acc=0.157, avg_tr_loss=2.23] [A
+Batch:   8%|7         | 122/1563 [03:18<39:08,  1.63s/it, train_loss=2.1, train_acc=0.219, avg_tr_acc=0.157, avg_tr_loss=2.23][A
+Batch:   8%|7         | 122/1563 [03:20<39:08,  1.63s/it, train_loss=2.05, train_acc=0.156, avg_tr_acc=0.157, avg_tr_loss=2.22][A
+Batch:   8%|7         | 123/1563 [03:20<39:07,  1.63s/it, train_loss=2.05, train_acc=0.156, avg_tr_acc=0.157, avg_tr_loss=2.22][A
+Batch:   8%|7         | 123/1563 [03:22<39:07,  1.63s/it, train_loss=2.07, train_acc=0.281, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|7         | 124/1563 [03:22<39:04,  1.63s/it, train_loss=2.07, train_acc=0.281, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|7         | 124/1563 [03:23<39:04,  1.63s/it, train_loss=2.1, train_acc=0.125, avg_tr_acc=0.158, avg_tr_loss=2.22] [A
+Batch:   8%|7         | 125/1563 [03:23<39:03,  1.63s/it, train_loss=2.1, train_acc=0.125, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|7         | 125/1563 [03:25<39:03,  1.63s/it, train_loss=2.02, train_acc=0.188, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|8         | 126/1563 [03:25<39:01,  1.63s/it, train_loss=2.02, train_acc=0.188, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|8         | 126/1563 [03:27<39:01,  1.63s/it, train_loss=2.08, train_acc=0.219, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|8         | 127/1563 [03:27<38:59,  1.63s/it, train_loss=2.08, train_acc=0.219, avg_tr_acc=0.158, avg_tr_loss=2.22][A
+Batch:   8%|8         | 127/1563 [03:28<38:59,  1.63s/it, train_loss=2.14, train_acc=0.312, avg_tr_acc=0.159, avg_tr_loss=2.22][A
+Batch:   8%|8         | 128/1563 [03:28<38:58,  1.63s/it, train_loss=2.14, train_acc=0.312, avg_tr_acc=0.159, avg_tr_loss=2.22][A
+Batch:   8%|8         | 128/1563 [03:30<38:58,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.16, avg_tr_loss=2.22]  [A
+Batch:   8%|8         | 129/1563 [03:30<38:56,  1.63s/it, train_loss=2.11, train_acc=0.25, avg_tr_acc=0.16, avg_tr_loss=2.22][A
+Batch:   8%|8         | 129/1563 [03:31<38:56,  1.63s/it, train_loss=2.22, train_acc=0.156, avg_tr_acc=0.16, avg_tr_loss=2.22][A
+Batch:   8%|8         | 130/1563 [03:31<38:54,  1.63s/it, train_loss=2.22, train_acc=0.156, avg_tr_acc=0.16, avg_tr_loss=2.22][A
+Batch:   8%|8         | 130/1563 [03:33<38:54,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.161, avg_tr_loss=2.22][A
+Batch:   8%|8         | 131/1563 [03:33<38:53,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.161, avg_tr_loss=2.22][A
+Batch:   8%|8         | 131/1563 [03:35<38:53,  1.63s/it, train_loss=2.06, train_acc=0.156, avg_tr_acc=0.161, avg_tr_loss=2.22][A
+Batch:   8%|8         | 132/1563 [03:35<38:51,  1.63s/it, train_loss=2.06, train_acc=0.156, avg_tr_acc=0.161, avg_tr_loss=2.22][A
+Batch:   8%|8         | 132/1563 [03:36<38:51,  1.63s/it, train_loss=2.13, train_acc=0.125, avg_tr_acc=0.16, avg_tr_loss=2.21] [A
+Batch:   9%|8         | 133/1563 [03:36<38:49,  1.63s/it, train_loss=2.13, train_acc=0.125, avg_tr_acc=0.16, avg_tr_loss=2.21][A
+Batch:   9%|8         | 133/1563 [03:38<38:49,  1.63s/it, train_loss=1.86, train_acc=0.406, avg_tr_acc=0.162, avg_tr_loss=2.21][A
+Batch:   9%|8         | 134/1563 [03:38<38:47,  1.63s/it, train_loss=1.86, train_acc=0.406, avg_tr_acc=0.162, avg_tr_loss=2.21][A
+Batch:   9%|8         | 134/1563 [03:40<38:47,  1.63s/it, train_loss=1.93, train_acc=0.344, avg_tr_acc=0.163, avg_tr_loss=2.21][A
+Batch:   9%|8         | 135/1563 [03:40<38:45,  1.63s/it, train_loss=1.93, train_acc=0.344, avg_tr_acc=0.163, avg_tr_loss=2.21][A
+Batch:   9%|8         | 135/1563 [03:41<38:45,  1.63s/it, train_loss=2.04, train_acc=0.188, avg_tr_acc=0.164, avg_tr_loss=2.21][A
+Batch:   9%|8         | 136/1563 [03:41<38:44,  1.63s/it, train_loss=2.04, train_acc=0.188, avg_tr_acc=0.164, avg_tr_loss=2.21][A
+Batch:   9%|8         | 136/1563 [03:43<38:44,  1.63s/it, train_loss=2.08, train_acc=0.188, avg_tr_acc=0.164, avg_tr_loss=2.21][A
+Batch:   9%|8         | 137/1563 [03:43<38:42,  1.63s/it, train_loss=2.08, train_acc=0.188, avg_tr_acc=0.164, avg_tr_loss=2.21][A
+Batch:   9%|8         | 137/1563 [03:44<38:42,  1.63s/it, train_loss=1.96, train_acc=0.344, avg_tr_acc=0.165, avg_tr_loss=2.21][A
+Batch:   9%|8         | 138/1563 [03:44<38:40,  1.63s/it, train_loss=1.96, train_acc=0.344, avg_tr_acc=0.165, avg_tr_loss=2.21][A
+Batch:   9%|8         | 138/1563 [03:46<38:40,  1.63s/it, train_loss=2.16, train_acc=0.188, avg_tr_acc=0.165, avg_tr_loss=2.21][A
+Batch:   9%|8         | 139/1563 [03:46<38:39,  1.63s/it, train_loss=2.16, train_acc=0.188, avg_tr_acc=0.165, avg_tr_loss=2.21][A
+Batch:   9%|8         | 139/1563 [03:48<38:39,  1.63s/it, train_loss=1.98, train_acc=0.25, avg_tr_acc=0.166, avg_tr_loss=2.2]  [A
+Batch:   9%|8         | 140/1563 [03:48<38:38,  1.63s/it, train_loss=1.98, train_acc=0.25, avg_tr_acc=0.166, avg_tr_loss=2.2][A
+Batch:   9%|8         | 140/1563 [03:49<38:38,  1.63s/it, train_loss=1.87, train_acc=0.312, avg_tr_acc=0.167, avg_tr_loss=2.2][A
+Batch:   9%|9         | 141/1563 [03:49<38:36,  1.63s/it, train_loss=1.87, train_acc=0.312, avg_tr_acc=0.167, avg_tr_loss=2.2][A
+Batch:   9%|9         | 141/1563 [03:51<38:36,  1.63s/it, train_loss=2.12, train_acc=0.188, avg_tr_acc=0.167, avg_tr_loss=2.2][A
+Batch:   9%|9         | 142/1563 [03:51<38:36,  1.63s/it, train_loss=2.12, train_acc=0.188, avg_tr_acc=0.167, avg_tr_loss=2.2][A
+Batch:   9%|9         | 142/1563 [03:53<38:36,  1.63s/it, train_loss=1.84, train_acc=0.281, avg_tr_acc=0.168, avg_tr_loss=2.2][A
+Batch:   9%|9         | 143/1563 [03:53<38:34,  1.63s/it, train_loss=1.84, train_acc=0.281, avg_tr_acc=0.168, avg_tr_loss=2.2][A
+Batch:   9%|9         | 143/1563 [03:54<38:34,  1.63s/it, train_loss=2.1, train_acc=0.344, avg_tr_acc=0.169, avg_tr_loss=2.2] [A
+Batch:   9%|9         | 144/1563 [03:54<38:31,  1.63s/it, train_loss=2.1, train_acc=0.344, avg_tr_acc=0.169, avg_tr_loss=2.2][A
+Batch:   9%|9         | 144/1563 [03:56<38:31,  1.63s/it, train_loss=2.06, train_acc=0.0938, avg_tr_acc=0.169, avg_tr_loss=2.2][A
+Batch:   9%|9         | 145/1563 [03:56<38:30,  1.63s/it, train_loss=2.06, train_acc=0.0938, avg_tr_acc=0.169, avg_tr_loss=2.2][A
+Batch:   9%|9         | 145/1563 [03:57<38:30,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.169, avg_tr_loss=2.2]  [A
+Batch:   9%|9         | 146/1563 [03:57<38:28,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.169, avg_tr_loss=2.2][A
+Batch:   9%|9         | 146/1563 [03:59<38:28,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:   9%|9         | 147/1563 [03:59<38:26,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:   9%|9         | 147/1563 [04:01<38:26,  1.63s/it, train_loss=1.98, train_acc=0.156, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:   9%|9         | 148/1563 [04:01<38:25,  1.63s/it, train_loss=1.98, train_acc=0.156, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:   9%|9         | 148/1563 [04:02<38:25,  1.63s/it, train_loss=2.14, train_acc=0.25, avg_tr_acc=0.17, avg_tr_loss=2.19] [A
+Batch:  10%|9         | 149/1563 [04:02<38:24,  1.63s/it, train_loss=2.14, train_acc=0.25, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:  10%|9         | 149/1563 [04:04<38:24,  1.63s/it, train_loss=1.87, train_acc=0.219, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:  10%|9         | 150/1563 [04:04<38:22,  1.63s/it, train_loss=1.87, train_acc=0.219, avg_tr_acc=0.17, avg_tr_loss=2.19][A
+Batch:  10%|9         | 150/1563 [04:06<38:22,  1.63s/it, train_loss=2.2, train_acc=0.219, avg_tr_acc=0.171, avg_tr_loss=2.19][A
+Batch:  10%|9         | 151/1563 [04:06<38:19,  1.63s/it, train_loss=2.2, train_acc=0.219, avg_tr_acc=0.171, avg_tr_loss=2.19][A
+Batch:  10%|9         | 151/1563 [04:07<38:19,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 152/1563 [04:07<38:18,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 152/1563 [04:09<38:18,  1.63s/it, train_loss=2.17, train_acc=0.219, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 153/1563 [04:09<38:16,  1.63s/it, train_loss=2.17, train_acc=0.219, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 153/1563 [04:10<38:16,  1.63s/it, train_loss=2.08, train_acc=0.0938, avg_tr_acc=0.171, avg_tr_loss=2.19][A
+Batch:  10%|9         | 154/1563 [04:10<38:14,  1.63s/it, train_loss=2.08, train_acc=0.0938, avg_tr_acc=0.171, avg_tr_loss=2.19][A
+Batch:  10%|9         | 154/1563 [04:12<38:14,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.172, avg_tr_loss=2.19] [A
+Batch:  10%|9         | 155/1563 [04:12<38:13,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 155/1563 [04:14<38:13,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 156/1563 [04:14<38:11,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.172, avg_tr_loss=2.19][A
+Batch:  10%|9         | 156/1563 [04:15<38:11,  1.63s/it, train_loss=1.97, train_acc=0.312, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 157/1563 [04:15<38:10,  1.63s/it, train_loss=1.97, train_acc=0.312, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 157/1563 [04:17<38:10,  1.63s/it, train_loss=1.85, train_acc=0.25, avg_tr_acc=0.174, avg_tr_loss=2.18] [A
+Batch:  10%|#         | 158/1563 [04:17<38:08,  1.63s/it, train_loss=1.85, train_acc=0.25, avg_tr_acc=0.174, avg_tr_loss=2.18][A
+Batch:  10%|#         | 158/1563 [04:19<38:08,  1.63s/it, train_loss=2.1, train_acc=0.156, avg_tr_acc=0.174, avg_tr_loss=2.18][A
+Batch:  10%|#         | 159/1563 [04:19<38:06,  1.63s/it, train_loss=2.1, train_acc=0.156, avg_tr_acc=0.174, avg_tr_loss=2.18][A
+Batch:  10%|#         | 159/1563 [04:20<38:06,  1.63s/it, train_loss=2.18, train_acc=0.125, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 160/1563 [04:20<38:05,  1.63s/it, train_loss=2.18, train_acc=0.125, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 160/1563 [04:22<38:05,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.174, avg_tr_loss=2.18][A
+Batch:  10%|#         | 161/1563 [04:22<38:03,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.174, avg_tr_loss=2.18][A
+Batch:  10%|#         | 161/1563 [04:24<38:03,  1.63s/it, train_loss=2.19, train_acc=0.0938, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 162/1563 [04:24<38:01,  1.63s/it, train_loss=2.19, train_acc=0.0938, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 162/1563 [04:25<38:01,  1.63s/it, train_loss=2.04, train_acc=0.219, avg_tr_acc=0.173, avg_tr_loss=2.18] [A
+Batch:  10%|#         | 163/1563 [04:25<38:00,  1.63s/it, train_loss=2.04, train_acc=0.219, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 163/1563 [04:27<38:00,  1.63s/it, train_loss=2.4, train_acc=0.125, avg_tr_acc=0.173, avg_tr_loss=2.18] [A
+Batch:  10%|#         | 164/1563 [04:27<37:59,  1.63s/it, train_loss=2.4, train_acc=0.125, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  10%|#         | 164/1563 [04:28<37:59,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  11%|#         | 165/1563 [04:28<37:57,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.173, avg_tr_loss=2.18][A
+Batch:  11%|#         | 165/1563 [04:30<37:57,  1.63s/it, train_loss=1.98, train_acc=0.375, avg_tr_acc=0.175, avg_tr_loss=2.18][A
+Batch:  11%|#         | 166/1563 [04:30<37:55,  1.63s/it, train_loss=1.98, train_acc=0.375, avg_tr_acc=0.175, avg_tr_loss=2.18][A
+Batch:  11%|#         | 166/1563 [04:32<37:55,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.175, avg_tr_loss=2.18][A
+Batch:  11%|#         | 167/1563 [04:32<37:54,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.175, avg_tr_loss=2.18][A
+Batch:  11%|#         | 167/1563 [04:33<37:54,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 168/1563 [04:33<37:54,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 168/1563 [04:35<37:54,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.176, avg_tr_loss=2.18] [A
+Batch:  11%|#         | 169/1563 [04:35<37:52,  1.63s/it, train_loss=2.13, train_acc=0.25, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 169/1563 [04:37<37:52,  1.63s/it, train_loss=2.07, train_acc=0.188, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 170/1563 [04:37<37:49,  1.63s/it, train_loss=2.07, train_acc=0.188, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 170/1563 [04:38<37:49,  1.63s/it, train_loss=2.15, train_acc=0.219, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 171/1563 [04:38<37:47,  1.63s/it, train_loss=2.15, train_acc=0.219, avg_tr_acc=0.176, avg_tr_loss=2.18][A
+Batch:  11%|#         | 171/1563 [04:40<37:47,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.177, avg_tr_loss=2.18][A
+Batch:  11%|#1        | 172/1563 [04:40<37:46,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.177, avg_tr_loss=2.18][A
+Batch:  11%|#1        | 172/1563 [04:41<37:46,  1.63s/it, train_loss=1.95, train_acc=0.281, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 173/1563 [04:41<37:44,  1.63s/it, train_loss=1.95, train_acc=0.281, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 173/1563 [04:43<37:44,  1.63s/it, train_loss=2.08, train_acc=0.156, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 174/1563 [04:43<37:42,  1.63s/it, train_loss=2.08, train_acc=0.156, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 174/1563 [04:45<37:42,  1.63s/it, train_loss=1.99, train_acc=0.125, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 175/1563 [04:45<37:40,  1.63s/it, train_loss=1.99, train_acc=0.125, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 175/1563 [04:46<37:40,  1.63s/it, train_loss=1.99, train_acc=0.219, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 176/1563 [04:46<37:39,  1.63s/it, train_loss=1.99, train_acc=0.219, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 176/1563 [04:48<37:39,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.177, avg_tr_loss=2.17] [A
+Batch:  11%|#1        | 177/1563 [04:48<37:37,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 177/1563 [04:50<37:37,  1.63s/it, train_loss=2.09, train_acc=0.188, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 178/1563 [04:50<37:35,  1.63s/it, train_loss=2.09, train_acc=0.188, avg_tr_acc=0.177, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 178/1563 [04:51<37:35,  1.63s/it, train_loss=1.94, train_acc=0.312, avg_tr_acc=0.178, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 179/1563 [04:51<37:34,  1.63s/it, train_loss=1.94, train_acc=0.312, avg_tr_acc=0.178, avg_tr_loss=2.17][A
+Batch:  11%|#1        | 179/1563 [04:53<37:34,  1.63s/it, train_loss=2, train_acc=0.188, avg_tr_acc=0.178, avg_tr_loss=2.17]   [A
+Batch:  12%|#1        | 180/1563 [04:53<37:34,  1.63s/it, train_loss=2, train_acc=0.188, avg_tr_acc=0.178, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 180/1563 [04:54<37:34,  1.63s/it, train_loss=1.94, train_acc=0.125, avg_tr_acc=0.178, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 181/1563 [04:54<37:32,  1.63s/it, train_loss=1.94, train_acc=0.125, avg_tr_acc=0.178, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 181/1563 [04:56<37:32,  1.63s/it, train_loss=2.13, train_acc=0.281, avg_tr_acc=0.179, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 182/1563 [04:56<37:29,  1.63s/it, train_loss=2.13, train_acc=0.281, avg_tr_acc=0.179, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 182/1563 [04:58<37:29,  1.63s/it, train_loss=1.9, train_acc=0.219, avg_tr_acc=0.179, avg_tr_loss=2.17] [A
+Batch:  12%|#1        | 183/1563 [04:58<37:28,  1.63s/it, train_loss=1.9, train_acc=0.219, avg_tr_acc=0.179, avg_tr_loss=2.17][A
+Batch:  12%|#1        | 183/1563 [04:59<37:28,  1.63s/it, train_loss=1.88, train_acc=0.375, avg_tr_acc=0.18, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 184/1563 [04:59<37:26,  1.63s/it, train_loss=1.88, train_acc=0.375, avg_tr_acc=0.18, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 184/1563 [05:01<37:26,  1.63s/it, train_loss=1.93, train_acc=0.25, avg_tr_acc=0.18, avg_tr_loss=2.16] [A
+Batch:  12%|#1        | 185/1563 [05:01<37:25,  1.63s/it, train_loss=1.93, train_acc=0.25, avg_tr_acc=0.18, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 185/1563 [05:03<37:25,  1.63s/it, train_loss=1.91, train_acc=0.25, avg_tr_acc=0.181, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 186/1563 [05:03<37:23,  1.63s/it, train_loss=1.91, train_acc=0.25, avg_tr_acc=0.181, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 186/1563 [05:04<37:23,  1.63s/it, train_loss=2, train_acc=0.281, avg_tr_acc=0.181, avg_tr_loss=2.16]  [A
+Batch:  12%|#1        | 187/1563 [05:04<37:21,  1.63s/it, train_loss=2, train_acc=0.281, avg_tr_acc=0.181, avg_tr_loss=2.16][A
+Batch:  12%|#1        | 187/1563 [05:06<37:21,  1.63s/it, train_loss=2.03, train_acc=0.25, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 188/1563 [05:06<37:19,  1.63s/it, train_loss=2.03, train_acc=0.25, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 188/1563 [05:08<37:19,  1.63s/it, train_loss=1.88, train_acc=0.25, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 189/1563 [05:08<37:18,  1.63s/it, train_loss=1.88, train_acc=0.25, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 189/1563 [05:09<37:18,  1.63s/it, train_loss=2.18, train_acc=0.188, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 190/1563 [05:09<37:16,  1.63s/it, train_loss=2.18, train_acc=0.188, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 190/1563 [05:11<37:16,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.183, avg_tr_loss=2.16] [A
+Batch:  12%|#2        | 191/1563 [05:11<37:14,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 191/1563 [05:12<37:14,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 192/1563 [05:12<37:12,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 192/1563 [05:14<37:12,  1.63s/it, train_loss=2.3, train_acc=0.125, avg_tr_acc=0.182, avg_tr_loss=2.16] [A
+Batch:  12%|#2        | 193/1563 [05:14<37:10,  1.63s/it, train_loss=2.3, train_acc=0.125, avg_tr_acc=0.182, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 193/1563 [05:16<37:10,  1.63s/it, train_loss=2, train_acc=0.188, avg_tr_acc=0.183, avg_tr_loss=2.16]  [A
+Batch:  12%|#2        | 194/1563 [05:16<37:10,  1.63s/it, train_loss=2, train_acc=0.188, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 194/1563 [05:17<37:10,  1.63s/it, train_loss=1.87, train_acc=0.281, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 195/1563 [05:17<37:08,  1.63s/it, train_loss=1.87, train_acc=0.281, avg_tr_acc=0.183, avg_tr_loss=2.16][A
+Batch:  12%|#2        | 195/1563 [05:19<37:08,  1.63s/it, train_loss=2, train_acc=0.25, avg_tr_acc=0.183, avg_tr_loss=2.15]    [A
+Batch:  13%|#2        | 196/1563 [05:19<37:06,  1.63s/it, train_loss=2, train_acc=0.25, avg_tr_acc=0.183, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 196/1563 [05:21<37:06,  1.63s/it, train_loss=2.11, train_acc=0.125, avg_tr_acc=0.183, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 197/1563 [05:21<37:04,  1.63s/it, train_loss=2.11, train_acc=0.125, avg_tr_acc=0.183, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 197/1563 [05:22<37:04,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.183, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 198/1563 [05:22<37:03,  1.63s/it, train_loss=2.03, train_acc=0.219, avg_tr_acc=0.183, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 198/1563 [05:24<37:03,  1.63s/it, train_loss=1.86, train_acc=0.312, avg_tr_acc=0.184, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 199/1563 [05:24<37:01,  1.63s/it, train_loss=1.86, train_acc=0.312, avg_tr_acc=0.184, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 199/1563 [05:25<37:01,  1.63s/it, train_loss=1.85, train_acc=0.406, avg_tr_acc=0.185, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 200/1563 [05:25<36:59,  1.63s/it, train_loss=1.85, train_acc=0.406, avg_tr_acc=0.185, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 200/1563 [05:27<36:59,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.186, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 201/1563 [05:27<36:58,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.186, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 201/1563 [05:29<36:58,  1.63s/it, train_loss=1.9, train_acc=0.344, avg_tr_acc=0.186, avg_tr_loss=2.15] [A
+Batch:  13%|#2        | 202/1563 [05:29<36:56,  1.63s/it, train_loss=1.9, train_acc=0.344, avg_tr_acc=0.186, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 202/1563 [05:30<36:56,  1.63s/it, train_loss=2.14, train_acc=0.344, avg_tr_acc=0.187, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 203/1563 [05:30<36:55,  1.63s/it, train_loss=2.14, train_acc=0.344, avg_tr_acc=0.187, avg_tr_loss=2.15][A
+Batch:  13%|#2        | 203/1563 [05:32<36:55,  1.63s/it, train_loss=1.71, train_acc=0.312, avg_tr_acc=0.188, avg_tr_loss=2.15][A
+Batch:  13%|#3        | 204/1563 [05:32<36:53,  1.63s/it, train_loss=1.71, train_acc=0.312, avg_tr_acc=0.188, avg_tr_loss=2.15][A
+Batch:  13%|#3        | 204/1563 [05:34<36:53,  1.63s/it, train_loss=1.8, train_acc=0.469, avg_tr_acc=0.189, avg_tr_loss=2.14] [A
+Batch:  13%|#3        | 205/1563 [05:34<36:51,  1.63s/it, train_loss=1.8, train_acc=0.469, avg_tr_acc=0.189, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 205/1563 [05:35<36:51,  1.63s/it, train_loss=1.87, train_acc=0.281, avg_tr_acc=0.19, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 206/1563 [05:35<36:49,  1.63s/it, train_loss=1.87, train_acc=0.281, avg_tr_acc=0.19, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 206/1563 [05:37<36:49,  1.63s/it, train_loss=1.53, train_acc=0.375, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 207/1563 [05:37<36:48,  1.63s/it, train_loss=1.53, train_acc=0.375, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 207/1563 [05:38<36:48,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 208/1563 [05:38<36:46,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 208/1563 [05:40<36:46,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.192, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 209/1563 [05:40<36:44,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.192, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 209/1563 [05:42<36:44,  1.63s/it, train_loss=2.11, train_acc=0.125, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 210/1563 [05:42<36:43,  1.63s/it, train_loss=2.11, train_acc=0.125, avg_tr_acc=0.191, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 210/1563 [05:43<36:43,  1.63s/it, train_loss=2.11, train_acc=0.344, avg_tr_acc=0.192, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 211/1563 [05:43<36:41,  1.63s/it, train_loss=2.11, train_acc=0.344, avg_tr_acc=0.192, avg_tr_loss=2.14][A
+Batch:  13%|#3        | 211/1563 [05:45<36:41,  1.63s/it, train_loss=1.81, train_acc=0.375, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 212/1563 [05:45<36:40,  1.63s/it, train_loss=1.81, train_acc=0.375, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 212/1563 [05:47<36:40,  1.63s/it, train_loss=2.14, train_acc=0.312, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 213/1563 [05:47<36:38,  1.63s/it, train_loss=2.14, train_acc=0.312, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 213/1563 [05:48<36:38,  1.63s/it, train_loss=2.25, train_acc=0.188, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 214/1563 [05:48<36:36,  1.63s/it, train_loss=2.25, train_acc=0.188, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 214/1563 [05:50<36:36,  1.63s/it, train_loss=2.06, train_acc=0.125, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 215/1563 [05:50<36:35,  1.63s/it, train_loss=2.06, train_acc=0.125, avg_tr_acc=0.193, avg_tr_loss=2.14][A
+Batch:  14%|#3        | 215/1563 [05:51<36:35,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.193, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 216/1563 [05:51<36:34,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.193, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 216/1563 [05:53<36:34,  1.63s/it, train_loss=2.06, train_acc=0.344, avg_tr_acc=0.194, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 217/1563 [05:53<36:32,  1.63s/it, train_loss=2.06, train_acc=0.344, avg_tr_acc=0.194, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 217/1563 [05:55<36:32,  1.63s/it, train_loss=1.86, train_acc=0.281, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 218/1563 [05:55<36:30,  1.63s/it, train_loss=1.86, train_acc=0.281, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#3        | 218/1563 [05:56<36:30,  1.63s/it, train_loss=1.73, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 219/1563 [05:56<36:28,  1.63s/it, train_loss=1.73, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 219/1563 [05:58<36:28,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 220/1563 [05:58<36:27,  1.63s/it, train_loss=2.18, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 220/1563 [06:00<36:27,  1.63s/it, train_loss=2.11, train_acc=0.156, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 221/1563 [06:00<36:25,  1.63s/it, train_loss=2.11, train_acc=0.156, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 221/1563 [06:01<36:25,  1.63s/it, train_loss=1.87, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 222/1563 [06:01<36:23,  1.63s/it, train_loss=1.87, train_acc=0.219, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 222/1563 [06:03<36:23,  1.63s/it, train_loss=2.07, train_acc=0.25, avg_tr_acc=0.195, avg_tr_loss=2.13] [A
+Batch:  14%|#4        | 223/1563 [06:03<36:21,  1.63s/it, train_loss=2.07, train_acc=0.25, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 223/1563 [06:05<36:21,  1.63s/it, train_loss=1.75, train_acc=0.281, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 224/1563 [06:05<36:20,  1.63s/it, train_loss=1.75, train_acc=0.281, avg_tr_acc=0.195, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 224/1563 [06:06<36:20,  1.63s/it, train_loss=1.84, train_acc=0.344, avg_tr_acc=0.196, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 225/1563 [06:06<36:19,  1.63s/it, train_loss=1.84, train_acc=0.344, avg_tr_acc=0.196, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 225/1563 [06:08<36:19,  1.63s/it, train_loss=1.96, train_acc=0.312, avg_tr_acc=0.196, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 226/1563 [06:08<36:18,  1.63s/it, train_loss=1.96, train_acc=0.312, avg_tr_acc=0.196, avg_tr_loss=2.13][A
+Batch:  14%|#4        | 226/1563 [06:09<36:18,  1.63s/it, train_loss=1.84, train_acc=0.312, avg_tr_acc=0.197, avg_tr_loss=2.13][A
+Batch:  15%|#4        | 227/1563 [06:09<36:16,  1.63s/it, train_loss=1.84, train_acc=0.312, avg_tr_acc=0.197, avg_tr_loss=2.13][A
+Batch:  15%|#4        | 227/1563 [06:11<36:16,  1.63s/it, train_loss=1.76, train_acc=0.375, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 228/1563 [06:11<36:14,  1.63s/it, train_loss=1.76, train_acc=0.375, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 228/1563 [06:13<36:14,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 229/1563 [06:13<36:13,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 229/1563 [06:14<36:13,  1.63s/it, train_loss=1.97, train_acc=0.281, avg_tr_acc=0.199, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 230/1563 [06:14<36:11,  1.63s/it, train_loss=1.97, train_acc=0.281, avg_tr_acc=0.199, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 230/1563 [06:16<36:11,  1.63s/it, train_loss=2.27, train_acc=0.125, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 231/1563 [06:16<36:15,  1.63s/it, train_loss=2.27, train_acc=0.125, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 231/1563 [06:18<36:15,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.199, avg_tr_loss=2.12] [A
+Batch:  15%|#4        | 232/1563 [06:18<36:12,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.199, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 232/1563 [06:19<36:12,  1.63s/it, train_loss=2.16, train_acc=0.156, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 233/1563 [06:19<36:09,  1.63s/it, train_loss=2.16, train_acc=0.156, avg_tr_acc=0.198, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 233/1563 [06:21<36:09,  1.63s/it, train_loss=1.67, train_acc=0.344, avg_tr_acc=0.199, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 234/1563 [06:21<36:07,  1.63s/it, train_loss=1.67, train_acc=0.344, avg_tr_acc=0.199, avg_tr_loss=2.12][A
+Batch:  15%|#4        | 234/1563 [06:22<36:07,  1.63s/it, train_loss=2.05, train_acc=0.344, avg_tr_acc=0.2, avg_tr_loss=2.12]  [A
+Batch:  15%|#5        | 235/1563 [06:22<36:05,  1.63s/it, train_loss=2.05, train_acc=0.344, avg_tr_acc=0.2, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 235/1563 [06:24<36:05,  1.63s/it, train_loss=1.91, train_acc=0.344, avg_tr_acc=0.2, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 236/1563 [06:24<36:03,  1.63s/it, train_loss=1.91, train_acc=0.344, avg_tr_acc=0.2, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 236/1563 [06:26<36:03,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.201, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 237/1563 [06:26<36:00,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.201, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 237/1563 [06:27<36:00,  1.63s/it, train_loss=1.94, train_acc=0.219, avg_tr_acc=0.201, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 238/1563 [06:27<35:58,  1.63s/it, train_loss=1.94, train_acc=0.219, avg_tr_acc=0.201, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 238/1563 [06:29<35:58,  1.63s/it, train_loss=1.99, train_acc=0.344, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 239/1563 [06:29<35:56,  1.63s/it, train_loss=1.99, train_acc=0.344, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 239/1563 [06:31<35:56,  1.63s/it, train_loss=2.14, train_acc=0.219, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 240/1563 [06:31<35:55,  1.63s/it, train_loss=2.14, train_acc=0.219, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 240/1563 [06:32<35:55,  1.63s/it, train_loss=2.29, train_acc=0.25, avg_tr_acc=0.202, avg_tr_loss=2.12] [A
+Batch:  15%|#5        | 241/1563 [06:32<35:53,  1.63s/it, train_loss=2.29, train_acc=0.25, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 241/1563 [06:34<35:53,  1.63s/it, train_loss=1.89, train_acc=0.281, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 242/1563 [06:34<35:51,  1.63s/it, train_loss=1.89, train_acc=0.281, avg_tr_acc=0.202, avg_tr_loss=2.12][A
+Batch:  15%|#5        | 242/1563 [06:35<35:51,  1.63s/it, train_loss=1.74, train_acc=0.406, avg_tr_acc=0.203, avg_tr_loss=2.12][A
+Batch:  16%|#5        | 243/1563 [06:35<35:50,  1.63s/it, train_loss=1.74, train_acc=0.406, avg_tr_acc=0.203, avg_tr_loss=2.12][A
+Batch:  16%|#5        | 243/1563 [06:37<35:50,  1.63s/it, train_loss=1.99, train_acc=0.344, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 244/1563 [06:37<35:48,  1.63s/it, train_loss=1.99, train_acc=0.344, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 244/1563 [06:39<35:48,  1.63s/it, train_loss=1.97, train_acc=0.219, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 245/1563 [06:39<35:46,  1.63s/it, train_loss=1.97, train_acc=0.219, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 245/1563 [06:40<35:46,  1.63s/it, train_loss=2.11, train_acc=0.281, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 246/1563 [06:40<35:44,  1.63s/it, train_loss=2.11, train_acc=0.281, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 246/1563 [06:42<35:44,  1.63s/it, train_loss=1.84, train_acc=0.25, avg_tr_acc=0.204, avg_tr_loss=2.11] [A
+Batch:  16%|#5        | 247/1563 [06:42<35:43,  1.63s/it, train_loss=1.84, train_acc=0.25, avg_tr_acc=0.204, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 247/1563 [06:44<35:43,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.205, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 248/1563 [06:44<35:41,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.205, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 248/1563 [06:45<35:41,  1.63s/it, train_loss=2.07, train_acc=0.281, avg_tr_acc=0.205, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 249/1563 [06:45<35:39,  1.63s/it, train_loss=2.07, train_acc=0.281, avg_tr_acc=0.205, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 249/1563 [06:47<35:39,  1.63s/it, train_loss=1.97, train_acc=0.25, avg_tr_acc=0.205, avg_tr_loss=2.11] [A
+Batch:  16%|#5        | 250/1563 [06:47<35:38,  1.63s/it, train_loss=1.97, train_acc=0.25, avg_tr_acc=0.205, avg_tr_loss=2.11][A
+Batch:  16%|#5        | 250/1563 [06:48<35:38,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 251/1563 [06:48<35:36,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 251/1563 [06:50<35:36,  1.63s/it, train_loss=1.93, train_acc=0.25, avg_tr_acc=0.206, avg_tr_loss=2.11] [A
+Batch:  16%|#6        | 252/1563 [06:50<35:35,  1.63s/it, train_loss=1.93, train_acc=0.25, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 252/1563 [06:52<35:35,  1.63s/it, train_loss=1.91, train_acc=0.281, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 253/1563 [06:52<35:33,  1.63s/it, train_loss=1.91, train_acc=0.281, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 253/1563 [06:53<35:33,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 254/1563 [06:53<35:32,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.206, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 254/1563 [06:55<35:32,  1.63s/it, train_loss=2.08, train_acc=0.312, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 255/1563 [06:55<35:30,  1.63s/it, train_loss=2.08, train_acc=0.312, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 255/1563 [06:57<35:30,  1.63s/it, train_loss=1.88, train_acc=0.188, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 256/1563 [06:57<35:28,  1.63s/it, train_loss=1.88, train_acc=0.188, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 256/1563 [06:58<35:28,  1.63s/it, train_loss=1.99, train_acc=0.188, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 257/1563 [06:58<35:26,  1.63s/it, train_loss=1.99, train_acc=0.188, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  16%|#6        | 257/1563 [07:00<35:26,  1.63s/it, train_loss=1.94, train_acc=0.281, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  17%|#6        | 258/1563 [07:00<35:25,  1.63s/it, train_loss=1.94, train_acc=0.281, avg_tr_acc=0.207, avg_tr_loss=2.11][A
+Batch:  17%|#6        | 258/1563 [07:02<35:25,  1.63s/it, train_loss=1.69, train_acc=0.406, avg_tr_acc=0.208, avg_tr_loss=2.1] [A
+Batch:  17%|#6        | 259/1563 [07:02<35:23,  1.63s/it, train_loss=1.69, train_acc=0.406, avg_tr_acc=0.208, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 259/1563 [07:03<35:23,  1.63s/it, train_loss=2.25, train_acc=0.219, avg_tr_acc=0.208, avg_tr_loss=2.11][A
+Batch:  17%|#6        | 260/1563 [07:03<35:22,  1.63s/it, train_loss=2.25, train_acc=0.219, avg_tr_acc=0.208, avg_tr_loss=2.11][A
+Batch:  17%|#6        | 260/1563 [07:05<35:22,  1.63s/it, train_loss=1.81, train_acc=0.375, avg_tr_acc=0.208, avg_tr_loss=2.1] [A
+Batch:  17%|#6        | 261/1563 [07:05<35:20,  1.63s/it, train_loss=1.81, train_acc=0.375, avg_tr_acc=0.208, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 261/1563 [07:06<35:20,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.209, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 262/1563 [07:06<35:18,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.209, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 262/1563 [07:08<35:18,  1.63s/it, train_loss=1.97, train_acc=0.375, avg_tr_acc=0.21, avg_tr_loss=2.1] [A
+Batch:  17%|#6        | 263/1563 [07:08<35:17,  1.63s/it, train_loss=1.97, train_acc=0.375, avg_tr_acc=0.21, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 263/1563 [07:10<35:17,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.21, avg_tr_loss=2.1] [A
+Batch:  17%|#6        | 264/1563 [07:10<35:15,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.21, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 264/1563 [07:11<35:15,  1.63s/it, train_loss=1.92, train_acc=0.25, avg_tr_acc=0.21, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 265/1563 [07:11<35:14,  1.63s/it, train_loss=1.92, train_acc=0.25, avg_tr_acc=0.21, avg_tr_loss=2.1][A
+Batch:  17%|#6        | 265/1563 [07:13<35:14,  1.63s/it, train_loss=2.1, train_acc=0.312, avg_tr_acc=0.211, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 266/1563 [07:13<35:13,  1.63s/it, train_loss=2.1, train_acc=0.312, avg_tr_acc=0.211, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 266/1563 [07:15<35:13,  1.63s/it, train_loss=1.72, train_acc=0.406, avg_tr_acc=0.211, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 267/1563 [07:15<35:10,  1.63s/it, train_loss=1.72, train_acc=0.406, avg_tr_acc=0.211, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 267/1563 [07:16<35:10,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 268/1563 [07:16<35:09,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 268/1563 [07:18<35:09,  1.63s/it, train_loss=1.87, train_acc=0.406, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 269/1563 [07:18<35:08,  1.63s/it, train_loss=1.87, train_acc=0.406, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 269/1563 [07:19<35:08,  1.63s/it, train_loss=2.12, train_acc=0.219, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 270/1563 [07:19<35:06,  1.63s/it, train_loss=2.12, train_acc=0.219, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 270/1563 [07:21<35:06,  1.63s/it, train_loss=1.91, train_acc=0.156, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 271/1563 [07:21<35:05,  1.63s/it, train_loss=1.91, train_acc=0.156, avg_tr_acc=0.212, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 271/1563 [07:23<35:05,  1.63s/it, train_loss=1.81, train_acc=0.281, avg_tr_acc=0.213, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 272/1563 [07:23<35:03,  1.63s/it, train_loss=1.81, train_acc=0.281, avg_tr_acc=0.213, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 272/1563 [07:24<35:03,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.213, avg_tr_loss=2.1] [A
+Batch:  17%|#7        | 273/1563 [07:24<35:01,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.213, avg_tr_loss=2.1][A
+Batch:  17%|#7        | 273/1563 [07:26<35:01,  1.63s/it, train_loss=1.94, train_acc=0.281, avg_tr_acc=0.213, avg_tr_loss=2.1][A
+Batch:  18%|#7        | 274/1563 [07:26<34:59,  1.63s/it, train_loss=1.94, train_acc=0.281, avg_tr_acc=0.213, avg_tr_loss=2.1][A
+Batch:  18%|#7        | 274/1563 [07:28<34:59,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 275/1563 [07:28<34:58,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 275/1563 [07:29<34:58,  1.63s/it, train_loss=2.05, train_acc=0.219, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 276/1563 [07:29<34:56,  1.63s/it, train_loss=2.05, train_acc=0.219, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 276/1563 [07:31<34:56,  1.63s/it, train_loss=1.72, train_acc=0.406, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 277/1563 [07:31<34:55,  1.63s/it, train_loss=1.72, train_acc=0.406, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 277/1563 [07:32<34:55,  1.63s/it, train_loss=1.79, train_acc=0.219, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 278/1563 [07:32<34:53,  1.63s/it, train_loss=1.79, train_acc=0.219, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 278/1563 [07:34<34:53,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 279/1563 [07:34<34:52,  1.63s/it, train_loss=2.16, train_acc=0.125, avg_tr_acc=0.213, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 279/1563 [07:36<34:52,  1.63s/it, train_loss=2.15, train_acc=0.375, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 280/1563 [07:36<34:50,  1.63s/it, train_loss=2.15, train_acc=0.375, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 280/1563 [07:37<34:50,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.214, avg_tr_loss=2.09] [A
+Batch:  18%|#7        | 281/1563 [07:37<34:48,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#7        | 281/1563 [07:39<34:48,  1.63s/it, train_loss=1.96, train_acc=0.219, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 282/1563 [07:39<34:47,  1.63s/it, train_loss=1.96, train_acc=0.219, avg_tr_acc=0.214, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 282/1563 [07:41<34:47,  1.63s/it, train_loss=1.79, train_acc=0.469, avg_tr_acc=0.215, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 283/1563 [07:41<34:45,  1.63s/it, train_loss=1.79, train_acc=0.469, avg_tr_acc=0.215, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 283/1563 [07:42<34:45,  1.63s/it, train_loss=2.04, train_acc=0.344, avg_tr_acc=0.216, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 284/1563 [07:42<34:43,  1.63s/it, train_loss=2.04, train_acc=0.344, avg_tr_acc=0.216, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 284/1563 [07:44<34:43,  1.63s/it, train_loss=1.99, train_acc=0.312, avg_tr_acc=0.216, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 285/1563 [07:44<34:41,  1.63s/it, train_loss=1.99, train_acc=0.312, avg_tr_acc=0.216, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 285/1563 [07:46<34:41,  1.63s/it, train_loss=1.61, train_acc=0.438, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 286/1563 [07:46<34:39,  1.63s/it, train_loss=1.61, train_acc=0.438, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 286/1563 [07:47<34:39,  1.63s/it, train_loss=1.88, train_acc=0.188, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 287/1563 [07:47<34:37,  1.63s/it, train_loss=1.88, train_acc=0.188, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 287/1563 [07:49<34:37,  1.63s/it, train_loss=1.79, train_acc=0.469, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 288/1563 [07:49<34:36,  1.63s/it, train_loss=1.79, train_acc=0.469, avg_tr_acc=0.217, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 288/1563 [07:50<34:36,  1.63s/it, train_loss=1.82, train_acc=0.281, avg_tr_acc=0.218, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 289/1563 [07:50<34:34,  1.63s/it, train_loss=1.82, train_acc=0.281, avg_tr_acc=0.218, avg_tr_loss=2.09][A
+Batch:  18%|#8        | 289/1563 [07:52<34:34,  1.63s/it, train_loss=1.91, train_acc=0.406, avg_tr_acc=0.218, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 290/1563 [07:52<34:33,  1.63s/it, train_loss=1.91, train_acc=0.406, avg_tr_acc=0.218, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 290/1563 [07:54<34:33,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 291/1563 [07:54<34:31,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 291/1563 [07:55<34:31,  1.63s/it, train_loss=1.83, train_acc=0.281, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 292/1563 [07:55<34:30,  1.63s/it, train_loss=1.83, train_acc=0.281, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 292/1563 [07:57<34:30,  1.63s/it, train_loss=1.86, train_acc=0.25, avg_tr_acc=0.219, avg_tr_loss=2.08] [A
+Batch:  19%|#8        | 293/1563 [07:57<34:28,  1.63s/it, train_loss=1.86, train_acc=0.25, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 293/1563 [07:59<34:28,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 294/1563 [07:59<34:26,  1.63s/it, train_loss=2.05, train_acc=0.25, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 294/1563 [08:00<34:26,  1.63s/it, train_loss=1.91, train_acc=0.344, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 295/1563 [08:00<34:25,  1.63s/it, train_loss=1.91, train_acc=0.344, avg_tr_acc=0.219, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 295/1563 [08:02<34:25,  1.63s/it, train_loss=1.63, train_acc=0.5, avg_tr_acc=0.22, avg_tr_loss=2.08]   [A
+Batch:  19%|#8        | 296/1563 [08:02<34:23,  1.63s/it, train_loss=1.63, train_acc=0.5, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#8        | 296/1563 [08:03<34:23,  1.63s/it, train_loss=1.99, train_acc=0.188, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 297/1563 [08:03<34:22,  1.63s/it, train_loss=1.99, train_acc=0.188, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 297/1563 [08:05<34:22,  1.63s/it, train_loss=2.23, train_acc=0.219, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 298/1563 [08:05<34:20,  1.63s/it, train_loss=2.23, train_acc=0.219, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 298/1563 [08:07<34:20,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.22, avg_tr_loss=2.08] [A
+Batch:  19%|#9        | 299/1563 [08:07<34:18,  1.63s/it, train_loss=2.04, train_acc=0.25, avg_tr_acc=0.22, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 299/1563 [08:08<34:18,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.221, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 300/1563 [08:08<34:16,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.221, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 300/1563 [08:10<34:16,  1.63s/it, train_loss=1.73, train_acc=0.344, avg_tr_acc=0.221, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 301/1563 [08:10<34:15,  1.63s/it, train_loss=1.73, train_acc=0.344, avg_tr_acc=0.221, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 301/1563 [08:12<34:15,  1.63s/it, train_loss=1.69, train_acc=0.469, avg_tr_acc=0.222, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 302/1563 [08:12<34:13,  1.63s/it, train_loss=1.69, train_acc=0.469, avg_tr_acc=0.222, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 302/1563 [08:13<34:13,  1.63s/it, train_loss=1.82, train_acc=0.344, avg_tr_acc=0.222, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 303/1563 [08:13<34:12,  1.63s/it, train_loss=1.82, train_acc=0.344, avg_tr_acc=0.222, avg_tr_loss=2.08][A
+Batch:  19%|#9        | 303/1563 [08:15<34:12,  1.63s/it, train_loss=1.75, train_acc=0.375, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  19%|#9        | 304/1563 [08:15<34:10,  1.63s/it, train_loss=1.75, train_acc=0.375, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  19%|#9        | 304/1563 [08:16<34:10,  1.63s/it, train_loss=1.65, train_acc=0.438, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 305/1563 [08:16<34:09,  1.63s/it, train_loss=1.65, train_acc=0.438, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 305/1563 [08:18<34:09,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 306/1563 [08:18<34:07,  1.63s/it, train_loss=2.06, train_acc=0.219, avg_tr_acc=0.223, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 306/1563 [08:20<34:07,  1.63s/it, train_loss=2.02, train_acc=0.312, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 307/1563 [08:20<34:05,  1.63s/it, train_loss=2.02, train_acc=0.312, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 307/1563 [08:21<34:05,  1.63s/it, train_loss=1.92, train_acc=0.219, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 308/1563 [08:21<34:03,  1.63s/it, train_loss=1.92, train_acc=0.219, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 308/1563 [08:23<34:03,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 309/1563 [08:23<34:01,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 309/1563 [08:25<34:01,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.224, avg_tr_loss=2.07] [A
+Batch:  20%|#9        | 310/1563 [08:25<34:00,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 310/1563 [08:26<34:00,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 311/1563 [08:26<33:59,  1.63s/it, train_loss=1.96, train_acc=0.281, avg_tr_acc=0.224, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 311/1563 [08:28<33:59,  1.63s/it, train_loss=1.76, train_acc=0.406, avg_tr_acc=0.225, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 312/1563 [08:28<33:57,  1.63s/it, train_loss=1.76, train_acc=0.406, avg_tr_acc=0.225, avg_tr_loss=2.07][A
+Batch:  20%|#9        | 312/1563 [08:29<33:57,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.225, avg_tr_loss=2.07] [A
+Batch:  20%|##        | 313/1563 [08:29<33:55,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.225, avg_tr_loss=2.07][A
+Batch:  20%|##        | 313/1563 [08:31<33:55,  1.63s/it, train_loss=1.82, train_acc=0.375, avg_tr_acc=0.226, avg_tr_loss=2.07][A
+Batch:  20%|##        | 314/1563 [08:31<33:54,  1.63s/it, train_loss=1.82, train_acc=0.375, avg_tr_acc=0.226, avg_tr_loss=2.07][A
+Batch:  20%|##        | 314/1563 [08:33<33:54,  1.63s/it, train_loss=1.76, train_acc=0.25, avg_tr_acc=0.226, avg_tr_loss=2.07] [A
+Batch:  20%|##        | 315/1563 [08:33<33:53,  1.63s/it, train_loss=1.76, train_acc=0.25, avg_tr_acc=0.226, avg_tr_loss=2.07][A
+Batch:  20%|##        | 315/1563 [08:34<33:53,  1.63s/it, train_loss=1.76, train_acc=0.469, avg_tr_acc=0.227, avg_tr_loss=2.07][A
+Batch:  20%|##        | 316/1563 [08:34<33:51,  1.63s/it, train_loss=1.76, train_acc=0.469, avg_tr_acc=0.227, avg_tr_loss=2.07][A
+Batch:  20%|##        | 316/1563 [08:36<33:51,  1.63s/it, train_loss=1.75, train_acc=0.438, avg_tr_acc=0.227, avg_tr_loss=2.07][A
+Batch:  20%|##        | 317/1563 [08:36<33:49,  1.63s/it, train_loss=1.75, train_acc=0.438, avg_tr_acc=0.227, avg_tr_loss=2.07][A
+Batch:  20%|##        | 317/1563 [08:38<33:49,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 318/1563 [08:38<33:48,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 318/1563 [08:39<33:48,  1.63s/it, train_loss=1.93, train_acc=0.219, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 319/1563 [08:39<33:46,  1.63s/it, train_loss=1.93, train_acc=0.219, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 319/1563 [08:41<33:46,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 320/1563 [08:41<33:45,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  20%|##        | 320/1563 [08:43<33:45,  1.63s/it, train_loss=1.9, train_acc=0.25, avg_tr_acc=0.228, avg_tr_loss=2.06]  [A
+Batch:  21%|##        | 321/1563 [08:43<33:43,  1.63s/it, train_loss=1.9, train_acc=0.25, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  21%|##        | 321/1563 [08:44<33:43,  1.63s/it, train_loss=1.85, train_acc=0.188, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  21%|##        | 322/1563 [08:44<33:41,  1.63s/it, train_loss=1.85, train_acc=0.188, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  21%|##        | 322/1563 [08:46<33:41,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.228, avg_tr_loss=2.06] [A
+Batch:  21%|##        | 323/1563 [08:46<33:39,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.228, avg_tr_loss=2.06][A
+Batch:  21%|##        | 323/1563 [08:47<33:39,  1.63s/it, train_loss=1.62, train_acc=0.5, avg_tr_acc=0.229, avg_tr_loss=2.06] [A
+Batch:  21%|##        | 324/1563 [08:47<33:37,  1.63s/it, train_loss=1.62, train_acc=0.5, avg_tr_acc=0.229, avg_tr_loss=2.06][A
+Batch:  21%|##        | 324/1563 [08:49<33:37,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.229, avg_tr_loss=2.06][A
+Batch:  21%|##        | 325/1563 [08:49<33:36,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.229, avg_tr_loss=2.06][A
+Batch:  21%|##        | 325/1563 [08:51<33:36,  1.63s/it, train_loss=1.62, train_acc=0.5, avg_tr_acc=0.23, avg_tr_loss=2.06]   [A
+Batch:  21%|##        | 326/1563 [08:51<33:34,  1.63s/it, train_loss=1.62, train_acc=0.5, avg_tr_acc=0.23, avg_tr_loss=2.06][A
+Batch:  21%|##        | 326/1563 [08:52<33:34,  1.63s/it, train_loss=2.08, train_acc=0.281, avg_tr_acc=0.23, avg_tr_loss=2.06][A
+Batch:  21%|##        | 327/1563 [08:52<33:32,  1.63s/it, train_loss=2.08, train_acc=0.281, avg_tr_acc=0.23, avg_tr_loss=2.06][A
+Batch:  21%|##        | 327/1563 [08:54<33:32,  1.63s/it, train_loss=1.51, train_acc=0.562, avg_tr_acc=0.231, avg_tr_loss=2.06][A
+Batch:  21%|##        | 328/1563 [08:54<33:31,  1.63s/it, train_loss=1.51, train_acc=0.562, avg_tr_acc=0.231, avg_tr_loss=2.06][A
+Batch:  21%|##        | 328/1563 [08:56<33:31,  1.63s/it, train_loss=1.62, train_acc=0.375, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 329/1563 [08:56<33:30,  1.63s/it, train_loss=1.62, train_acc=0.375, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 329/1563 [08:57<33:30,  1.63s/it, train_loss=1.94, train_acc=0.156, avg_tr_acc=0.231, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 330/1563 [08:57<33:28,  1.63s/it, train_loss=1.94, train_acc=0.156, avg_tr_acc=0.231, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 330/1563 [08:59<33:28,  1.63s/it, train_loss=1.66, train_acc=0.219, avg_tr_acc=0.231, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 331/1563 [08:59<33:27,  1.63s/it, train_loss=1.66, train_acc=0.219, avg_tr_acc=0.231, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 331/1563 [09:00<33:27,  1.63s/it, train_loss=1.86, train_acc=0.406, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 332/1563 [09:00<33:25,  1.63s/it, train_loss=1.86, train_acc=0.406, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 332/1563 [09:02<33:25,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 333/1563 [09:02<33:23,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 333/1563 [09:04<33:23,  1.63s/it, train_loss=2.06, train_acc=0.156, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 334/1563 [09:04<33:22,  1.63s/it, train_loss=2.06, train_acc=0.156, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 334/1563 [09:05<33:22,  1.63s/it, train_loss=1.77, train_acc=0.406, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 335/1563 [09:05<33:20,  1.63s/it, train_loss=1.77, train_acc=0.406, avg_tr_acc=0.232, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 335/1563 [09:07<33:20,  1.63s/it, train_loss=1.96, train_acc=0.25, avg_tr_acc=0.233, avg_tr_loss=2.05] [A
+Batch:  21%|##1       | 336/1563 [09:07<33:18,  1.63s/it, train_loss=1.96, train_acc=0.25, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  21%|##1       | 336/1563 [09:09<33:18,  1.63s/it, train_loss=1.79, train_acc=0.406, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 337/1563 [09:09<33:17,  1.63s/it, train_loss=1.79, train_acc=0.406, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 337/1563 [09:10<33:17,  1.63s/it, train_loss=1.84, train_acc=0.312, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 338/1563 [09:10<33:15,  1.63s/it, train_loss=1.84, train_acc=0.312, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 338/1563 [09:12<33:15,  1.63s/it, train_loss=1.84, train_acc=0.281, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 339/1563 [09:12<33:13,  1.63s/it, train_loss=1.84, train_acc=0.281, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 339/1563 [09:13<33:13,  1.63s/it, train_loss=1.75, train_acc=0.25, avg_tr_acc=0.233, avg_tr_loss=2.05] [A
+Batch:  22%|##1       | 340/1563 [09:13<33:12,  1.63s/it, train_loss=1.75, train_acc=0.25, avg_tr_acc=0.233, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 340/1563 [09:15<33:12,  1.63s/it, train_loss=1.67, train_acc=0.406, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 341/1563 [09:15<33:10,  1.63s/it, train_loss=1.67, train_acc=0.406, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 341/1563 [09:17<33:10,  1.63s/it, train_loss=1.92, train_acc=0.344, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 342/1563 [09:17<33:08,  1.63s/it, train_loss=1.92, train_acc=0.344, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 342/1563 [09:18<33:08,  1.63s/it, train_loss=2.07, train_acc=0.125, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 343/1563 [09:18<33:06,  1.63s/it, train_loss=2.07, train_acc=0.125, avg_tr_acc=0.234, avg_tr_loss=2.05][A
+Batch:  22%|##1       | 343/1563 [09:20<33:06,  1.63s/it, train_loss=1.66, train_acc=0.438, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 344/1563 [09:20<33:05,  1.63s/it, train_loss=1.66, train_acc=0.438, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 344/1563 [09:22<33:05,  1.63s/it, train_loss=2.01, train_acc=0.281, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 345/1563 [09:22<33:03,  1.63s/it, train_loss=2.01, train_acc=0.281, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 345/1563 [09:23<33:03,  1.63s/it, train_loss=1.85, train_acc=0.25, avg_tr_acc=0.235, avg_tr_loss=2.04] [A
+Batch:  22%|##2       | 346/1563 [09:23<33:01,  1.63s/it, train_loss=1.85, train_acc=0.25, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 346/1563 [09:25<33:01,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 347/1563 [09:25<33:00,  1.63s/it, train_loss=1.93, train_acc=0.312, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 347/1563 [09:26<33:00,  1.63s/it, train_loss=1.86, train_acc=0.375, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 348/1563 [09:27<32:58,  1.63s/it, train_loss=1.86, train_acc=0.375, avg_tr_acc=0.235, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 348/1563 [09:28<32:58,  1.63s/it, train_loss=1.78, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 349/1563 [09:28<32:56,  1.63s/it, train_loss=1.78, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 349/1563 [09:30<32:56,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 350/1563 [09:30<32:55,  1.63s/it, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 350/1563 [09:31<32:55,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 351/1563 [09:31<32:53,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  22%|##2       | 351/1563 [09:33<32:53,  1.63s/it, train_loss=1.62, train_acc=0.344, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 352/1563 [09:33<32:52,  1.63s/it, train_loss=1.62, train_acc=0.344, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 352/1563 [09:35<32:52,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.236, avg_tr_loss=2.04] [A
+Batch:  23%|##2       | 353/1563 [09:35<32:51,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.236, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 353/1563 [09:36<32:51,  1.63s/it, train_loss=1.79, train_acc=0.312, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 354/1563 [09:36<32:49,  1.63s/it, train_loss=1.79, train_acc=0.312, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 354/1563 [09:38<32:49,  1.63s/it, train_loss=1.91, train_acc=0.25, avg_tr_acc=0.237, avg_tr_loss=2.04] [A
+Batch:  23%|##2       | 355/1563 [09:38<32:48,  1.63s/it, train_loss=1.91, train_acc=0.25, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 355/1563 [09:40<32:48,  1.63s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 356/1563 [09:40<32:56,  1.64s/it, train_loss=1.89, train_acc=0.25, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 356/1563 [09:41<32:56,  1.64s/it, train_loss=1.75, train_acc=0.344, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 357/1563 [09:41<32:51,  1.63s/it, train_loss=1.75, train_acc=0.344, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 357/1563 [09:43<32:51,  1.63s/it, train_loss=1.9, train_acc=0.312, avg_tr_acc=0.237, avg_tr_loss=2.04] [A
+Batch:  23%|##2       | 358/1563 [09:43<32:47,  1.63s/it, train_loss=1.9, train_acc=0.312, avg_tr_acc=0.237, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 358/1563 [09:44<32:47,  1.63s/it, train_loss=1.5, train_acc=0.438, avg_tr_acc=0.238, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 359/1563 [09:44<32:44,  1.63s/it, train_loss=1.5, train_acc=0.438, avg_tr_acc=0.238, avg_tr_loss=2.04][A
+Batch:  23%|##2       | 359/1563 [09:46<32:44,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.238, avg_tr_loss=2.04][A
+Batch:  23%|##3       | 360/1563 [09:46<32:41,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.238, avg_tr_loss=2.04][A
+Batch:  23%|##3       | 360/1563 [09:48<32:41,  1.63s/it, train_loss=1.62, train_acc=0.344, avg_tr_acc=0.238, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 361/1563 [09:48<32:39,  1.63s/it, train_loss=1.62, train_acc=0.344, avg_tr_acc=0.238, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 361/1563 [09:49<32:39,  1.63s/it, train_loss=1.73, train_acc=0.406, avg_tr_acc=0.239, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 362/1563 [09:49<32:38,  1.63s/it, train_loss=1.73, train_acc=0.406, avg_tr_acc=0.239, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 362/1563 [09:51<32:38,  1.63s/it, train_loss=1.98, train_acc=0.344, avg_tr_acc=0.239, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 363/1563 [09:51<32:35,  1.63s/it, train_loss=1.98, train_acc=0.344, avg_tr_acc=0.239, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 363/1563 [09:53<32:35,  1.63s/it, train_loss=1.64, train_acc=0.438, avg_tr_acc=0.24, avg_tr_loss=2.03] [A
+Batch:  23%|##3       | 364/1563 [09:53<32:33,  1.63s/it, train_loss=1.64, train_acc=0.438, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 364/1563 [09:54<32:33,  1.63s/it, train_loss=1.84, train_acc=0.375, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 365/1563 [09:54<32:32,  1.63s/it, train_loss=1.84, train_acc=0.375, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 365/1563 [09:56<32:32,  1.63s/it, train_loss=1.78, train_acc=0.188, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 366/1563 [09:56<32:30,  1.63s/it, train_loss=1.78, train_acc=0.188, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 366/1563 [09:57<32:30,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.24, avg_tr_loss=2.03] [A
+Batch:  23%|##3       | 367/1563 [09:57<32:28,  1.63s/it, train_loss=1.8, train_acc=0.344, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  23%|##3       | 367/1563 [09:59<32:28,  1.63s/it, train_loss=1.77, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 368/1563 [09:59<32:27,  1.63s/it, train_loss=1.77, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 368/1563 [10:01<32:27,  1.63s/it, train_loss=1.81, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 369/1563 [10:01<32:25,  1.63s/it, train_loss=1.81, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 369/1563 [10:02<32:25,  1.63s/it, train_loss=1.72, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 370/1563 [10:02<32:24,  1.63s/it, train_loss=1.72, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 370/1563 [10:04<32:24,  1.63s/it, train_loss=1.75, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 371/1563 [10:04<32:22,  1.63s/it, train_loss=1.75, train_acc=0.219, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 371/1563 [10:06<32:22,  1.63s/it, train_loss=2, train_acc=0.25, avg_tr_acc=0.24, avg_tr_loss=2.03]    [A
+Batch:  24%|##3       | 372/1563 [10:06<32:20,  1.63s/it, train_loss=2, train_acc=0.25, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 372/1563 [10:07<32:20,  1.63s/it, train_loss=1.92, train_acc=0.188, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 373/1563 [10:07<32:20,  1.63s/it, train_loss=1.92, train_acc=0.188, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 373/1563 [10:09<32:20,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 374/1563 [10:09<32:18,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 374/1563 [10:11<32:18,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 375/1563 [10:11<32:16,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.24, avg_tr_loss=2.03][A
+Batch:  24%|##3       | 375/1563 [10:12<32:16,  1.63s/it, train_loss=1.83, train_acc=0.156, avg_tr_acc=0.24, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 376/1563 [10:12<32:14,  1.63s/it, train_loss=1.83, train_acc=0.156, avg_tr_acc=0.24, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 376/1563 [10:14<32:14,  1.63s/it, train_loss=2, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.02]   [A
+Batch:  24%|##4       | 377/1563 [10:14<32:13,  1.63s/it, train_loss=2, train_acc=0.312, avg_tr_acc=0.24, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 377/1563 [10:15<32:13,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 378/1563 [10:15<32:12,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 378/1563 [10:17<32:12,  1.63s/it, train_loss=1.54, train_acc=0.438, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 379/1563 [10:17<32:10,  1.63s/it, train_loss=1.54, train_acc=0.438, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 379/1563 [10:19<32:10,  1.63s/it, train_loss=1.93, train_acc=0.281, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 380/1563 [10:19<32:08,  1.63s/it, train_loss=1.93, train_acc=0.281, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 380/1563 [10:20<32:08,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.242, avg_tr_loss=2.02] [A
+Batch:  24%|##4       | 381/1563 [10:20<32:07,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 381/1563 [10:22<32:07,  1.63s/it, train_loss=1.91, train_acc=0.188, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 382/1563 [10:22<32:04,  1.63s/it, train_loss=1.91, train_acc=0.188, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  24%|##4       | 382/1563 [10:24<32:04,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 383/1563 [10:24<32:03,  1.63s/it, train_loss=2.03, train_acc=0.281, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 383/1563 [10:25<32:03,  1.63s/it, train_loss=2.09, train_acc=0.156, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 384/1563 [10:25<32:01,  1.63s/it, train_loss=2.09, train_acc=0.156, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 384/1563 [10:27<32:01,  1.63s/it, train_loss=1.9, train_acc=0.25, avg_tr_acc=0.241, avg_tr_loss=2.02]  [A
+Batch:  25%|##4       | 385/1563 [10:27<31:59,  1.63s/it, train_loss=1.9, train_acc=0.25, avg_tr_acc=0.241, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 385/1563 [10:28<31:59,  1.63s/it, train_loss=1.66, train_acc=0.344, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 386/1563 [10:28<31:57,  1.63s/it, train_loss=1.66, train_acc=0.344, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 386/1563 [10:30<31:57,  1.63s/it, train_loss=1.65, train_acc=0.469, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 387/1563 [10:30<31:55,  1.63s/it, train_loss=1.65, train_acc=0.469, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 387/1563 [10:32<31:55,  1.63s/it, train_loss=2.01, train_acc=0.156, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 388/1563 [10:32<31:54,  1.63s/it, train_loss=2.01, train_acc=0.156, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 388/1563 [10:33<31:54,  1.63s/it, train_loss=2.08, train_acc=0.156, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 389/1563 [10:33<31:52,  1.63s/it, train_loss=2.08, train_acc=0.156, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 389/1563 [10:35<31:52,  1.63s/it, train_loss=1.77, train_acc=0.25, avg_tr_acc=0.242, avg_tr_loss=2.02] [A
+Batch:  25%|##4       | 390/1563 [10:35<31:50,  1.63s/it, train_loss=1.77, train_acc=0.25, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##4       | 390/1563 [10:37<31:50,  1.63s/it, train_loss=1.93, train_acc=0.406, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 391/1563 [10:37<31:49,  1.63s/it, train_loss=1.93, train_acc=0.406, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 391/1563 [10:38<31:49,  1.63s/it, train_loss=1.69, train_acc=0.25, avg_tr_acc=0.242, avg_tr_loss=2.02] [A
+Batch:  25%|##5       | 392/1563 [10:38<31:47,  1.63s/it, train_loss=1.69, train_acc=0.25, avg_tr_acc=0.242, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 392/1563 [10:40<31:47,  1.63s/it, train_loss=1.83, train_acc=0.344, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 393/1563 [10:40<31:45,  1.63s/it, train_loss=1.83, train_acc=0.344, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 393/1563 [10:41<31:45,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.243, avg_tr_loss=2.02] [A
+Batch:  25%|##5       | 394/1563 [10:41<31:44,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 394/1563 [10:43<31:44,  1.63s/it, train_loss=1.96, train_acc=0.219, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 395/1563 [10:43<31:42,  1.63s/it, train_loss=1.96, train_acc=0.219, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 395/1563 [10:45<31:42,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.243, avg_tr_loss=2.02] [A
+Batch:  25%|##5       | 396/1563 [10:45<31:41,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 396/1563 [10:46<31:41,  1.63s/it, train_loss=1.71, train_acc=0.406, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 397/1563 [10:46<31:39,  1.63s/it, train_loss=1.71, train_acc=0.406, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 397/1563 [10:48<31:39,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.243, avg_tr_loss=2.02] [A
+Batch:  25%|##5       | 398/1563 [10:48<31:37,  1.63s/it, train_loss=1.94, train_acc=0.25, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  25%|##5       | 398/1563 [10:50<31:37,  1.63s/it, train_loss=1.66, train_acc=0.344, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  26%|##5       | 399/1563 [10:50<31:35,  1.63s/it, train_loss=1.66, train_acc=0.344, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  26%|##5       | 399/1563 [10:51<31:35,  1.63s/it, train_loss=1.92, train_acc=0.188, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  26%|##5       | 400/1563 [10:51<31:34,  1.63s/it, train_loss=1.92, train_acc=0.188, avg_tr_acc=0.243, avg_tr_loss=2.02][A
+Batch:  26%|##5       | 400/1563 [10:53<31:34,  1.63s/it, train_loss=2, train_acc=0.156, avg_tr_acc=0.243, avg_tr_loss=2.01]   [A
+Batch:  26%|##5       | 401/1563 [10:53<31:32,  1.63s/it, train_loss=2, train_acc=0.156, avg_tr_acc=0.243, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 401/1563 [10:55<31:32,  1.63s/it, train_loss=1.74, train_acc=0.438, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 402/1563 [10:55<31:31,  1.63s/it, train_loss=1.74, train_acc=0.438, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 402/1563 [10:56<31:31,  1.63s/it, train_loss=1.66, train_acc=0.406, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 403/1563 [10:56<31:29,  1.63s/it, train_loss=1.66, train_acc=0.406, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 403/1563 [10:58<31:29,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 404/1563 [10:58<31:28,  1.63s/it, train_loss=2.04, train_acc=0.281, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 404/1563 [10:59<31:28,  1.63s/it, train_loss=1.88, train_acc=0.375, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 405/1563 [10:59<31:26,  1.63s/it, train_loss=1.88, train_acc=0.375, avg_tr_acc=0.244, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 405/1563 [11:01<31:26,  1.63s/it, train_loss=1.74, train_acc=0.312, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 406/1563 [11:01<31:24,  1.63s/it, train_loss=1.74, train_acc=0.312, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##5       | 406/1563 [11:03<31:24,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 407/1563 [11:03<31:23,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 407/1563 [11:04<31:23,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 408/1563 [11:04<31:21,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 408/1563 [11:06<31:21,  1.63s/it, train_loss=1.92, train_acc=0.219, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 409/1563 [11:06<31:19,  1.63s/it, train_loss=1.92, train_acc=0.219, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 409/1563 [11:08<31:19,  1.63s/it, train_loss=2, train_acc=0.219, avg_tr_acc=0.245, avg_tr_loss=2.01]   [A
+Batch:  26%|##6       | 410/1563 [11:08<31:17,  1.63s/it, train_loss=2, train_acc=0.219, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 410/1563 [11:09<31:17,  1.63s/it, train_loss=1.72, train_acc=0.438, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 411/1563 [11:09<31:16,  1.63s/it, train_loss=1.72, train_acc=0.438, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 411/1563 [11:11<31:16,  1.63s/it, train_loss=1.78, train_acc=0.312, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 412/1563 [11:11<31:15,  1.63s/it, train_loss=1.78, train_acc=0.312, avg_tr_acc=0.245, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 412/1563 [11:12<31:15,  1.63s/it, train_loss=1.73, train_acc=0.344, avg_tr_acc=0.246, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 413/1563 [11:12<31:13,  1.63s/it, train_loss=1.73, train_acc=0.344, avg_tr_acc=0.246, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 413/1563 [11:14<31:13,  1.63s/it, train_loss=1.77, train_acc=0.344, avg_tr_acc=0.246, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 414/1563 [11:14<31:11,  1.63s/it, train_loss=1.77, train_acc=0.344, avg_tr_acc=0.246, avg_tr_loss=2.01][A
+Batch:  26%|##6       | 414/1563 [11:16<31:11,  1.63s/it, train_loss=1.7, train_acc=0.438, avg_tr_acc=0.246, avg_tr_loss=2.01] [A
+Batch:  27%|##6       | 415/1563 [11:16<31:10,  1.63s/it, train_loss=1.7, train_acc=0.438, avg_tr_acc=0.246, avg_tr_loss=2.01][A
+Batch:  27%|##6       | 415/1563 [11:17<31:10,  1.63s/it, train_loss=1.64, train_acc=0.5, avg_tr_acc=0.247, avg_tr_loss=2.01] [A
+Batch:  27%|##6       | 416/1563 [11:17<31:08,  1.63s/it, train_loss=1.64, train_acc=0.5, avg_tr_acc=0.247, avg_tr_loss=2.01][A
+Batch:  27%|##6       | 416/1563 [11:19<31:08,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.247, avg_tr_loss=2.01][A
+Batch:  27%|##6       | 417/1563 [11:19<31:07,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.247, avg_tr_loss=2.01][A
+Batch:  27%|##6       | 417/1563 [11:21<31:07,  1.63s/it, train_loss=1.52, train_acc=0.469, avg_tr_acc=0.248, avg_tr_loss=2]   [A
+Batch:  27%|##6       | 418/1563 [11:21<31:05,  1.63s/it, train_loss=1.52, train_acc=0.469, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 418/1563 [11:22<31:05,  1.63s/it, train_loss=1.92, train_acc=0.25, avg_tr_acc=0.248, avg_tr_loss=2] [A
+Batch:  27%|##6       | 419/1563 [11:22<31:03,  1.63s/it, train_loss=1.92, train_acc=0.25, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 419/1563 [11:24<31:03,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 420/1563 [11:24<31:02,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 420/1563 [11:25<31:02,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 421/1563 [11:25<31:00,  1.63s/it, train_loss=1.77, train_acc=0.312, avg_tr_acc=0.248, avg_tr_loss=2][A
+Batch:  27%|##6       | 421/1563 [11:27<31:00,  1.63s/it, train_loss=1.52, train_acc=0.406, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##6       | 422/1563 [11:27<30:59,  1.63s/it, train_loss=1.52, train_acc=0.406, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##6       | 422/1563 [11:29<30:59,  1.63s/it, train_loss=1.74, train_acc=0.406, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 423/1563 [11:29<30:57,  1.63s/it, train_loss=1.74, train_acc=0.406, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 423/1563 [11:30<30:57,  1.63s/it, train_loss=1.73, train_acc=0.312, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 424/1563 [11:30<30:55,  1.63s/it, train_loss=1.73, train_acc=0.312, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 424/1563 [11:32<30:55,  1.63s/it, train_loss=1.9, train_acc=0.219, avg_tr_acc=0.249, avg_tr_loss=2] [A
+Batch:  27%|##7       | 425/1563 [11:32<30:53,  1.63s/it, train_loss=1.9, train_acc=0.219, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 425/1563 [11:34<30:53,  1.63s/it, train_loss=1.53, train_acc=0.344, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 426/1563 [11:34<30:52,  1.63s/it, train_loss=1.53, train_acc=0.344, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 426/1563 [11:35<30:52,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.249, avg_tr_loss=2] [A
+Batch:  27%|##7       | 427/1563 [11:35<30:50,  1.63s/it, train_loss=2.1, train_acc=0.281, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 427/1563 [11:37<30:50,  1.63s/it, train_loss=1.73, train_acc=0.25, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 428/1563 [11:37<30:48,  1.63s/it, train_loss=1.73, train_acc=0.25, avg_tr_acc=0.249, avg_tr_loss=2][A
+Batch:  27%|##7       | 428/1563 [11:38<30:48,  1.63s/it, train_loss=1.63, train_acc=0.312, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  27%|##7       | 429/1563 [11:38<30:46,  1.63s/it, train_loss=1.63, train_acc=0.312, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  27%|##7       | 429/1563 [11:40<30:46,  1.63s/it, train_loss=1.74, train_acc=0.375, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 430/1563 [11:40<30:45,  1.63s/it, train_loss=1.74, train_acc=0.375, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 430/1563 [11:42<30:45,  1.63s/it, train_loss=1.74, train_acc=0.281, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 431/1563 [11:42<30:43,  1.63s/it, train_loss=1.74, train_acc=0.281, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 431/1563 [11:43<30:43,  1.63s/it, train_loss=1.75, train_acc=0.219, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 432/1563 [11:43<30:42,  1.63s/it, train_loss=1.75, train_acc=0.219, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 432/1563 [11:45<30:42,  1.63s/it, train_loss=2.15, train_acc=0.312, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 433/1563 [11:45<30:40,  1.63s/it, train_loss=2.15, train_acc=0.312, avg_tr_acc=0.25, avg_tr_loss=2][A
+Batch:  28%|##7       | 433/1563 [11:47<30:40,  1.63s/it, train_loss=1.55, train_acc=0.469, avg_tr_acc=0.251, avg_tr_loss=2][A
+Batch:  28%|##7       | 434/1563 [11:47<30:38,  1.63s/it, train_loss=1.55, train_acc=0.469, avg_tr_acc=0.251, avg_tr_loss=2][A
+Batch:  28%|##7       | 434/1563 [11:48<30:38,  1.63s/it, train_loss=1.63, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=2][A
+Batch:  28%|##7       | 435/1563 [11:48<30:37,  1.63s/it, train_loss=1.63, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=2][A
+Batch:  28%|##7       | 435/1563 [11:50<30:37,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##7       | 436/1563 [11:50<30:35,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##7       | 436/1563 [11:52<30:35,  1.63s/it, train_loss=1.69, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##7       | 437/1563 [11:52<30:34,  1.63s/it, train_loss=1.69, train_acc=0.281, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##7       | 437/1563 [11:53<30:34,  1.63s/it, train_loss=1.67, train_acc=0.312, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 438/1563 [11:53<30:32,  1.63s/it, train_loss=1.67, train_acc=0.312, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 438/1563 [11:55<30:32,  1.63s/it, train_loss=1.41, train_acc=0.406, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 439/1563 [11:55<30:30,  1.63s/it, train_loss=1.41, train_acc=0.406, avg_tr_acc=0.251, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 439/1563 [11:56<30:30,  1.63s/it, train_loss=1.73, train_acc=0.375, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 440/1563 [11:56<30:29,  1.63s/it, train_loss=1.73, train_acc=0.375, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 440/1563 [11:58<30:29,  1.63s/it, train_loss=1.82, train_acc=0.438, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 441/1563 [11:58<30:27,  1.63s/it, train_loss=1.82, train_acc=0.438, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 441/1563 [12:00<30:27,  1.63s/it, train_loss=1.57, train_acc=0.344, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 442/1563 [12:00<30:26,  1.63s/it, train_loss=1.57, train_acc=0.344, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 442/1563 [12:01<30:26,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 443/1563 [12:01<30:24,  1.63s/it, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 443/1563 [12:03<30:24,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 444/1563 [12:03<30:22,  1.63s/it, train_loss=1.88, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 444/1563 [12:05<30:22,  1.63s/it, train_loss=2.22, train_acc=0.188, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 445/1563 [12:05<30:21,  1.63s/it, train_loss=2.22, train_acc=0.188, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  28%|##8       | 445/1563 [12:06<30:21,  1.63s/it, train_loss=1.83, train_acc=0.25, avg_tr_acc=0.252, avg_tr_loss=1.99] [A
+Batch:  29%|##8       | 446/1563 [12:06<30:19,  1.63s/it, train_loss=1.83, train_acc=0.25, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 446/1563 [12:08<30:19,  1.63s/it, train_loss=1.74, train_acc=0.344, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 447/1563 [12:08<30:17,  1.63s/it, train_loss=1.74, train_acc=0.344, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 447/1563 [12:09<30:17,  1.63s/it, train_loss=1.95, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 448/1563 [12:09<30:16,  1.63s/it, train_loss=1.95, train_acc=0.281, avg_tr_acc=0.252, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 448/1563 [12:11<30:16,  1.63s/it, train_loss=2.01, train_acc=0.344, avg_tr_acc=0.253, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 449/1563 [12:11<30:14,  1.63s/it, train_loss=2.01, train_acc=0.344, avg_tr_acc=0.253, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 449/1563 [12:13<30:14,  1.63s/it, train_loss=2.07, train_acc=0.344, avg_tr_acc=0.253, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 450/1563 [12:13<30:13,  1.63s/it, train_loss=2.07, train_acc=0.344, avg_tr_acc=0.253, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 450/1563 [12:14<30:13,  1.63s/it, train_loss=1.7, train_acc=0.406, avg_tr_acc=0.253, avg_tr_loss=1.99] [A
+Batch:  29%|##8       | 451/1563 [12:14<30:11,  1.63s/it, train_loss=1.7, train_acc=0.406, avg_tr_acc=0.253, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 451/1563 [12:16<30:11,  1.63s/it, train_loss=1.74, train_acc=0.5, avg_tr_acc=0.254, avg_tr_loss=1.99] [A
+Batch:  29%|##8       | 452/1563 [12:16<30:09,  1.63s/it, train_loss=1.74, train_acc=0.5, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 452/1563 [12:18<30:09,  1.63s/it, train_loss=2.04, train_acc=0.188, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 453/1563 [12:18<30:08,  1.63s/it, train_loss=2.04, train_acc=0.188, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##8       | 453/1563 [12:19<30:08,  1.63s/it, train_loss=1.57, train_acc=0.469, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 454/1563 [12:19<30:07,  1.63s/it, train_loss=1.57, train_acc=0.469, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 454/1563 [12:21<30:07,  1.63s/it, train_loss=1.81, train_acc=0.312, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 455/1563 [12:21<30:05,  1.63s/it, train_loss=1.81, train_acc=0.312, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 455/1563 [12:22<30:05,  1.63s/it, train_loss=1.83, train_acc=0.219, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 456/1563 [12:22<30:04,  1.63s/it, train_loss=1.83, train_acc=0.219, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 456/1563 [12:24<30:04,  1.63s/it, train_loss=2.03, train_acc=0.25, avg_tr_acc=0.254, avg_tr_loss=1.99] [A
+Batch:  29%|##9       | 457/1563 [12:24<30:02,  1.63s/it, train_loss=2.03, train_acc=0.25, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 457/1563 [12:26<30:02,  1.63s/it, train_loss=1.68, train_acc=0.406, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 458/1563 [12:26<30:00,  1.63s/it, train_loss=1.68, train_acc=0.406, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 458/1563 [12:27<30:00,  1.63s/it, train_loss=1.82, train_acc=0.219, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 459/1563 [12:27<29:58,  1.63s/it, train_loss=1.82, train_acc=0.219, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 459/1563 [12:29<29:58,  1.63s/it, train_loss=1.99, train_acc=0.281, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 460/1563 [12:29<29:56,  1.63s/it, train_loss=1.99, train_acc=0.281, avg_tr_acc=0.254, avg_tr_loss=1.99][A
+Batch:  29%|##9       | 460/1563 [12:31<29:56,  1.63s/it, train_loss=1.78, train_acc=0.375, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  29%|##9       | 461/1563 [12:31<29:55,  1.63s/it, train_loss=1.78, train_acc=0.375, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  29%|##9       | 461/1563 [12:32<29:55,  1.63s/it, train_loss=1.69, train_acc=0.188, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 462/1563 [12:32<29:53,  1.63s/it, train_loss=1.69, train_acc=0.188, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 462/1563 [12:34<29:53,  1.63s/it, train_loss=1.99, train_acc=0.156, avg_tr_acc=0.254, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 463/1563 [12:34<29:51,  1.63s/it, train_loss=1.99, train_acc=0.156, avg_tr_acc=0.254, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 463/1563 [12:36<29:51,  1.63s/it, train_loss=1.82, train_acc=0.438, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 464/1563 [12:36<29:50,  1.63s/it, train_loss=1.82, train_acc=0.438, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 464/1563 [12:37<29:50,  1.63s/it, train_loss=1.73, train_acc=0.406, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 465/1563 [12:37<29:48,  1.63s/it, train_loss=1.73, train_acc=0.406, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 465/1563 [12:39<29:48,  1.63s/it, train_loss=1.9, train_acc=0.281, avg_tr_acc=0.255, avg_tr_loss=1.98] [A
+Batch:  30%|##9       | 466/1563 [12:39<29:46,  1.63s/it, train_loss=1.9, train_acc=0.281, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 466/1563 [12:40<29:46,  1.63s/it, train_loss=1.53, train_acc=0.469, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 467/1563 [12:40<29:45,  1.63s/it, train_loss=1.53, train_acc=0.469, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 467/1563 [12:42<29:45,  1.63s/it, train_loss=1.86, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 468/1563 [12:42<29:43,  1.63s/it, train_loss=1.86, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|##9       | 468/1563 [12:44<29:43,  1.63s/it, train_loss=1.75, train_acc=0.156, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 469/1563 [12:44<29:41,  1.63s/it, train_loss=1.75, train_acc=0.156, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 469/1563 [12:45<29:41,  1.63s/it, train_loss=2.04, train_acc=0.156, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|###       | 470/1563 [12:45<29:40,  1.63s/it, train_loss=2.04, train_acc=0.156, avg_tr_acc=0.255, avg_tr_loss=1.98][A
+Batch:  30%|###       | 470/1563 [12:47<29:40,  1.63s/it, train_loss=1.64, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 471/1563 [12:47<29:38,  1.63s/it, train_loss=1.64, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 471/1563 [12:49<29:38,  1.63s/it, train_loss=1.63, train_acc=0.312, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 472/1563 [12:49<29:37,  1.63s/it, train_loss=1.63, train_acc=0.312, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 472/1563 [12:50<29:37,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 473/1563 [12:50<29:35,  1.63s/it, train_loss=1.68, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 473/1563 [12:52<29:35,  1.63s/it, train_loss=1.83, train_acc=0.281, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 474/1563 [12:52<29:34,  1.63s/it, train_loss=1.83, train_acc=0.281, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 474/1563 [12:53<29:34,  1.63s/it, train_loss=1.85, train_acc=0.312, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 475/1563 [12:53<29:32,  1.63s/it, train_loss=1.85, train_acc=0.312, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 475/1563 [12:55<29:32,  1.63s/it, train_loss=1.65, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 476/1563 [12:55<29:31,  1.63s/it, train_loss=1.65, train_acc=0.344, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  30%|###       | 476/1563 [12:57<29:31,  1.63s/it, train_loss=1.77, train_acc=0.375, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  31%|###       | 477/1563 [12:57<29:29,  1.63s/it, train_loss=1.77, train_acc=0.375, avg_tr_acc=0.256, avg_tr_loss=1.98][A
+Batch:  31%|###       | 477/1563 [12:58<29:29,  1.63s/it, train_loss=1.67, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 478/1563 [12:58<29:27,  1.63s/it, train_loss=1.67, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 478/1563 [13:00<29:27,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 479/1563 [13:00<29:26,  1.63s/it, train_loss=1.88, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 479/1563 [13:02<29:26,  1.63s/it, train_loss=1.77, train_acc=0.375, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 480/1563 [13:02<29:30,  1.63s/it, train_loss=1.77, train_acc=0.375, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 480/1563 [13:03<29:30,  1.63s/it, train_loss=1.53, train_acc=0.375, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 481/1563 [13:03<29:26,  1.63s/it, train_loss=1.53, train_acc=0.375, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 481/1563 [13:05<29:26,  1.63s/it, train_loss=2.02, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 482/1563 [13:05<29:23,  1.63s/it, train_loss=2.02, train_acc=0.312, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 482/1563 [13:06<29:23,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 483/1563 [13:06<29:21,  1.63s/it, train_loss=2.01, train_acc=0.219, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 483/1563 [13:08<29:21,  1.63s/it, train_loss=2.12, train_acc=0.25, avg_tr_acc=0.257, avg_tr_loss=1.98] [A
+Batch:  31%|###       | 484/1563 [13:08<29:19,  1.63s/it, train_loss=2.12, train_acc=0.25, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###       | 484/1563 [13:10<29:19,  1.63s/it, train_loss=1.82, train_acc=0.406, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###1      | 485/1563 [13:10<29:16,  1.63s/it, train_loss=1.82, train_acc=0.406, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###1      | 485/1563 [13:11<29:16,  1.63s/it, train_loss=1.76, train_acc=0.25, avg_tr_acc=0.257, avg_tr_loss=1.98] [A
+Batch:  31%|###1      | 486/1563 [13:11<29:14,  1.63s/it, train_loss=1.76, train_acc=0.25, avg_tr_acc=0.257, avg_tr_loss=1.98][A
+Batch:  31%|###1      | 486/1563 [13:13<29:14,  1.63s/it, train_loss=1.86, train_acc=0.312, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 487/1563 [13:13<29:12,  1.63s/it, train_loss=1.86, train_acc=0.312, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 487/1563 [13:15<29:12,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 488/1563 [13:15<29:11,  1.63s/it, train_loss=1.85, train_acc=0.375, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 488/1563 [13:16<29:11,  1.63s/it, train_loss=1.85, train_acc=0.312, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 489/1563 [13:16<29:09,  1.63s/it, train_loss=1.85, train_acc=0.312, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 489/1563 [13:18<29:09,  1.63s/it, train_loss=1.96, train_acc=0.344, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 490/1563 [13:18<29:07,  1.63s/it, train_loss=1.96, train_acc=0.344, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 490/1563 [13:20<29:07,  1.63s/it, train_loss=2.05, train_acc=0.219, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 491/1563 [13:20<29:05,  1.63s/it, train_loss=2.05, train_acc=0.219, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 491/1563 [13:21<29:05,  1.63s/it, train_loss=1.8, train_acc=0.406, avg_tr_acc=0.258, avg_tr_loss=1.97] [A
+Batch:  31%|###1      | 492/1563 [13:21<29:04,  1.63s/it, train_loss=1.8, train_acc=0.406, avg_tr_acc=0.258, avg_tr_loss=1.97][A
+Batch:  31%|###1      | 492/1563 [13:23<29:04,  1.63s/it, train_loss=1.58, train_acc=0.5, avg_tr_acc=0.259, avg_tr_loss=1.97] [A
+Batch:  32%|###1      | 493/1563 [13:23<29:02,  1.63s/it, train_loss=1.58, train_acc=0.5, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 493/1563 [13:24<29:02,  1.63s/it, train_loss=1.71, train_acc=0.406, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 494/1563 [13:24<29:01,  1.63s/it, train_loss=1.71, train_acc=0.406, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 494/1563 [13:26<29:01,  1.63s/it, train_loss=2.05, train_acc=0.0938, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 495/1563 [13:26<28:59,  1.63s/it, train_loss=2.05, train_acc=0.0938, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 495/1563 [13:28<28:59,  1.63s/it, train_loss=1.62, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97] [A
+Batch:  32%|###1      | 496/1563 [13:28<28:58,  1.63s/it, train_loss=1.62, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 496/1563 [13:29<28:58,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97] [A
+Batch:  32%|###1      | 497/1563 [13:29<28:56,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 497/1563 [13:31<28:56,  1.63s/it, train_loss=1.68, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 498/1563 [13:31<28:54,  1.63s/it, train_loss=1.68, train_acc=0.375, avg_tr_acc=0.259, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 498/1563 [13:33<28:54,  1.63s/it, train_loss=1.65, train_acc=0.438, avg_tr_acc=0.26, avg_tr_loss=1.97] [A
+Batch:  32%|###1      | 499/1563 [13:33<28:53,  1.63s/it, train_loss=1.65, train_acc=0.438, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 499/1563 [13:34<28:53,  1.63s/it, train_loss=1.87, train_acc=0.312, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 500/1563 [13:34<28:51,  1.63s/it, train_loss=1.87, train_acc=0.312, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###1      | 500/1563 [13:36<28:51,  1.63s/it, train_loss=1.74, train_acc=0.312, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 501/1563 [13:36<28:49,  1.63s/it, train_loss=1.74, train_acc=0.312, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 501/1563 [13:37<28:49,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.26, avg_tr_loss=1.97] [A
+Batch:  32%|###2      | 502/1563 [13:37<28:48,  1.63s/it, train_loss=1.8, train_acc=0.375, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 502/1563 [13:39<28:48,  1.63s/it, train_loss=1.6, train_acc=0.375, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 503/1563 [13:39<28:46,  1.63s/it, train_loss=1.6, train_acc=0.375, avg_tr_acc=0.26, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 503/1563 [13:41<28:46,  1.63s/it, train_loss=1.71, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 504/1563 [13:41<28:45,  1.63s/it, train_loss=1.71, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 504/1563 [13:42<28:45,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 505/1563 [13:42<28:44,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 505/1563 [13:44<28:44,  1.63s/it, train_loss=1.59, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 506/1563 [13:44<28:42,  1.63s/it, train_loss=1.59, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 506/1563 [13:46<28:42,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 507/1563 [13:46<28:40,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  32%|###2      | 507/1563 [13:47<28:40,  1.63s/it, train_loss=1.71, train_acc=0.281, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  33%|###2      | 508/1563 [13:47<28:39,  1.63s/it, train_loss=1.71, train_acc=0.281, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  33%|###2      | 508/1563 [13:49<28:39,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  33%|###2      | 509/1563 [13:49<28:37,  1.63s/it, train_loss=1.76, train_acc=0.344, avg_tr_acc=0.261, avg_tr_loss=1.97][A
+Batch:  33%|###2      | 509/1563 [13:50<28:37,  1.63s/it, train_loss=1.43, train_acc=0.562, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 510/1563 [13:50<28:35,  1.63s/it, train_loss=1.43, train_acc=0.562, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 510/1563 [13:52<28:35,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 511/1563 [13:52<28:33,  1.63s/it, train_loss=1.83, train_acc=0.312, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 511/1563 [13:54<28:33,  1.63s/it, train_loss=1.58, train_acc=0.344, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 512/1563 [13:54<28:32,  1.63s/it, train_loss=1.58, train_acc=0.344, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 512/1563 [13:55<28:32,  1.63s/it, train_loss=1.78, train_acc=0.406, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 513/1563 [13:55<28:30,  1.63s/it, train_loss=1.78, train_acc=0.406, avg_tr_acc=0.262, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 513/1563 [13:57<28:30,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 514/1563 [13:57<28:28,  1.63s/it, train_loss=1.67, train_acc=0.438, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 514/1563 [13:59<28:28,  1.63s/it, train_loss=1.73, train_acc=0.438, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 515/1563 [13:59<28:26,  1.63s/it, train_loss=1.73, train_acc=0.438, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###2      | 515/1563 [14:00<28:26,  1.63s/it, train_loss=1.84, train_acc=0.25, avg_tr_acc=0.263, avg_tr_loss=1.96] [A
+Batch:  33%|###3      | 516/1563 [14:00<28:25,  1.63s/it, train_loss=1.84, train_acc=0.25, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 516/1563 [14:02<28:25,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 517/1563 [14:02<28:23,  1.63s/it, train_loss=1.66, train_acc=0.375, avg_tr_acc=0.263, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 517/1563 [14:03<28:23,  1.63s/it, train_loss=1.68, train_acc=0.438, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 518/1563 [14:03<28:21,  1.63s/it, train_loss=1.68, train_acc=0.438, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 518/1563 [14:05<28:21,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.264, avg_tr_loss=1.96] [A
+Batch:  33%|###3      | 519/1563 [14:05<28:20,  1.63s/it, train_loss=1.8, train_acc=0.312, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 519/1563 [14:07<28:20,  1.63s/it, train_loss=1.74, train_acc=0.344, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 520/1563 [14:07<28:18,  1.63s/it, train_loss=1.74, train_acc=0.344, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 520/1563 [14:08<28:18,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.264, avg_tr_loss=1.96][A
+Batch:  33%|###3      | 521/1563 [14:08<28:16,  1.63s/it, train_loss=2.05, train_acc=0.188, avg_tr_acc=0.264, avg_tr_loss=1.96][A
