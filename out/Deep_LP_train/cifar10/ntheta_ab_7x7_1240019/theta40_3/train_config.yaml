@@ -1,0 +1,81 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 29
+  local_start: 2022-04-02_14:08:47
+  local_stop: 2022-04-02_18:08:46
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.829834452975048
+    train_loss: 0.48531661497730516
+    val_acc: 0.7670726837060703
+    val_loss: 0.6891733744559577
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 3
+    k: 35
+    kernel_size:
+    - 7
+    - 7
+    ntau: 20
+    num_angles: 40
+    out_channels: 16
+    stride: 2
+    tau_max: 20
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 8
+  - in_channels: 16
+    k: 35
+    kernel_size:
+    - 7
+    - 7
+    ntau: 20
+    num_angles: 40
+    out_channels: 32
+    stride: 2
+    tau_max: 20
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 8
+  - in_channels: 32
+    k: 35
+    kernel_size:
+    - 7
+    - 7
+    ntau: 20
+    num_angles: 40
+    out_channels: 64
+    stride: 2
+    tau_max: 20
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 8
+  num_params: 156762
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/cifar10/ntheta_ab_7x7_1240019/theta40_3
+param: param-files/Deep-LP/CIFAR10/theta40.yaml
+train_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: true
+  type: CIFAR10
+val_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: false
+  type: CIFAR10

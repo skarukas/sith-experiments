@@ -1,0 +1,81 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 30
+  local_start: 2022-04-02_20:06:43
+  local_stop: 2022-04-03_01:01:44
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.7959652911068458
+    train_loss: 0.5693028055832162
+    val_acc: 0.7292332268370607
+    val_loss: 0.7768404294793217
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 3
+    k: 35
+    kernel_size:
+    - 3
+    - 7
+    ntau: 26
+    num_angles: 20
+    out_channels: 16
+    stride: 2
+    tau_max: 40
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 4
+  - in_channels: 16
+    k: 35
+    kernel_size:
+    - 3
+    - 7
+    ntau: 26
+    num_angles: 20
+    out_channels: 32
+    stride: 2
+    tau_max: 40
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 4
+  - in_channels: 32
+    k: 35
+    kernel_size:
+    - 3
+    - 7
+    ntau: 26
+    num_angles: 20
+    out_channels: 64
+    stride: 2
+    tau_max: 40
+    tau_min: 1
+    tau_pooling: 4
+    theta_pooling: 4
+  num_params: 112538
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/cifar10/filtersize_ab_1240919/3x7_1
+param: param-files/Deep-LP/CIFAR10/ab_tests/3x7.yaml
+train_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: true
+  type: CIFAR10
+val_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: false
+  type: CIFAR10

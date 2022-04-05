@@ -39,7 +39,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
         train_acc = Average()
         
         model.train()
-        batches = tqdm(train_dataloader, leave=False, desc="Batch")
+        batches = tqdm(train_dataloader, leave=False, desc="Batch", mininterval=10)
         for (X, label) in batches:
             optimizer.zero_grad()
             # compute training loss
@@ -60,7 +60,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
                 "avg_tr_loss": train_loss.get()
             }
 
-            batches.set_postfix(batch_stats)
+            batches.set_postfix(batch_stats, refresh=False)
         
         epoch_stats = {
             "train_loss": train_loss.get(),

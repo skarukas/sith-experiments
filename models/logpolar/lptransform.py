@@ -81,6 +81,8 @@ class LogPolarTransform(torch.nn.Module):
         self.stride = (stride, stride)
         self.num_angles = num_angles
         self.sd_scale = gaussian_sharpness
+        self.localization = localization
+        self.window_shape = window_shape
         
         assert focus_points is None, "Not implemented yet."    
 
@@ -174,7 +176,7 @@ class LogPolarTransform(torch.nn.Module):
     
 
     def extra_repr(self):
-        s = "ntau={ntau}, tau_min={tau_min}, tau_max={tau_max}, buff_max={buff_max}, dt={dt}, k={k}, g={g}"
+        s = "ntau={ntau}, tau_range={tau_min}:{tau_max}, ntheta={num_angles}, stride={stride}, localization={localization}, window_shape={window_shape}"
         s = s.format(**self.__dict__)
         return s    
     

@@ -5,22 +5,22 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=4:00:00
+#SBATCH --time=9:00:00
 #SBATCH -o out/Deep_LP_train/running_jobs/%J_%a.out
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-3
+#SBATCH --array=0-5
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(tau10 tau20 tau30 tau40)
-ExperimentRelativePath="cifar10/ntau_ab_7x7"
+ParamFiles=(max_20_n_26 max_20_n_10 control max_40_n_10 max_60_n_26 max_60_n_10)
+ExperimentRelativePath="cifar10/maxtau_ntau_grid"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
-ParamFile=param-files/Deep-LP/CIFAR10/${ParamFile}.yaml
+ParamFile=param-files/Deep-LP/CIFAR10/ab_tests/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR
 
