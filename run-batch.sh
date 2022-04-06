@@ -10,13 +10,13 @@
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-5
+#SBATCH --array=0-2
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(max_20_n_26 max_20_n_10 control max_40_n_10 max_60_n_26 max_60_n_10)
-ExperimentRelativePath="cifar10/maxtau_ntau_grid"
+ParamFiles=(gaussian_1 gaussian_0.5 gaussian_line_1)
+ExperimentRelativePath="cifar10/localization_3_ab"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
