@@ -5,14 +5,17 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from datasets import TransformedMNIST
+from datasets import CIFAR10_Tensor, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
 from util import collate_examples_pad, Logger
 from models.util import get_model
 
 
 if __name__ == "__main__":
-    experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
+    if len(sys.argv) > 1:
+        experiment_path = sys.argv[1]
+    else:
+        experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
     results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
@@ -33,43 +36,47 @@ if __name__ == "__main__":
     state_dict = torch.load(open(state_dict_path, "rb"), map_location=config['device'])
     model.load_state_dict(state_dict)
 
-    
+    inner_dataset = CIFAR10_Tensor(
+        data_dir, download=True, 
+        train=False, device=config['device']
+    )
     ## evaluate
     transforms = [
         # normal
         dict(),
         # angle
-        dict(max_angle_deg=5),
-        dict(max_angle_deg=15),
-        dict(max_angle_deg=30),
-        dict(max_angle_deg=45),
-        dict(max_angle_deg=60),
-        dict(max_angle_deg=90),
+        dict(angle=5),
+        dict(angle=15),
+        dict(angle=30),
+        dict(angle=45),
+        dict(angle=60),
+        dict(angle=90),
         # scale
-        dict(max_scale=0.2, min_scale=0.2),
-        dict(max_scale=0.5, min_scale=0.5),
-        dict(max_scale=0.8, min_scale=0.8),
-        dict(max_scale=1.5, min_scale=1.5),
-        dict(max_scale=2, min_scale=2),
-        dict(max_scale=4, min_scale=4),
+        dict(scale=0.2),
+        dict(scale=0.5),
+        dict(scale=0.8),
+        dict(scale=1.5),
+        dict(scale=2),
+        dict(scale=4),
         # translation
-        dict(max_translate=2),
-        dict(max_translate=5),
-        dict(max_translate=10),
-        dict(max_translate=20),
+        dict(t_x=2, t_y=2),
+        dict(t_x=5, t_y=5),
+        dict(t_x=10, t_y=10),
+        dict(t_x=20, t_y=20),
     ]
     batch_size = config['batch_size']
     results = []
     for transform_dict in tqdm(transforms):
-        # create stretched version of SpeechCommands dataset
-        dataset = TransformedMNIST(
-            data_dir, device=config['device'], 
-            download=True, train=False,
-            **transform_dict
-        )
+        # create stretched version of dataset
+        if transform_dict == {}:
+            dataset = inner_dataset
+        else:
+            dataset = TransformedImageDataset(
+                inner_dataset, **transform_dict
+            )
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
-            collate_fn=collate_examples_pad
+            collate_fn=None
         )
         stats = evaluate(model, dataloader, progress_bar=True)
         print(f"\nFor transform={transform_dict}:\n acc={stats['acc']}, loss={stats['loss']}")

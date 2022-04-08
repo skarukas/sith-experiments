@@ -12,7 +12,7 @@ class DeepLogPolarClassifier(nn.Module):
     def __init__(self, out_classes, layer_params, 
                  act_func='relu', batch_norm=False,
                  dropout=0, collate='batch', device='cpu', 
-                 output="center",
+                 output="center", act_location="pre",
                  **kwargs):
         super(DeepLogPolarClassifier, self).__init__()
 
@@ -30,8 +30,16 @@ class DeepLogPolarClassifier(nn.Module):
         else:
             Activation = None
 
+        # act_location = before ("pre") or after ("post") depthwise linear
+        if act_location == "post":
+            self.activation = Activation()
+            LPActivation = None
+        else:
+            self.activation = None
+            LPActivation = Activation
+
         self.lpconv_layers = nn.ModuleList([
-            LogPolarConv(l, Activation, dropout, batch_norm, device=device).to(device)
+            LogPolarConv(l, LPActivation, dropout, batch_norm, device=device).to(device)
             for l in layer_params
         ])
         self.transform_linears = nn.ModuleList([
@@ -88,6 +96,8 @@ class DeepLogPolarClassifier(nn.Module):
             # linear over channel dim
             x = x.permute((0, 2, 3, 1))
             x = self.transform_linears[i](x)
+            if self.activation:
+                x = self.activation(x)
             x = x.permute((0, 3, 1, 2))
 
         # final layer = LP, reduction, then linear

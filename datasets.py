@@ -3,6 +3,7 @@ import torch
 import numpy as np
 import random
 
+import sys
 from os import path
 import glob
 
@@ -239,13 +240,82 @@ class FastMNIST(MNIST):
         return img, target
 
 
+class TransformedImageDataset(Dataset):
+    def __init__(self, inner_dataset,
+                t_x=0, t_y=0, angle=0, scale=1, out_size=None):
+        """
+            Each transform parameter can be either an int or a 
+            callable that returns an int.
+        """
+        self._inner = inner_dataset
+        self.get_t_x = self.__make_callable(t_x)
+        self.get_t_y = self.__make_callable(t_y)
+        self.get_angle = self.__make_callable(angle)
+        self.get_scale = self.__make_callable(scale)
+        self.out_size = out_size
+
+
+    def __make_callable(self, param):
+        return param if callable(param) else lambda: param
+
+
+    def __getitem__(self, idx):
+        item = self._inner[idx]
+        image = item[0].cpu()
+
+        mn, mx = image.min(), image.max()
+        image.sub_(mn).div_(mx-mn).mul_(255)
+        image = image.permute(1, 2, 0)
+
+        t_x = self.get_t_x()
+        t_y = self.get_t_y()
+        angle = self.get_angle()
+        scale = self.get_scale()
+
+        size_0 = max(int(scale*(image.shape[0] + 2*t_x)), image.shape[0])
+        size_1 = max(int(scale*(image.shape[1] + 2*t_y)), image.shape[1])
+        imsize = (size_0, size_1) if self.out_size is None else self.out_size
+        
+        inner_image = Image.fromarray(image.numpy().astype(np.uint8)) 
+        mode = "RGB" if item[0].shape[0] == 3 else "L"
+        image = Image.new(mode, size=imsize)
+        offset = ((image.width - inner_image.width) // 2, (image.height - inner_image.height) // 2)
+        image.paste(inner_image, offset)
+
+        mat = (
+            1, 0, t_x,
+            0, 1, t_y
+        )
+        image = image.rotate(angle, fillcolor=0)
+        image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
+        image = rescale_centered(image, scale)
+        
+
+        image = torch.tensor(np.array(image), dtype=item[0].dtype, device=item[0].device)
+        print(image.min(), image.max())
+        sys.exit()
+        image.div_(255).mul_(mx-mn).sub_(mn)
+
+        if len(image.shape) == 2:
+            image.unsqueeze_(0)
+        else:
+            image = image.permute(2, 0, 1)
+        
+        return (image, *item[1:])
+
+
+    def __len__(self):
+        return len(self._inner)
+
+
+# NOTE: use TransformedImageDataset instead. Evaluation shouldn't involve randomization.
 class TransformedMNIST(MNIST):
     def __init__(self, root, device='cpu', download=True, max_translate=0, 
-                max_angle_deg=0, min_scale=1, max_scale=1, out_size=None,
+                max_angle=0, min_scale=1, max_scale=1, out_size=None,
                 *args, **kwargs):
         super().__init__(root, download=download, *args, **kwargs)
         self.max_translate = max_translate
-        self.max_angle_deg = max_angle_deg
+        self.max_angle = max_angle
         self.min_scale = min_scale
         self.max_scale = max_scale
         self.device = device
