@@ -1,0 +1,36 @@
+- acc: 0.7116
+  loss: 0.8367706233263016
+  transform:
+    scale: 1
+- acc: 0.2071
+  loss: 3.8206440950393676
+  transform:
+    scale: 4
+- acc: 0.4277
+  loss: 1.915977478313446
+  transform:
+    scale: 2
+- acc: 0.6133
+  loss: 1.1396090208530425
+  transform:
+    scale: 1.5
+- acc: 0.3953
+  loss: 1.9403104320526123
+  transform:
+    scale: 0.8
+- acc: 0.176
+  loss: 3.4895358989715577
+  transform:
+    scale: 0.5
+- acc: 0.1288
+  loss: 3.398215383148193
+  transform:
+    scale: 0.2
+- acc: 0.6893
+  loss: 0.9104091559410096
+  transform:
+    angle: 5
+- acc: 0.5538
+  loss: 1.310409198665619
+  transform:
+    angle: 15

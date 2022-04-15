@@ -3,7 +3,6 @@ import torch
 import numpy as np
 import random
 
-import sys
 from os import path
 import glob
 
@@ -264,7 +263,7 @@ class TransformedImageDataset(Dataset):
         image = item[0].cpu()
 
         mn, mx = image.min(), image.max()
-        image.sub_(mn).div_(mx-mn).mul_(255)
+        image.sub_(mn).mul_(255).div_(mx-mn)
         image = image.permute(1, 2, 0)
 
         t_x = self.get_t_x()
@@ -272,9 +271,9 @@ class TransformedImageDataset(Dataset):
         angle = self.get_angle()
         scale = self.get_scale()
 
-        size_0 = max(int(scale*(image.shape[0] + 2*t_x)), image.shape[0])
-        size_1 = max(int(scale*(image.shape[1] + 2*t_y)), image.shape[1])
-        imsize = (size_0, size_1) if self.out_size is None else self.out_size
+        size_0 = int(scale*(image.shape[0] + 2*t_x))
+        size_1 = int(scale*(image.shape[1] + 2*t_y))
+        imsize = image.shape[:2]#(size_0, size_1) if self.out_size is None else self.out_size
         
         inner_image = Image.fromarray(image.numpy().astype(np.uint8)) 
         mode = "RGB" if item[0].shape[0] == 3 else "L"
@@ -288,13 +287,11 @@ class TransformedImageDataset(Dataset):
         )
         image = image.rotate(angle, fillcolor=0)
         image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
-        image = rescale_centered(image, scale)
+        image = image.resize((size_0, size_1))#rescale_centered(image, scale)
         
 
         image = torch.tensor(np.array(image), dtype=item[0].dtype, device=item[0].device)
-        print(image.min(), image.max())
-        sys.exit()
-        image.div_(255).mul_(mx-mn).sub_(mn)
+        image.mul_(mx-mn).div_(255).add_(mn)
 
         if len(image.shape) == 2:
             image.unsqueeze_(0)
@@ -375,7 +372,7 @@ class CIFAR10_Tensor(CIFAR10):
         """
         img, target = super().__getitem__(index)
         img = torch.tensor(np.array(img)).float().div(255)
-        img = img.permute(2, 1, 0) # put channels first
+        img = img.permute(2, 0, 1) # put channels first
         return img.to(self.device), target
 
 

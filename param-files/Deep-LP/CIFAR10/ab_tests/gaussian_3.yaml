@@ -16,7 +16,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 3
+      gaussian_sharpness: 3
     # layer 2
     - in_channels: 16
       out_channels: 32
@@ -32,7 +32,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 3
+      gaussian_sharpness: 3
     # layer 3
     - in_channels: 32
       out_channels: 64
@@ -48,7 +48,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 3
+      gaussian_sharpness: 3
   dropout: 0.2
   batch_norm: False
   act_func: relu

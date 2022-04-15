@@ -1,0 +1,2 @@
+Using cuda
+{'gaussian-sharpness': 1, 'k': 35, 'localization': 'gaussian', 'ntau': 26, 'num_angles': 20, 'stride': 2, 'tau_max': 40, 'tau_min': 1}

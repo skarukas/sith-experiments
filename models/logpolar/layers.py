@@ -129,7 +129,7 @@ class LogPolarConv(nn.Module):
         super(LogPolarConv, self).__init__()
         
         self.lpconv = _LogPolar_Core(**layer_params, device=device)
-        
+
         if act_func:
             self.act_func = act_func()
         else:

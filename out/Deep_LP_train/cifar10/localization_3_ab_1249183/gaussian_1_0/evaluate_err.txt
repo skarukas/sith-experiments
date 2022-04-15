@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/evaluate_2d.py", line 33, in <module>
+    model = get_model(config)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/util.py", line 17, in get_model
+    model = DeepLogPolarClassifier(**model_params, collate=config.get('collate', 'batch'), device=config['device'])
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/DeepLogPolarClassifier.py", line 41, in __init__
+    self.lpconv_layers = nn.ModuleList([
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/DeepLogPolarClassifier.py", line 42, in <listcomp>
+    LogPolarConv(l, LPActivation, dropout, batch_norm, device=device).to(device)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/logpolar/layers.py", line 131, in __init__
+    self.lpconv = _LogPolar_Core(**layer_params, device=device)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/logpolar/layers.py", line 29, in __init__
+    self.logpolar = LogPolarTransform(**kwargs, device=device)
+TypeError: __init__() got an unexpected keyword argument 'gaussian-sharpness'

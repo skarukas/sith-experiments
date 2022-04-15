@@ -1,0 +1,78 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 60
+  local_start: 2022-04-11_00:00:51
+  local_stop: 2022-04-11_01:29:34
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.7821297184900832
+    train_loss: 0.6092906308360994
+    val_acc: 0.7270367412140575
+    val_loss: 0.7880390630172084
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 3
+    k: 50
+    kernel_size:
+    - 5
+    - 5
+    localization: gaussian
+    ntau: 8
+    num_angles: 8
+    out_channels: 32
+    stride: 2
+    tau_max: 8
+    tau_min: 1
+  - in_channels: 32
+    k: 50
+    kernel_size:
+    - 5
+    - 5
+    localization: gaussian
+    ntau: 8
+    num_angles: 8
+    out_channels: 64
+    stride: 2
+    tau_max: 8
+    tau_min: 1
+  - in_channels: 64
+    k: 50
+    kernel_size:
+    - 5
+    - 5
+    localization: gaussian
+    ntau: 8
+    num_angles: 8
+    out_channels: 128
+    stride: 2
+    tau_max: 8
+    tau_min: 1
+  num_params: 265130
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 60
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/cifar10/localization_gauss_1284323/local_8_8_fulltheta_1
+param: param-files/Deep-LP/CIFAR10/ab_tests/local_8_8_fulltheta.yaml
+train_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: true
+  type: CIFAR10
+val_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: false
+  type: CIFAR10

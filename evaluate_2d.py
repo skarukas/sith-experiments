@@ -9,7 +9,7 @@ from datasets import CIFAR10_Tensor, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
 from util import collate_examples_pad, Logger
 from models.util import get_model
-
+import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -42,8 +42,16 @@ if __name__ == "__main__":
     )
     ## evaluate
     transforms = [
-        # normal
-        dict(),
+        # scale
+        dict(scale=1),
+        dict(scale=4),
+        dict(scale=3),
+        dict(scale=2),
+        dict(scale=1.5),
+        dict(scale=0.8),
+        dict(scale=0.6),
+        dict(scale=0.5),
+
         # angle
         dict(angle=5),
         dict(angle=15),
@@ -51,29 +59,21 @@ if __name__ == "__main__":
         dict(angle=45),
         dict(angle=60),
         dict(angle=90),
-        # scale
-        dict(scale=0.2),
-        dict(scale=0.5),
-        dict(scale=0.8),
-        dict(scale=1.5),
-        dict(scale=2),
-        dict(scale=4),
         # translation
-        dict(t_x=2, t_y=2),
-        dict(t_x=5, t_y=5),
-        dict(t_x=10, t_y=10),
-        dict(t_x=20, t_y=20),
+        #dict(t_x=2, t_y=2),
+        #dict(t_x=4, t_y=4),
+        #dict(t_x=7, t_y=7),
+        #dict(t_x=10, t_y=10),
     ]
-    batch_size = config['batch_size']
+    batch_size = 16#config['batch_size']
     results = []
     for transform_dict in tqdm(transforms):
         # create stretched version of dataset
-        if transform_dict == {}:
-            dataset = inner_dataset
-        else:
-            dataset = TransformedImageDataset(
-                inner_dataset, **transform_dict
-            )
+        dataset = TransformedImageDataset(inner_dataset, **transform_dict)
+        #k = list(transform_dict.keys())[0]
+        #x = dataset[0][0].detach().permute(1, 2, 0).cpu().numpy()
+        #x = (x - x.min()) / (x.max() - x.min())
+        #plt.imsave(f"{k}:{transform_dict[k]}.png", x)
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
             collate_fn=None

@@ -1,0 +1,56 @@
+- acc: 0.7281
+  loss: 0.7878033249139785
+  transform:
+    scale: 1
+- acc: 0.2022
+  loss: 4.09583437576294
+  transform:
+    scale: 4
+- acc: 0.2225
+  loss: 3.7668078088760377
+  transform:
+    scale: 3
+- acc: 0.2982
+  loss: 2.69246211605072
+  transform:
+    scale: 2
+- acc: 0.4772
+  loss: 1.586250796318054
+  transform:
+    scale: 1.5
+- acc: 0.6246
+  loss: 1.0836610516548157
+  transform:
+    scale: 0.8
+- acc: 0.361
+  loss: 1.787174736404419
+  transform:
+    scale: 0.6
+- acc: 0.3077
+  loss: 1.8866373977661133
+  transform:
+    scale: 0.5
+- acc: 0.6933
+  loss: 0.8786816067695618
+  transform:
+    angle: 5
+- acc: 0.5988
+  loss: 1.1584469903469086
+  transform:
+    angle: 15
+- acc: 0.4854
+  loss: 1.5351483149528504
+  transform:
+    angle: 30
+- acc: 0.4231
+  loss: 1.7504251280784606
+  transform:
+    angle: 45
+- acc: 0.4022
+  loss: 1.8195681747436523
+  transform:
+    angle: 60
+- acc: 0.5056
+  loss: 1.5063215517997741
+  transform:
+    angle: 90

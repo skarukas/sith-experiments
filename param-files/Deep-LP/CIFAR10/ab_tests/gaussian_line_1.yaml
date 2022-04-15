@@ -16,7 +16,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 1
+      gaussian_sharpness: 1
       window_shape: line
     # layer 2
     - in_channels: 16
@@ -33,7 +33,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 1
+      gaussian_sharpness: 1
       window_shape: line
     # layer 3
     - in_channels: 32
@@ -50,7 +50,7 @@ model:
       theta_pooling: 4
       tau_pooling: 4
       localization: gaussian
-      gaussian-sharpness: 1
+      gaussian_sharpness: 1
       window_shape: line
   dropout: 0.2
   batch_norm: False

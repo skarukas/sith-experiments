@@ -1,0 +1,253 @@
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.26367811501597443, loss=3.4669173864510876
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.7706669329073482, loss=0.7499133643631737
+
+For transform={'scale': 4}:
+ acc=0.17691693290734825, loss=5.623348628370145
+
+For transform={'scale': 2}:
+ acc=0.38777955271565495, loss=2.6136752869755315
+
+For transform={'scale': 1.5}:
+ acc=0.6445686900958466, loss=1.2297832521196372
+
+For transform={'scale': 0.8}:
+ acc=0.47064696485623003, loss=2.176247140089163
+
+For transform={'scale': 0.5}:
+ acc=0.19838258785942492, loss=4.022085668179936
+
+For transform={'scale': 0.2}:
+ acc=0.11641373801916934, loss=3.6744144039032176
+
+For transform={'angle': 5}:
+ acc=0.7410143769968051, loss=0.829734423337653
+
+For transform={'angle': 15}:
+ acc=0.6058306709265175, loss=1.3195468914775421
+
+For transform={'angle': 30}:
+ acc=0.3596246006389776, loss=2.642005410819008
+
+For transform={'angle': 45}:
+ acc=0.22913338658146964, loss=4.220502659154776
+
+For transform={'angle': 60}:
+ acc=0.20766773162939298, loss=4.247061350094244
+
+For transform={'angle': 90}:
+ acc=0.26926916932907347, loss=3.4596208604379965
+
+For transform={'t_x': 2, 't_y': 2}:
+ acc=0.6167132587859425, loss=1.2900684845333281
+
+For transform={'t_x': 4, 't_y': 4}:
+ acc=0.5508186900958466, loss=1.6121325144371665
+
+For transform={'t_x': 7, 't_y': 7}:
+ acc=0.39876198083067094, loss=2.5395554125118562
+
+For transform={'t_x': 10, 't_y': 10}:
+ acc=0.30860623003194887, loss=3.7309232058997353
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.7705, loss=0.7503097333729267
+
+For transform={'scale': 4}:
+ acc=0.1768, loss=5.623392603302002
+
+For transform={'scale': 2}:
+ acc=0.3878, loss=2.614425682640076
+
+For transform={'scale': 1.5}:
+ acc=0.6444, loss=1.2302717563152312
+
+For transform={'scale': 0.8}:
+ acc=0.41, loss=2.0286837699890135
+
+For transform={'scale': 0.5}:
+ acc=0.1342, loss=2.8265437322616576
+
+For transform={'scale': 0.2}:
+ acc=0.1141, loss=2.4681470932006837
+
+For transform={'angle': 5}:
+ acc=0.7409, loss=0.8290497345447541
+
+For transform={'angle': 15}:
+ acc=0.6057, loss=1.319287957382202
+
+For transform={'angle': 30}:
+ acc=0.3597, loss=2.6420834212303164
+
+For transform={'angle': 45}:
+ acc=0.2293, loss=4.220171459388733
+
+For transform={'angle': 60}:
+ acc=0.2079, loss=4.2447179540634155
+
+For transform={'angle': 90}:
+ acc=0.2694, loss=3.458935589027405
+
+For transform={'t_x': 2, 't_y': 2}:
+ acc=0.6173, loss=1.287968925666809
+
+For transform={'t_x': 4, 't_y': 4}:
+ acc=0.5509, loss=1.612245682144165
+
+For transform={'t_x': 7, 't_y': 7}:
+ acc=0.3988, loss=2.539173812294006
+
+For transform={'t_x': 10, 't_y': 10}:
+ acc=0.3085, loss=3.7309270467758178
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.7705, loss=0.7503097381711006
+
+For transform={'scale': 4}:
+ acc=0.1768, loss=5.623392564773559
+
+For transform={'scale': 3}:
+ acc=0.2066, loss=4.713084062576294
+
+For transform={'scale': 2}:
+ acc=0.3878, loss=2.614425664615631
+
+For transform={'scale': 1.5}:
+ acc=0.6444, loss=1.2302717365264892
+
+For transform={'scale': 0.8}:
+ acc=0.41, loss=2.028683768749237
+
+For transform={'scale': 0.6}:
+ acc=0.1535, loss=3.0627569025039674
+
+For transform={'scale': 0.5}:
+ acc=0.1342, loss=2.8265437313079835
+
+For transform={'angle': 5}:
+ acc=0.7409, loss=0.8290497283935547
+
+For transform={'angle': 15}:
+ acc=0.6057, loss=1.3192879512786866
+
+For transform={'angle': 30}:
+ acc=0.3597, loss=2.64208341588974
+
+For transform={'angle': 45}:
+ acc=0.2293, loss=4.2201714595794675
+
+For transform={'angle': 60}:
+ acc=0.2079, loss=4.244717953872681
+
+For transform={'angle': 90}:
+ acc=0.2694, loss=3.458935578727722
+
+For transform={'t_x': 2, 't_y': 2}:
+ acc=0.6173, loss=1.287968923854828
+
+For transform={'t_x': 4, 't_y': 4}:
+ acc=0.5509, loss=1.6122456673145293
+
+For transform={'t_x': 7, 't_y': 7}:
+ acc=0.3988, loss=2.539173815727234
+
+For transform={'t_x': 10, 't_y': 10}:
+ acc=0.3085, loss=3.7309270420074463
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+Using cuda
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+{'k': 50, 'ntau': 8, 'num_angles': 8, 'stride': 2, 'tau_max': 8, 'tau_min': 1}
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.7705, loss=0.750309725227952
+
+For transform={'scale': 4}:
+ acc=0.1831, loss=5.5717711158752445
+
+For transform={'scale': 3}:
+ acc=0.2128, loss=4.6374658058166505
+
+For transform={'scale': 2}:
+ acc=0.3982, loss=2.550589153766632
+
+For transform={'scale': 1.5}:
+ acc=0.6471, loss=1.2182194484829902
+
+For transform={'scale': 0.8}:
+ acc=0.6523, loss=1.0495675367116928
+
+For transform={'scale': 0.6}:
+ acc=0.48, loss=1.4975698110580444
+
+For transform={'scale': 0.5}:
+ acc=0.3712, loss=1.7455315979003907
+
+For transform={'angle': 5}:
+ acc=0.7409, loss=0.8290497319698333
+
+For transform={'angle': 15}:
+ acc=0.6057, loss=1.3192879467010499
+
+For transform={'angle': 30}:
+ acc=0.3597, loss=2.6420834119796752
+
+For transform={'angle': 45}:
+ acc=0.2293, loss=4.220171464729309
+
+For transform={'angle': 60}:
+ acc=0.2079, loss=4.244717961502075
+
+For transform={'angle': 90}:
+ acc=0.2694, loss=3.4589355867385865
+
+For transform={'t_x': 2, 't_y': 2}:
+ acc=0.6613, loss=1.0997960815429688
+
+For transform={'t_x': 4, 't_y': 4}:
+ acc=0.488, loss=2.0154485860824587
+
+For transform={'t_x': 7, 't_y': 7}:
+ acc=0.3291, loss=2.928527254486084
+
+For transform={'t_x': 10, 't_y': 10}:
+ acc=0.1968, loss=4.661099266052246

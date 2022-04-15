@@ -17,7 +17,7 @@ model:
   classname: DeepLogPolarClassifier
   dropout: 0.2
   layer_params:
-  - gaussian-sharpness: 1
+  - gaussian_sharpness: 1
     in_channels: 3
     k: 35
     kernel_size:
@@ -33,7 +33,7 @@ model:
     tau_pooling: 4
     theta_pooling: 4
     window_shape: line
-  - gaussian-sharpness: 1
+  - gaussian_sharpness: 1
     in_channels: 16
     k: 35
     kernel_size:
@@ -49,7 +49,7 @@ model:
     tau_pooling: 4
     theta_pooling: 4
     window_shape: line
-  - gaussian-sharpness: 1
+  - gaussian_sharpness: 1
     in_channels: 32
     k: 35
     kernel_size:
