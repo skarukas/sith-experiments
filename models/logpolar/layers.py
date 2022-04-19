@@ -10,7 +10,7 @@ from torch.nn.utils import weight_norm
 import math
 
 from .util import TWO_PI, prod, pad_periodic
-from .lptransform import LogPolarTransform
+from .lptransform import LogPolarTransform, LogPolarTransformV2
 
 class _LogPolar_Core(nn.Module):
     """
@@ -20,13 +20,15 @@ class _LogPolar_Core(nn.Module):
                 kernel_size=5, tau_pooling=None, 
                 theta_pooling=None, spatial_pooling=None,
                 pooling="max", device='cpu',
+                lp_version=1,
                 **kwargs):
         super(_LogPolar_Core, self).__init__()
 
         assert in_channels
         assert out_channels
-        
-        self.logpolar = LogPolarTransform(**kwargs, device=device)
+
+        LPClass = LogPolarTransformV2 if lp_version == 2 else LogPolarTransform
+        self.logpolar = LPClass(**kwargs, device=device)
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = kernel_size if isinstance(kernel_size, tuple) or isinstance(kernel_size, list) else (kernel_size, kernel_size)
