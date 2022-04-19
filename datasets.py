@@ -263,7 +263,7 @@ class TransformedImageDataset(Dataset):
         image = item[0].cpu()
 
         mn, mx = image.min(), image.max()
-        image.sub_(mn).mul_(255).div_(mx-mn)
+        image = image.sub(mn).mul(255).div(mx-mn)
         image = image.permute(1, 2, 0)
 
         t_x = self.get_t_x()
@@ -271,10 +271,15 @@ class TransformedImageDataset(Dataset):
         angle = self.get_angle()
         scale = self.get_scale()
 
-        size_0 = int(scale*(image.shape[0] + 2*t_x))
-        size_1 = int(scale*(image.shape[1] + 2*t_y))
-        imsize = image.shape[:2]#(size_0, size_1) if self.out_size is None else self.out_size
+        #size_0 = int(scale*(image.shape[0] + 2*t_x))
+        #size_1 = int(scale*(image.shape[1] + 2*t_y))
+        size_0 = int(image.shape[0] + 2*t_x)
+        size_1 = int(image.shape[1] + 2*t_y)
+        imsize = (size_0, size_1) if self.out_size is None else self.out_size
         
+        if image.shape[-1] == 1:
+            image.squeeze_(-1)
+
         inner_image = Image.fromarray(image.numpy().astype(np.uint8)) 
         mode = "RGB" if item[0].shape[0] == 3 else "L"
         image = Image.new(mode, size=imsize)

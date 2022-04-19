@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from datasets import CIFAR10_Tensor, TransformedImageDataset, TransformedMNIST
+from datasets import CIFAR10_Tensor, FastMNIST, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
 from util import collate_examples_pad, Logger
 from models.util import get_model
@@ -36,7 +36,12 @@ if __name__ == "__main__":
     state_dict = torch.load(open(state_dict_path, "rb"), map_location=config['device'])
     model.load_state_dict(state_dict)
 
-    inner_dataset = CIFAR10_Tensor(
+    """ inner_dataset = CIFAR10_Tensor(
+        data_dir, download=True, 
+        train=False, device=config['device']
+    ) """
+
+    inner_dataset = FastMNIST(
         data_dir, download=True, 
         train=False, device=config['device']
     )
@@ -60,10 +65,11 @@ if __name__ == "__main__":
         dict(angle=60),
         dict(angle=90),
         # translation
-        #dict(t_x=2, t_y=2),
-        #dict(t_x=4, t_y=4),
-        #dict(t_x=7, t_y=7),
-        #dict(t_x=10, t_y=10),
+        dict(t_x=1, t_y=1),
+        dict(t_x=2, t_y=2),
+        dict(t_x=4, t_y=4),
+        dict(t_x=6, t_y=6),
+        dict(t_x=10, t_y=10),
     ]
     batch_size = 16#config['batch_size']
     results = []
