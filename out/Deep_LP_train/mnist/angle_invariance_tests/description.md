@@ -1,0 +1,4 @@
+- Models are trained on a subset of digits from MNIST that are distinguishable over any rotation: `[1, 2, 3, 8, 0, 6]`
+- They are trained with full pooling over the theta dimension, which either has axes every 90 degrees or every 30 degrees.
+- They are trained on only non-rotated images, and the expectation is that their performance when shifted 90 degrees / 30 degrees should be exactly the same as the performance on the original images, as the LP transforms in each case are expected to be exactly shifted versions of each other.
+- With the fixed version of the LP transform (V2), the results are as expected

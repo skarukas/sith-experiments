@@ -1,0 +1,54 @@
+Using cuda
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.8471, loss=0.4864675931438804
+Using cuda
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.8471, loss=0.4864665208519902
+Using cuda
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.8471, loss=0.4864643151456845
+
+For transform={'scale': 4}:
+ acc=0.1821, loss=4.765144895825535
+
+For transform={'scale': 3}:
+ acc=0.203, loss=4.5184539840825835
+
+For transform={'scale': 2}:
+ acc=0.3217, loss=3.058946770315466
+
+For transform={'scale': 1.5}:
+ acc=0.6017, loss=1.360606778509389
+
+For transform={'scale': 0.8}:
+ acc=0.774, loss=0.686739538975692
+
+For transform={'scale': 0.6}:
+ acc=0.5168, loss=1.4274894729738123
+
+For transform={'scale': 0.5}:
+ acc=0.5145, loss=1.3807231367232278
+
+For transform={'angle': 5}:
+ acc=0.8136, loss=0.583715875546022
+
+For transform={'angle': 15}:
+ acc=0.6274, loss=1.2211954756625354
+
+For transform={'angle': 30}:
+ acc=0.322, loss=2.765231151067617
+
+For transform={'angle': 45}:
+ acc=0.2514, loss=3.719814786769397
+
+For transform={'angle': 60}:
+ acc=0.2167, loss=3.6184369216266203
+
+For transform={'angle': 90}:
+ acc=0.3009, loss=3.1918883388088783

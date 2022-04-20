@@ -1,0 +1,88 @@
+Using cuda
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.8056, loss=0.7850396913409233
+
+For transform={'scale': 4}:
+ acc=0.136, loss=6.9118607856750485
+
+For transform={'scale': 3}:
+ acc=0.1495, loss=5.8425361431121825
+
+For transform={'scale': 2}:
+ acc=0.2421, loss=3.769503700065613
+
+For transform={'scale': 1.5}:
+ acc=0.3008, loss=2.6177271989822386
+
+For transform={'scale': 0.8}:
+ acc=0.5819, loss=1.4591418470859527
+
+For transform={'scale': 0.6}:
+ acc=0.3067, loss=2.7429139919281007
+
+For transform={'scale': 0.5}:
+ acc=0.2858, loss=2.029630284500122
+
+For transform={'angle': 5}:
+ acc=0.7789, loss=0.8675197873055935
+
+For transform={'angle': 15}:
+ acc=0.6524, loss=1.3435860696077346
+
+For transform={'angle': 30}:
+ acc=0.428, loss=2.4220609572410585
+
+For transform={'angle': 45}:
+ acc=0.2831, loss=3.6330437391281127
+
+For transform={'angle': 60}:
+ acc=0.244, loss=4.302533157348633
+
+For transform={'angle': 90}:
+ acc=0.2941, loss=4.539565113449097
+Using cuda
+Files already downloaded and verified
+
+For transform={'scale': 1}:
+ acc=0.8055, loss=0.7850489253343931
+
+For transform={'scale': 4}:
+ acc=0.136, loss=6.911849958992004
+
+For transform={'scale': 3}:
+ acc=0.1494, loss=5.842488959789276
+
+For transform={'scale': 2}:
+ acc=0.2421, loss=3.7693970990657806
+
+For transform={'scale': 1.5}:
+ acc=0.3007, loss=2.6176578225135803
+
+For transform={'scale': 0.8}:
+ acc=0.5818, loss=1.4591202515900135
+
+For transform={'scale': 0.6}:
+ acc=0.3066, loss=2.7429288425922396
+
+For transform={'scale': 0.5}:
+ acc=0.2858, loss=2.029575892972946
+
+For transform={'angle': 5}:
+ acc=0.779, loss=0.8675202732012723
+
+For transform={'angle': 15}:
+ acc=0.6527, loss=1.3435630269005894
+
+For transform={'angle': 30}:
+ acc=0.4278, loss=2.4220544098496437
+
+For transform={'angle': 45}:
+ acc=0.283, loss=3.6330413415431977
+
+For transform={'angle': 60}:
+ acc=0.244, loss=4.302532653188705
+
+For transform={'angle': 90}:
+ acc=0.294, loss=4.539538383865357

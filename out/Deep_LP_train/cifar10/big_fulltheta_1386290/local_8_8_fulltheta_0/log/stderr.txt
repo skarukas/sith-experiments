@@ -1,12 +1,0 @@
-Epoch:   0%|          | 0/60 [00:00<?, ?it/s]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
-  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
-
-Batch:  13%|#2        | 197/1563 [00:10<01:09, 19.65it/s, train_loss=1.98, train_acc=0.25, avg_tr_acc=0.208, avg_tr_loss=2.12][A
-Batch:  25%|##5       | 395/1563 [00:20<00:59, 19.72it/s, train_loss=1.93, train_acc=0.219, avg_tr_acc=0.248, avg_tr_loss=2.03][A
-Batch:  38%|###7      | 593/1563 [00:30<00:49, 19.74it/s, train_loss=1.5, train_acc=0.406, avg_tr_acc=0.285, avg_tr_loss=1.96] [A
-Batch:  51%|#####     | 791/1563 [00:40<00:39, 19.75it/s, train_loss=1.35, train_acc=0.5, avg_tr_acc=0.305, avg_tr_loss=1.91] [A
-Batch:  63%|######3   | 989/1563 [00:50<00:29, 19.75it/s, train_loss=1.86, train_acc=0.281, avg_tr_acc=0.322, avg_tr_loss=1.86][A
-Batch:  76%|#######5  | 1187/1563 [01:00<00:19, 19.75it/s, train_loss=1.68, train_acc=0.406, avg_tr_acc=0.334, avg_tr_loss=1.83][A
-Batch:  89%|########8 | 1385/1563 [01:10<00:09, 19.70it/s, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.346, avg_tr_loss=1.8] [A
-                                                                                                                               [A

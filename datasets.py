@@ -214,9 +214,9 @@ class FileDataset(Dataset):
 
 
 class FastMNIST(MNIST):
-    def __init__(self, root, device='cpu', download=True, *args, **kwargs):
+    def __init__(self, root, device='cpu', download=True, allowed_targets=range(10), *args, **kwargs):
         super().__init__(root, download=download, *args, **kwargs)
-        
+
         # Scale data to [0,1]
         self.data = self.data.unsqueeze(1).float().div(255)
 
@@ -225,6 +225,21 @@ class FastMNIST(MNIST):
 
         # Put both data and targets on device in advance
         self.data, self.targets = self.data.to(device), self.targets.to(device)
+
+
+        # re-index targets by filtered classes
+        index_map = {}
+        idx = 0
+        for target in allowed_targets:
+            if target not in index_map:
+                index_map[target] = idx
+                idx += 1
+
+        # filter targets
+        self.data, self.targets = zip(*[
+                (d, torch.tensor(index_map[t.item()]).to(device)) 
+                for d, t in zip(self.data, self.targets) if t.item() in index_map
+        ])
 
 
     def __getitem__(self, index):
@@ -292,7 +307,7 @@ class TransformedImageDataset(Dataset):
         )
         image = image.rotate(angle, fillcolor=0)
         image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
-        image = image.resize((size_0, size_1))#rescale_centered(image, scale)
+        image = image.resize((int(size_0*scale), int(size_1*scale)))#rescale_centered(image, scale)
         
 
         image = torch.tensor(np.array(image), dtype=item[0].dtype, device=item[0].device)

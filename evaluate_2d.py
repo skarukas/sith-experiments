@@ -5,11 +5,38 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from datasets import CIFAR10_Tensor, FastMNIST, TransformedImageDataset, TransformedMNIST
+from datasets import get_dataset, CIFAR10_Tensor, FastMNIST, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
 from util import collate_examples_pad, Logger
 from models.util import get_model
 import matplotlib.pyplot as plt
+
+DEFAULT_TRANSFORMS = [
+        # scale
+        dict(scale=1),
+        dict(scale=4),
+        dict(scale=3),
+        dict(scale=2),
+        dict(scale=1.5),
+        dict(scale=0.8),
+        dict(scale=0.6),
+        dict(scale=0.5),
+
+        # angle
+        dict(angle=5),
+        dict(angle=15),
+        dict(angle=30),
+        dict(angle=45),
+        dict(angle=60),
+        dict(angle=90),
+        # translation
+        dict(t_x=1, t_y=1),
+        dict(t_x=2, t_y=2),
+        dict(t_x=4, t_y=4),
+        dict(t_x=6, t_y=6),
+        dict(t_x=10, t_y=10),
+    ]
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -41,37 +68,19 @@ if __name__ == "__main__":
         train=False, device=config['device']
     ) """
 
-    inner_dataset = FastMNIST(
-        data_dir, download=True, 
-        train=False, device=config['device']
-    )
-    ## evaluate
-    transforms = [
-        # scale
-        dict(scale=1),
-        dict(scale=4),
-        dict(scale=3),
-        dict(scale=2),
-        dict(scale=1.5),
-        dict(scale=0.8),
-        dict(scale=0.6),
-        dict(scale=0.5),
+    #inner_dataset = FastMNIST(
+    #    data_dir, download=True, 
+    #    train=False, device=config['device']
+    #)
 
-        # angle
-        dict(angle=5),
-        dict(angle=15),
-        dict(angle=30),
-        dict(angle=45),
-        dict(angle=60),
-        dict(angle=90),
-        # translation
-        dict(t_x=1, t_y=1),
-        dict(t_x=2, t_y=2),
-        dict(t_x=4, t_y=4),
-        dict(t_x=6, t_y=6),
-        dict(t_x=10, t_y=10),
-    ]
-    batch_size = 16#config['batch_size']
+    inner_dataset = get_dataset(config["val_data_dir"], device=config['device'])
+    ## evaluate
+
+    #transforms = DEFAULT_TRANSFORMS
+    n_angles = 24
+    transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
+
+    batch_size = config['batch_size']
     results = []
     for transform_dict in tqdm(transforms):
         # create stretched version of dataset
@@ -79,7 +88,8 @@ if __name__ == "__main__":
         #k = list(transform_dict.keys())[0]
         #x = dataset[0][0].detach().permute(1, 2, 0).cpu().numpy()
         #x = (x - x.min()) / (x.max() - x.min())
-        #plt.imsave(f"{k}:{transform_dict[k]}.png", x)
+        #print("imsize:", x.shape)
+        #plt.imsave(f"{k}:{transform_dict[k]}.png", x[..., 0])
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
             collate_fn=None

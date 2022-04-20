@@ -1,0 +1,73 @@
+Using cuda
+
+For transform={'angle': 0.0}:
+ acc=0.9921465968586387, loss=0.026912563721495752
+
+For transform={'angle': 15.0}:
+ acc=0.9815117801047121, loss=0.055809610256930105
+
+For transform={'angle': 30.0}:
+ acc=0.9491164921465969, loss=0.14877625621114102
+
+For transform={'angle': 45.0}:
+ acc=0.9153214077952297, loss=0.24292222106175898
+
+For transform={'angle': 60.0}:
+ acc=0.9545884235020361, loss=0.13533259410391615
+
+For transform={'angle': 75.0}:
+ acc=0.9840386852821408, loss=0.05281244925953477
+
+For transform={'angle': 90.0}:
+ acc=0.9921465968586387, loss=0.026977448846415876
+
+For transform={'angle': 105.0}:
+ acc=0.9815117801047121, loss=0.05551922960689594
+
+For transform={'angle': 120.0}:
+ acc=0.949607329842932, loss=0.14769564419302172
+
+For transform={'angle': 135.0}:
+ acc=0.9148305700988947, loss=0.24555903946229923
+
+For transform={'angle': 150.0}:
+ acc=0.954752036067481, loss=0.1343810386780201
+
+For transform={'angle': 165.0}:
+ acc=0.9837114601512507, loss=0.052595982715702025
+
+For transform={'angle': 180.0}:
+ acc=0.9921465968586387, loss=0.026820994956548088
+
+For transform={'angle': 195.0}:
+ acc=0.9815117801047121, loss=0.055616335559353546
+
+For transform={'angle': 210.0}:
+ acc=0.9487710878417684, loss=0.15027943169161756
+
+For transform={'angle': 225.0}:
+ acc=0.9212114601512507, loss=0.2307140476884642
+
+For transform={'angle': 240.0}:
+ acc=0.9550065445026178, loss=0.13455180939852568
+
+For transform={'angle': 255.0}:
+ acc=0.9837114601512507, loss=0.05290063141591613
+
+For transform={'angle': 270.0}:
+ acc=0.9921465968586387, loss=0.026847664483808254
+
+For transform={'angle': 285.0}:
+ acc=0.981348167539267, loss=0.05560567751417122
+
+For transform={'angle': 300.0}:
+ acc=0.950098167539267, loss=0.14768548073802942
+
+For transform={'angle': 315.0}:
+ acc=0.9149941826643397, loss=0.24417145946185
+
+For transform={'angle': 330.0}:
+ acc=0.9550065445026178, loss=0.134635848271129
+
+For transform={'angle': 345.0}:
+ acc=0.9842931937172775, loss=0.05215066165421938

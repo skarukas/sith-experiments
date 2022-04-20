@@ -5,7 +5,6 @@ from .util import TWO_PI, unsqueeze_except
 
 ## TODO: implement sparse convolution (via matrix multiplication). The existing 
 ##     convolution kernels are sparse but very large (we'll run out of memory)
-## TODO: filtered images are sometimes blank...why?
 
 
 class LogPolarTransform(torch.nn.Module):

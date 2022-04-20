@@ -49,3 +49,80 @@ For transform={'max_translate': 10}:
 
 For transform={'max_translate': 20}:
  acc=0.1755191693290735, loss=39.466246717654094
+Using cuda
+imsize: (28, 28, 1)
+
+For transform={'scale': 1}:
+ acc=0.9857, loss=0.045339878374149274
+imsize: (112, 112, 1)
+
+For transform={'scale': 4}:
+ acc=0.791, loss=16.056423125493282
+imsize: (84, 84, 1)
+
+For transform={'scale': 3}:
+ acc=0.9751, loss=0.7827552216116371
+imsize: (56, 56, 1)
+
+For transform={'scale': 2}:
+ acc=0.9863, loss=0.14363882548096663
+imsize: (42, 42, 1)
+
+For transform={'scale': 1.5}:
+ acc=0.9859, loss=0.07639572977353534
+imsize: (22, 22, 1)
+
+For transform={'scale': 0.8}:
+ acc=0.9826, loss=0.06252261792327794
+imsize: (16, 16, 1)
+
+For transform={'scale': 0.6}:
+ acc=0.9417, loss=0.32023330380558035
+imsize: (14, 14, 1)
+
+For transform={'scale': 0.5}:
+ acc=0.8621, loss=0.6620107814338059
+imsize: (28, 28, 1)
+
+For transform={'angle': 5}:
+ acc=0.9819, loss=0.06381443185185602
+imsize: (28, 28, 1)
+
+For transform={'angle': 15}:
+ acc=0.9639, loss=0.12555416755767287
+imsize: (28, 28, 1)
+
+For transform={'angle': 30}:
+ acc=0.85, loss=0.5888246284578131
+imsize: (28, 28, 1)
+
+For transform={'angle': 45}:
+ acc=0.5633, loss=2.2587970957174095
+imsize: (28, 28, 1)
+
+For transform={'angle': 60}:
+ acc=0.287, loss=4.956282582311403
+imsize: (28, 28, 1)
+
+For transform={'angle': 90}:
+ acc=0.1402, loss=8.533351934747827
+imsize: (30, 30, 1)
+
+For transform={'t_x': 1, 't_y': 1}:
+ acc=0.9754, loss=0.0868525818928027
+imsize: (32, 32, 1)
+
+For transform={'t_x': 2, 't_y': 2}:
+ acc=0.9387, loss=0.26466140501708235
+imsize: (36, 36, 1)
+
+For transform={'t_x': 4, 't_y': 4}:
+ acc=0.6539, loss=2.7285155742652423
+imsize: (40, 40, 1)
+
+For transform={'t_x': 6, 't_y': 6}:
+ acc=0.3291, loss=10.956165449243716
+imsize: (48, 48, 1)
+
+For transform={'t_x': 10, 't_y': 10}:
+ acc=0.141, loss=32.02816862360816

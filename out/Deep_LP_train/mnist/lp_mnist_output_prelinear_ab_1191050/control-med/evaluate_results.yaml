@@ -1,73 +1,81 @@
-- acc: 0.9876198083067093
-  loss: 0.046811981268758455
-  transform: {}
-- acc: 0.9877196485623003
-  loss: 0.0492504007557239
+- acc: 0.9876
+  loss: 0.046864550924703624
   transform:
-    max_angle_deg: 5
-- acc: 0.9809305111821086
-  loss: 0.07643295469401151
+    scale: 1
+- acc: 0.9643
+  loss: 1.901672294328834
   transform:
-    max_angle_deg: 15
-- acc: 0.9468849840255591
-  loss: 0.251635653526279
+    scale: 4
+- acc: 0.9783
+  loss: 0.5816052785835658
   transform:
-    max_angle_deg: 30
-- acc: 0.8581269968051118
-  loss: 0.8446930101670967
+    scale: 3
+- acc: 0.9781
+  loss: 0.2923200520742367
   transform:
-    max_angle_deg: 45
-- acc: 0.7413138977635783
-  loss: 1.9095524723727864
+    scale: 2
+- acc: 0.9788
+  loss: 0.16442030067175714
   transform:
-    max_angle_deg: 60
-- acc: 0.560702875399361
-  loss: 4.445243844970728
+    scale: 1.5
+- acc: 0.9315
+  loss: 0.20616505825299686
   transform:
-    max_angle_deg: 90
-- acc: 0.10283546325878594
-  loss: 13.042115415627965
+    scale: 0.8
+- acc: 0.3323
+  loss: 1.9632677638798952
   transform:
-    max_scale: 0.2
-    min_scale: 0.2
-- acc: 0.4139376996805112
-  loss: 2.8382773704041306
+    scale: 0.6
+- acc: 0.5782
+  loss: 1.1364087098460645
   transform:
-    max_scale: 0.5
-    min_scale: 0.5
-- acc: 0.9759384984025559
-  loss: 0.07623280294229479
+    scale: 0.5
+- acc: 0.9848
+  loss: 0.06559527818494149
   transform:
-    max_scale: 0.8
-    min_scale: 0.8
-- acc: 0.9836261980830671
-  loss: 0.1287186471881475
+    angle: 5
+- acc: 0.9672
+  loss: 0.13625275845425722
   transform:
-    max_scale: 1.5
-    min_scale: 1.5
-- acc: 0.9781349840255591
-  loss: 0.29218980685822465
+    angle: 15
+- acc: 0.8495
+  loss: 0.7493133892897421
   transform:
-    max_scale: 2
-    min_scale: 2
-- acc: 0.9641573482428115
-  loss: 1.900913512502796
+    angle: 30
+- acc: 0.5606
+  loss: 3.031488726892611
   transform:
-    max_scale: 4
-    min_scale: 4
-- acc: 0.7950279552715654
-  loss: 1.0817938369993394
+    angle: 45
+- acc: 0.2935
+  loss: 6.674720955684461
   transform:
-    max_translate: 2
-- acc: 0.6658346645367412
-  loss: 2.6844317697393247
+    angle: 60
+- acc: 0.1419
+  loss: 10.640264268320077
   transform:
-    max_translate: 5
-- acc: 0.2751597444089457
-  loss: 14.44412994689454
+    angle: 90
+- acc: 0.9858
+  loss: 0.0562394543934798
   transform:
-    max_translate: 10
-- acc: 0.1178115015974441
-  loss: 46.47750247553134
+    t_x: 1
+    t_y: 1
+- acc: 0.98
+  loss: 0.08186670107209507
   transform:
-    max_translate: 20
+    t_x: 2
+    t_y: 2
+- acc: 0.4801
+  loss: 5.0594495098042955
+  transform:
+    t_x: 4
+    t_y: 4
+- acc: 0.4045
+  loss: 7.071676611139445
+  transform:
+    t_x: 6
+    t_y: 6
+- acc: 0.1489
+  loss: 23.84127880205084
+  transform:
+    t_x: 10
+    t_y: 10
