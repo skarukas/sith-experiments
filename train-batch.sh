@@ -25,7 +25,7 @@ trap 'cleanup_logs' USR1
 module load deeplearning/2.6.0
 
 ParamFiles=(30deg_rotations 90deg_rotations)
-ExperimentRelativePath="mnist/angle_tests_lpv2"
+ExperimentRelativePath="mnist/angle_invariance_tests/angle_tests_fullpool_stride2"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"

@@ -2,7 +2,7 @@ import torch
 from torch import nn
 import random
 
-class ShiftedConv2D(nn.Module):
+class ShiftedConv2d(nn.Module):
   def __init__(self, shifts, filters, stride=1, padding=0):
     """
     Perform a convolution on pixels a certain distance away. This is equivalent 
@@ -103,6 +103,6 @@ if __name__ == "__main__":
 
                         print(kernel.shape, internal_kernel.shape, x.shape, i, j)
                         out = torch.conv2d(x, kernel, stride=stride, padding=padding)
-                        sc = ShiftedConv2D([shift], internal_kernel[None], stride=stride, padding=padding)
+                        sc = ShiftedConv2d([shift], internal_kernel[None], stride=stride, padding=padding)
                         out_sc = sc(x)
                         assert mse(out, out_sc[..., :out.shape[-2], :out.shape[-1]]) == 0

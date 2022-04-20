@@ -13,6 +13,7 @@ model:
       kernel_size: [7, 4]
       localization: gaussian
       lp_version: 2
+      stride: 2
     # layer 2
     - in_channels: 20
       out_channels: 20
@@ -24,6 +25,7 @@ model:
       kernel_size: [5, 4]
       localization: gaussian
       lp_version: 2
+      stride: 2
   dropout: 0.2
   batch_norm: False
   act_func: relu

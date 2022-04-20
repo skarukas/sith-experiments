@@ -9,8 +9,9 @@ import torch.nn.functional as F
 from torch.nn.utils import weight_norm
 import math
 
-from .util import TWO_PI, prod, pad_periodic
+from .util import TWO_PI, prod, pad_periodic, IDENTITY
 from .lptransform import LogPolarTransform, LogPolarTransformV2
+from .Trim2d import Trim2d
 
 class _LogPolar_Core(nn.Module):
     """
@@ -19,7 +20,7 @@ class _LogPolar_Core(nn.Module):
     def __init__(self, in_channels=1, out_channels=5, 
                 kernel_size=5, tau_pooling=None, 
                 theta_pooling=None, spatial_pooling=None,
-                pooling="max", device='cpu',
+                spatial_trim=0, pooling="max", device='cpu',
                 lp_version=1,
                 **kwargs):
         super(_LogPolar_Core, self).__init__()
@@ -72,6 +73,8 @@ class _LogPolar_Core(nn.Module):
         # initialize the weights
         nn.init.kaiming_normal_(self.conv.weight.data)
 
+        self.spatial_trim = Trim2d(spatial_trim) if spatial_trim else IDENTITY
+
 
     def forward(self, inp):
         """
@@ -87,6 +90,9 @@ class _LogPolar_Core(nn.Module):
 
         # LP outputs as : [Batch, features, tau, theta, x', y']
         x = self.logpolar(inp)
+        
+        # trim outer pixels of the image to reduce spatial dimensions
+        x = self.spatial_trim(x)
 
         # convolve and pool over scale and rotation dimensions (tau and theta)
         # New shape : [Batch, x', y', features, tau, theta]

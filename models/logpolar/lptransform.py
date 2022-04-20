@@ -1,7 +1,7 @@
 import torch
 import math
 import numpy as np
-from .util import TWO_PI, unsqueeze_except
+from .util import TWO_PI, unsqueeze_except, IDENTITY
 
 ## TODO: implement sparse convolution (via matrix multiplication). The existing 
 ##     convolution kernels are sparse but very large (we'll run out of memory)
@@ -380,7 +380,7 @@ class LogPolarTransformV2(torch.nn.Module):
           ]).unsqueeze(0).unsqueeze(0).float().to(device) / 16
           self.smoother = lambda x: torch.conv2d(x, smooth_kernel, padding="same")
         else:
-          self.smoother = lambda x: x
+          self.smoother = IDENTITY
 
     def extra_repr(self):
         s = "ntau={ntau}, tau_range={tau_min}:{tau_max}, ntheta={num_angles}, stride={stride}, localization={localization}, window_shape={window_shape}"
@@ -397,7 +397,8 @@ class LogPolarTransformV2(torch.nn.Module):
         # Reshape to (Batch*Features, 1, x, y)
         inp_reshaped = inp.reshape((inp.shape[0]*inp.shape[1], 1, *inp.shape[2:]))
         inp_reshaped = self.smoother(inp_reshaped)
+        padding = self.buff_max if self.stride[0] > 1 or self.stride[1] > 1 else "same"
         out = torch.conv2d(inp_reshaped, self.filters, 
-                           stride=self.stride, padding="same")
+                           stride=self.stride, padding=padding)
         out = out.reshape((inp.shape[0], inp.shape[1], self.num_angles, self.ntau, *out.shape[-2:]))
         return out.permute((0, 1, 3, 2, 4, 5))

@@ -4,7 +4,7 @@ from functools import reduce
 from operator import mul
 
 TWO_PI = 2*np.pi
-
+IDENTITY = lambda x: x
 
 def unsqueeze_except(X, n_dim, dim=0):
     """

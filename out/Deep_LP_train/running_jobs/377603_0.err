@@ -1,0 +1,83 @@
+/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:180.)
+  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:   0%|          | 0/40 [00:08<?, ?it/s, train_loss=0.579, train_acc=0.802, val_loss=0.212, val_acc=0.939]Epoch:   2%|2         | 1/40 [00:08<05:19,  8.19s/it, train_loss=0.579, train_acc=0.802, val_loss=0.212, val_acc=0.939]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:   2%|2         | 1/40 [00:16<05:19,  8.19s/it, train_loss=0.232, train_acc=0.929, val_loss=0.144, val_acc=0.96] Epoch:   5%|5         | 2/40 [00:16<05:03,  7.98s/it, train_loss=0.232, train_acc=0.929, val_loss=0.144, val_acc=0.96]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:   5%|5         | 2/40 [00:23<05:03,  7.98s/it, train_loss=0.175, train_acc=0.947, val_loss=0.0972, val_acc=0.974]Epoch:   8%|7         | 3/40 [00:23<04:52,  7.92s/it, train_loss=0.175, train_acc=0.947, val_loss=0.0972, val_acc=0.974]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:   8%|7         | 3/40 [00:31<04:52,  7.92s/it, train_loss=0.143, train_acc=0.955, val_loss=0.107, val_acc=0.967] Epoch:  10%|#         | 4/40 [00:31<04:43,  7.88s/it, train_loss=0.143, train_acc=0.955, val_loss=0.107, val_acc=0.967]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  10%|#         | 4/40 [00:39<04:43,  7.88s/it, train_loss=0.128, train_acc=0.96, val_loss=0.0633, val_acc=0.984]Epoch:  12%|#2        | 5/40 [00:39<04:35,  7.87s/it, train_loss=0.128, train_acc=0.96, val_loss=0.0633, val_acc=0.984]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  12%|#2        | 5/40 [00:47<04:35,  7.87s/it, train_loss=0.116, train_acc=0.963, val_loss=0.0824, val_acc=0.976]Epoch:  15%|#5        | 6/40 [00:47<04:27,  7.86s/it, train_loss=0.116, train_acc=0.963, val_loss=0.0824, val_acc=0.976]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  15%|#5        | 6/40 [00:55<04:27,  7.86s/it, train_loss=0.104, train_acc=0.967, val_loss=0.0697, val_acc=0.979]Epoch:  18%|#7        | 7/40 [00:55<04:19,  7.85s/it, train_loss=0.104, train_acc=0.967, val_loss=0.0697, val_acc=0.979]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  18%|#7        | 7/40 [01:03<04:19,  7.85s/it, train_loss=0.0956, train_acc=0.97, val_loss=0.0615, val_acc=0.982]Epoch:  20%|##        | 8/40 [01:03<04:11,  7.85s/it, train_loss=0.0956, train_acc=0.97, val_loss=0.0615, val_acc=0.982]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  20%|##        | 8/40 [01:10<04:11,  7.85s/it, train_loss=0.0909, train_acc=0.97, val_loss=0.0536, val_acc=0.984]Epoch:  22%|##2       | 9/40 [01:10<04:03,  7.84s/it, train_loss=0.0909, train_acc=0.97, val_loss=0.0536, val_acc=0.984]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  22%|##2       | 9/40 [01:18<04:03,  7.84s/it, train_loss=0.0908, train_acc=0.971, val_loss=0.0657, val_acc=0.981]Epoch:  25%|##5       | 10/40 [01:18<03:55,  7.84s/it, train_loss=0.0908, train_acc=0.971, val_loss=0.0657, val_acc=0.981]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  25%|##5       | 10/40 [01:26<03:55,  7.84s/it, train_loss=0.0842, train_acc=0.973, val_loss=0.0541, val_acc=0.984]Epoch:  28%|##7       | 11/40 [01:26<03:47,  7.84s/it, train_loss=0.0842, train_acc=0.973, val_loss=0.0541, val_acc=0.984]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  28%|##7       | 11/40 [01:34<03:47,  7.84s/it, train_loss=0.0806, train_acc=0.974, val_loss=0.0468, val_acc=0.987]Epoch:  30%|###       | 12/40 [01:34<03:39,  7.84s/it, train_loss=0.0806, train_acc=0.974, val_loss=0.0468, val_acc=0.987]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  30%|###       | 12/40 [01:42<03:39,  7.84s/it, train_loss=0.0777, train_acc=0.976, val_loss=0.0416, val_acc=0.987]Epoch:  32%|###2      | 13/40 [01:42<03:31,  7.84s/it, train_loss=0.0777, train_acc=0.976, val_loss=0.0416, val_acc=0.987]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  32%|###2      | 13/40 [01:50<03:31,  7.84s/it, train_loss=0.0779, train_acc=0.975, val_loss=0.0494, val_acc=0.986]Epoch:  35%|###5      | 14/40 [01:50<03:23,  7.83s/it, train_loss=0.0779, train_acc=0.975, val_loss=0.0494, val_acc=0.986]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  35%|###5      | 14/40 [01:57<03:23,  7.83s/it, train_loss=0.0757, train_acc=0.976, val_loss=0.0389, val_acc=0.989]Epoch:  38%|###7      | 15/40 [01:57<03:15,  7.84s/it, train_loss=0.0757, train_acc=0.976, val_loss=0.0389, val_acc=0.989]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  38%|###7      | 15/40 [02:05<03:15,  7.84s/it, train_loss=0.0702, train_acc=0.977, val_loss=0.0515, val_acc=0.984]Epoch:  40%|####      | 16/40 [02:05<03:08,  7.83s/it, train_loss=0.0702, train_acc=0.977, val_loss=0.0515, val_acc=0.984]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  40%|####      | 16/40 [02:13<03:08,  7.83s/it, train_loss=0.0709, train_acc=0.977, val_loss=0.0484, val_acc=0.985]Epoch:  42%|####2     | 17/40 [02:13<03:00,  7.83s/it, train_loss=0.0709, train_acc=0.977, val_loss=0.0484, val_acc=0.985]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  42%|####2     | 17/40 [02:21<03:00,  7.83s/it, train_loss=0.0695, train_acc=0.977, val_loss=0.0352, val_acc=0.989]Epoch:  45%|####5     | 18/40 [02:21<02:52,  7.83s/it, train_loss=0.0695, train_acc=0.977, val_loss=0.0352, val_acc=0.989]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  45%|####5     | 18/40 [02:29<02:52,  7.83s/it, train_loss=0.0645, train_acc=0.979, val_loss=0.0338, val_acc=0.99] Epoch:  48%|####7     | 19/40 [02:29<02:44,  7.83s/it, train_loss=0.0645, train_acc=0.979, val_loss=0.0338, val_acc=0.99]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  48%|####7     | 19/40 [02:37<02:44,  7.83s/it, train_loss=0.0634, train_acc=0.979, val_loss=0.04, val_acc=0.988] Epoch:  50%|#####     | 20/40 [02:37<02:36,  7.83s/it, train_loss=0.0634, train_acc=0.979, val_loss=0.04, val_acc=0.988]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  50%|#####     | 20/40 [02:44<02:36,  7.83s/it, train_loss=0.0649, train_acc=0.979, val_loss=0.0329, val_acc=0.991]Epoch:  52%|#####2    | 21/40 [02:44<02:28,  7.83s/it, train_loss=0.0649, train_acc=0.979, val_loss=0.0329, val_acc=0.991]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  52%|#####2    | 21/40 [02:52<02:28,  7.83s/it, train_loss=0.0618, train_acc=0.98, val_loss=0.0327, val_acc=0.989] Epoch:  55%|#####5    | 22/40 [02:52<02:20,  7.83s/it, train_loss=0.0618, train_acc=0.98, val_loss=0.0327, val_acc=0.989]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  55%|#####5    | 22/40 [03:00<02:20,  7.83s/it, train_loss=0.0609, train_acc=0.981, val_loss=0.0377, val_acc=0.989]Epoch:  57%|#####7    | 23/40 [03:00<02:13,  7.83s/it, train_loss=0.0609, train_acc=0.981, val_loss=0.0377, val_acc=0.989]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  57%|#####7    | 23/40 [03:08<02:13,  7.83s/it, train_loss=0.0584, train_acc=0.982, val_loss=0.0302, val_acc=0.992]Epoch:  60%|######    | 24/40 [03:08<02:05,  7.83s/it, train_loss=0.0584, train_acc=0.982, val_loss=0.0302, val_acc=0.992]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  60%|######    | 24/40 [03:16<02:05,  7.83s/it, train_loss=0.0573, train_acc=0.981, val_loss=0.029, val_acc=0.992] Epoch:  62%|######2   | 25/40 [03:16<01:57,  7.83s/it, train_loss=0.0573, train_acc=0.981, val_loss=0.029, val_acc=0.992]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  62%|######2   | 25/40 [03:24<01:57,  7.83s/it, train_loss=0.058, train_acc=0.981, val_loss=0.0443, val_acc=0.986]Epoch:  65%|######5   | 26/40 [03:24<01:49,  7.83s/it, train_loss=0.058, train_acc=0.981, val_loss=0.0443, val_acc=0.986]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  65%|######5   | 26/40 [03:31<01:49,  7.83s/it, train_loss=0.0572, train_acc=0.982, val_loss=0.0355, val_acc=0.988]Epoch:  68%|######7   | 27/40 [03:31<01:41,  7.83s/it, train_loss=0.0572, train_acc=0.982, val_loss=0.0355, val_acc=0.988]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  68%|######7   | 27/40 [03:39<01:41,  7.83s/it, train_loss=0.0556, train_acc=0.981, val_loss=0.0363, val_acc=0.99] Epoch:  70%|#######   | 28/40 [03:39<01:33,  7.83s/it, train_loss=0.0556, train_acc=0.981, val_loss=0.0363, val_acc=0.99]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  70%|#######   | 28/40 [03:47<01:33,  7.83s/it, train_loss=0.0543, train_acc=0.982, val_loss=0.0267, val_acc=0.993]Epoch:  72%|#######2  | 29/40 [03:47<01:26,  7.83s/it, train_loss=0.0543, train_acc=0.982, val_loss=0.0267, val_acc=0.993]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  72%|#######2  | 29/40 [03:55<01:26,  7.83s/it, train_loss=0.0544, train_acc=0.982, val_loss=0.0302, val_acc=0.991]Epoch:  75%|#######5  | 30/40 [03:55<01:18,  7.83s/it, train_loss=0.0544, train_acc=0.982, val_loss=0.0302, val_acc=0.991]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  75%|#######5  | 30/40 [04:03<01:18,  7.83s/it, train_loss=0.0511, train_acc=0.984, val_loss=0.0424, val_acc=0.988]Epoch:  78%|#######7  | 31/40 [04:03<01:10,  7.83s/it, train_loss=0.0511, train_acc=0.984, val_loss=0.0424, val_acc=0.988]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  78%|#######7  | 31/40 [04:11<01:10,  7.83s/it, train_loss=0.0551, train_acc=0.982, val_loss=0.0301, val_acc=0.991]Epoch:  80%|########  | 32/40 [04:11<01:02,  7.83s/it, train_loss=0.0551, train_acc=0.982, val_loss=0.0301, val_acc=0.991]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  80%|########  | 32/40 [04:18<01:02,  7.83s/it, train_loss=0.0506, train_acc=0.984, val_loss=0.0286, val_acc=0.991]Epoch:  82%|########2 | 33/40 [04:18<00:54,  7.83s/it, train_loss=0.0506, train_acc=0.984, val_loss=0.0286, val_acc=0.991]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  82%|########2 | 33/40 [04:26<00:54,  7.83s/it, train_loss=0.0518, train_acc=0.983, val_loss=0.035, val_acc=0.989] Epoch:  85%|########5 | 34/40 [04:26<00:47,  7.83s/it, train_loss=0.0518, train_acc=0.983, val_loss=0.035, val_acc=0.989]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  85%|########5 | 34/40 [04:34<00:47,  7.83s/it, train_loss=0.0515, train_acc=0.983, val_loss=0.0382, val_acc=0.988]Epoch:  88%|########7 | 35/40 [04:34<00:39,  7.83s/it, train_loss=0.0515, train_acc=0.983, val_loss=0.0382, val_acc=0.988]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  88%|########7 | 35/40 [04:42<00:39,  7.83s/it, train_loss=0.0492, train_acc=0.984, val_loss=0.027, val_acc=0.992] Epoch:  90%|######### | 36/40 [04:42<00:31,  7.84s/it, train_loss=0.0492, train_acc=0.984, val_loss=0.027, val_acc=0.992]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  90%|######### | 36/40 [04:50<00:31,  7.84s/it, train_loss=0.05, train_acc=0.983, val_loss=0.0245, val_acc=0.992] Epoch:  92%|#########2| 37/40 [04:50<00:23,  7.84s/it, train_loss=0.05, train_acc=0.983, val_loss=0.0245, val_acc=0.992]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  92%|#########2| 37/40 [04:58<00:23,  7.84s/it, train_loss=0.0489, train_acc=0.984, val_loss=0.0257, val_acc=0.992]Epoch:  95%|#########5| 38/40 [04:58<00:15,  7.84s/it, train_loss=0.0489, train_acc=0.984, val_loss=0.0257, val_acc=0.992]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  95%|#########5| 38/40 [05:05<00:15,  7.84s/it, train_loss=0.049, train_acc=0.983, val_loss=0.0253, val_acc=0.993] Epoch:  98%|#########7| 39/40 [05:05<00:07,  7.84s/it, train_loss=0.049, train_acc=0.983, val_loss=0.0253, val_acc=0.993]
+Batch:   0%|          | 0/1142 [00:00<?, ?it/s][A
+                                               [AEpoch:  98%|#########7| 39/40 [05:13<00:07,  7.84s/it, train_loss=0.0466, train_acc=0.985, val_loss=0.0267, val_acc=0.992]Epoch: 100%|##########| 40/40 [05:13<00:00,  7.84s/it, train_loss=0.0466, train_acc=0.985, val_loss=0.0267, val_acc=0.992]Epoch: 100%|##########| 40/40 [05:13<00:00,  7.84s/it, train_loss=0.0466, train_acc=0.985, val_loss=0.0267, val_acc=0.992]
