@@ -5,7 +5,7 @@
   - They are evaluated at multiples of 15 degrees
   - Note: For the 30 degree cases, due to resampling there will likely be a slight degradation in accuracy
 
-**Results: The tests using the fixed version of the LP transform ("xxxx_xxxx_v2") show invariance over angles.**
+**Results:** The tests using the debugged version of the LP transform ("xxxx_xxxx_v2") show invariance over angles.
 - Also, it's worth mentioning that when using full maxpooling, `num_angles` has no effect on the number of parameters, so a higher value should tend to lead to invariance over a larger number of angles.
 
 ![evaluation_plots.png](evaluation_plots.png)
