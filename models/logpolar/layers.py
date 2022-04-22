@@ -57,7 +57,7 @@ class _LogPolar_Core(nn.Module):
         
         # top-k pooling over theta dimension ensures angle invariance
         if topk:
-            self.topk = TopKPool(tau_pooling, dim=-2)
+            self.topk = TopKPool(tau_pooling, dim=-2, order="max-aligned")
             self.depth_pool = Pooling2D((1, theta_pooling))
         else:
             self.topk = None

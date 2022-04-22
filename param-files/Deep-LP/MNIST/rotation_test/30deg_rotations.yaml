@@ -9,7 +9,6 @@ model:
       tau_max: 8
       ntau: 8
       num_angles: 12
-      stride: 2
       k: 35
       kernel_size: [7, 4]
       localization: gaussian
@@ -21,7 +20,7 @@ model:
       tau_max: 8
       ntau: 8
       num_angles: 12
-      stride: 2
+      theta_pooling: 3
       k: 35
       kernel_size: [5, 4]
       localization: gaussian
