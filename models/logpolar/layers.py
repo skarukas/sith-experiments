@@ -21,7 +21,7 @@ class _LogPolar_Core(nn.Module):
                 kernel_size=5, tau_pooling=None, 
                 theta_pooling=None, spatial_pooling=None,
                 spatial_trim=0, pooling="max", device='cpu',
-                lp_version=1,
+                topk=False, lp_version=1,
                 **kwargs):
         super(_LogPolar_Core, self).__init__()
 
@@ -54,7 +54,15 @@ class _LogPolar_Core(nn.Module):
 
         # pooling enforces invariance
         Pooling2D = nn.AvgPool2d if pooling == "average" else nn.MaxPool2d
-        self.depth_pool = Pooling2D((tau_pooling, theta_pooling))
+        
+        # top-k pooling over theta dimension ensures angle invariance
+        if topk:
+            self.topk = TopKPool(tau_pooling, dim=-2)
+            self.depth_pool = Pooling2D((1, theta_pooling))
+        else:
+            self.topk = None
+            self.depth_pool = Pooling2D((tau_pooling, theta_pooling))
+        
         self.spatial_pool = None if spatial_pooling is None else Pooling2D(spatial_pooling)
 
         # output of conv should be size num_angles
@@ -104,7 +112,12 @@ class _LogPolar_Core(nn.Module):
         # pad with other side so kernels can 'wrap around' the theta dimension
         x = pad_periodic(x, self.theta_padding_conv, dim=-1)
         x = self.conv(x)
-        x = pad_periodic(x, self.theta_padding_pool, dim=-1)
+
+        if self.topk is not None:
+            x = self.topk(x)
+        else:
+            x = pad_periodic(x, self.theta_padding_pool, dim=-1)
+        
         x = self.depth_pool(x)
 
         # [features, tau, theta]

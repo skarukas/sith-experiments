@@ -1,0 +1,75 @@
+Task ID: 1
+Running in out/Deep_LP_train/mnist/partial_angle_invariance_tests/angle_tests_half_pooling_376083/90deg_rotations_1
+Using cuda
+
+For transform={'angle': 0.0}:
+ acc=0.993782722513089, loss=0.020339386180515853
+
+For transform={'angle': 15.0}:
+ acc=0.9777486910994765, loss=0.06938764125356178
+
+For transform={'angle': 30.0}:
+ acc=0.8749091041303083, loss=0.49906668428536405
+
+For transform={'angle': 45.0}:
+ acc=0.6159649505526469, loss=1.9561297756215041
+
+For transform={'angle': 60.0}:
+ acc=0.35309409540430486, loss=4.602977675293128
+
+For transform={'angle': 75.0}:
+ acc=0.23547484002326932, loss=6.284327684272646
+
+For transform={'angle': 90.0}:
+ acc=0.2130417393833624, loss=6.9517132624281635
+
+For transform={'angle': 105.0}:
+ acc=0.2756144560791158, loss=6.1682278548235665
+
+For transform={'angle': 120.0}:
+ acc=0.38485311227457825, loss=5.332816331798494
+
+For transform={'angle': 135.0}:
+ acc=0.4929283013379872, loss=4.803691346607907
+
+For transform={'angle': 150.0}:
+ acc=0.5390852239674229, loss=4.930629707755843
+
+For transform={'angle': 165.0}:
+ acc=0.5443026468877254, loss=5.395861409721574
+
+For transform={'angle': 180.0}:
+ acc=0.5361401977894125, loss=5.919067558817838
+
+For transform={'angle': 195.0}:
+ acc=0.5051265270506109, loss=5.762145488049971
+
+For transform={'angle': 210.0}:
+ acc=0.4781849912739965, loss=6.264085197948036
+
+For transform={'angle': 225.0}:
+ acc=0.4239565154159395, loss=6.728507498796073
+
+For transform={'angle': 240.0}:
+ acc=0.32438917975567194, loss=7.2739175751571254
+
+For transform={'angle': 255.0}:
+ acc=0.2520906050029087, loss=7.295660851513528
+
+For transform={'angle': 270.0}:
+ acc=0.22016797556719023, loss=6.881566851550996
+
+For transform={'angle': 285.0}:
+ acc=0.2635253054101222, loss=5.487435897607454
+
+For transform={'angle': 300.0}:
+ acc=0.4083951425247237, loss=3.5348193358376387
+
+For transform={'angle': 315.0}:
+ acc=0.6795920593368238, loss=1.3754542076774916
+
+For transform={'angle': 330.0}:
+ acc=0.9223567481093659, loss=0.2482452596713306
+
+For transform={'angle': 345.0}:
+ acc=0.9880562827225131, loss=0.037650466849299846
