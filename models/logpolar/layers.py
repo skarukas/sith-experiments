@@ -12,6 +12,7 @@ import math
 from .util import TWO_PI, prod, pad_periodic, IDENTITY
 from .lptransform import LogPolarTransform, LogPolarTransformV2
 from .Trim2d import Trim2d
+from .TopKPool import TopKPool
 
 class _LogPolar_Core(nn.Module):
     """
@@ -57,8 +58,8 @@ class _LogPolar_Core(nn.Module):
         
         # top-k pooling over theta dimension ensures angle invariance
         if topk:
-            self.topk = TopKPool(tau_pooling, dim=-2, order="max-aligned")
-            self.depth_pool = Pooling2D((1, theta_pooling))
+            self.topk = TopKPool(topk, dim=-1, order="max-aligned")
+            self.depth_pool = Pooling2D((tau_pooling, 1))
         else:
             self.topk = None
             self.depth_pool = Pooling2D((tau_pooling, theta_pooling))
@@ -68,7 +69,10 @@ class _LogPolar_Core(nn.Module):
         # output of conv should be size num_angles
         self.theta_padding_conv = self.kernel_size[1]-1
         # output of pooling should be size ceil(num_angles / theta_pooling)
-        out_theta_size = math.ceil(self.num_angles / theta_pooling)
+        if topk:
+            out_theta_size = topk
+        else:
+            out_theta_size = math.ceil(self.num_angles / theta_pooling)
         self.theta_padding_pool = out_theta_size*theta_pooling - self.num_angles
 
         # after conv

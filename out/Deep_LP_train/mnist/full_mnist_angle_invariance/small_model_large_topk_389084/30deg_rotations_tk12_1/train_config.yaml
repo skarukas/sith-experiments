@@ -1,0 +1,66 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 40
+  local_start: 2022-04-22_20:23:11
+  local_stop: 2022-04-22_23:03:22
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.9876333333333334
+    train_loss: 0.03717567329302353
+    val_acc: 0.9829273162939297
+    val_loss: 0.05501702394436512
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 1
+    k: 35
+    kernel_size:
+    - 7
+    - 4
+    localization: gaussian
+    lp_version: 2
+    ntau: 8
+    num_angles: 12
+    out_channels: 20
+    tau_max: 8
+    tau_min: 1
+    topk: 12
+  - in_channels: 20
+    k: 35
+    kernel_size:
+    - 5
+    - 4
+    localization: gaussian
+    lp_version: 2
+    ntau: 8
+    num_angles: 12
+    out_channels: 20
+    tau_max: 8
+    tau_min: 1
+    topk: 12
+  num_params: 15830
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/mnist/full_mnist_angle_invariance/small_model_large_topk_389084/30deg_rotations_tk12_1
+param: param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: FastMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: FastMNIST

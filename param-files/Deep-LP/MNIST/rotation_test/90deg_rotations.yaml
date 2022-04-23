@@ -20,7 +20,6 @@ model:
       tau_max: 8
       ntau: 8
       num_angles: 4
-      theta_pooling: 1
       k: 35
       kernel_size: [5, 4]
       localization: gaussian
@@ -28,7 +27,7 @@ model:
   dropout: 0.2
   batch_norm: False
   act_func: relu
-  out_classes: 6
+  out_classes: 10
   output: max
 optimizer:
   type: adam
@@ -39,13 +38,11 @@ batch_size: 32
 train_data_dir: 
   type: FastMNIST
   kwargs:
-    allowed_targets: [1, 2, 3, 8, 0, 6]
     root: "data"
     train: True
 val_data_dir: 
   type: FastMNIST
   kwargs:
-    allowed_targets: [1, 2, 3, 8, 0, 6]
     root: "data"
     train: False
 collate: batch

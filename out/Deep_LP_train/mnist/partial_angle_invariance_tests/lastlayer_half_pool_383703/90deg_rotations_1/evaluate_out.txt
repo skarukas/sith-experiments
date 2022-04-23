@@ -1,0 +1,73 @@
+Using cuda
+
+For transform={'angle': 0.0}:
+ acc=0.9923102094240838, loss=0.023270637613268027
+
+For transform={'angle': 15.0}:
+ acc=0.9815117801047121, loss=0.0594503948652717
+
+For transform={'angle': 30.0}:
+ acc=0.918848167539267, loss=0.29694532768201104
+
+For transform={'angle': 45.0}:
+ acc=0.679446625945317, loss=1.400253963876145
+
+For transform={'angle': 60.0}:
+ acc=0.3880344677137871, loss=3.7194528429920135
+
+For transform={'angle': 75.0}:
+ acc=0.24938190808609656, loss=5.769444242197806
+
+For transform={'angle': 90.0}:
+ acc=0.21115110529377545, loss=6.825483499397158
+
+For transform={'angle': 105.0}:
+ acc=0.23702006980802792, loss=6.510571927924431
+
+For transform={'angle': 120.0}:
+ acc=0.3496764107038976, loss=5.935537692764043
+
+For transform={'angle': 135.0}:
+ acc=0.4664048865619546, loss=5.841506930545987
+
+For transform={'angle': 150.0}:
+ acc=0.5299047411285631, loss=6.259660469923968
+
+For transform={'angle': 165.0}:
+ acc=0.5404486620127982, loss=6.689381841589643
+
+For transform={'angle': 180.0}:
+ acc=0.5355402850494474, loss=7.330596199834534
+
+For transform={'angle': 195.0}:
+ acc=0.5154159394997091, loss=6.9979774564972725
+
+For transform={'angle': 210.0}:
+ acc=0.5001272542175683, loss=6.86398072767008
+
+For transform={'angle': 225.0}:
+ acc=0.4446807737056428, loss=6.68197850906412
+
+For transform={'angle': 240.0}:
+ acc=0.32682518906340896, loss=7.031660655406133
+
+For transform={'angle': 255.0}:
+ acc=0.22907577079697497, loss=7.349927844801498
+
+For transform={'angle': 270.0}:
+ acc=0.18506399069226295, loss=7.117002314922073
+
+For transform={'angle': 285.0}:
+ acc=0.21615037812681792, loss=5.388945445964474
+
+For transform={'angle': 300.0}:
+ acc=0.3718368237347295, loss=3.2586493205025557
+
+For transform={'angle': 315.0}:
+ acc=0.6641579406631762, loss=1.3095943136677068
+
+For transform={'angle': 330.0}:
+ acc=0.9071407795229784, loss=0.2896469071682991
+
+For transform={'angle': 345.0}:
+ acc=0.9851112565445026, loss=0.04501741737400362

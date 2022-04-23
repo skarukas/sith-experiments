@@ -5,7 +5,7 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=4:00:00
+#SBATCH --time=1:00:00
 #SBATCH -o out/Deep_LP_train/running_jobs/evaluate_%J_%a.out
 #SBATCH -e out/Deep_LP_train/running_jobs/evaluate_%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
@@ -14,8 +14,8 @@
 
 module load deeplearning/2.6.0
 
-RELATIVE_PATHS=(angle_tests_fullpool_stride2_377602/30deg_rotations_0 angle_tests_fullpool_stride2_377602/90deg_rotations_1)
-PATH_PREFIX="out/Deep_LP_train/mnist/angle_invariance_tests/"
+RELATIVE_PATHS=(small_model_large_topk_389084/30deg_rotations_tk6_0 small_model_large_topk_389084/30deg_rotations_tk12_1)
+PATH_PREFIX="out/Deep_LP_train/mnist/full_mnist_angle_invariance/"
 
 RELATIVE_PATH=${RELATIVE_PATHS[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_PATH="${PATH_PREFIX}${RELATIVE_PATH}"

@@ -1,0 +1,65 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 2
+  local_start: 2022-04-22_20:12:42
+  local_stop: 2022-04-22_20:19:06
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.95135
+    train_loss: 0.16482063969994584
+    val_acc: 0.9644568690095847
+    val_loss: 0.11929030911015055
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 1
+    k: 35
+    kernel_size:
+    - 7
+    - 4
+    localization: gaussian
+    lp_version: 2
+    ntau: 8
+    num_angles: 12
+    out_channels: 20
+    tau_max: 8
+    tau_min: 1
+    theta_pooling: 6
+  - in_channels: 20
+    k: 35
+    kernel_size:
+    - 5
+    - 4
+    localization: gaussian
+    lp_version: 2
+    ntau: 8
+    num_angles: 12
+    out_channels: 20
+    tau_max: 8
+    tau_min: 1
+  num_params: 9630
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/mnist/partial_angle_invariance/firstlayer_388581/firstlayer_half_pool_0
+param: param-files/Deep-LP/MNIST/rotation_test/firstlayer_half_pool.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: FastMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: FastMNIST

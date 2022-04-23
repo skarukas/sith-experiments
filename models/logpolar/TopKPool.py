@@ -27,7 +27,7 @@ class TopKPool(nn.Module):
             # align so that maximum is first
             idx = tens.max(self.dim).indices.unsqueeze(-1)
             n = tens.shape[self.dim]
-            idx = (torch.arange(n).unsqueeze(0) + idx) % n
+            idx = (torch.arange(n).unsqueeze(0).to(idx.device) + idx) % n
             tens = tens.gather(self.dim, idx)
 
         # get top k values

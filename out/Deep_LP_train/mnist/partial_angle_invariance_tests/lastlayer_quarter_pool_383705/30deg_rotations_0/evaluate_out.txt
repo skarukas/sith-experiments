@@ -1,0 +1,73 @@
+Using cuda
+
+For transform={'angle': 0.0}:
+ acc=0.9941099476439791, loss=0.017604799415484675
+
+For transform={'angle': 15.0}:
+ acc=0.9859293193717278, loss=0.046024897147831874
+
+For transform={'angle': 30.0}:
+ acc=0.9293920884235021, loss=0.2647912719467391
+
+For transform={'angle': 45.0}:
+ acc=0.711023851076207, loss=1.332329415760115
+
+For transform={'angle': 60.0}:
+ acc=0.4223203897614892, loss=3.742296445432134
+
+For transform={'angle': 75.0}:
+ acc=0.25639906922629435, loss=5.976774611398188
+
+For transform={'angle': 90.0}:
+ acc=0.21704115764979642, loss=7.49736167498284
+
+For transform={'angle': 105.0}:
+ acc=0.23111183827806867, loss=7.003954031080475
+
+For transform={'angle': 120.0}:
+ acc=0.28388598022105876, loss=6.62899464961746
+
+For transform={'angle': 135.0}:
+ acc=0.41935718440954045, loss=6.14422262151828
+
+For transform={'angle': 150.0}:
+ acc=0.5300501745200698, loss=6.009682719620111
+
+For transform={'angle': 165.0}:
+ acc=0.5798065735892961, loss=6.053896683048827
+
+For transform={'angle': 180.0}:
+ acc=0.5762798138452588, loss=6.544948951112038
+
+For transform={'angle': 195.0}:
+ acc=0.556010034904014, loss=6.027027887823694
+
+For transform={'angle': 210.0}:
+ acc=0.4934191390343223, loss=6.113146177137085
+
+For transform={'angle': 225.0}:
+ acc=0.3704552065154159, loss=6.558369164691546
+
+For transform={'angle': 240.0}:
+ acc=0.26588859802210585, loss=7.130168355572286
+
+For transform={'angle': 255.0}:
+ acc=0.21605948225712626, loss=7.244929333631905
+
+For transform={'angle': 270.0}:
+ acc=0.2344931646305992, loss=6.693848838356777
+
+For transform={'angle': 285.0}:
+ acc=0.30384671320535195, loss=4.600367682142408
+
+For transform={'angle': 300.0}:
+ acc=0.4861292902850494, loss=2.5990825385947502
+
+For transform={'angle': 315.0}:
+ acc=0.7405650087260034, loss=1.0216992058991137
+
+For transform={'angle': 330.0}:
+ acc=0.9092677428737638, loss=0.26432500793525454
+
+For transform={'angle': 345.0}:
+ acc=0.9829842931937173, loss=0.05197518390150197

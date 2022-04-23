@@ -1,0 +1,73 @@
+Using cuda
+
+For transform={'angle': 0.0}:
+ acc=0.9802316293929713, loss=0.06300087078227498
+
+For transform={'angle': 15.0}:
+ acc=0.965055910543131, loss=0.11666375741112632
+
+For transform={'angle': 30.0}:
+ acc=0.9277156549520766, loss=0.223059779955461
+
+For transform={'angle': 45.0}:
+ acc=0.8854832268370607, loss=0.33206807312588343
+
+For transform={'angle': 60.0}:
+ acc=0.926417731629393, loss=0.22104024509795175
+
+For transform={'angle': 75.0}:
+ acc=0.9630591054313099, loss=0.1158316909653929
+
+For transform={'angle': 90.0}:
+ acc=0.9804313099041534, loss=0.06274114230858942
+
+For transform={'angle': 105.0}:
+ acc=0.9651557507987221, loss=0.11652004468840912
+
+For transform={'angle': 120.0}:
+ acc=0.9279153354632588, loss=0.22273951375517792
+
+For transform={'angle': 135.0}:
+ acc=0.885882587859425, loss=0.3325561071380068
+
+For transform={'angle': 150.0}:
+ acc=0.9265175718849841, loss=0.22068121472891336
+
+For transform={'angle': 165.0}:
+ acc=0.963158945686901, loss=0.115960348956882
+
+For transform={'angle': 180.0}:
+ acc=0.9804313099041534, loss=0.06267514097736404
+
+For transform={'angle': 195.0}:
+ acc=0.9651557507987221, loss=0.11657572417749099
+
+For transform={'angle': 210.0}:
+ acc=0.9277156549520766, loss=0.2233318763966568
+
+For transform={'angle': 225.0}:
+ acc=0.8859824281150159, loss=0.3286638720490681
+
+For transform={'angle': 240.0}:
+ acc=0.9267172523961661, loss=0.22056938808994553
+
+For transform={'angle': 255.0}:
+ acc=0.963258785942492, loss=0.11557016393747002
+
+For transform={'angle': 270.0}:
+ acc=0.9804313099041534, loss=0.06262589471203427
+
+For transform={'angle': 285.0}:
+ acc=0.965055910543131, loss=0.11667903428807998
+
+For transform={'angle': 300.0}:
+ acc=0.9278154952076677, loss=0.2227345882608487
+
+For transform={'angle': 315.0}:
+ acc=0.8852835463258786, loss=0.33314903151874725
+
+For transform={'angle': 330.0}:
+ acc=0.9263178913738019, loss=0.22109521640399202
+
+For transform={'angle': 345.0}:
+ acc=0.9630591054313099, loss=0.11589425916191393

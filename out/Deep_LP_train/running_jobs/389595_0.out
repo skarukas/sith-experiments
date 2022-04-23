@@ -1,0 +1,48 @@
+Task ID: 0
+Using params from param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12_md.yaml
+Loaded param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12_md.yaml
+Created output directory '/geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/mnist/full_mnist_angle_invariance/med_model_large_topk_389594/30deg_rotations_tk12_md_0/log'
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransformV2(ntau=8, tau_range=1:8, ntheta=12, stride=(1, 1), localization=gaussian, window_shape=arc)
+        (conv): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(2, 1), stride=(2, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransformV2(ntau=8, tau_range=1:8, ntheta=12, stride=(1, 1), localization=gaussian, window_shape=arc)
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(4, 1), stride=(4, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransformV2(ntau=8, tau_range=1:8, ntheta=12, stride=(1, 1), localization=gaussian, window_shape=arc)
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(4, 1), stride=(4, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=384, out_features=32, bias=True)
+    (1): Linear(in_features=384, out_features=32, bias=True)
+    (2): Linear(in_features=384, out_features=10, bias=True)
+  )
+)
+Total parameters: 81354

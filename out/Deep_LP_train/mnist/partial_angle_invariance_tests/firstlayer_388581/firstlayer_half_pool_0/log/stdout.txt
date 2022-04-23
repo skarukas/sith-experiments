@@ -1,0 +1,31 @@
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransformV2(ntau=8, tau_range=1:8, ntheta=12, stride=(1, 1), localization=gaussian, window_shape=arc)
+        (conv): Conv2d(1, 20, kernel_size=(7, 4), stride=(1, 1), bias=False)
+        (depth_pool): MaxPool2d(kernel_size=(2, 6), stride=(2, 6), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): LogPolarTransformV2(ntau=8, tau_range=1:8, ntheta=12, stride=(1, 1), localization=gaussian, window_shape=arc)
+        (conv): Conv2d(20, 20, kernel_size=(5, 4), stride=(1, 1), bias=False)
+        (depth_pool): MaxPool2d(kernel_size=(4, 12), stride=(4, 12), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=40, out_features=20, bias=True)
+    (1): Linear(in_features=20, out_features=10, bias=True)
+  )
+)
+Total parameters: 9630
