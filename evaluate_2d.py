@@ -30,11 +30,14 @@ DEFAULT_TRANSFORMS = [
         dict(angle=60),
         dict(angle=90),
         # translation
-        dict(t_x=1, t_y=1),
-        dict(t_x=2, t_y=2),
-        dict(t_x=4, t_y=4),
-        dict(t_x=6, t_y=6),
-        dict(t_x=10, t_y=10),
+        dict(t_x=1, t_y=1, out_size=(28, 28)),
+        dict(t_x=2, t_y=2, out_size=(28, 28)),
+        dict(t_x=3, t_y=3, out_size=(28, 28)),
+        dict(t_x=4, t_y=4, out_size=(28, 28)),
+        dict(t_x=-1, t_y=-1, out_size=(28, 28)),
+        dict(t_x=-2, t_y=-2, out_size=(28, 28)),
+        dict(t_x=-3, t_y=-3, out_size=(28, 28)),
+        dict(t_x=-4, t_y=-4, out_size=(28, 28))
     ]
 
 
@@ -45,7 +48,7 @@ if __name__ == "__main__":
         experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
-    results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
+    results_file = open(join(experiment_path, "evaluate_results_2.yaml"), "w")
     sys.stdout = Logger(join(experiment_path, "evaluate_out.txt"), sys.stdout)
     sys.stderr = Logger(join(experiment_path, "evaluate_err.txt"), sys.stderr)
 
@@ -76,11 +79,11 @@ if __name__ == "__main__":
     inner_dataset = get_dataset(config["val_data_dir"], device=config['device'])
     ## evaluate
 
-    #transforms = DEFAULT_TRANSFORMS
+    transforms = DEFAULT_TRANSFORMS
     n_angles = 24
-    transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
+    #transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
 
-    batch_size = config['batch_size']
+    batch_size = 4#config['batch_size']
     results = []
     for transform_dict in tqdm(transforms):
         # create stretched version of dataset

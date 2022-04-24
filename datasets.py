@@ -213,6 +213,64 @@ class FileDataset(Dataset):
         return len(self.files)
 
 
+class RotMNIST(Dataset):
+    def __init__(self, root, device='cpu'):
+        """
+        RotMNIST dataset (MNIST-rot-12k), downloaded from
+         http://www.iro.umontreal.ca/~lisa/icml2007data/mnist_rotation_new.zip.
+
+        12k training samples and 50k test samples, all randomly rotated between 0 and 2π.
+        """
+        train_fname = "mnist_all_rotation_normalized_float_train_valid.amat"
+        test_fname = "mnist_all_rotation_normalized_float_test.amat"
+        parent_dir = "mnist_rotation_new"
+        if train:
+            fname = path.join(root, parent_dir, train_fname)
+        else:
+            fname = path.join(root, parent_dir, test_fname)
+        
+        self.data, self.targets = self.__load(fname, device)
+
+        ## normalize like FastMNIST
+
+        # Scale data to [0,1]
+        self.data = self.data.unsqueeze(1).float().div(255)
+
+        # Normalize it with the usual MNIST mean and std
+        self.data = self.data.sub_(0.1307).div_(0.3081)
+
+
+    def __load(self, fname, device):
+        # load the dataset as uint8 tensors
+        # code to unpack .amat files adapted from https://github.com/shenzy08/PDO-eConvs/blob/master/mnist.py
+        with open(fname) as f:
+            data_str = f.read()
+            data_list = data_str.split()
+            num_data = len(data_list)
+            all_data = [float(x) for x in train_list]
+            data = [all_data[i] for i in range(num_train) if (i+1)%785 != 0]
+            data = np.reshape(data,[-1, 28, 28, 1])
+            labels = [int(all_data[i]) for i in range(num_train) if (i+1)%785 == 0]
+            labels = np.array(labels)
+            return torch.tensor(data, device=device), torch.tensor(labels, device=device)
+
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (image, target) where target is index of the target class.
+        """
+        img, target = self.data[index], self.targets[index]
+        return img, target
+
+
+    def __len__(self):
+        return len(self.data)
+
+
 class FastMNIST(MNIST):
     def __init__(self, root, device='cpu', download=True, allowed_targets=range(10), *args, **kwargs):
         super().__init__(root, download=download, *args, **kwargs)
@@ -252,6 +310,10 @@ class FastMNIST(MNIST):
         """
         img, target = self.data[index], self.targets[index]
         return img, target
+
+
+    def __len__(self):
+        return len(self.data)
 
 
 class TransformedImageDataset(Dataset):
