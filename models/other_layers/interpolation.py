@@ -1,4 +1,5 @@
 import torch
+from . import ShiftedConv2d
 
 def bilinear(x, y):
     x = torch.tensor(x)
@@ -53,6 +54,7 @@ def create_bilinear_filterbank(coords):
             tens[i+coords[-1][0], j+coords[-1][1]]
         ]
     """
+    coords = coords.float()
     shifts = coords.ceil().long()
     residual = coords - shifts
     filters = get_bilinear_filter(residual).unsqueeze(1)

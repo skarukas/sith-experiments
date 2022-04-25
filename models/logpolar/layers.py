@@ -3,7 +3,7 @@
 # Author: Stephen Karukas
 # based on work by Brandon G. Jacques and Per B. Sederberg
 
-import torch
+
 from torch import nn 
 import torch.nn.functional as F
 from torch.nn.utils import weight_norm
@@ -11,8 +11,7 @@ import math
 
 from .util import TWO_PI, prod, pad_periodic, IDENTITY
 from .lptransform import LogPolarTransform, LogPolarTransformV2
-from .Trim2d import Trim2d
-from .TopKPool import TopKPool
+from ..other_layers import Trim2d, TopKPool
 
 class _LogPolar_Core(nn.Module):
     """

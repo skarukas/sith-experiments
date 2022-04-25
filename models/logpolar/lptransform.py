@@ -2,6 +2,7 @@ import torch
 import math
 import numpy as np
 from .util import TWO_PI, unsqueeze_except, IDENTITY
+from ..other_layers.interpolation import create_bilinear_filterbank
 
 ## TODO: implement sparse convolution (via matrix multiplication). The existing 
 ##     convolution kernels are sparse but very large (we'll run out of memory)
@@ -406,8 +407,8 @@ class LogPolarTransformV2(torch.nn.Module):
 
 
 class InterpolatedLogPolarTransform(torch.nn.Module):
-    def __init__(self, tau_min=.1, tau_max=100., ntau=50, 
-                 num_angles=10, stride=1, device='cpu', 
+    def __init__(self, tau_min=1, tau_max=8, ntau=8, 
+                 num_angles=12, stride=1, device='cpu', 
                  smooth=False,
                  **kwargs):
         """
@@ -447,14 +448,14 @@ class InterpolatedLogPolarTransform(torch.nn.Module):
         theta = torch.arange(num_angles).double() * dtheta - np.pi
         tau_star = tau_min*(1+self.c)**torch.arange(ntau).double()
 
-        theta = theta.unsqueeze(0)
-        tau_star = tau_star.unsqueeze(1)
+        theta = theta.unsqueeze(0).to(device)
+        tau_star = tau_star.unsqueeze(1).to(device)
 
         # convert from polar to cartesian coordiates
-        x = tau_star * torch.cos(theta).flatten()
-        y = tau_star * torch.sin(theta).flatten()
+        x = tau_star * torch.cos(theta)
+        y = tau_star * torch.sin(theta)
 
-        coords = torch.stack((y, x), dim=-1)
+        coords = torch.stack((y.flatten(), x.flatten()), dim=-1)
         self.filterbank = create_bilinear_filterbank(coords)
 
         if smooth:

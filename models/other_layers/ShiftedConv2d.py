@@ -56,7 +56,7 @@ class ShiftedConv2d(nn.Module):
     self.pad = nn.ConstantPad2d(tuple(padding), self.pad_val)
   
 
-  def forward(self, tens, shift, filter_block):
+  def forward(self, tens):
     in_device = tens.device
     tens = tens.to(self.device)
     shape = tens.shape
