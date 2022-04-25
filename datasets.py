@@ -31,11 +31,12 @@ def get_dataset(dataset_params, device):
         # create instance of dataset class
         dataset_type = dataset_params['type'].lower()
         class_map = {
-            "fastmnist": FastMNIST,
-            "transformedmnist": TransformedMNIST,
             "cifar10": CIFAR10_Tensor
         }
-        DatasetClass = class_map[dataset_type]
+        if dataset_type in class_map:
+            DatasetClass = class_map[dataset_type]
+        else:
+            DatasetClass = globals()[dataset_params['type']]
         return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)
         
         
@@ -214,7 +215,7 @@ class FileDataset(Dataset):
 
 
 class RotMNIST(Dataset):
-    def __init__(self, root, device='cpu'):
+    def __init__(self, root, train=True, device='cpu'):
         """
         RotMNIST dataset (MNIST-rot-12k), downloaded from
          http://www.iro.umontreal.ca/~lisa/icml2007data/mnist_rotation_new.zip.
@@ -234,7 +235,7 @@ class RotMNIST(Dataset):
         ## normalize like FastMNIST
 
         # Scale data to [0,1]
-        self.data = self.data.unsqueeze(1).float().div(255)
+        self.data = self.data.float()
 
         # Normalize it with the usual MNIST mean and std
         self.data = self.data.sub_(0.1307).div_(0.3081)
@@ -247,10 +248,10 @@ class RotMNIST(Dataset):
             data_str = f.read()
             data_list = data_str.split()
             num_data = len(data_list)
-            all_data = [float(x) for x in train_list]
-            data = [all_data[i] for i in range(num_train) if (i+1)%785 != 0]
-            data = np.reshape(data,[-1, 28, 28, 1])
-            labels = [int(all_data[i]) for i in range(num_train) if (i+1)%785 == 0]
+            all_data = [float(x) for x in data_list]
+            data = [all_data[i] for i in range(num_data) if (i+1)%785 != 0]
+            data = np.reshape(data,[-1, 1, 28, 28])
+            labels = [int(all_data[i]) for i in range(num_data) if (i+1)%785 == 0]
             labels = np.array(labels)
             return torch.tensor(data, device=device), torch.tensor(labels, device=device)
 

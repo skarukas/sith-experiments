@@ -402,3 +402,88 @@ class LogPolarTransformV2(torch.nn.Module):
                            stride=self.stride, padding=padding)
         out = out.reshape((inp.shape[0], inp.shape[1], self.num_angles, self.ntau, *out.shape[-2:]))
         return out.permute((0, 1, 3, 2, 4, 5))
+
+
+
+class InterpolatedLogPolarTransform(torch.nn.Module):
+    def __init__(self, tau_min=.1, tau_max=100., ntau=50, 
+                 num_angles=10, stride=1, device='cpu', 
+                 smooth=False,
+                 **kwargs):
+        """
+        A module for computing compressed log-polar transforms centered at various
+        locations in an image, based on bilinear interpolation.
+
+        Parameters
+        ----------
+        
+            - tau_min: float
+                The distance to the center of the spatial receptive field for the first taustar produced. 
+            - tau_max: float
+                The distance to the center of the spatial receptive field for the last taustar produced. 
+            - ntau: int
+                Number of taustars produced, spread out logarithmically.
+            - num_angles: int
+                How many angles to compute the SITH across.
+            - stride: int
+                The stride at which the focus points will be chosen. If greater than 1,
+                the output will be effectively downsampled.
+            - device: str | torch.Device
+                What device the computation is taking place on.
+            - smooth: bool
+                Whether to apply a 3x3 Gaussian smoothing filter to the image 
+                beforehand (this may help with invariance).
+        """
+        super(InterpolatedLogPolarTransform, self).__init__()
+
+        self.tau_min = tau_min
+        self.tau_max = tau_max
+        self.ntau = ntau
+        self.num_angles = num_angles
+
+        self.c = (tau_max/tau_min)**(1./(ntau-1))-1
+
+        dtheta = TWO_PI / num_angles
+        theta = torch.arange(num_angles).double() * dtheta - np.pi
+        tau_star = tau_min*(1+self.c)**torch.arange(ntau).double()
+
+        theta = theta.unsqueeze(0)
+        tau_star = tau_star.unsqueeze(1)
+
+        # convert from polar to cartesian coordiates
+        x = tau_star * torch.cos(theta).flatten()
+        y = tau_star * torch.sin(theta).flatten()
+
+        coords = torch.stack((y, x), dim=-1)
+        self.filterbank = create_bilinear_filterbank(coords)
+
+        if smooth:
+          smooth_kernel = torch.tensor([
+            [1, 2, 1],
+            [2, 4, 2],
+            [1, 2, 1],
+          ]).unsqueeze(0).unsqueeze(0).float().to(device) / 16
+          self.smoother = lambda x: torch.conv2d(x, smooth_kernel, padding="same")
+        else:
+          self.smoother = IDENTITY
+
+
+    def extra_repr(self):
+        s = "ntau={ntau}, tau_range={tau_min}:{tau_max}, ntheta={num_angles}, stride={stride}"
+        s = s.format(**self.__dict__)
+        return s    
+    
+
+    def forward(self, inp):
+        """
+        Takes in (Batch, features, x, y) and returns (Batch, features, Taustar, Theta, x', y')
+        x' and y' will be smaller than x and y if self.stride != 1
+        """
+        assert(len(inp.shape) >= 4)
+        # Reshape to (Batch*Features, 1, x, y)
+        inp_reshaped = inp.reshape((inp.shape[0]*inp.shape[1], 1, *inp.shape[2:]))
+        inp_reshaped = self.smoother(inp_reshaped)
+        
+        out = self.filterbank(inp_reshaped)
+        out = out.reshape((inp.shape[0], inp.shape[1], self.num_angles, self.ntau, *out.shape[-2:]))
+        return out.permute((0, 1, 3, 2, 4, 5))
