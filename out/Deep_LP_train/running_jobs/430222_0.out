@@ -1,0 +1,81 @@
+Task ID: 0
+Using params from param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12_md.yaml
+Loaded param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12_md.yaml
+Created output directory '/geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/test#mnist/full_mnist_angle_invariance/bilinear_ntau20_new_430222/30deg_rotations_tk12_md_0/log'
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(14, 1), stride=(14, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=384, out_features=32, bias=True)
+    (1): Linear(in_features=384, out_features=32, bias=True)
+    (2): Linear(in_features=384, out_features=10, bias=True)
+  )
+)
+Total parameters: 81354
+Operations sorted by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::conv2d         0.01%     219.000us         5.21%     142.353ms       2.373ms       0.000us         0.00%     123.642ms       2.061ms           0 b           0 b      15.55 Gb           0 b            60  
+                                      aten::convolution         0.01%     217.000us         5.20%     142.134ms       2.369ms       0.000us         0.00%     123.642ms       2.061ms           0 b           0 b      15.55 Gb           0 b            60  
+                                     aten::_convolution         0.02%     480.000us         5.19%     141.917ms       2.365ms       0.000us         0.00%     123.642ms       2.061ms           0 b           0 b      15.55 Gb           0 b            60  
+                                aten::cudnn_convolution         4.86%     132.863ms         5.09%     139.221ms       4.641ms      89.489ms        16.75%      89.489ms       2.983ms           0 b           0 b       8.26 Gb      -1.31 Gb            30  
+                                           aten::gather         0.08%       2.122ms         0.25%       6.968ms      77.422us      77.952ms        14.59%      77.952ms     866.133us           0 b           0 b      23.89 Gb           0 b            90  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      77.952ms        14.59%      77.952ms     866.133us           0 b           0 b           0 b           0 b            90  
+                                            aten::copy_         0.07%       1.978ms         0.32%       8.706ms      37.852us      70.589ms        13.21%      70.589ms     306.909us           0 b           0 b           0 b           0 b           230  
+void xmma_new::gemm::kernel<xmma_new::implicit_gemm:...         0.00%       0.000us         0.00%       0.000us       0.000us      66.075ms        12.37%      66.075ms       3.304ms           0 b           0 b           0 b           0 b            20  
+                                        aten::remainder         0.06%       1.709ms         0.29%       7.953ms      88.367us      63.811ms        11.95%      63.811ms     709.011us           0 b           0 b      24.33 Gb           0 b            90  
+                                                batch_0         0.15%       4.197ms         6.89%     188.415ms     188.415ms       0.000us         0.00%      59.480ms      59.480ms          -4 b         -20 b     208.00 Kb     -16.88 Gb             1  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 2.735s
+Self CUDA time total: 534.175ms
+

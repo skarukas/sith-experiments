@@ -107,13 +107,13 @@ def roll_multiple(tens, idx, dim, idx_dim=None, cyclic=True):
     idx_s[idx_dim] = len(idx)
     idx = idx.reshape(tuple(idx_s)).to(torch.int16)
 
-    rng = torch.arange(n).to(idx.device).reshape(tuple(rng_s)).to(torch.int16)
+    rng = torch.arange(n, device=idx.device, dtype=torch.int16).reshape(tuple(rng_s))
     idx = rng - idx
     idx = idx.expand(tens.shape)
     tens = tens.gather(dim, (idx % n).long())
     if not cyclic:
-        tens[idx < 0] = 0
-        tens[idx >= n] = 0
+        zero = torch.zeros(1, device=tens.device).expand(tens.shape)
+        tens = tens.where((idx < 0) | (idx >= n), zero)
     return tens
 
 

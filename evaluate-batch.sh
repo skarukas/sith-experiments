@@ -1,16 +1,16 @@
 #!/bin/bash
 
 #SBATCH -J Evaluate
-#SBATCH -p gpu
+#SBATCH -p gpu-debug
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=9:00:00
+#SBATCH --time=1:00:00
 #SBATCH -o out/Deep_LP_train/running_jobs/evaluate_%J_%a.out
 #SBATCH -e out/Deep_LP_train/running_jobs/evaluate_%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-1
+#SBATCH --array=0-0
 
 module load deeplearning/2.6.0
 

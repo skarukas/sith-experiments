@@ -2,6 +2,8 @@ import sys
 import yaml
 from os.path import join
 import torch
+from torch.profiler import profile, record_function, ProfilerActivity
+
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
@@ -77,7 +79,7 @@ if __name__ == "__main__":
     n_angles = 24
     transforms += [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
 
-    batch_size = 2#config['batch_size']
+    batch_size = config['batch_size']
     results = []
     dataset_list = (
         (TransformedImageDataset(inner_dataset, **transform_dict), transform_dict) 
@@ -97,14 +99,26 @@ if __name__ == "__main__":
         x = (x - x.min()) / (x.max() - x.min())
         print("imsize:", x.shape)
         plt.imsave(f"{k}_{transform[k]}.png", x[..., 0]) """
-
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
             collate_fn=None
         )
+
+        """         with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA], profile_memory=True, record_shapes=True) as prof:
+            dl = iter(dataloader)
+            for i in range(10):
+                with record_function(f"run_{i}"):
+                    model(next(dl)[0])
+
+        prof.export_chrome_trace(join(experiment_path, f"multi_trace.json"))
+        print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=10))
+
+        please_stop """
         stats = evaluate(model, dataloader, progress_bar=True)
+
+            
         print(f"\nFor transform={transform}:\n acc={stats['acc']}, loss={stats['loss']}")
-        
+    
         # write after every transform just in case
         results.append({ "transform": transform,  **stats })
         results_file.seek(0)

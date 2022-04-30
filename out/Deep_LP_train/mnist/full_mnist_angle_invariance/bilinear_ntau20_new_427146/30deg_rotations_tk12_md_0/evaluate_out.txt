@@ -2,3 +2,190 @@ Using cuda
 
 For transform=MNIST_R:
  acc=0.9249, loss=0.23116317377210024
+Using cpu
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+
+For transform={'scale': 1}:
+ acc=0.9859, loss=0.04818000033297373
+
+For transform={'scale': 2}:
+ acc=0.2646, loss=3.82871354591524
+
+For transform={'scale': 1.5}:
+ acc=0.7034, loss=1.026552112810355
+
+For transform={'scale': 0.8}:
+ acc=0.9629, loss=0.14140291632925472
+
+For transform={'scale': 0.6}:
+ acc=0.896, loss=0.46697081667999735
+
+For transform={'scale': 0.5}:
+ acc=0.838, loss=0.7414978634215892
+
+For transform={'angle': 5}:
+ acc=0.9847, loss=0.0507369209063598
+
+For transform={'angle': 15}:
+ acc=0.9735, loss=0.08576443374124341
+
+For transform={'angle': 30}:
+ acc=0.9086, loss=0.29703680699478885
+
+For transform={'angle': 45}:
+ acc=0.8407, loss=0.4979218189590807
+
+For transform={'angle': 60}:
+ acc=0.8932, loss=0.33668200605647997
+
+For transform={'angle': 90}:
+ acc=0.9859, loss=0.04818362499260996
+
+For transform={'t_x': 1, 't_y': 1, 'out_size': (28, 28)}:
+ acc=0.7242, loss=1.526470060898658
+
+For transform={'t_x': 2, 't_y': 2, 'out_size': (28, 28)}:
+ acc=0.496, loss=3.671660960093405
+Using cpu
+before conv, after pad torch.Size([2, 784, 20, 18])
+
+For transform={'t_x': 3, 't_y': 3, 'out_size': (28, 28)}:
+ acc=0.3906, loss=4.547893356527707
+Using cpu
+before conv, after pad torch.Size([2, 784, 20, 18])
+
+For transform={'t_x': 4, 't_y': 4, 'out_size': (28, 28)}:
+ acc=0.2816, loss=5.174780345327858
+
+For transform={'t_x': -1, 't_y': -1, 'out_size': (28, 28)}:
+ acc=0.9764, loss=0.0822862301632737
+Using cpu
+before conv, after pad torch.Size([2, 784, 20, 18])
+
+For transform={'t_x': -2, 't_y': -2, 'out_size': (28, 28)}:
+ acc=0.8968, loss=0.32130790084162525
+
+For transform={'t_x': -3, 't_y': -3, 'out_size': (28, 28)}:
+ acc=0.7535, loss=0.8654788245987333
+
+For transform={'t_x': -4, 't_y': -4, 'out_size': (28, 28)}:
+ acc=0.5435, loss=1.6744320231182348
+
+For transform={'angle': 0.0}:
+ acc=0.9859, loss=0.04818000037436841
+
+For transform={'angle': 15.0}:
+ acc=0.9735, loss=0.08576443383616135
+
+For transform={'angle': 30.0}:
+ acc=0.9086, loss=0.29703680688228407
+
+For transform={'angle': 45.0}:
+ acc=0.8407, loss=0.4979218185989901
+
+For transform={'angle': 60.0}:
+ acc=0.8932, loss=0.3366820065844508
+
+For transform={'angle': 75.0}:
+ acc=0.964, loss=0.11327603328047249
+
+For transform={'angle': 90.0}:
+ acc=0.9859, loss=0.0481836250111699
+
+For transform={'angle': 105.0}:
+ acc=0.9735, loss=0.08576429470950056
+
+For transform={'angle': 120.0}:
+ acc=0.9086, loss=0.29703982399970136
+
+For transform={'angle': 135.0}:
+ acc=0.8406, loss=0.4979230825017572
+
+For transform={'angle': 150.0}:
+ acc=0.8932, loss=0.3366816036789122
+
+For transform={'angle': 165.0}:
+ acc=0.964, loss=0.11327710976742192
+
+For transform={'angle': 180.0}:
+ acc=0.9859, loss=0.048179350742884514
+
+For transform={'angle': 195.0}:
+ acc=0.9735, loss=0.08577143321158774
+
+For transform={'angle': 210.0}:
+ acc=0.9086, loss=0.297039072623766
+
+For transform={'angle': 225.0}:
+ acc=0.8407, loss=0.4979097343174126
+
+For transform={'angle': 240.0}:
+ acc=0.8932, loss=0.3366827766547723
+
+For transform={'angle': 255.0}:
+ acc=0.964, loss=0.11327424360725541
+
+For transform={'angle': 270.0}:
+ acc=0.9859, loss=0.04818039054532604
+
+For transform={'angle': 285.0}:
+ acc=0.9735, loss=0.0857739001714397
+
+For transform={'angle': 300.0}:
+ acc=0.9086, loss=0.2970186437773091
+
+For transform={'angle': 315.0}:
+ acc=0.8407, loss=0.49790683080065334
+
+For transform={'angle': 330.0}:
+ acc=0.8932, loss=0.33669151199275466
+
+For transform={'angle': 345.0}:
+ acc=0.964, loss=0.11327637627467821
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::conv2d         0.01%     215.000us         5.33%     154.818ms       2.580ms       0.000us         0.00%     126.623ms       2.110ms           0 b           0 b      15.55 Gb           0 b            60  
+                                      aten::convolution         0.01%     217.000us         5.32%     154.603ms       2.577ms       0.000us         0.00%     126.623ms       2.110ms           0 b           0 b      15.55 Gb           0 b            60  
+                                     aten::_convolution         0.02%     450.000us         5.32%     154.386ms       2.573ms       0.000us         0.00%     126.623ms       2.110ms           0 b           0 b      15.55 Gb           0 b            60  
+                                       aten::index_put_         0.01%     378.000us        14.26%     414.156ms       6.903ms       0.000us         0.00%     109.770ms       1.829ms           0 b           0 b           0 b           0 b            60  
+                                 aten::_index_put_impl_         0.05%       1.387ms        14.25%     413.778ms       6.896ms      27.959ms         4.45%     109.770ms       1.829ms           0 b           0 b           0 b     -24.34 Gb            60  
+                                aten::cudnn_convolution         5.08%     147.419ms         5.26%     152.818ms       5.094ms      91.614ms        14.59%      91.614ms       3.054ms           0 b           0 b       8.26 Gb      -1.31 Gb            30  
+                                          aten::nonzero         0.11%       3.248ms        14.15%     410.932ms       6.849ms      81.811ms        13.03%      81.811ms       1.364ms           0 b           0 b      24.34 Gb      40.00 Kb            60  
+                                           aten::gather         0.06%       1.711ms         0.17%       4.987ms      55.411us      78.099ms        12.44%      78.099ms     867.767us           0 b           0 b      23.89 Gb           0 b            90  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      78.099ms        12.44%      78.099ms     867.767us           0 b           0 b           0 b           0 b            90  
+                                            aten::copy_         0.29%       8.443ms         5.23%     152.012ms     147.584us      72.273ms        11.51%      72.542ms      70.429us           0 b    -490.00 Kb           0 b           0 b          1030  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 2.904s
+Self CUDA time total: 627.871ms
+
+Using cuda
+Using cuda
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                           aten::conv2d         0.01%     217.000us         4.61%     127.550ms       2.126ms       0.000us         0.00%     123.778ms       2.063ms           0 b           0 b      15.55 Gb           0 b            60  
+                                      aten::convolution         0.01%     205.000us         4.60%     127.333ms       2.122ms       0.000us         0.00%     123.778ms       2.063ms           0 b           0 b      15.55 Gb           0 b            60  
+                                     aten::_convolution         0.02%     426.000us         4.59%     127.128ms       2.119ms       0.000us         0.00%     123.778ms       2.063ms           0 b           0 b      15.55 Gb           0 b            60  
+                                aten::cudnn_convolution         4.33%     119.711ms         4.54%     125.606ms       4.187ms      89.605ms        16.73%      89.605ms       2.987ms           0 b           0 b       8.26 Gb      -1.31 Gb            30  
+                                           aten::gather         0.08%       2.154ms         0.17%       4.780ms      53.111us      77.936ms        14.55%      77.936ms     865.956us           0 b           0 b      23.89 Gb           0 b            90  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      77.936ms        14.55%      77.936ms     865.956us           0 b           0 b           0 b           0 b            90  
+                                            aten::copy_         0.26%       7.216ms        15.42%     426.673ms     414.246us      71.155ms        13.28%      71.413ms      69.333us           0 b    -490.00 Kb           0 b           0 b          1030  
+void xmma_new::gemm::kernel<xmma_new::implicit_gemm:...         0.00%       0.000us         0.00%       0.000us       0.000us      66.209ms        12.36%      66.209ms       3.310ms           0 b           0 b           0 b           0 b            20  
+                                        aten::remainder         0.06%       1.547ms         0.18%       4.958ms      55.089us      64.064ms        11.96%      64.064ms     711.822us           0 b           0 b      24.33 Gb           0 b            90  
+                                                  run_0         0.11%       3.009ms        79.43%        2.198s        2.198s       0.000us         0.00%      59.609ms      59.609ms          -4 b         -20 b     208.00 Kb     -16.88 Gb             1  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 2.768s
+Self CUDA time total: 535.738ms
+

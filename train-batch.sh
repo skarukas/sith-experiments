@@ -1,16 +1,16 @@
 #!/bin/bash
 
 #SBATCH -J Deep_LP_train
-#SBATCH -p gpu
+#SBATCH -p gpu-debug
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=9:00:00
+#SBATCH --time=1:00:00
 #SBATCH -o out/Deep_LP_train/running_jobs/%J_%a.out
 #SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-1
+#SBATCH --array=0-0
 
 # asks SLURM to send the USR1 signal 60 seconds before end of the time limit
 #SBATCH --signal=B:USR1@60
@@ -25,7 +25,7 @@ trap 'cleanup_logs' USR1
 module load deeplearning/2.6.0
 
 ParamFiles=(30deg_rotations_tk12_md 30deg_rotations_tk12_lg)
-ExperimentRelativePath="mnist/full_mnist_angle_invariance/bilinear_ntau20_new"
+ExperimentRelativePath="test"#"mnist/full_mnist_angle_invariance/bilinear_ntau20_new"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"

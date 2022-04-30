@@ -17,6 +17,7 @@ from datasets import get_dataset
 
 import torch
 from torch.utils.data import DataLoader
+from torch.profiler import profile, record_function, ProfilerActivity
 
 
 CHECKPOINT_FREQ = 1
@@ -27,21 +28,44 @@ train_history = None
 model = None
 config = None
 
+RECORD_PROFILE = True
+PROFILE_NBATCH = 10
+
 
 def train_loop(model, train_dataloader, config, val_dataloader=None):
     lr = config['optimizer']['params']['lr']
     optimizer = torch.optim.Adam(model.parameters(), lr)
     epochs = trange(config['num_epochs'], desc="Epoch")
-
+    if RECORD_PROFILE:
+        prof = profile(activities=[
+                ProfilerActivity.CPU, ProfilerActivity.CUDA], 
+                profile_memory=True, record_shapes=True)
     for epoch in epochs:
         epoch_stats = {}
         train_loss = Average()
         train_acc = Average()
         
         model.train()
+
+        ## profile model computation on a few batches
+        if RECORD_PROFILE and epoch == 0:
+            with prof:
+                for i, (x, l) in enumerate(train_dataloader):
+                    if i == PROFILE_NBATCH:
+                        break
+                    with record_function(f"batch_{i}"):
+                        model(x)
+
+            prof.export_chrome_trace(join(log_dir, "training_chrome_trace.json"))
+            print("Operations sorted by CUDA time:")
+            print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=10))
+            sys.stdout.flush()
+
+        ## train
         batches = tqdm(train_dataloader, leave=False, desc="Batch", mininterval=10)
-        for (X, label) in batches:
+        for batch_idx, (X, label) in enumerate(batches):
             optimizer.zero_grad()
+
             # compute training loss
             prediction = model(X)
             loss = model.loss_function(prediction, label)

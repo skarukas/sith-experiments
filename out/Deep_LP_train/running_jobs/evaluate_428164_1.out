@@ -1,6 +1,0 @@
-Task ID: 1
-Running in out/Deep_LP_train/mnist/full_mnist_angle_invariance/bilinear_ntau20_new_427146/30deg_rotations_tk12_lg_1
-Using cuda
-
-For transform=MNIST_R:
- acc=0.9587, loss=0.12876769478408737
