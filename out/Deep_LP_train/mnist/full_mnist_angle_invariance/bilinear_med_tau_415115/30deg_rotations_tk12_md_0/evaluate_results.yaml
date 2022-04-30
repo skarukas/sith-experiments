@@ -1,0 +1,12 @@
+- acc: 0.9847
+  loss: 0.05165449580644135
+  transform:
+    scale: 1
+- acc: 0.1039
+  loss: 2.7735062764793637
+  transform:
+    scale: 4
+- acc: 0.1479
+  loss: 2.608183415712416
+  transform:
+    scale: 3

@@ -5,6 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
+import datasets
 from datasets import get_dataset, CIFAR10_Tensor, FastMNIST, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
 from util import collate_examples_pad, Logger
@@ -13,9 +14,9 @@ import matplotlib.pyplot as plt
 
 DEFAULT_TRANSFORMS = [
         # scale
+        #dict(scale=3),
         dict(scale=1),
-        dict(scale=4),
-        dict(scale=3),
+        #dict(scale=4),
         dict(scale=2),
         dict(scale=1.5),
         dict(scale=0.8),
@@ -48,7 +49,7 @@ if __name__ == "__main__":
         experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
-    results_file = open(join(experiment_path, "evaluate_results_2.yaml"), "w")
+    results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
     sys.stdout = Logger(join(experiment_path, "evaluate_out.txt"), sys.stdout)
     sys.stderr = Logger(join(experiment_path, "evaluate_err.txt"), sys.stderr)
 
@@ -66,41 +67,46 @@ if __name__ == "__main__":
     state_dict = torch.load(open(state_dict_path, "rb"), map_location=config['device'])
     model.load_state_dict(state_dict)
 
-    """ inner_dataset = CIFAR10_Tensor(
-        data_dir, download=True, 
-        train=False, device=config['device']
-    ) """
-
-    #inner_dataset = FastMNIST(
-    #    data_dir, download=True, 
-    #    train=False, device=config['device']
-    #)
+    #config["val_data_dir"]["type"] = "RotMNIST"
 
     inner_dataset = get_dataset(config["val_data_dir"], device=config['device'])
     ## evaluate
 
     transforms = DEFAULT_TRANSFORMS
+    #transforms = [dict(scale=1)]
     n_angles = 24
-    #transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
+    transforms += [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
 
-    batch_size = 4#config['batch_size']
+    batch_size = 2#config['batch_size']
     results = []
-    for transform_dict in tqdm(transforms):
-        # create stretched version of dataset
-        dataset = TransformedImageDataset(inner_dataset, **transform_dict)
-        #k = list(transform_dict.keys())[0]
-        #x = dataset[0][0].detach().permute(1, 2, 0).cpu().numpy()
-        #x = (x - x.min()) / (x.max() - x.min())
-        #print("imsize:", x.shape)
-        #plt.imsave(f"{k}:{transform_dict[k]}.png", x[..., 0])
+    dataset_list = (
+        (TransformedImageDataset(inner_dataset, **transform_dict), transform_dict) 
+        for transform_dict in transforms
+    )
+
+    # for special datasets
+    d_kwargs = config["val_data_dir"]["kwargs"]
+    #dataset_list = [
+    #    (datasets.MNIST_R(**d_kwargs, device=config['device']), "MNIST_R")
+    #]
+
+    for dataset, transform in tqdm(dataset_list):
+        """ k = list(transform.keys())[0]
+        x = dataset[0][0].detach().permute(1, 2, 0).cpu().numpy()
+        print(x.min(), x.max())
+        x = (x - x.min()) / (x.max() - x.min())
+        print("imsize:", x.shape)
+        plt.imsave(f"{k}_{transform[k]}.png", x[..., 0]) """
+
         dataloader = DataLoader(
             dataset, batch_size, shuffle=True, 
             collate_fn=None
         )
         stats = evaluate(model, dataloader, progress_bar=True)
-        print(f"\nFor transform={transform_dict}:\n acc={stats['acc']}, loss={stats['loss']}")
+        print(f"\nFor transform={transform}:\n acc={stats['acc']}, loss={stats['loss']}")
+        
         # write after every transform just in case
-        results.append({ "transform": transform_dict,  **stats })
+        results.append({ "transform": transform,  **stats })
         results_file.seek(0)
         yaml.safe_dump(results, results_file)
         results_file.truncate()

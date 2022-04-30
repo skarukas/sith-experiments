@@ -1,0 +1,46 @@
+Using cuda
+
+For transform={'scale': 1}:
+ acc=0.995, loss=0.015507304280743577
+
+For transform={'scale': 4}:
+ acc=0.1392, loss=33.66386509014769
+
+For transform={'scale': 3}:
+ acc=0.1315, loss=12.854260932645706
+
+For transform={'scale': 2}:
+ acc=0.1958, loss=3.923618251655713
+
+For transform={'scale': 1.5}:
+ acc=0.5672, loss=1.5279713039786407
+
+For transform={'scale': 0.8}:
+ acc=0.9791, loss=0.08045199133115354
+
+For transform={'scale': 0.6}:
+ acc=0.4048, loss=1.8146502935845406
+
+For transform={'scale': 0.5}:
+ acc=0.1171, loss=2.3428579753398897
+
+For transform={'angle': 5}:
+ acc=0.992, loss=0.02741543804083617
+
+For transform={'angle': 15}:
+ acc=0.9872, loss=0.04066905620500587
+
+For transform={'angle': 30}:
+ acc=0.9568, loss=0.15674235189273664
+
+For transform={'angle': 45}:
+ acc=0.8835, loss=0.4533539927373336
+
+For transform={'angle': 60}:
+ acc=0.8392, loss=0.6400206086206608
+
+For transform={'angle': 90}:
+ acc=0.8204, loss=0.7717515537472532
+
+For transform={'t_x': 1, 't_y': 1, 'out_size': (28, 28)}:
+ acc=0.989, loss=0.03374906382465153

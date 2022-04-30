@@ -1,0 +1,64 @@
+batch_size: 8
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 0
+  local_start: 2022-04-25_17:35:34
+  local_stop: 2022-04-25_18:23:20
+  program_exit: FAILURE
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 3
+    kernel_size: 7
+    lp_version: bilinear
+    ntau: 26
+    num_angles: 12
+    out_channels: 32
+    tau_max: 60
+    tau_min: 1
+    topk: 12
+  - in_channels: 32
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 26
+    num_angles: 12
+    out_channels: 64
+    tau_max: 60
+    tau_min: 1
+    topk: 12
+  - in_channels: 64
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 26
+    num_angles: 12
+    out_channels: 64
+    tau_max: 60
+    tau_min: 1
+    topk: 12
+  num_params: 227690
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/cifar10/wide_bilinear_402748/wider_bilinear_1
+param: param-files/Deep-LP/CIFAR10/wider_bilinear.yaml
+train_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: true
+  type: CIFAR10
+val_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: false
+  type: CIFAR10

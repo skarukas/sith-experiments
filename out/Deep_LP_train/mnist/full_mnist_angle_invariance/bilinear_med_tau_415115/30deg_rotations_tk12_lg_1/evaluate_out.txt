@@ -1,0 +1,9 @@
+Using cuda
+torch.Size([1, 240, 29, 1])
+torch.Size([1, 240, 29, 29])
+torch.Size([1, 240, 1, 1])
+torch.Size([1, 240, 29, 1])
+Using cuda
+
+For transform={'scale': 1}:
+ acc=0.9782, loss=0.0700701282966071

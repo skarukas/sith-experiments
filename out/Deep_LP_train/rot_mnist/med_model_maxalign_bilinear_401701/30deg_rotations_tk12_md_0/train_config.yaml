@@ -1,0 +1,67 @@
+batch_size: 32
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 40
+  local_start: 2022-04-25_10:28:14
+  local_stop: 2022-04-25_12:58:24
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.9845
+    train_loss: 0.04265540168054092
+    val_acc: 0.9730686180422264
+    val_loss: 0.09446098105941726
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 1
+    kernel_size: 7
+    lp_version: bilinear
+    ntau: 8
+    num_angles: 12
+    out_channels: 32
+    tau_max: 8
+    tau_min: 1
+    topk: 12
+  - in_channels: 32
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 8
+    num_angles: 12
+    out_channels: 32
+    tau_max: 8
+    tau_min: 1
+    topk: 12
+  - in_channels: 32
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 8
+    num_angles: 12
+    out_channels: 32
+    tau_max: 8
+    tau_min: 1
+    topk: 12
+  num_params: 81354
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/rot_mnist/med_model_maxalign_bilinear_401701/30deg_rotations_tk12_md_0
+param: param-files/Deep-LP/MNIST/rotation_test/30deg_rotations_tk12_md.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: RotMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: RotMNIST

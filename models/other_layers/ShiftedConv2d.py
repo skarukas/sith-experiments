@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 import random
+from ..logpolar.util import unsqueeze_except
 
 
 class ShiftedConv2d(nn.Module):
@@ -56,20 +57,44 @@ class ShiftedConv2d(nn.Module):
     self.pad = nn.ConstantPad2d(tuple(padding), self.pad_val)
   
 
+  def __forward_batch(self, tens):
+    # shift tensor
+    tens = tens.repeat(1, len(self.shifts), 1, 1)
+    tens = roll_multiple(tens, self.shifts[..., 0], dim=-2, idx_dim=1, cyclic=False)
+    tens = roll_multiple(tens, self.shifts[..., 1], dim=-1, idx_dim=1, cyclic=False)
+
+    return torch.conv2d(tens, self.filters, stride=self.stride, groups=len(self.shifts))
+
+
+  def __forward_single_blocks(self, tens):
+    res = []
+
+    for shift, filter_block in zip(self.shifts, self.filters):
+      while len(filter_block.shape) < 4:
+        filter_block = filter_block[None]
+
+      # shift tensor and fill empty spots with zeros
+      shift = (shift[0].item(), shift[1].item())
+      tens = tens.roll(shifts=shift, dims=(-2, -1))
+      start = [0, 0]
+      stop = [0, 0]
+      for i in range(2):
+        start[i] = 0 if shift[i] >= 0 else tens.shape[i-2]+shift[i]
+        stop[i] = start[i] + abs(shift[i])
+
+      tens[..., start[0]:stop[0], :] = self.pad_val
+      tens[..., :, start[1]:stop[1]] = self.pad_val
+      res.append(torch.conv2d(tens, filter_block, stride=self.stride))
+    return torch.cat(res, dim=1)
+
+
   def forward(self, tens):
     in_device = tens.device
     tens = tens.to(self.device)
     shape = tens.shape
     tens = tens.reshape((-1, 1, *shape[2:]))
     tens_padded = self.pad(tens)
-
-    # shift tensor
-    tens_padded = tens_padded.repeat(1, len(self.shifts), 1, 1)
-    tens_padded = roll_multiple(tens_padded, self.shifts[..., 0], dim=-2, idx_dim=1, cyclic=False)
-    tens_padded = roll_multiple(tens_padded, self.shifts[..., 1], dim=-1, idx_dim=1, cyclic=False)
-
-    out = torch.conv2d(tens_padded, self.filters, stride=self.stride, groups=len(self.shifts))
-
+    out = self.__forward_batch(tens_padded)
     return out.reshape((shape[0], -1, *shape[2:])).to(in_device)
 
 
@@ -80,18 +105,16 @@ def roll_multiple(tens, idx, dim, idx_dim=None, cyclic=True):
     rng_s[dim] = n
     idx_s = [1] * len(tens.shape)
     idx_s[idx_dim] = len(idx)
-    idx = idx.reshape(tuple(idx_s))
+    idx = idx.reshape(tuple(idx_s)).to(torch.int16)
 
-    rng = torch.arange(n).to(idx.device).reshape(tuple(rng_s))
+    rng = torch.arange(n).to(idx.device).reshape(tuple(rng_s)).to(torch.int16)
     idx = rng - idx
-    idx, _ = torch.broadcast_tensors(idx, tens)
-    rolled = tens.gather(dim, idx % n)
-    if cyclic:
-        return rolled
-    else:
-        rolled[idx < 0] = 0
-        rolled[idx >= n] = 0
-        return rolled
+    idx = idx.expand(tens.shape)
+    tens = tens.gather(dim, (idx % n).long())
+    if not cyclic:
+        tens[idx < 0] = 0
+        tens[idx >= n] = 0
+    return tens
 
 
 if __name__ == "__main__":

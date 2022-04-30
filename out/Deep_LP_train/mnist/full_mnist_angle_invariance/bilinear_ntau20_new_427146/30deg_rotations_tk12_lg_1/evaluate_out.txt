@@ -1,0 +1,4 @@
+Using cuda
+
+For transform=MNIST_R:
+ acc=0.9587, loss=0.12876769478408737

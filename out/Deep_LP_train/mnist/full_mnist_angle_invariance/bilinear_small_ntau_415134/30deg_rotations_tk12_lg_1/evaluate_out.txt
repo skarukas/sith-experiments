@@ -1,0 +1,16 @@
+Using cuda
+
+For transform={'scale': 1}:
+ acc=0.994, loss=0.02221694432561686
+
+For transform={'scale': 4}:
+ acc=0.1075, loss=9.202066245764147
+
+For transform={'scale': 3}:
+ acc=0.1418, loss=6.248075848182692
+
+For transform={'scale': 2}:
+ acc=0.1098, loss=5.1011932795761155
+
+For transform={'scale': 1.5}:
+ acc=0.2672, loss=2.897447798695168

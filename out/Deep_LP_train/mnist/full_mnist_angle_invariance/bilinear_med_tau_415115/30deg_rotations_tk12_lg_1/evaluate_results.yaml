@@ -1,0 +1,4 @@
+- acc: 0.9782
+  loss: 0.0700701282966071
+  transform:
+    scale: 1

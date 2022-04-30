@@ -10,7 +10,7 @@ from torch.nn.utils import weight_norm
 import math
 
 from .util import TWO_PI, prod, pad_periodic, IDENTITY
-from .lptransform import LogPolarTransform, LogPolarTransformV2
+from .lptransform import LogPolarTransform, LogPolarTransformV2, InterpolatedLogPolarTransform
 from ..other_layers import Trim2d, TopKPool
 
 class _LogPolar_Core(nn.Module):
@@ -28,7 +28,12 @@ class _LogPolar_Core(nn.Module):
         assert in_channels
         assert out_channels
 
-        LPClass = LogPolarTransformV2 if lp_version == 2 else LogPolarTransform
+        LPClass = {
+            1: LogPolarTransform,
+            2: LogPolarTransformV2,
+            "bilinear": InterpolatedLogPolarTransform
+        }[lp_version]
+        
         self.logpolar = LPClass(**kwargs, device=device)
         self.in_channels = in_channels
         self.out_channels = out_channels

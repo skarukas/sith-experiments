@@ -441,15 +441,15 @@ class InterpolatedLogPolarTransform(torch.nn.Module):
         self.tau_max = tau_max
         self.ntau = ntau
         self.num_angles = num_angles
-
+        self.stride = stride
         self.c = (tau_max/tau_min)**(1./(ntau-1))-1
 
         dtheta = TWO_PI / num_angles
         theta = torch.arange(num_angles).double() * dtheta - np.pi
         tau_star = tau_min*(1+self.c)**torch.arange(ntau).double()
 
-        theta = theta.unsqueeze(0).to(device)
-        tau_star = tau_star.unsqueeze(1).to(device)
+        theta = theta.unsqueeze(1).to(device)
+        tau_star = tau_star.unsqueeze(0).to(device)
 
         # convert from polar to cartesian coordiates
         x = tau_star * torch.cos(theta)

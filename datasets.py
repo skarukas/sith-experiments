@@ -192,6 +192,34 @@ def transform(x, transform_params, sr=DEFAULT_SR):
     return X_norm
 
 
+def MNIST_RTS(*args, **kwargs):
+    """
+    MNIST with rotation, translation, and scaling, from STN paper.
+    Also referenced https://www.researchgate.net/figure/RTS-perturbed-MNIST-images_fig3_346614303
+    """
+    inner = FastMNIST(*args, **kwargs)
+    mn_s, mx_s = 0.7, 1.2
+    transform = {
+        "angle": lambda: random.randint(-45, 45),
+        "scale": lambda: (random.random() + mn_s) * (mx_s - mn_s),
+        "t_x": lambda: random.randint(-10, 10),
+        "t_y": lambda: random.randint(-10, 10),
+        "out_size": (42, 42)
+    }
+    return TransformedImageDataset(inner, **transform)
+
+
+def MNIST_R(*args, **kwargs):
+    """
+    MNIST with rotation, from STN paper.
+    """
+    inner = FastMNIST(*args, **kwargs)
+    transform = {
+        "angle": lambda: random.randint(-90, 90)
+    }
+    return TransformedImageDataset(inner, **transform)
+
+
 class FileDataset(Dataset):
     """
     Expects that dir contains a bunch of "torch.saved" files 
@@ -234,8 +262,8 @@ class RotMNIST(Dataset):
 
         ## normalize like FastMNIST
 
-        # Scale data to [0,1]
-        self.data = self.data.float()
+        # Scale data to [0,1] and fix flipped axis
+        self.data = self.data.float().flip(-1)
 
         # Normalize it with the usual MNIST mean and std
         self.data = self.data.sub_(0.1307).div_(0.3081)
@@ -343,7 +371,7 @@ class TransformedImageDataset(Dataset):
         mn, mx = image.min(), image.max()
         image = image.sub(mn).mul(255).div(mx-mn)
         image = image.permute(1, 2, 0)
-
+        random.seed(idx)
         t_x = self.get_t_x()
         t_y = self.get_t_y()
         angle = self.get_angle()
@@ -362,13 +390,13 @@ class TransformedImageDataset(Dataset):
         mode = "RGB" if item[0].shape[0] == 3 else "L"
         image = Image.new(mode, size=imsize)
         offset = ((image.width - inner_image.width) // 2, (image.height - inner_image.height) // 2)
-        image.paste(inner_image, offset)
+        image.paste(inner_image, offset) # paste in center
 
         mat = (
             1, 0, t_x,
             0, 1, t_y
         )
-        image = image.rotate(angle, fillcolor=0)
+        image = image.rotate(angle, fillcolor=0, resample=Image.BICUBIC)
         image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
         image = image.resize((int(size_0*scale), int(size_1*scale)))#rescale_centered(image, scale)
         

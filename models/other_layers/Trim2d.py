@@ -21,6 +21,11 @@ class Trim2d(nn.Module):
         assert self.trim_size[0] >= 0
         assert self.trim_size[1] >= 0
     
+    def extra_repr(self):
+        s = "trim_size={trim_size}"
+        s = s.format(**self.__dict__)
+        return s    
+
     def forward(self, x):
         d1, d2 = x.shape[-2:]
         t1, t2 = self.trim_size

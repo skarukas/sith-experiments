@@ -200,3 +200,18 @@ For transform={'t_x': -3, 't_y': -3, 'out_size': (28, 28)}:
 
 For transform={'t_x': -4, 't_y': -4, 'out_size': (28, 28)}:
  acc=0.808, loss=0.5172397153299302
+Using cuda
+Using cuda
+Using cuda
+Using cuda
+
+For transform={'scale': 1}:
+ acc=0.97416, loss=0.08112183604251924
+Using cpu
+-0.42421296 2.8214867
+imsize: (28, 28, 1)
+Using cuda
+Using cuda
+
+For transform=MNIST_R:
+ acc=0.9703, loss=0.0928068414886399
