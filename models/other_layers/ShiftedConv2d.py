@@ -59,7 +59,7 @@ class ShiftedConv2d(nn.Module):
 
   def __forward_batch(self, tens):
     # shift tensor
-    tens = tens.repeat(1, len(self.shifts), 1, 1)
+    tens = tens.expand(tens.shape[0], tens.shape[1]*len(self.shifts), *tens.shape[2:])
     tens = roll_multiple(tens, self.shifts[..., 0], dim=-2, idx_dim=1, cyclic=False)
     tens = roll_multiple(tens, self.shifts[..., 1], dim=-1, idx_dim=1, cyclic=False)
 
@@ -113,7 +113,7 @@ def roll_multiple(tens, idx, dim, idx_dim=None, cyclic=True):
     tens = tens.gather(dim, (idx % n).long())
     if not cyclic:
         zero = torch.zeros(1, device=tens.device).expand(tens.shape)
-        tens = tens.where((idx < 0) | (idx >= n), zero)
+        tens = tens.where((idx >= 0) & (idx < n), zero)
     return tens
 
 
