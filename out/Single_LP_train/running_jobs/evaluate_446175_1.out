@@ -1,0 +1,6 @@
+Task ID: 1
+Running in out/Single_LP_train/mnist/simple_new_bn_442482/single_lp_2_bn_1
+Using cuda
+
+For transform=MNIST_R:
+ acc=0.9634, loss=0.11834575696311281

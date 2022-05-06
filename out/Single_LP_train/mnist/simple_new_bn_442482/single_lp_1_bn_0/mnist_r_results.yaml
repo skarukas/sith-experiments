@@ -1,0 +1,3 @@
+- acc: 0.935
+  loss: 0.18647636392404093
+  transform: MNIST_R

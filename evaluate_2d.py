@@ -10,16 +10,17 @@ from tqdm import tqdm
 import datasets
 from datasets import get_dataset, CIFAR10_Tensor, FastMNIST, TransformedImageDataset, TransformedMNIST
 from evaluate import evaluate
-from util import collate_examples_pad, Logger
+from util import collate_examples_pad, Logger, scale_ntau
 from models.util import get_model
 import matplotlib.pyplot as plt
+from itertools import chain
 
 DEFAULT_TRANSFORMS = [
         # scale
         #dict(scale=3),
-        dict(scale=1),
         #dict(scale=4),
         dict(scale=2),
+        dict(scale=1),
         dict(scale=1.5),
         dict(scale=0.8),
         dict(scale=0.6),
@@ -51,7 +52,7 @@ if __name__ == "__main__":
         experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
-    results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
+    results_file = open(join(experiment_path, "mnist_r_results.yaml"), "w")
     sys.stdout = Logger(join(experiment_path, "evaluate_out.txt"), sys.stdout)
     sys.stderr = Logger(join(experiment_path, "evaluate_err.txt"), sys.stderr)
 
@@ -62,6 +63,8 @@ if __name__ == "__main__":
     print("Using", config['device'])
 
 
+    scale_ntau(config, scale=1.5)
+
     ## get model and load state dict
     model = get_model(config)
     # assume model state dict stored as something like MyClassifier.pt
@@ -69,7 +72,7 @@ if __name__ == "__main__":
     state_dict = torch.load(open(state_dict_path, "rb"), map_location=config['device'])
     model.load_state_dict(state_dict)
 
-    #config["val_data_dir"]["type"] = "RotMNIST"
+    config["val_data_dir"]["type"] = "FastMNIST"
 
     inner_dataset = get_dataset(config["val_data_dir"], device=config['device'])
     ## evaluate
@@ -79,7 +82,7 @@ if __name__ == "__main__":
     n_angles = 24
     transforms += [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
 
-    batch_size = config['batch_size']
+    batch_size = 2#config['batch_size']
     results = []
     dataset_list = (
         (TransformedImageDataset(inner_dataset, **transform_dict), transform_dict) 
@@ -88,9 +91,9 @@ if __name__ == "__main__":
 
     # for special datasets
     d_kwargs = config["val_data_dir"]["kwargs"]
-    #dataset_list = [
-    #    (datasets.MNIST_R(**d_kwargs, device=config['device']), "MNIST_R")
-    #]
+    dataset_list = [
+        (datasets.MNIST_R(**d_kwargs, device=config['device']), "MNIST_R")
+    ]
 
     for dataset, transform in tqdm(dataset_list):
         """ k = list(transform.keys())[0]
@@ -104,16 +107,6 @@ if __name__ == "__main__":
             collate_fn=None
         )
 
-        """         with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA], profile_memory=True, record_shapes=True) as prof:
-            dl = iter(dataloader)
-            for i in range(10):
-                with record_function(f"run_{i}"):
-                    model(next(dl)[0])
-
-        prof.export_chrome_trace(join(experiment_path, f"multi_trace.json"))
-        print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=10))
-
-        please_stop """
         stats = evaluate(model, dataloader, progress_bar=True)
 
             

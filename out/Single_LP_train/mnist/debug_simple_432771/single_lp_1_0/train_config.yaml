@@ -1,0 +1,54 @@
+batch_size: 8
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 4
+  local_start: 2022-05-01_12:30:23
+  local_stop: 2022-05-01_12:58:05
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.8414333333333334
+    train_loss: 0.5032445903220525
+    val_acc: 0.8691
+    val_loss: 0.4380125632122159
+model:
+  act_func: relu
+  batch_norm: false
+  channels:
+  - 1
+  - 32
+  - 64
+  - 32
+  classname: SingleLPClassifier
+  dropout: 0.2
+  filter_sizes:
+  - 5
+  - 3
+  - 3
+  lp_params:
+    lp_version: bilinear
+    ntau: 20
+    num_angles: 12
+    tau_max: 30
+    tau_min: 1
+  num_params: 38122
+  out_classes: 10
+  output: max
+  type: single_lp
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Single_LP_train/mnist/debug_simple_432771/single_lp_1_0
+param: param-files/Single_LP/MNIST/single_lp_1.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: FastMNIST
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: FastMNIST

@@ -1,0 +1,138 @@
+Using cuda
+Using cuda
+Using cuda
+
+For transform={'scale': 3}:
+ acc=0.0973, loss=2.9661607632756235
+
+For transform={'scale': 1}:
+ acc=0.9816, loss=0.05920859213917826
+
+For transform={'scale': 2}:
+ acc=0.1027, loss=2.977590839910507
+
+For transform={'scale': 1.5}:
+ acc=0.0992, loss=3.274421835017204
+
+For transform={'scale': 0.8}:
+ acc=0.2172, loss=2.423587223957479
+
+For transform={'scale': 0.6}:
+ acc=0.0698, loss=3.5669828910708428
+
+For transform={'scale': 0.5}:
+ acc=0.0888, loss=2.589662544763088
+
+For transform={'angle': 5}:
+ acc=0.979, loss=0.07130750982266772
+
+For transform={'angle': 15}:
+ acc=0.9545, loss=0.16410572532452347
+
+For transform={'angle': 30}:
+ acc=0.8254, loss=0.6482697373668689
+
+For transform={'angle': 45}:
+ acc=0.6828, loss=1.2477836659455843
+
+For transform={'angle': 60}:
+ acc=0.7334, loss=1.0186043762920651
+
+For transform={'angle': 90}:
+ acc=0.9401, loss=0.18236225275389306
+
+For transform={'t_x': 1, 't_y': 1, 'out_size': (28, 28)}:
+ acc=0.6476, loss=1.0832292149245826
+
+For transform={'t_x': 2, 't_y': 2, 'out_size': (28, 28)}:
+ acc=0.2395, loss=2.854550036431849
+
+For transform={'t_x': 3, 't_y': 3, 'out_size': (28, 28)}:
+ acc=0.1529, loss=3.780773337530717
+
+For transform={'t_x': 4, 't_y': 4, 'out_size': (28, 28)}:
+ acc=0.1389, loss=4.47860095436126
+
+For transform={'t_x': -1, 't_y': -1, 'out_size': (28, 28)}:
+ acc=0.7823, loss=0.6774983570445893
+
+For transform={'t_x': -2, 't_y': -2, 'out_size': (28, 28)}:
+ acc=0.4126, loss=2.156010219360306
+
+For transform={'t_x': -3, 't_y': -3, 'out_size': (28, 28)}:
+ acc=0.1553, loss=4.348828305216133
+
+For transform={'t_x': -4, 't_y': -4, 'out_size': (28, 28)}:
+ acc=0.0723, loss=4.650116915524006
+
+For transform={'angle': 0.0}:
+ acc=0.9816, loss=0.059208592066363266
+
+For transform={'angle': 15.0}:
+ acc=0.9545, loss=0.1641057249223124
+
+For transform={'angle': 30.0}:
+ acc=0.8254, loss=0.6482697370627315
+
+For transform={'angle': 45.0}:
+ acc=0.6828, loss=1.2477836672962836
+
+For transform={'angle': 60.0}:
+ acc=0.7334, loss=1.0186043754023995
+
+For transform={'angle': 75.0}:
+ acc=0.8945, loss=0.3448411629531297
+
+For transform={'angle': 90.0}:
+ acc=0.9401, loss=0.1823622530516037
+
+For transform={'angle': 105.0}:
+ acc=0.8819, loss=0.40079231098806223
+
+For transform={'angle': 120.0}:
+ acc=0.7335, loss=0.9833914128693922
+
+For transform={'angle': 135.0}:
+ acc=0.6209, loss=1.4931553054415851
+
+For transform={'angle': 150.0}:
+ acc=0.6724, loss=1.263989054268361
+
+For transform={'angle': 165.0}:
+ acc=0.8028, loss=0.7064481043610322
+
+For transform={'angle': 180.0}:
+ acc=0.8474, loss=0.5689007483368941
+
+For transform={'angle': 195.0}:
+ acc=0.7922, loss=0.8003888630828601
+
+For transform={'angle': 210.0}:
+ acc=0.6557, loss=1.4087276131953608
+
+For transform={'angle': 225.0}:
+ acc=0.5989, loss=1.6778235004956747
+
+For transform={'angle': 240.0}:
+ acc=0.7358, loss=0.9983626373282964
+
+For transform={'angle': 255.0}:
+ acc=0.898, loss=0.3324975982895223
+
+For transform={'angle': 270.0}:
+ acc=0.9473, loss=0.16355180682672799
+
+For transform={'angle': 285.0}:
+ acc=0.8803, loss=0.39276306186527543
+
+For transform={'angle': 300.0}:
+ acc=0.7107, loss=1.1587052713943646
+
+For transform={'angle': 315.0}:
+ acc=0.6662, loss=1.464777899846943
+
+For transform={'angle': 330.0}:
+ acc=0.8117, loss=0.7596157555119794
+
+For transform={'angle': 345.0}:
+ acc=0.9526, loss=0.15254217212878962

@@ -1,0 +1,77 @@
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(14, 1), stride=(14, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=384, out_features=32, bias=True)
+    (1): Linear(in_features=384, out_features=32, bias=True)
+    (2): Linear(in_features=384, out_features=10, bias=True)
+  )
+)
+Total parameters: 81354
+Operations sorted by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               CudnnConvolutionBackward         0.00%     170.000us         2.05%      89.806ms       2.994ms       0.000us         0.00%     706.849ms      23.562ms           0 b           0 b       9.57 Gb           0 b            30  
+                       aten::cudnn_convolution_backward         0.01%     308.000us         2.04%      89.636ms       2.988ms       0.000us         0.00%     706.849ms      23.562ms           0 b           0 b       9.57 Gb           0 b            30  
+                 aten::cudnn_convolution_backward_input         1.25%      54.629ms         1.52%      66.530ms       3.326ms     490.093ms        31.73%     490.093ms      24.505ms           0 b           0 b       9.57 Gb       9.57 Gb            20  
+void cudnn::detail::dgrad_engine<float, 512, 6, 5, 3...         0.00%       0.000us         0.00%       0.000us       0.000us     482.409ms        31.23%     482.409ms      24.120ms           0 b           0 b           0 b           0 b            20  
+                aten::cudnn_convolution_backward_weight         0.42%      18.231ms         0.52%      22.798ms     759.933us     216.756ms        14.03%     216.756ms       7.225ms           0 b           0 b       2.02 Mb           0 b            30  
+void cudnn::cnn::wgrad_alg0_engine<float, 512, 6, 5,...         0.00%       0.000us         0.00%       0.000us       0.000us     206.354ms        13.36%     206.354ms      10.318ms           0 b           0 b           0 b           0 b            20  
+                                           aten::conv2d         0.01%     254.000us         4.99%     218.776ms       3.646ms       0.000us         0.00%     119.637ms       1.994ms           0 b           0 b      15.55 Gb           0 b            60  
+                                      aten::convolution         0.00%     216.000us         4.98%     218.522ms       3.642ms       0.000us         0.00%     119.637ms       1.994ms           0 b           0 b      15.55 Gb           0 b            60  
+                                     aten::_convolution         0.01%     443.000us         4.98%     218.306ms       3.638ms       0.000us         0.00%     119.637ms       1.994ms           0 b           0 b      15.55 Gb           0 b            60  
+                                         GatherBackward         0.01%     473.000us         1.51%      66.386ms     948.371us       0.000us         0.00%     113.107ms       1.616ms           0 b           0 b      23.65 Gb           0 b            70  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 4.387s
+Self CUDA time total: 1.545s
+

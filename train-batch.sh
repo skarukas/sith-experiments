@@ -1,35 +1,27 @@
 #!/bin/bash
 
-#SBATCH -J Deep_LP_train
-#SBATCH -p gpu-debug
+#SBATCH -J Single_LP_train
+#SBATCH -p gpu
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=1:00:00
-#SBATCH -o out/Deep_LP_train/running_jobs/%J_%a.out
-#SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
+#SBATCH --time=9:00:00
+#SBATCH -o out/Single_LP_train/running_jobs/%J_%a.out
+#SBATCH -e out/Single_LP_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-0
+#SBATCH --array=0-1
 
-# asks SLURM to send the USR1 signal 60 seconds before end of the time limit
-#SBATCH --signal=B:USR1@60
-cleanup_logs()
-{
-    echo "Job canceled, clearing log files from running_jobs directory."
-    rm -rf "out/$SLURM_JOB_NAME/running_jobs/${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}".*
-}
-trap 'cleanup_logs' USR1
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(30deg_rotations_tk12_md 30deg_rotations_tk12_lg)
-ExperimentRelativePath="test"#"mnist/full_mnist_angle_invariance/bilinear_ntau20_new"
+ParamFiles=(single_lp_1_bn single_lp_2_bn)
+ExperimentRelativePath="mnist_r/simple_new"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
-ParamFile=param-files/Deep-LP/MNIST/rotation_test/${ParamFile}.yaml
+ParamFile=param-files/Single_LP/MNIST/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR
 

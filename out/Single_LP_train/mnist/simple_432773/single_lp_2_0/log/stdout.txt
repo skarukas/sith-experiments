@@ -1,0 +1,41 @@
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+SingleLPClassifier(
+  (activation): ReLU()
+  (dropout): Dropout(p=0.2, inplace=False)
+  (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+  (conv_layers): ModuleList(
+    (0): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1))
+    (1): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1))
+    (3): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1))
+  )
+  (to_out): Linear(in_features=256, out_features=10, bias=True)
+  (logpolar): InterpolatedLogPolarTransform(
+    ntau=20, tau_range=1:30, ntheta=12, stride=1
+    (filterbank): ShiftedConv2d(
+      (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+    )
+  )
+)
+Total parameters: 424458
+Operations sorted by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               CudnnConvolutionBackward         0.01%     247.000us         3.03%     103.592ms       2.590ms       0.000us         0.00%     321.443ms       8.036ms           0 b           0 b       7.14 Gb           0 b            40  
+                       aten::cudnn_convolution_backward         0.01%     483.000us         3.03%     103.345ms       2.584ms       0.000us         0.00%     321.443ms       8.036ms           0 b           0 b       7.14 Gb           0 b            40  
+                 aten::cudnn_convolution_backward_input         0.36%      12.173ms         0.72%      24.749ms     824.967us     164.075ms        26.41%     164.075ms       5.469ms           0 b           0 b       7.12 Gb      -2.17 Gb            30  
+                aten::cudnn_convolution_backward_weight         1.58%      53.807ms         2.29%      78.113ms       1.953ms     157.368ms        25.33%     157.368ms       3.934ms           0 b           0 b      18.58 Mb     -27.37 Gb            40  
+void xmma_new::gemm::kernel<xmma_new::implicit_gemm:...         0.00%       0.000us         0.00%       0.000us       0.000us     102.213ms        16.45%     102.213ms       5.111ms           0 b           0 b           0 b           0 b            20  
+void cudnn::detail::dgrad_engine<float, 512, 6, 5, 3...         0.00%       0.000us         0.00%       0.000us       0.000us      92.614ms        14.91%      92.614ms       9.261ms           0 b           0 b           0 b           0 b            10  
+                                           aten::conv2d         0.01%     221.000us        11.32%     386.483ms       7.730ms       0.000us         0.00%      81.022ms       1.620ms           0 b           0 b      10.30 Gb           0 b            50  
+                                      aten::convolution         0.01%     203.000us        11.31%     386.262ms       7.725ms       0.000us         0.00%      81.022ms       1.620ms           0 b           0 b      10.30 Gb           0 b            50  
+                                     aten::_convolution         0.02%     686.000us        11.30%     386.059ms       7.721ms       0.000us         0.00%      81.022ms       1.620ms           0 b           0 b      10.30 Gb           0 b            50  
+                                aten::cudnn_convolution        10.62%     362.581ms        11.15%     380.650ms       9.516ms      63.621ms        10.24%      63.621ms       1.591ms           0 b           0 b      10.24 Gb      -3.83 Gb            40  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.415s
+Self CUDA time total: 621.228ms
+

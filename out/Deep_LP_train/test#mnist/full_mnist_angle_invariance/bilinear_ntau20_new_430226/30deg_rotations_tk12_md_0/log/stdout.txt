@@ -1,0 +1,76 @@
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(14, 1), stride=(14, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30, ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 32, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=384, out_features=32, bias=True)
+    (1): Linear(in_features=384, out_features=32, bias=True)
+    (2): Linear(in_features=384, out_features=10, bias=True)
+  )
+)
+Total parameters: 81354
+Operations sorted by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::empty         0.89%      11.442ms         1.43%      18.311ms      11.538us     469.54 Kb     469.54 Kb     111.53 Gb     111.53 Gb          1587  
+                                          aten::random_         0.03%     402.000us         0.03%     402.000us     201.000us           0 b           0 b           0 b           0 b             2  
+                                             aten::item         0.02%     203.000us         0.02%     241.000us       1.975us           0 b           0 b           0 b           0 b           122  
+                              aten::_local_scalar_dense         0.00%      38.000us         0.00%      58.000us       0.475us           0 b           0 b           0 b           0 b           122  
+                                               [memory]         0.00%       0.000us         0.00%       0.000us       0.000us          -8 b          -8 b    -495.00 Kb    -495.00 Kb            21  
+                                            aten::zeros         0.07%     858.000us         1.81%      23.207ms     109.986us         164 b           0 b      31.02 Gb           0 b           211  
+                                            aten::zero_         0.11%       1.351ms        14.93%     191.196ms     491.506us           0 b           0 b           0 b           0 b           389  
+enumerate(DataLoader)#_SingleProcessDataLoaderIter._...         0.19%       2.466ms         0.68%       8.774ms     797.636us         -44 b    -468.97 Kb     544.50 Kb           0 b            11  
+                                         aten::randperm         0.04%     554.000us         0.09%       1.120ms     560.000us     468.75 Kb          -8 b           0 b           0 b             2  
+                                    aten::scalar_tensor         0.00%      13.000us         0.00%      13.000us      13.000us           8 b           8 b           0 b           0 b             1  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 1.281s
+

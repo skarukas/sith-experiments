@@ -1,28 +1,0 @@
-/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:180.)
-  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s][W CPUAllocator.cpp:314] Memory block of unknown size was allocated before the profiling started, profiler results will not include the deallocation event
-
-Batch:   0%|          | 0/3750 [00:00<?, ?it/s][A
-Batch:   2%|1         | 59/3750 [00:10<10:26,  5.89it/s, train_loss=1.99, train_acc=0.375, avg_tr_acc=0.19, avg_tr_loss=2.23][A
-Batch:   3%|3         | 125/3750 [00:20<09:35,  6.29it/s, train_loss=2.13, train_acc=0.312, avg_tr_acc=0.203, avg_tr_loss=2.15][A
-Batch:   5%|5         | 191/3750 [00:30<09:13,  6.42it/s, train_loss=1.87, train_acc=0.375, avg_tr_acc=0.227, avg_tr_loss=2.08][A
-Batch:   7%|6         | 257/3750 [00:40<08:58,  6.49it/s, train_loss=2.26, train_acc=0.188, avg_tr_acc=0.26, avg_tr_loss=1.99] [A
-Batch:   9%|8         | 323/3750 [00:50<08:45,  6.52it/s, train_loss=1.43, train_acc=0.438, avg_tr_acc=0.283, avg_tr_loss=1.93][A
-Batch:  10%|#         | 389/3750 [01:00<08:33,  6.54it/s, train_loss=1.26, train_acc=0.562, avg_tr_acc=0.309, avg_tr_loss=1.85][A
-Batch:  12%|#2        | 455/3750 [01:10<08:22,  6.55it/s, train_loss=0.902, train_acc=0.75, avg_tr_acc=0.348, avg_tr_loss=1.76][A
-Batch:  14%|#3        | 521/3750 [01:20<08:12,  6.56it/s, train_loss=0.947, train_acc=0.75, avg_tr_acc=0.382, avg_tr_loss=1.68][A
-Batch:  16%|#5        | 587/3750 [01:30<08:01,  6.57it/s, train_loss=0.655, train_acc=0.688, avg_tr_acc=0.418, avg_tr_loss=1.6][A
-Batch:  17%|#7        | 653/3750 [01:40<07:51,  6.57it/s, train_loss=1.17, train_acc=0.562, avg_tr_acc=0.446, avg_tr_loss=1.53][A
-Batch:  19%|#9        | 719/3750 [01:50<07:41,  6.57it/s, train_loss=0.335, train_acc=0.938, avg_tr_acc=0.475, avg_tr_loss=1.46][A
-Batch:  21%|##        | 785/3750 [02:00<07:30,  6.58it/s, train_loss=0.558, train_acc=0.812, avg_tr_acc=0.499, avg_tr_loss=1.4] [A
-Batch:  23%|##2       | 851/3750 [02:10<07:20,  6.58it/s, train_loss=0.123, train_acc=1, avg_tr_acc=0.522, avg_tr_loss=1.35]   [A
-Batch:  24%|##4       | 917/3750 [02:20<07:10,  6.58it/s, train_loss=0.819, train_acc=0.75, avg_tr_acc=0.543, avg_tr_loss=1.29][A
-Batch:  26%|##6       | 983/3750 [02:30<07:00,  6.58it/s, train_loss=0.325, train_acc=0.938, avg_tr_acc=0.561, avg_tr_loss=1.25][A
-Batch:  28%|##7       | 1049/3750 [02:40<06:50,  6.58it/s, train_loss=0.741, train_acc=0.812, avg_tr_acc=0.577, avg_tr_loss=1.21][A
-Batch:  30%|##9       | 1115/3750 [02:50<06:40,  6.58it/s, train_loss=0.222, train_acc=0.938, avg_tr_acc=0.591, avg_tr_loss=1.17][Aslurmstepd: error: *** JOB 430222 ON nid0703 CANCELLED AT 2022-04-30T18:27:26 ***

@@ -1,0 +1,67 @@
+batch_size: 16
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 5
+  local_start: 2022-05-02_12:43:40
+  local_stop: 2022-05-02_13:38:34
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.94165
+    train_loss: 0.1854353929488609
+    val_acc: 0.9461
+    val_loss: 0.16972979721687734
+model:
+  act_func: relu
+  batch_norm: false
+  classname: DeepLogPolarClassifier
+  dropout: 0.2
+  layer_params:
+  - in_channels: 1
+    kernel_size: 7
+    lp_version: bilinear
+    ntau: 20
+    num_angles: 12
+    out_channels: 32
+    tau_max: 30
+    tau_min: 1
+    topk: 12
+  - in_channels: 32
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 20
+    num_angles: 12
+    out_channels: 32
+    tau_max: 30
+    tau_min: 1
+    topk: 12
+  - in_channels: 32
+    kernel_size: 5
+    lp_version: bilinear
+    ntau: 20
+    num_angles: 12
+    out_channels: 32
+    tau_max: 30
+    tau_min: 1
+    topk: 12
+  num_params: 81354
+  out_classes: 10
+  output: max
+  type: logpolar
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/Deep_LP_train/mnist_r/debug_bilinear_trim_new_435731/standard_mr_0
+param: param-files/Deep-LP/MNIST/rotation_test/standard_mr.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    train: true
+  type: MNIST_R
+val_data_dir:
+  kwargs:
+    root: data
+    train: false
+  type: MNIST_R

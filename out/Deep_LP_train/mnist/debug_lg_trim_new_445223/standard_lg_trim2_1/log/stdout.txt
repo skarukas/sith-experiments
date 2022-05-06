@@ -1,0 +1,171 @@
+Training using cuda
+Loading training data
+Loading validation data
+Model Architecture:
+DeepLogPolarClassifier(
+  (lpconv_layers): ModuleList(
+    (0): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(14, 1), stride=(14, 1), padding=0, dilation=1, ceil_mode=False)
+        (spatial_trim): Trim2d(trim_size=(2, 2))
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (1): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+        (spatial_trim): Trim2d(trim_size=(2, 2))
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+    (2): LogPolarConv(
+      (lpconv): _LogPolar_Core(
+        (logpolar): InterpolatedLogPolarTransform(
+          ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+          (filterbank): ShiftedConv2d(
+            (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+          )
+        )
+        (conv): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1), bias=False)
+        (topk): TopKPool()
+        (depth_pool): MaxPool2d(kernel_size=(16, 1), stride=(16, 1), padding=0, dilation=1, ceil_mode=False)
+        (spatial_trim): Trim2d(trim_size=(2, 2))
+      )
+      (act_func): ReLU()
+      (dropout): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (transform_linears): ModuleList(
+    (0): Linear(in_features=384, out_features=32, bias=True)
+    (1): Linear(in_features=768, out_features=32, bias=True)
+    (2): Linear(in_features=768, out_features=10, bias=True)
+  )
+)
+Total parameters: 148746
+Profiling model...
+Operations sorted by CUDA time:
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                               CudnnConvolutionBackward         0.01%     200.000us         2.00%      67.395ms       2.247ms       0.000us         0.00%     181.610ms       6.054ms           0 b           0 b       2.01 Gb           0 b            30  
+                       aten::cudnn_convolution_backward         0.01%     362.000us         1.99%      67.195ms       2.240ms       0.000us         0.00%     181.610ms       6.054ms           0 b           0 b       2.01 Gb           0 b            30  
+                 aten::cudnn_convolution_backward_input         1.04%      35.141ms         1.30%      43.863ms       2.193ms     125.834ms        26.52%     125.834ms       6.292ms           0 b           0 b       2.00 Gb       2.00 Gb            20  
+void cudnn::detail::dgrad_engine<float, 512, 6, 5, 3...         0.00%       0.000us         0.00%       0.000us       0.000us     124.058ms        26.15%     124.058ms       6.203ms           0 b           0 b           0 b           0 b            20  
+                aten::cudnn_convolution_backward_weight         0.28%       9.536ms         0.68%      22.970ms     765.667us      55.776ms        11.76%      55.776ms       1.859ms           0 b           0 b       3.97 Mb      -4.49 Gb            30  
+void xmma_new::gemm::kernel<xmma_new::implicit_gemm:...         0.00%       0.000us         0.00%       0.000us       0.000us      44.096ms         9.29%      44.096ms       2.205ms           0 b           0 b           0 b           0 b            20  
+                                         GatherBackward         0.01%     332.000us         1.59%      53.763ms     768.043us       0.000us         0.00%      40.098ms     572.829us           0 b           0 b       8.22 Gb           0 b            70  
+                                  aten::gather_backward         0.01%     360.000us         1.58%      53.431ms     763.300us       0.000us         0.00%      40.098ms     572.829us           0 b           0 b       8.22 Gb           0 b            70  
+                                            aten::copy_         0.10%       3.323ms         0.60%      20.310ms      54.597us      39.172ms         8.26%      39.172ms     105.301us           0 b           0 b           0 b           0 b           372  
+                                           aten::conv2d         0.01%     236.000us         6.35%     214.414ms       3.574ms       0.000us         0.00%      33.276ms     554.600us           0 b           0 b       5.62 Gb           0 b            60  
+                                      aten::convolution         0.01%     241.000us         6.34%     214.178ms       3.570ms       0.000us         0.00%      33.276ms     554.600us           0 b           0 b       5.62 Gb           0 b            60  
+                                     aten::_convolution         0.02%     530.000us         6.34%     213.937ms       3.566ms       0.000us         0.00%      33.276ms     554.600us           0 b           0 b       5.62 Gb           0 b            60  
+                                     aten::scatter_add_         0.03%     938.000us         0.51%      17.302ms     247.171us      32.958ms         6.95%      32.958ms     470.829us           0 b           0 b           0 b           0 b            70  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      32.958ms         6.95%      32.958ms     470.829us           0 b           0 b           0 b           0 b            70  
+                                           aten::gather         0.06%       2.148ms         0.19%       6.478ms      71.978us      25.768ms         5.43%      25.768ms     286.311us           0 b           0 b       8.34 Gb           0 b            90  
+void at::native::_scatter_gather_elementwise_kernel<...         0.00%       0.000us         0.00%       0.000us       0.000us      25.768ms         5.43%      25.768ms     286.311us           0 b           0 b           0 b           0 b            90  
+                                          SliceBackward         0.01%     240.000us         0.17%       5.761ms      57.610us       0.000us         0.00%      25.670ms     256.700us           0 b           0 b       9.23 Gb           0 b           100  
+                                   aten::slice_backward         0.02%     544.000us         0.16%       5.526ms      55.260us       0.000us         0.00%      25.670ms     256.700us           0 b           0 b       9.23 Gb           0 b           100  
+                                        aten::remainder         0.06%       2.077ms         0.27%       9.032ms     100.356us      23.594ms         4.97%      23.594ms     262.156us           0 b           0 b       9.16 Gb           0 b            90  
+                                            aten::fill_         0.08%       2.789ms         1.53%      51.521ms     110.088us      22.806ms         4.81%      22.806ms      48.731us           0 b           0 b           0 b           0 b           468  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      22.806ms         4.81%      22.806ms      48.731us           0 b           0 b           0 b           0 b           468  
+                                            aten::zero_         0.05%       1.782ms         1.54%      52.161ms     111.217us       0.000us         0.00%      22.730ms      48.465us           0 b           0 b           0 b           0 b           469  
+                                aten::cudnn_convolution         5.96%     201.092ms         6.28%     212.045ms       7.068ms      21.830ms         4.60%      21.830ms     727.667us           0 b           0 b       3.33 Gb       1.32 Gb            30  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us      21.630ms         4.56%      21.630ms     103.000us           0 b           0 b           0 b           0 b           210  
+                                            aten::where         0.01%     293.000us         0.24%       8.263ms      82.630us       0.000us         0.00%      21.319ms     213.190us           0 b           0 b       9.68 Gb    -206.72 Mb           100  
+                                         aten::_s_where         0.04%       1.392ms         0.24%       7.970ms      79.700us      21.319ms         4.49%      21.319ms     213.190us           0 b           0 b       9.88 Gb           0 b           100  
+                                               aten::lt         0.05%       1.769ms         0.14%       4.889ms      40.742us       9.207ms         1.94%      18.414ms     153.450us           0 b           0 b       2.50 Gb           0 b           120  
+                                               aten::ge         0.05%       1.854ms         0.38%      12.854ms     107.117us       9.200ms         1.94%      18.400ms     153.333us           0 b           0 b       2.50 Gb           0 b           120  
+                                                batch_0         0.15%       4.935ms         9.67%     326.400ms     326.400ms       0.000us         0.00%      17.923ms      17.923ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_2         0.05%       1.854ms         0.22%       7.501ms       7.501ms       0.000us         0.00%      17.893ms      17.893ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_1         0.06%       1.964ms         0.25%       8.594ms       8.594ms       0.000us         0.00%      17.892ms      17.892ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_4         0.05%       1.835ms         0.22%       7.481ms       7.481ms       0.000us         0.00%      17.882ms      17.882ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_3         0.05%       1.826ms         0.21%       7.237ms       7.237ms       0.000us         0.00%      17.876ms      17.876ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                           MaxPool2DWithIndicesBackward         0.01%     192.000us         0.09%       3.082ms     102.733us       0.000us         0.00%      17.547ms     584.900us           0 b           0 b       3.33 Gb           0 b            30  
+                 aten::max_pool2d_with_indices_backward         0.02%     526.000us         0.09%       2.890ms      96.333us      14.645ms         3.09%      17.547ms     584.900us           0 b           0 b       3.33 Gb       3.33 Gb            30  
+                                         SWhereBackward         0.01%     345.000us         0.22%       7.561ms     189.025us       0.000us         0.00%      16.864ms     421.600us           0 b           0 b       4.88 Gb      -4.68 Gb            40  
+                                                batch_7         0.06%       2.034ms         0.69%      23.406ms      23.406ms       0.000us         0.00%      15.553ms      15.553ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_6         0.05%       1.814ms         0.68%      22.909ms      22.909ms       0.000us         0.00%      15.536ms      15.536ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_8         0.05%       1.818ms         0.65%      22.108ms      22.108ms       0.000us         0.00%      15.520ms      15.520ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_5         0.05%       1.856ms         0.22%       7.475ms       7.475ms       0.000us         0.00%      15.512ms      15.512ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                                batch_9         0.05%       1.760ms         0.58%      19.660ms      19.660ms       0.000us         0.00%      15.483ms      15.483ms          -4 b         -20 b       3.21 Gb      -2.20 Gb             1  
+                                            aten::zeros         0.04%       1.229ms         1.41%      47.507ms     163.254us       0.000us         0.00%      15.427ms      53.014us         164 b           0 b      17.51 Gb           0 b           291  
+void xmma_new::gemm::kernel<xmma_new::implicit_gemm:...         0.00%       0.000us         0.00%       0.000us       0.000us      15.413ms         3.25%      15.413ms     770.650us           0 b           0 b           0 b           0 b            20  
+void at::native::(anonymous namespace)::max_pool_bac...         0.00%       0.000us         0.00%       0.000us       0.000us      14.645ms         3.09%      14.645ms     488.167us           0 b           0 b           0 b           0 b            30  
+                                              aten::max         0.05%       1.605ms         0.11%       3.773ms      75.460us      14.565ms         3.07%      14.565ms     291.300us           0 b           0 b     870.97 Mb           0 b            50  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us      14.565ms         3.07%      14.565ms     291.300us           0 b           0 b           0 b           0 b            50  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us      12.960ms         2.73%      12.960ms     216.000us           0 b           0 b           0 b           0 b            60  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      12.639ms         2.66%      12.639ms     315.975us           0 b           0 b           0 b           0 b            40  
+                            ThnnConvDepthwise2DBackward         0.00%     141.000us         0.03%       1.178ms      58.900us       0.000us         0.00%      12.205ms     610.250us           0 b           0 b       2.45 Gb           0 b            20  
+                   aten::thnn_conv_depthwise2d_backward         0.01%     389.000us         0.03%       1.037ms      51.850us      12.205ms         2.57%      12.205ms     610.250us           0 b           0 b       2.45 Gb       2.45 Gb            20  
+void spatialDepthwiseConvolutionUpdateGradInput<floa...         0.00%       0.000us         0.00%       0.000us       0.000us      12.205ms         2.57%      12.205ms     610.250us           0 b           0 b           0 b           0 b            20  
+                                               aten::to         0.02%     689.000us         0.51%      17.055ms      85.275us       0.000us         0.00%      11.481ms      57.405us           0 b           0 b      10.00 Gb           0 b           200  
+                            aten::thnn_conv_depthwise2d         0.00%     118.000us         0.04%       1.362ms      45.400us       0.000us         0.00%      11.446ms     381.533us           0 b           0 b       2.29 Gb           0 b            30  
+                    aten::thnn_conv_depthwise2d_forward         0.03%     954.000us         0.04%       1.244ms      41.467us      11.446ms         2.41%      11.446ms     381.533us           0 b           0 b       2.29 Gb       2.29 Gb            30  
+void spatialDepthwiseConvolutionUpdateOutput<float, ...         0.00%       0.000us         0.00%       0.000us       0.000us      11.446ms         2.41%      11.446ms     381.533us           0 b           0 b           0 b           0 b            30  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us      11.136ms         2.35%      11.136ms     185.600us           0 b           0 b           0 b           0 b            60  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      10.634ms         2.24%      10.634ms     354.467us           0 b           0 b           0 b           0 b            30  
+void nchwToNhwcKernel<float, float, float, true, fal...         0.00%       0.000us         0.00%       0.000us       0.000us      10.563ms         2.23%      10.563ms     132.037us           0 b           0 b           0 b           0 b            80  
+                                              aten::add         0.02%     833.000us         0.17%       5.575ms     111.500us      10.244ms         2.16%      10.244ms     204.880us           0 b           0 b       8.16 Gb       8.16 Gb            50  
+                                            aten::clone         0.02%     551.000us         0.27%       9.207ms      83.700us       0.000us         0.00%       9.958ms      90.527us           0 b           0 b       3.81 Gb           0 b           110  
+                                          aten::reshape         0.05%       1.615ms         0.36%      12.069ms      22.772us       0.000us         0.00%       9.862ms      18.608us           0 b           0 b       3.80 Gb           0 b           530  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       9.207ms         1.94%       9.207ms     153.450us           0 b           0 b           0 b           0 b            60  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       9.200ms         1.94%       9.200ms     153.333us           0 b           0 b           0 b           0 b            60  
+                                      aten::bitwise_and         0.03%     987.000us         0.27%       8.967ms      74.725us       4.512ms         0.95%       9.024ms      75.200us           0 b           0 b       2.50 Gb           0 b           120  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       8.680ms         1.83%       8.680ms     144.667us           0 b           0 b           0 b           0 b            60  
+                                              aten::cat         0.01%     239.000us        69.68%        2.353s      45.245ms       0.000us         0.00%       7.931ms     152.519us           0 b           0 b       2.07 Gb           0 b            52  
+                                             aten::_cat         0.07%       2.215ms        69.67%        2.353s      45.241ms       7.931ms         1.67%       7.931ms     152.519us           0 b           0 b       2.07 Gb           0 b            52  
+void at::native::(anonymous namespace)::CatArrayBatc...         0.00%       0.000us         0.00%       0.000us       0.000us       7.817ms         1.65%       7.817ms     260.567us           0 b           0 b           0 b           0 b            30  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       6.287ms         1.33%       6.287ms     209.567us           0 b           0 b           0 b           0 b            30  
+                         Memcpy DtoD (Device -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us       6.094ms         1.28%       6.094ms     117.192us           0 b           0 b           0 b           0 b            52  
+                                       aten::max_pool2d         0.00%     159.000us         0.07%       2.385ms      79.500us       0.000us         0.00%       5.056ms     168.533us           0 b           0 b     672.97 Mb           0 b            30  
+                          aten::max_pool2d_with_indices         0.03%     887.000us         0.07%       2.226ms      74.200us       5.056ms         1.07%       5.056ms     168.533us           0 b           0 b     672.97 Mb     672.97 Mb            30  
+void at::native::(anonymous namespace)::max_pool_for...         0.00%       0.000us         0.00%       0.000us       0.000us       5.056ms         1.07%       5.056ms     168.533us           0 b           0 b           0 b           0 b            30  
+                                          aten::__and__         0.00%     136.000us         0.14%       4.843ms      80.717us       0.000us         0.00%       4.512ms      75.200us           0 b           0 b       1.25 Gb           0 b            60  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       4.512ms         0.95%       4.512ms      75.200us           0 b           0 b           0 b           0 b            60  
+void cudnn::cnn::wgrad_alg0_engine<float, 128, 5, 5,...         0.00%       0.000us         0.00%       0.000us       0.000us       4.359ms         0.92%       4.359ms     435.900us           0 b           0 b           0 b           0 b            10  
+                                       aten::zeros_like         0.00%     111.000us         0.17%       5.892ms     147.300us       0.000us         0.00%       4.225ms     105.625us           0 b           0 b       4.88 Gb           0 b            40  
+                                           ViewBackward         0.01%     295.000us         0.14%       4.715ms      33.679us       0.000us         0.00%       4.100ms      29.286us           0 b           0 b       2.23 Gb           0 b           140  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us       4.048ms         0.85%       4.048ms     101.200us           0 b           0 b           0 b           0 b            40  
+void implicit_convolve_sgemm<float, float, 1024, 5, ...         0.00%       0.000us         0.00%       0.000us       0.000us       2.950ms         0.62%       2.950ms     295.000us           0 b           0 b           0 b           0 b            10  
+                                              aten::sum         0.02%     721.000us         0.05%       1.546ms      30.920us       2.841ms         0.60%       2.841ms      56.820us           0 b           0 b      10.42 Mb           0 b            50  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       2.766ms         0.58%       2.766ms      69.150us           0 b           0 b           0 b           0 b            40  
+                                         ExpandBackward         0.00%      62.000us         0.02%     680.000us      34.000us       0.000us         0.00%       2.271ms     113.550us           0 b           0 b      10.41 Mb           0 b            20  
+void cudnn::ops::scalePackedTensor_kernel<float, flo...         0.00%       0.000us         0.00%       0.000us       0.000us       1.767ms         0.37%       1.767ms      88.350us           0 b           0 b           0 b           0 b            20  
+                                               aten::mm         1.53%      51.668ms         1.67%      56.449ms     705.612us     836.000us         0.18%     836.000us      10.450us           0 b           0 b     174.43 Mb           0 b            80  
+                                        aten::clamp_min         0.02%     591.000us         0.15%       5.146ms      85.767us     301.000us         0.06%     602.000us      10.033us           0 b           0 b     445.94 Mb           0 b            60  
+                                             MmBackward         0.01%     261.000us         0.11%       3.864ms     193.200us       0.000us         0.00%     494.000us      24.700us           0 b           0 b     164.38 Mb           0 b            20  
+                                           aten::linear         0.01%     217.000us         1.61%      54.394ms       1.813ms       0.000us         0.00%     468.000us      15.600us           0 b           0 b       9.54 Mb           0 b            30  
+                                   FusedDropoutBackward         0.00%     130.000us         0.04%       1.329ms      44.300us       0.000us         0.00%     435.000us      14.500us           0 b           0 b     221.25 Mb           0 b            30  
+                                    aten::_masked_scale         0.01%     367.000us         0.04%       1.199ms      39.967us     435.000us         0.09%     435.000us      14.500us           0 b           0 b     221.25 Mb           0 b            30  
+                                           aten::arange         1.02%      34.382ms         2.36%      79.670ms     442.611us     174.000us         0.04%     348.000us       1.933us           0 b           0 b      90.00 Kb           0 b           180  
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us     345.000us         0.07%     345.000us       5.750us           0 b           0 b           0 b           0 b            60  
+                                             aten::add_         0.04%       1.242ms         0.30%      10.010ms      78.203us     318.000us         0.07%     318.000us       2.484us           0 b           0 b           0 b           0 b           128  
+                                          ReluBackward0         0.00%     149.000us         0.05%       1.848ms      61.600us       0.000us         0.00%     314.000us      10.467us           0 b           0 b     222.97 Mb           0 b            30  
+                               aten::threshold_backward         0.01%     422.000us         0.05%       1.699ms      56.633us     314.000us         0.07%     314.000us      10.467us           0 b           0 b     222.97 Mb     222.97 Mb            30  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     314.000us         0.07%     314.000us      10.467us           0 b           0 b           0 b           0 b            30  
+                                             aten::relu         0.01%     294.000us         0.09%       3.009ms     100.300us       0.000us         0.00%     301.000us      10.033us           0 b           0 b     222.97 Mb           0 b            30  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     301.000us         0.06%     301.000us      10.033us           0 b           0 b           0 b           0 b            30  
+                                          aten::dropout         0.00%     163.000us         0.12%       4.153ms     138.433us       0.000us         0.00%     296.000us       9.867us           0 b           0 b     283.59 Mb           0 b            30  
+                                   aten::_fused_dropout         0.02%     675.000us         0.12%       3.990ms     133.000us     296.000us         0.06%     296.000us       9.867us           0 b           0 b     283.59 Mb           0 b            30  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 3.377s
+Self CUDA time total: 474.445ms
+

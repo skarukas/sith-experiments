@@ -1,4 +1,3 @@
-# special test that includes only digits that are obvious over all rotations
 model: 
   type: logpolar
   layer_params:

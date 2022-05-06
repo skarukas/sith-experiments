@@ -407,9 +407,9 @@ class LogPolarTransformV2(torch.nn.Module):
 
 
 class InterpolatedLogPolarTransform(torch.nn.Module):
-    def __init__(self, tau_min=1, tau_max=8, ntau=8, 
+    def __init__(self, tau_min=1, tau_max=None, ntau=8, 
                  num_angles=12, stride=1, device='cpu', 
-                 smooth=False,
+                 smooth=False, c=None,
                  **kwargs):
         """
         A module for computing compressed log-polar transforms centered at various
@@ -438,11 +438,15 @@ class InterpolatedLogPolarTransform(torch.nn.Module):
         super(InterpolatedLogPolarTransform, self).__init__()
 
         self.tau_min = tau_min
-        self.tau_max = tau_max
         self.ntau = ntau
         self.num_angles = num_angles
         self.stride = stride
-        self.c = (tau_max/tau_min)**(1./(ntau-1))-1
+        if c is None:
+            self.c = (tau_max/tau_min)**(1./(ntau-1))-1
+            self.tau_max = tau_max
+        else:
+            self.c = c
+            self.tau_max = (c+1)**(ntau-1) * tau_min
 
         dtheta = TWO_PI / num_angles
         theta = torch.arange(num_angles).double() * dtheta - np.pi
@@ -470,7 +474,7 @@ class InterpolatedLogPolarTransform(torch.nn.Module):
 
 
     def extra_repr(self):
-        s = "ntau={ntau}, tau_range={tau_min}:{tau_max}, ntheta={num_angles}, stride={stride}"
+        s = "ntau={ntau}, tau_range={tau_min}:{tau_max:.2f} (c={c:.4f}), ntheta={num_angles}, stride={stride}"
         s = s.format(**self.__dict__)
         return s    
     

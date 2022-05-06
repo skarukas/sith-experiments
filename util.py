@@ -97,7 +97,20 @@ class Logger(object):
     def write(self, message):
         self.terminal.write(message)
         self.log.write(message)
+        self.flush()
         
     def flush(self):
         self.log.flush()
         self.terminal.flush()
+
+
+def scale_ntau(cfig, scale=2):
+    if 'layer_params' in cfig['model']:
+        layer_params = cfig['model']['layer_params']
+    else:
+        layer_params = [cfig['model']['lp_params']]
+    for l in layer_params:
+        if 'tau_max' in l:
+            l['c'] = (l['tau_max'] / l['tau_min'])**(1. / (l['ntau'] - 1)) - 1
+            del l['tau_max']
+        l['ntau'] = int(l['ntau'] * scale)

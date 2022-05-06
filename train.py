@@ -9,6 +9,7 @@ import shutil
 from tqdm import trange, tqdm
 import random
 
+
 from models.util import get_model
 import util
 from util import Average, Logger
@@ -36,10 +37,7 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
     lr = config['optimizer']['params']['lr']
     optimizer = torch.optim.Adam(model.parameters(), lr)
     epochs = trange(config['num_epochs'], desc="Epoch")
-    if RECORD_PROFILE:
-        prof = profile(activities=[
-                ProfilerActivity.CPU, ProfilerActivity.CUDA], 
-                profile_memory=True, record_shapes=True)
+
     for epoch in epochs:
         epoch_stats = {}
         train_loss = Average()
@@ -49,21 +47,27 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
 
         ## profile model computation on a few batches
         if RECORD_PROFILE and epoch == 0:
-            with prof:
+            print("Profiling model...")
+            with profile(activities=[
+                ProfilerActivity.CPU, ProfilerActivity.CUDA], 
+                profile_memory=True, record_shapes=True) as prof:
                 for i, (x, l) in enumerate(train_dataloader):
                     if i == PROFILE_NBATCH:
                         break
+                    optimizer.zero_grad()
                     with record_function(f"batch_{i}"):
-                        model(x)
+                        yh = model(x)
+                        loss = model.loss_function(yh, l)
+                    with record_function(f"batch_{i}_backward"):
+                        loss.backward()
 
             prof.export_chrome_trace(join(log_dir, "training_chrome_trace.json"))
             print("Operations sorted by CUDA time:")
-            print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=10))
-            sys.stdout.flush()
+            print(prof.key_averages().table(sort_by="cuda_time_total", row_limit=100))
 
         ## train
         batches = tqdm(train_dataloader, leave=False, desc="Batch", mininterval=10)
-        for batch_idx, (X, label) in enumerate(batches):
+        for (X, label) in batches:
             optimizer.zero_grad()
 
             # compute training loss

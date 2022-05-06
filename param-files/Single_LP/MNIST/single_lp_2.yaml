@@ -1,0 +1,32 @@
+model: 
+  type: single_lp
+  lp_params:
+    lp_version: bilinear
+    tau_min: 1
+    tau_max: 30
+    ntau: 20
+    num_angles: 12
+  channels: [1, 32, 64, 128] 
+  filter_sizes: [7, 5, 3]
+  dropout: 0.2
+  batch_norm: False
+  act_func: relu
+  out_classes: 10
+  output: max
+optimizer:
+  type: adam
+  params:
+    lr: 0.001
+num_epochs: 40
+batch_size: 8
+train_data_dir: 
+  type: FastMNIST
+  kwargs:
+    root: "data"
+    train: True
+val_data_dir: 
+  type: RotMNIST
+  kwargs:
+    root: "data"
+    train: False
+collate: batch

@@ -192,6 +192,17 @@ def transform(x, transform_params, sr=DEFAULT_SR):
     return X_norm
 
 
+def SplitAngleMNIST(*args, num_angles=4, **kwargs):
+    """
+    MNIST with equal rotations around the circle
+    """
+    inner = FastMNIST(*args, **kwargs)
+    transform = {
+        "angle": lambda: random.randint(0, num_angles-1) * 360/num_angles,
+    }
+    return TransformedImageDataset(inner, **transform)
+
+
 def MNIST_RTS(*args, **kwargs):
     """
     MNIST with rotation, translation, and scaling, from STN paper.
@@ -396,7 +407,7 @@ class TransformedImageDataset(Dataset):
             1, 0, t_x,
             0, 1, t_y
         )
-        image = image.rotate(angle, fillcolor=0, resample=Image.BICUBIC)
+        image = image.rotate(angle, fillcolor=0)
         image = image.transform(image.size, Image.AFFINE, mat, fillcolor=0)
         image = image.resize((int(size_0*scale), int(size_1*scale)))#rescale_centered(image, scale)
         

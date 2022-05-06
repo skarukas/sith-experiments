@@ -51,7 +51,7 @@ train_data_dir:
     root: "data"
     train: True
 val_data_dir: 
-  type: FastMNIST
+  type: RotMNIST
   kwargs:
     root: "data"
     train: False
