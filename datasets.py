@@ -2,11 +2,19 @@ from torch.utils.data import Dataset
 import torch
 import numpy as np
 import random
+import math
 
+import requests
+import os
 from os import path
+from os.path import exists, join
 import glob
+import tarfile
+import shutil
+import mat73 # pip install mat73
+from tqdm import tqdm
 
-from torchvision.datasets import MNIST, CIFAR10
+from torchvision.datasets import MNIST, CIFAR10, SVHN
 from audiotsm import phasevocoder
 from audiotsm.io.array import ArrayWriter, ArrayReader
 import scipy.io.wavfile as wavfile
@@ -496,6 +504,130 @@ class CIFAR10_Tensor(CIFAR10):
         img = torch.tensor(np.array(img)).float().div(255)
         img = img.permute(2, 0, 1) # put channels first
         return img.to(self.device), target
+
+
+class RotSVHN(Dataset):
+    split_urls = {
+        "train": "http://ufldl.stanford.edu/housenumbers/train.tar.gz",
+        "test": "http://ufldl.stanford.edu/housenumbers/test.tar.gz",
+        "extra": "http://ufldl.stanford.edu/housenumbers/extra.tar.gz"
+    }
+
+    resample = Image.BICUBIC
+    out_size = 32
+    flist_fname = "filelist.pt"
+
+    def __init__(self, root, split="train", download=False, seed=0, device='cpu'):
+        if seed is not None:
+            random.seed(seed)
+
+        self.device = device
+        self.split = split
+        self.out_dir = join(root, "RotSVHN", split)
+        list_path = join(self.out_dir, self.flist_fname)
+
+        if download and not exists(list_path):
+            self.download()
+
+        self.files = torch.load(list_path)
+
+
+    def __getitem__(self, idx):
+        path = join(self.out_dir, self.files[idx])
+        return torch.load(path, map_location=self.device)
+
+
+    def __len__(self):
+        return len(self.files)
+
+
+    def download(self):
+        os.makedirs(self.out_dir, exist_ok=True)
+        temp_dir = self.download_raw()
+
+        files = []
+        print("Loading bounding-box information...")
+        digit_info = mat73.loadmat(join(temp_dir, "digitStruct.mat"))["digitStruct"]
+        for bbox, name in tqdm(zip(digit_info["bbox"], digit_info["name"]), total=len(digit_info["bbox"]), desc="Extracting Rotated Digits"):
+            angle = random.randint(0, 359)
+            im = Image.open(join(temp_dir, name))
+            im, label = self.extract_digit(im, bbox, angle)
+            
+            im_t = torch.tensor(np.array(im)).float().div(255)
+            im_t = im_t.permute(2, 0, 1) # put channels first
+            label = torch.tensor(label)
+            name = name.split(".")[0] + ".pt"
+            torch.save((im_t, label), join(self.out_dir, name))
+            files.append(name)
+
+        torch.save(files, join(self.out_dir, self.flist_fname))
+        shutil.rmtree(temp_dir)
+        
+        
+    def download_raw(self):
+        """
+        Download and untar the full SVHN data
+        """
+        # get
+        url = self.split_urls[self.split]
+        tar_path = join(self.out_dir, f"{self.split}.tar.gz")
+
+        print("Downloading tarball...")
+        with requests.get(url) as response:
+            with open(tar_path, "wb") as handle:
+                handle.write(response.content)
+        
+        # uncompress and extract
+        print("Extracting full images...")
+        temp_dir = join(self.out_dir, "temp")
+        os.makedirs(temp_dir, exist_ok=True)
+        with tarfile.open(tar_path) as tar:
+            for member in tqdm(tar.getmembers(), total=len(tar.getmembers())):
+                tar.extract(member, temp_dir)
+        os.remove(tar_path)
+        
+        return join(temp_dir, self.split)
+
+
+    def extract_digit(self, im, bbox, angle):
+        """
+        Extract a rotated SVHN digit from a full SVHN image
+        """
+        # bbox[k] may be a list, so grab only the first digit
+        width, height, left, top, label = [np.array(bbox[k]).flat[0] for k in ("width", "height", "left", "top", "label")]
+
+        # rotate image around center of digit
+        c_x, c_y = left + width/2, top + height/2
+        im = im.rotate(angle, center=(c_x, c_y), resample=self.resample)
+        
+        # calculate new height/width of rotated digit box
+        rot_width, rot_height = self.get_expanded_size(width, height, angle)
+
+        # grab a square crop of the digit and resize
+        square_size = max(rot_width, rot_height)
+        l_out = c_x - square_size / 2
+        r_out = l_out + square_size
+
+        t_out = c_y - square_size / 2
+        b_out = t_out + square_size
+
+        im = im.crop((l_out, t_out, r_out, b_out))
+        im = im.resize((self.out_size, self.out_size), resample=self.resample)
+
+        return im, label
+
+
+    def get_expanded_size(self, width, height, angle):
+        angle = angle % 180
+        if angle > 90:
+            height, width = width, height
+            angle = angle - 90
+        
+        theta = 2*math.pi*(angle / 360)
+        
+        rot_width = width * math.cos(theta) + height * math.sin(theta)
+        rot_height = width * math.sin(theta) + height * math.cos(theta)
+        return rot_width, rot_height
 
 
 if __name__ == "__main__":
