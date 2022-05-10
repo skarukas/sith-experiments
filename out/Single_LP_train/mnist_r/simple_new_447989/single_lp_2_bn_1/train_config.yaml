@@ -2,15 +2,15 @@ batch_size: 8
 collate: batch
 device: cuda
 execution:
-  epochs_completed: 26
+  epochs_completed: 40
   local_start: 2022-05-06_10:15:29
-  local_stop: 2022-05-06_13:16:58
-  program_exit: FAILURE
+  local_stop: 2022-05-06_14:53:53
+  program_exit: SUCCESS
   stats:
-    train_acc: 0.9857666666666667
-    train_loss: 0.04351135743949345
-    val_acc: 0.983
-    val_loss: 0.05291562983971671
+    train_acc: 0.9899166666666667
+    train_loss: 0.02974150932277609
+    val_acc: 0.9833
+    val_loss: 0.052099092187343925
 model:
   act_func: relu
   batch_norm: true

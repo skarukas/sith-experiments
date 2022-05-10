@@ -7,9 +7,10 @@ from torch import nn
 from math import pi
 import random
 
+EPS = 1e-8
 
 class RelativeEncoding(nn.Module):
-    def __init__(self, dim=-1, method="exponential", temperature=1):
+    def __init__(self, dim=-1, method="exponential", temperature=-1):
         """
         Create an encoding of the input vector such that:
         - f(x_1, x_2, ...) = f(x_1+k, x_2+k, ...) for all k
@@ -21,15 +22,25 @@ class RelativeEncoding(nn.Module):
         self.temperature = temperature
     
 
-    def forward(self, tens):
+    def forward(self, tens, weights=torch.tensor(1)):
+        """
+        tens: torch.Tensor
+            - The tensor over which to perform the relative encoding.
+        weights: torch.Tensor
+            - A weight matrix (broadcastable with tens) that stores weights. 
+               The weight `w_i` for a given `x_i` will make `x_i` have less influence
+               over the output. `w_i = 0` means that the value of `x_i`
+               will have no effect on the output.
+        """
+        weights = weights.expand(tens.shape).to(tens.device)
         if self.method == "linear":
-            # x_i - mean(x)
-            y = tens - tens.mean(self.dim, keepdim=True)
+            # x_i - w_mean(x, w)
+            y = tens - (weights*tens).sum(self.dim, keepdim=True) / (EPS + weights.sum(self.dim, keepdim=True))
         else:
-            # modified softmax: exp(x_i) / (sum(exp(x)) - exp(x_i))
-            xp = torch.exp(self.temperature*tens)
+            # modified softmax: w_i*exp(x_i) / (sum(w*exp(x)) - w_i*exp(x_i))
+            xp = weights * torch.exp(self.temperature*tens)
             sm = xp.sum(self.dim, keepdim=True)
-            y = xp / (sm - xp)
+            y = xp / (EPS + sm - xp)
         return y
 
 
@@ -59,13 +70,23 @@ class PeriodicRelativeEncoding(nn.Module):
         self.m = period
     
 
-    def forward(self, tens):
-        # modified complex softmax: cexp(x_i) / (sum(cexp(x)) - cexp(x_i))
-        xp = torch.exp(-2j*pi*tens / self.m)
+    def forward(self, tens, weights=torch.tensor(1)):
+        """
+        tens: torch.Tensor
+            - The tensor over which to perform the relative encoding.
+        weights: torch.Tensor
+            - A weight matrix (broadcastable with tens) that stores weights. 
+               The weight `w_i` for a given `x_i` will make `x_i` have less influence
+               over the output. `w_i = 0` means that the value of `x_i`
+               will have no effect on the output.
+        """
+        weights = weights.expand(tens.shape).to(tens.device)
+        # modified complex softmax: w_i*cexp(x_i) / (sum(w*cexp(x)) - w_i*cexp(x_i))
+        xp = weights*torch.exp(-2j*pi*tens / self.m)
         sm = xp.sum(self.dim, keepdim=True)
-        y = xp / (sm - xp)
+        y = xp / (EPS + sm - xp)
         
-        return y.real if self.real else torch.cat((y.real, y.imag), self.dim)
+        return y.real if self.real else (y.real, y.imag)
 
 
 if __name__ == "__main__":

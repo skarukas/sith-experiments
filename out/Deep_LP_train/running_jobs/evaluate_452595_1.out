@@ -1,0 +1,6 @@
+Task ID: 1
+Running in out/Deep_LP_train/mnist/relative_encoding_450292/standard_relative_all_1
+Using cuda
+
+For transform=MNIST_R:
+ acc=0.739, loss=nan

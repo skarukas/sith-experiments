@@ -1,0 +1,3 @@
+- acc: 0.739
+  loss: .nan
+  transform: MNIST_R

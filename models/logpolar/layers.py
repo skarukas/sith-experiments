@@ -3,11 +3,13 @@
 # Author: Stephen Karukas
 # based on work by Brandon G. Jacques and Per B. Sederberg
 
-
+import torch
 from torch import nn 
 import torch.nn.functional as F
 from torch.nn.utils import weight_norm
 import math
+
+from models.other_layers.relative_encoding import PeriodicRelativeEncoding, RelativeEncoding
 
 from .util import TWO_PI, prod, pad_periodic, IDENTITY
 from .lptransform import LogPolarTransform, LogPolarTransformV2, InterpolatedLogPolarTransform
@@ -21,7 +23,7 @@ class _LogPolar_Core(nn.Module):
                 kernel_size=5, tau_pooling=None, 
                 theta_pooling=None, spatial_pooling=None,
                 spatial_trim=0, pooling="max", device='cpu',
-                topk=False, lp_version=1,
+                topk=False, lp_version=1, relative_encoding=False,
                 **kwargs):
         super(_LogPolar_Core, self).__init__()
 
@@ -39,6 +41,7 @@ class _LogPolar_Core(nn.Module):
         self.out_channels = out_channels
         self.kernel_size = kernel_size if isinstance(kernel_size, tuple) or isinstance(kernel_size, list) else (kernel_size, kernel_size)
 
+        self.pooling = pooling
         self.ntau = self.logpolar.ntau
         self.num_angles = self.logpolar.num_angles
 
@@ -57,9 +60,17 @@ class _LogPolar_Core(nn.Module):
         self.conv = weight_norm(nn.Conv2d(self.in_channels, self.out_channels,
                                           kernel_size=self.kernel_size, bias=False)) 
 
-        # pooling enforces invariance
-        Pooling2D = nn.AvgPool2d if pooling == "average" else nn.MaxPool2d
-        
+        if relative_encoding:
+            assert pooling == "max"
+            Pooling2D = lambda s: nn.MaxPool2d(s, return_indices=True)
+            self.theta_encoding = PeriodicRelativeEncoding(period=self.num_angles, dim=1)
+            self.tau_encoding = RelativeEncoding(dim=1)
+            out_channels *= 4
+        else:
+            Pooling2D = nn.AvgPool2d if pooling == "average" else nn.MaxPool2d
+            self.theta_encoding = None
+            self.tau_encoding = None
+
         # top-k pooling over theta dimension ensures angle invariance
         if topk:
             self.topk = TopKPool(topk, dim=-1, order="max-aligned")
@@ -69,7 +80,7 @@ class _LogPolar_Core(nn.Module):
             self.depth_pool = Pooling2D((tau_pooling, theta_pooling))
         
         self.spatial_pool = None if spatial_pooling is None else Pooling2D(spatial_pooling)
-
+        
         # output of conv should be size num_angles
         self.theta_padding_conv = self.kernel_size[1]-1
         # output of pooling should be size ceil(num_angles / theta_pooling)
@@ -84,7 +95,7 @@ class _LogPolar_Core(nn.Module):
         # after pooling
         out_tau_size = out_tau_size // tau_pooling
 
-        self.output_shape = (self.out_channels, out_tau_size, out_theta_size)
+        self.output_shape = (out_channels, out_tau_size, out_theta_size)
 
         # initialize the weights
         nn.init.kaiming_normal_(self.conv.weight.data)
@@ -126,10 +137,26 @@ class _LogPolar_Core(nn.Module):
         else:
             x = pad_periodic(x, self.theta_padding_pool, dim=-1)
         
-        x = self.depth_pool(x)
 
         # [features, tau, theta]
-        depthwise_dims = x.shape[1:]
+        if self.theta_encoding is None:
+            x = self.depth_pool(x)
+            depthwise_dims = x.shape[1:]
+        else:
+            x, idx = self.depth_pool(x)
+            x = x.reshape(batchxy_shape[0], -1, *x.shape[1:])
+            idx = idx.reshape(x.shape)
+            # encode indices as extra channels
+            weights = torch.softmax(x.float(), dim=1)
+
+            tau_in = (idx / self.num_angles).float() / self.ntau
+            tau_out = self.tau_encoding(tau_in, weights)
+            theta_in = (idx % self.num_angles).float()
+            theta_re, theta_im = self.theta_encoding(theta_in, weights)
+            # concatenate across channel dimension
+            x = torch.cat((x, tau_out, theta_re, theta_im), dim=2)
+            depthwise_dims = x.shape[2:]
+        
 
         if self.spatial_pool is None:
             # unflatten batch/x/y and reshape to output

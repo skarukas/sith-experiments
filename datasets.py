@@ -526,15 +526,18 @@ class RotSVHN(Dataset):
         self.out_dir = join(root, "RotSVHN", split)
         list_path = join(self.out_dir, self.flist_fname)
 
-        if download and not exists(list_path):
+        if download:
             self.download()
+        elif not exists(list_path):
+            raise FileNotFoundError(f"{list_path} not found. Use download=True to download the dataset.")
 
         self.files = torch.load(list_path)
 
 
     def __getitem__(self, idx):
         path = join(self.out_dir, self.files[idx])
-        return torch.load(path, map_location=self.device)
+        X, label = torch.load(path, map_location=self.device)
+        return X, label.long()
 
 
     def __len__(self):
@@ -545,22 +548,28 @@ class RotSVHN(Dataset):
         os.makedirs(self.out_dir, exist_ok=True)
         temp_dir = self.download_raw()
 
-        files = []
         print("Loading bounding-box information...")
-        digit_info = mat73.loadmat(join(temp_dir, "digitStruct.mat"))["digitStruct"]
-        for bbox, name in tqdm(zip(digit_info["bbox"], digit_info["name"]), total=len(digit_info["bbox"]), desc="Extracting Rotated Digits"):
-            angle = random.randint(0, 359)
-            im = Image.open(join(temp_dir, name))
-            im, label = self.extract_digit(im, bbox, angle)
-            
-            im_t = torch.tensor(np.array(im)).float().div(255)
-            im_t = im_t.permute(2, 0, 1) # put channels first
-            label = torch.tensor(label)
-            name = name.split(".")[0] + ".pt"
-            torch.save((im_t, label), join(self.out_dir, name))
-            files.append(name)
+        utar_dir = join(temp_dir, self.split)
+        digit_info = mat73.loadmat(join(utar_dir, "digitStruct.mat"))["digitStruct"]
+        zipped_info = tqdm(
+            zip(digit_info["bbox"], digit_info["name"]), 
+            total=len(digit_info["bbox"]),
+            desc="Extracting Rotated Digits"
+        )
+
+        files = []
+        for bbox, name in zipped_info:
+            im = Image.open(join(utar_dir, name))
+            for i, (im, label) in enumerate(self.extract_digits(im, bbox)):
+                im_t = torch.tensor(np.array(im)).float().div(255)
+                im_t = im_t.permute(2, 0, 1) # put channels first
+                label = torch.tensor(label).long()
+                out_name = name.split(".")[0] + f"_{i}.pt"
+                torch.save((im_t, label), join(self.out_dir, out_name))
+                files.append(out_name)
 
         torch.save(files, join(self.out_dir, self.flist_fname))
+        print("Cleaning up raw files...")
         shutil.rmtree(temp_dir)
         
         
@@ -578,7 +587,7 @@ class RotSVHN(Dataset):
                 handle.write(response.content)
         
         # uncompress and extract
-        print("Extracting full images...")
+        print("Decompressing archive...")
         temp_dir = join(self.out_dir, "temp")
         os.makedirs(temp_dir, exist_ok=True)
         with tarfile.open(tar_path) as tar:
@@ -586,35 +595,42 @@ class RotSVHN(Dataset):
                 tar.extract(member, temp_dir)
         os.remove(tar_path)
         
-        return join(temp_dir, self.split)
+        return temp_dir
 
 
-    def extract_digit(self, im, bbox, angle):
+    def extract_digits(self, full_im, bbox):
         """
         Extract a rotated SVHN digit from a full SVHN image
         """
-        # bbox[k] may be a list, so grab only the first digit
-        width, height, left, top, label = [np.array(bbox[k]).flat[0] for k in ("width", "height", "left", "top", "label")]
-
-        # rotate image around center of digit
-        c_x, c_y = left + width/2, top + height/2
-        im = im.rotate(angle, center=(c_x, c_y), resample=self.resample)
+        if isinstance(bbox["width"], list):
+            num_digits = len(bbox["width"])
+            digit_bboxes = [{k: bbox[k][i] for k in bbox.keys()} for i in range(num_digits)]
+        else:
+            digit_bboxes = [bbox]
         
-        # calculate new height/width of rotated digit box
-        rot_width, rot_height = self.get_expanded_size(width, height, angle)
+        for digit_bbox in digit_bboxes:
+            angle = random.randint(0, 359)
+            width, height, left, top, label = [digit_bbox[k].item() for k in ("width", "height", "left", "top", "label")]
 
-        # grab a square crop of the digit and resize
-        square_size = max(rot_width, rot_height)
-        l_out = c_x - square_size / 2
-        r_out = l_out + square_size
+            # rotate image around center of digit
+            c_x, c_y = left + width/2, top + height/2
+            im = full_im.rotate(angle, center=(c_x, c_y), resample=self.resample)
+            
+            # calculate new height/width of rotated digit box
+            rot_width, rot_height = self.get_expanded_size(width, height, angle)
 
-        t_out = c_y - square_size / 2
-        b_out = t_out + square_size
+            # grab a square crop of the digit and resize
+            square_size = max(rot_width, rot_height)
+            l_out = c_x - square_size / 2
+            r_out = l_out + square_size
 
-        im = im.crop((l_out, t_out, r_out, b_out))
-        im = im.resize((self.out_size, self.out_size), resample=self.resample)
+            t_out = c_y - square_size / 2
+            b_out = t_out + square_size
 
-        return im, label
+            im = im.crop((l_out, t_out, r_out, b_out))
+            im = im.resize((self.out_size, self.out_size), resample=self.resample)
+
+            yield im, label
 
 
     def get_expanded_size(self, width, height, angle):

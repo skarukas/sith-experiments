@@ -30,7 +30,7 @@ model = None
 config = None
 
 RECORD_PROFILE = True
-PROFILE_NBATCH = 10
+PROFILE_NBATCH = 5
 
 
 def train_loop(model, train_dataloader, config, val_dataloader=None):
