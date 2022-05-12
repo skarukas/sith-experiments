@@ -537,7 +537,7 @@ class RotSVHN(Dataset):
     def __getitem__(self, idx):
         path = join(self.out_dir, self.files[idx])
         X, label = torch.load(path, map_location=self.device)
-        return X, label.long()
+        return X, label.long() % 10
 
 
     def __len__(self):
