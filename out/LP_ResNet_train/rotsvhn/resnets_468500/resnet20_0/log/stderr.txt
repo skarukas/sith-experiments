@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 243, in <module>
+    model = get_model(config)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/util.py", line 24, in get_model
+    model = LPResNet(**model_params, device=config['device'])
+TypeError: __init__() got an unexpected keyword argument 'type'

@@ -39,7 +39,8 @@ def get_dataset(dataset_params, device):
         # create instance of dataset class
         dataset_type = dataset_params['type'].lower()
         class_map = {
-            "cifar10": CIFAR10_Tensor
+            "cifar10": CIFAR10_Tensor,
+            "svhn": SVHN_Tensor
         }
         if dataset_type in class_map:
             DatasetClass = class_map[dataset_type]
@@ -506,6 +507,25 @@ class CIFAR10_Tensor(CIFAR10):
         return img.to(self.device), target
 
 
+class SVHN_Tensor(SVHN):
+    def __init__(self, root, device='cpu', download=True, *args, **kwargs):
+        super().__init__(root, download=download, *args, **kwargs)
+        self.device = device
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (image, target) where target is index of the target class.
+        """
+        img, target = super().__getitem__(index)
+        img = torch.tensor(np.array(img)).float().div(255)
+        img = img.permute(2, 0, 1) # put channels first
+        return img.to(self.device), target
+
+
 class RotSVHN(Dataset):
     split_urls = {
         "train": "http://ufldl.stanford.edu/housenumbers/train.tar.gz",
@@ -537,6 +557,8 @@ class RotSVHN(Dataset):
     def __getitem__(self, idx):
         path = join(self.out_dir, self.files[idx])
         X, label = torch.load(path, map_location=self.device)
+        # subtract per-image mean
+        X = X - X.mean((1, 2), keepdim=True)
         return X, label.long() % 10
 
 

@@ -19,25 +19,27 @@ def evaluate(model, dataloader, progress_bar=False):
     """
     loss = Average()
     acc = Average()
+    
     model.eval()
-    if progress_bar:
-        dataloader = tqdm(dataloader, desc="Evaluation", leave=False)
-    batch_stats = {}
-    for (X, label) in dataloader:
-        # compute loss
-        prediction = model(X)
-        curr_loss = model.loss_function(prediction, label)
-        loss.update(curr_loss.item())
-
-        # compute accuracy
-        curr_acc = model.accuracy(prediction, label)
-        acc.update(curr_acc.item())
-        batch_stats = {
-            "loss": loss.get(),
-            "acc":  acc.get()
-        }
+    with torch.no_grad():
         if progress_bar:
-            dataloader.set_postfix(batch_stats)
+            dataloader = tqdm(dataloader, desc="Evaluation", leave=False)
+        batch_stats = {}
+        for (X, label) in dataloader:
+            # compute loss
+            prediction = model(X)
+            curr_loss = model.loss_function(prediction, label)
+            loss.update(curr_loss.item())
+
+            # compute accuracy
+            curr_acc = model.accuracy(prediction, label)
+            acc.update(curr_acc.item())
+            batch_stats = {
+                "loss": loss.get(),
+                "acc":  acc.get()
+            }
+            if progress_bar:
+                dataloader.set_postfix(batch_stats)
 
     return batch_stats
 

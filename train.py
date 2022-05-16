@@ -29,7 +29,7 @@ train_history = None
 model = None
 config = None
 
-RECORD_PROFILE = True
+RECORD_PROFILE = False
 PROFILE_NBATCH = 5
 
 
@@ -70,20 +70,15 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
         for (X, label) in batches:
             optimizer.zero_grad()
 
-            # compute training loss
-            prediction = model(X)
-            loss = model.loss_function(prediction, label)
-            train_loss.update(loss.item())
-
-            loss.backward()
+            # ffwd, compute training loss and acc
+            loss, acc = train_step(model, X, label)
             optimizer.step()
 
-            # compute training accuracy
-            acc = model.accuracy(prediction, label)
-            train_acc.update(acc.item())
+            train_loss.update(loss)
+            train_acc.update(acc)
             batch_stats = {
-                "train_loss": loss.item(),
-                "train_acc":  acc.item(),
+                "train_loss": loss,
+                "train_acc":  acc,
                 "avg_tr_acc": train_acc.get(),
                 "avg_tr_loss": train_loss.get()
             }
@@ -116,6 +111,13 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
             save_progress()
 
             
+def train_step(model, X, label):
+    prediction = model(X)
+    loss = model.loss_function(prediction, label)
+    acc = model.accuracy(prediction, label)
+    loss.backward()
+    return loss.item(), acc.item()
+
 
 def parse_args():
     parser = argparse.ArgumentParser()

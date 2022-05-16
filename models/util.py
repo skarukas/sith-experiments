@@ -1,6 +1,7 @@
 from .SITHConClassifier import SITHConClassifier
 from .DeepLogPolarClassifier import DeepLogPolarClassifier
 from .SingleLPClassifier import SingleLPClassifier
+from .LPResNet import LPResNet
 import torch
 from copy import deepcopy
 
@@ -19,6 +20,8 @@ def get_model(config):
         model = DeepLogPolarClassifier(**model_params, collate=collate, device=config['device'])
     elif model_type == "single_lp":
         model = SingleLPClassifier(**model_params, collate=collate, device=config['device'])
+    elif model_type == "lp_resnet":
+        model = LPResNet(**model_params, device=config['device'])
     else:
         raise "Model not recognized."
     

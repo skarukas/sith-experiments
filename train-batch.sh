@@ -1,27 +1,27 @@
 #!/bin/bash
 
-#SBATCH -J Deep_LP_train
+#SBATCH -J LP_ResNet_train
 #SBATCH -p gpu-debug
 #SBATCH --gpus-per-node=1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=1:00:00
-#SBATCH -o out/Deep_LP_train/running_jobs/%J_%a.out
-#SBATCH -e out/Deep_LP_train/running_jobs/%J_%a.err
+#SBATCH -o out/LP_ResNet_train/running_jobs/%J_%a.out
+#SBATCH -e out/LP_ResNet_train/running_jobs/%J_%a.err
 #SBATCH --mail-user=skarukas@iu.edu
 #SBATCH --mail-type=ALL,ARRAY_TASKS
-#SBATCH --array=0-0
+#SBATCH --array=0-3
 
 
 # NOTE: make sure the output/error folders exist before running
 module load deeplearning/2.6.0
 
-ParamFiles=(standard_lg)
-ExperimentRelativePath="rotsvhn/standard"
+ParamFiles=(resnet20 resnet32 resnet44 resnet56)
+ExperimentRelativePath="rotsvhn/debug_svhn"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
-ParamFile=param-files/Deep-LP/RotSVHN/${ParamFile}.yaml
+ParamFile=param-files/LPResNet/RotSVHN/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR
 

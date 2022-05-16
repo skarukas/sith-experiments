@@ -1,0 +1,3 @@
+Training using cuda
+Loading training data
+Loading validation data

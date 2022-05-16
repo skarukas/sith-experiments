@@ -21,18 +21,19 @@ class DeepLPBlock(nn.Module):
     def __init__(
         self, in_planes, planes, 
         Activation=lambda x: x, pooling="max",
-        trim=0, lptransform=None):
+        trim=0, lptransform=None,
+        device='cpu'):
         super().__init__()
 
         if lptransform is None:
-            lptransform = InterpolatedLogPolarTransform(tau_max=30, ntau=20, device="cuda")
+            lptransform = InterpolatedLogPolarTransform(tau_max=30, ntau=20, device=device)
 
         self.logpolar = lptransform
         self.spatial_trim = Trim2d(trim)
         self.depth_pool = nn.AdaptiveAvgPool2d((1, 1)) if pooling == "average" else nn.AdaptiveMaxPool2d((1, 1))
-        self.conv1 = nn.Conv2d(in_planes, planes, kernel_size=3)
+        self.conv1 = nn.utils.weight_norm(nn.Conv2d(in_planes, planes, kernel_size=3))
         self.bn1 = nn.BatchNorm2d(planes)
-        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3)
+        self.conv2 = nn.utils.weight_norm(nn.Conv2d(planes, planes, kernel_size=3))
         self.bn2 = nn.BatchNorm2d(planes)
         self.activation = Activation()
         if trim != 0 or in_planes != planes:
@@ -76,14 +77,18 @@ class DeepLPBlock(nn.Module):
         return out
 
 
-class ResNet(nn.Module):
-    def __init__(self, block, num_blocks, num_classes=10, pooling="max", activation="relu"):
-        super(ResNet, self).__init__()
+class LPResNet(nn.Module):
+    def __init__(
+        self, block, num_blocks, num_classes=10, 
+        pooling="max", act_func="relu", device="cpu",
+        **kwargs):
+        super().__init__()
 
         if isinstance(block, str):
             block = globals()[block]
         num_blocks = [num_blocks] * 3
-        self.act_func = activation
+        self.device = device
+        self.act_func = act_func
         self.pooling = pooling
         if self.act_func == "sigmoid":
             Activation = nn.Sigmoid
@@ -99,7 +104,8 @@ class ResNet(nn.Module):
             tau_max=30, ntau=20, lp_version="bilinear",
             kernel_size=3, in_channels=3, out_channels=16
         )
-        self.conv = LogPolarConv(lp_params, device="cuda")
+        self.conv = nn.Conv2d(3, 16, 1)
+        #self.conv = LogPolarConv(lp_params, device=device)
         self.activation = Activation()
 
         self.layer1 = self._make_layer(block, 16, num_blocks[0], trim=0, Activation=Activation)
@@ -114,7 +120,9 @@ class ResNet(nn.Module):
         trims = [trim] + [0]*(num_blocks-1)
         layers = []
         for trim in trims:
-            layers.append(block(self.in_planes, planes, trim=trim, pooling=self.pooling, Activation=Activation))
+            layers.append(block(
+                self.in_planes, planes, trim=trim, 
+                pooling=self.pooling, Activation=Activation, device=self.device))
             self.in_planes = planes
 
         return nn.Sequential(*layers)
@@ -122,7 +130,8 @@ class ResNet(nn.Module):
 
     def forward(self, x):
         # first layer
-        out = self.conv(x)
+        out = x
+        out = self.conv(out)
         out = self.activation(out)
         out = self.layer1(out)
         out = self.layer2(out)

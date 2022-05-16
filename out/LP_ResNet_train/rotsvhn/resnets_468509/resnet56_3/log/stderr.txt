@@ -1,0 +1,23 @@
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  x = torch.tensor(x)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  y = torch.tensor(y)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.shifts = torch.tensor(shifts)
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]Epoch:   0%|          | 0/40 [00:03<?, ?it/s]
+Traceback (most recent call last):
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 250, in <module>
+    train_loop(model, train_dataloader, config, val_dataloader)
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 54, in train_loop
+    for i, (x, l) in enumerate(train_dataloader):
+  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/geode2/home/u080/skarukas/Carbonate/SITH/datasets.py", line 541, in __getitem__
+    X = X - X.mean((1, 2))
+RuntimeError: The size of tensor a (32) must match the size of tensor b (3) at non-singleton dimension 2
