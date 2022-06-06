@@ -1,0 +1,38 @@
+batch_size: 8
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 16
+  local_start: 2022-05-19_21:58:52
+  local_stop: 2022-05-20_21:58:03
+  program_exit: FAILURE
+  stats:
+    train_acc: 0.7349312076872679
+    train_loss: 0.7407095537751386
+    val_acc: 0.6566533497234174
+    val_loss: 1.036937370277199
+model:
+  act_func: relu
+  block: DeepLPBlock
+  classname: LPResNet
+  num_blocks: 7
+  num_params: 661322
+  out_classes: 10
+  type: lp_resnet
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/LP_ResNet_train/rotsvhn/fast_svhn_cc_477113/resnet44_2
+param: param-files/LPResNet/RotSVHN/resnet44.yaml
+train_data_dir:
+  kwargs:
+    root: data
+    split: train
+  type: SVHN
+val_data_dir:
+  kwargs:
+    root: data
+    split: test
+  type: SVHN

@@ -1,0 +1,41 @@
+batch_size: 8
+collate: batch
+device: cuda
+execution:
+  epochs_completed: 40
+  local_start: 2022-05-28_18:05:31
+  local_stop: 2022-05-30_17:07:50
+  program_exit: SUCCESS
+  stats:
+    train_acc: 0.69714
+    train_loss: 0.8588077711033821
+    val_acc: 0.6571
+    val_loss: 1.0005730168104172
+model:
+  act_func: relu
+  block: DeepLPBlock
+  classname: LPResNet
+  num_blocks: 9
+  num_params: 856650
+  out_classes: 10
+  type: lp_resnet
+num_epochs: 40
+optimizer:
+  params:
+    lr: 0.001
+    weight_decay: 0.01
+  type: adam
+out_dir: /geode2/home/u080/skarukas/Carbonate/SITH/out/LP_ResNet_train/cifar10/resnet_std_533627/resnet56_3
+param: param-files/LPResNet/CIFAR10/resnet56.yaml
+train_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: true
+  type: CIFAR10
+val_data_dir:
+  kwargs:
+    download: true
+    root: data
+    train: false
+  type: CIFAR10

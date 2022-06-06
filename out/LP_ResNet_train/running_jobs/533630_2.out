@@ -1,0 +1,380 @@
+Task ID: 2
+Using params from param-files/LPResNet/CIFAR10/resnet44.yaml
+Loaded param-files/LPResNet/CIFAR10/resnet44.yaml
+Created output directory '/geode2/home/u080/skarukas/Carbonate/SITH/out/LP_ResNet_train/cifar10/resnet_std_533627/resnet44_2/log'
+Training using cuda
+Loading training data
+Files already downloaded and verified
+Loading validation data
+Files already downloaded and verified
+Model Architecture:
+LPResNet(
+  (conv): Conv2d(3, 16, kernel_size=(1, 1), stride=(1, 1))
+  (activation): ReLU()
+  (layer1): Sequential(
+    (0): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (1): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (2): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (3): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (4): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (5): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (6): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+  )
+  (layer2): Sequential(
+    (0): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(8, 8))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (1): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (2): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (3): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (4): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (5): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (6): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+  )
+  (layer3): Sequential(
+    (0): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(8, 8))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (1): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (2): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (3): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (4): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (5): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+    (6): DeepLPBlock(
+      (logpolar): InterpolatedLogPolarTransform(
+        ntau=20, tau_range=1:30.00 (c=0.1960), ntheta=12, stride=1
+        (filterbank): ShiftedConv2d(
+          (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
+        )
+      )
+      (dropout): Dropout(p=0, inplace=False)
+      (spatial_trim): Trim2d(trim_size=(0, 0))
+      (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activation): ReLU()
+      (shortcut): Lambda()
+    )
+  )
+  (to_logits): Linear(in_features=64, out_features=10, bias=True)
+  (pool): AdaptiveMaxPool2d(output_size=(1, 1))
+)
+Total parameters: 661322

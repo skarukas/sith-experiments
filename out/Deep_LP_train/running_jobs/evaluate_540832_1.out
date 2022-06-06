@@ -1,0 +1,7 @@
+Task ID: 1
+Running in out/LP_ResNet_train/rotsvhn/svhn_weight_decay_533620/resnet32_1
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform=RotSVHN:
+ acc=0.7985172095881992, loss=0.5986276928547511

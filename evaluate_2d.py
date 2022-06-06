@@ -52,7 +52,7 @@ if __name__ == "__main__":
         experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
-    results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
+    results_file = open(join(experiment_path, "evaluate_scale_results.yaml"), "w")
     sys.stdout = Logger(join(experiment_path, "evaluate_out.txt"), sys.stdout)
     sys.stderr = Logger(join(experiment_path, "evaluate_err.txt"), sys.stderr)
 
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     print("Using", config['device'])
 
 
-    scale_ntau(config, scale=1.5)
+    #scale_ntau(config, scale=1.5)
 
     ## get model and load state dict
     model = get_model(config)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     state_dict = torch.load(open(state_dict_path, "rb"), map_location=config['device'])
     model.load_state_dict(state_dict)
 
-    config["val_data_dir"]["type"] = "FastMNIST"
+    #config["val_data_dir"]["type"] = "FastMNIST"
 
     inner_dataset = get_dataset(config["val_data_dir"], device=config['device'])
     ## evaluate
@@ -80,7 +80,15 @@ if __name__ == "__main__":
     transforms = DEFAULT_TRANSFORMS
     #transforms = [dict(scale=1)]
     n_angles = 24
-    transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
+    #transforms = [dict(angle=i*(360/n_angles)) for i in range(n_angles)]
+    transforms = [
+        dict(scale=2),
+        dict(scale=1),
+        dict(scale=1.5),
+        dict(scale=0.8),
+        dict(scale=0.6),
+        dict(scale=0.5)
+    ]
 
     batch_size = 2#config['batch_size']
     results = []
@@ -92,7 +100,7 @@ if __name__ == "__main__":
     # for special datasets
     #d_kwargs = config["val_data_dir"]["kwargs"]
     #dataset_list = [
-    #    (datasets.MNIST_R(**d_kwargs, device=config['device']), "MNIST_R")
+    #    (datasets.RotSVHN(**d_kwargs, device=config['device']), "RotSVHN")
     #]
 
     for dataset, transform in tqdm(dataset_list):

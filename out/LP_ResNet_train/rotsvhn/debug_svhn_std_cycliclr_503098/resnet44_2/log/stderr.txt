@@ -1,0 +1,14 @@
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  x = torch.tensor(x)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  y = torch.tensor(y)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.shifts = torch.tensor(shifts)
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Batch:   0%|          | 0/9158 [00:00<?, ?it/s][A/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/optim/lr_scheduler.py:129: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn("Detected call of `lr_scheduler.step()` before `optimizer.step()`. "
+
+Batch:   0%|          | 21/9158 [00:10<1:13:18,  2.08it/s, train_loss=27.5, train_acc=0.125, avg_tr_acc=0.0893, avg_tr_loss=30.8][A
+Batch:   0%|          | 42/9158 [00:20<1:12:53,  2.08it/s, train_loss=42.1, train_acc=0, avg_tr_acc=0.104, avg_tr_loss=29.3]     [A
+Batch:   1%|          | 63/9158 [00:30<1:12:37,  2.09it/s, train_loss=45.4, train_acc=0.125, avg_tr_acc=0.0972, avg_tr_loss=29.7][A
+Batch:   1%|          | 84/9158 [00:40<1:12:25,  2.09it/s, train_loss=34.6, train_acc=0.125, avg_tr_acc=0.0952, avg_tr_loss=30.1][A

@@ -1,19 +1,0 @@
-/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:180.)
-  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Batch:   0%|          | 0/3750 [00:00<?, ?it/s][A
-Batch:   2%|1         | 60/3750 [00:10<10:19,  5.96it/s, train_loss=2.25, train_acc=0.188, avg_tr_acc=0.183, avg_tr_loss=2.26][A
-Batch:   3%|3         | 127/3750 [00:20<09:30,  6.35it/s, train_loss=2.15, train_acc=0.438, avg_tr_acc=0.215, avg_tr_loss=2.15][A
-Batch:   5%|5         | 194/3750 [00:30<09:08,  6.48it/s, train_loss=1.71, train_acc=0.375, avg_tr_acc=0.23, avg_tr_loss=2.1]  [A
-Batch:   7%|6         | 261/3750 [00:40<08:53,  6.54it/s, train_loss=1.47, train_acc=0.5, avg_tr_acc=0.26, avg_tr_loss=2.01] [A
-Batch:   9%|8         | 328/3750 [00:50<08:40,  6.57it/s, train_loss=1.85, train_acc=0.188, avg_tr_acc=0.302, avg_tr_loss=1.91][A
-Batch:  11%|#         | 395/3750 [01:00<08:28,  6.59it/s, train_loss=0.943, train_acc=0.688, avg_tr_acc=0.342, avg_tr_loss=1.82][A
-Batch:  12%|#2        | 462/3750 [01:10<08:17,  6.61it/s, train_loss=0.912, train_acc=0.75, avg_tr_acc=0.38, avg_tr_loss=1.73]  [A
-Batch:  14%|#4        | 529/3750 [01:20<08:06,  6.62it/s, train_loss=1.26, train_acc=0.562, avg_tr_acc=0.417, avg_tr_loss=1.63][A
-Batch:  16%|#5        | 596/3750 [01:30<07:56,  6.62it/s, train_loss=0.581, train_acc=0.75, avg_tr_acc=0.45, avg_tr_loss=1.55] [A

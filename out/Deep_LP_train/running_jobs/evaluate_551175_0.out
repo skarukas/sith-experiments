@@ -1,0 +1,22 @@
+Task ID: 0
+Running in out/LP_ResNet_train/rotsvhn/svhn_weight_decay_533620/resnet20_0
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform={'scale': 2}:
+ acc=0.7600261216963737, loss=0.7136891126604328
+
+For transform={'scale': 1}:
+ acc=0.8842578365089121, loss=0.3319679992484492
+
+For transform={'scale': 1.5}:
+ acc=0.8427320221266134, loss=0.4716645247762159
+
+For transform={'scale': 0.8}:
+ acc=0.8374692685925015, loss=0.4799610797058659
+
+For transform={'scale': 0.6}:
+ acc=0.2277581438229871, loss=2.1715558901630665
+
+For transform={'scale': 0.5}:
+ acc=0.8004379225568531, loss=0.5731370028570343

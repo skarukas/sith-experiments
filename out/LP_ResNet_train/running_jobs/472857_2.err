@@ -1,35 +1,0 @@
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Batch:   0%|          | 0/9158 [00:00<?, ?it/s][A
-Batch:   0%|          | 20/9158 [00:10<1:17:02,  1.98it/s, train_loss=21.6, train_acc=0, avg_tr_acc=0.0625, avg_tr_loss=9.16][A
-Batch:   0%|          | 41/9158 [00:20<1:15:19,  2.02it/s, train_loss=3.59, train_acc=0, avg_tr_acc=0.0854, avg_tr_loss=7.98][A
-Batch:   1%|          | 62/9158 [00:30<1:14:42,  2.03it/s, train_loss=3.48, train_acc=0.125, avg_tr_acc=0.0847, avg_tr_loss=6.73][A
-Batch:   1%|          | 83/9158 [00:40<1:14:23,  2.03it/s, train_loss=2.67, train_acc=0.125, avg_tr_acc=0.101, avg_tr_loss=5.89] [A
-Batch:   1%|1         | 104/9158 [00:51<1:14:04,  2.04it/s, train_loss=3.99, train_acc=0, avg_tr_acc=0.109, avg_tr_loss=5.31]   [A
-Batch:   1%|1         | 125/9158 [01:01<1:13:48,  2.04it/s, train_loss=4.15, train_acc=0, avg_tr_acc=0.114, avg_tr_loss=4.91][A
-Batch:   2%|1         | 146/9158 [01:11<1:13:34,  2.04it/s, train_loss=2.49, train_acc=0, avg_tr_acc=0.122, avg_tr_loss=4.64][A
-Batch:   2%|1         | 167/9158 [01:22<1:13:22,  2.04it/s, train_loss=2.43, train_acc=0.25, avg_tr_acc=0.128, avg_tr_loss=4.41][A
-Batch:   2%|2         | 188/9158 [01:32<1:13:10,  2.04it/s, train_loss=2.43, train_acc=0.375, avg_tr_acc=0.135, avg_tr_loss=4.23][A
-Batch:   2%|2         | 209/9158 [01:42<1:13:04,  2.04it/s, train_loss=3.46, train_acc=0, avg_tr_acc=0.135, avg_tr_loss=4.08]    [A
-Batch:   3%|2         | 230/9158 [01:52<1:12:51,  2.04it/s, train_loss=2.5, train_acc=0.125, avg_tr_acc=0.139, avg_tr_loss=3.95][A
-Batch:   3%|2         | 251/9158 [02:03<1:12:40,  2.04it/s, train_loss=2.49, train_acc=0.25, avg_tr_acc=0.14, avg_tr_loss=3.86] [A
-Batch:   3%|2         | 272/9158 [02:13<1:12:28,  2.04it/s, train_loss=2.14, train_acc=0.125, avg_tr_acc=0.142, avg_tr_loss=3.76][A
-Batch:   3%|3         | 293/9158 [02:23<1:12:17,  2.04it/s, train_loss=2.74, train_acc=0.5, avg_tr_acc=0.146, avg_tr_loss=3.7]   [A
-Batch:   3%|3         | 314/9158 [02:33<1:12:06,  2.04it/s, train_loss=2.01, train_acc=0.125, avg_tr_acc=0.148, avg_tr_loss=3.63][A
-Batch:   4%|3         | 335/9158 [02:44<1:11:56,  2.04it/s, train_loss=2.64, train_acc=0.25, avg_tr_acc=0.147, avg_tr_loss=3.56] [A
-Batch:   4%|3         | 356/9158 [02:54<1:11:45,  2.04it/s, train_loss=2.32, train_acc=0.125, avg_tr_acc=0.146, avg_tr_loss=3.52][A
-Batch:   4%|4         | 377/9158 [03:04<1:11:35,  2.04it/s, train_loss=2.23, train_acc=0.125, avg_tr_acc=0.148, avg_tr_loss=3.47][A
-Batch:   4%|4         | 398/9158 [03:15<1:11:24,  2.04it/s, train_loss=2.2, train_acc=0.375, avg_tr_acc=0.154, avg_tr_loss=3.42] [A
-Batch:   5%|4         | 419/9158 [03:25<1:11:14,  2.04it/s, train_loss=3.05, train_acc=0.125, avg_tr_acc=0.154, avg_tr_loss=3.38][A
-Batch:   5%|4         | 440/9158 [03:35<1:11:03,  2.04it/s, train_loss=2.93, train_acc=0.25, avg_tr_acc=0.156, avg_tr_loss=3.35] [A
-Batch:   5%|5         | 461/9158 [03:45<1:10:53,  2.04it/s, train_loss=2.32, train_acc=0.25, avg_tr_acc=0.156, avg_tr_loss=3.31][A
-Batch:   5%|5         | 482/9158 [03:56<1:10:43,  2.04it/s, train_loss=2.46, train_acc=0.125, avg_tr_acc=0.155, avg_tr_loss=3.27][A
-Batch:   5%|5         | 503/9158 [04:06<1:10:33,  2.04it/s, train_loss=2.14, train_acc=0.125, avg_tr_acc=0.157, avg_tr_loss=3.25][A
-Batch:   6%|5         | 524/9158 [04:16<1:10:22,  2.04it/s, train_loss=2.32, train_acc=0.125, avg_tr_acc=0.157, avg_tr_loss=3.22][A
-Batch:   6%|5         | 545/9158 [04:26<1:10:12,  2.04it/s, train_loss=1.98, train_acc=0.375, avg_tr_acc=0.158, avg_tr_loss=3.2] [A
-Batch:   6%|6         | 566/9158 [04:37<1:10:02,  2.04it/s, train_loss=2.65, train_acc=0, avg_tr_acc=0.158, avg_tr_loss=3.19]   [A

@@ -1,15 +1,0 @@
-/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:180.)
-  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Batch:   0%|          | 0/3750 [00:00<?, ?it/s][A
-Batch:   2%|1         | 67/3750 [00:10<09:17,  6.61it/s, train_loss=2.03, train_acc=0.312, avg_tr_acc=0.164, avg_tr_loss=2.25][A
-Batch:   4%|3         | 134/3750 [00:20<09:05,  6.62it/s, train_loss=2.15, train_acc=0.125, avg_tr_acc=0.206, avg_tr_loss=2.17][A
-Batch:   5%|5         | 201/3750 [00:30<08:55,  6.63it/s, train_loss=1.58, train_acc=0.438, avg_tr_acc=0.228, avg_tr_loss=2.09][A
-Batch:   7%|7         | 268/3750 [00:40<08:45,  6.63it/s, train_loss=1.92, train_acc=0.312, avg_tr_acc=0.251, avg_tr_loss=2.03][A
-Batch:   9%|8         | 335/3750 [00:50<08:34,  6.63it/s, train_loss=1.32, train_acc=0.625, avg_tr_acc=0.29, avg_tr_loss=1.94] [A

@@ -1,0 +1,5 @@
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform=RotSVHN:
+ acc=0.7662108174554395, loss=0.7042827344282176

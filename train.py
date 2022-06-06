@@ -34,9 +34,20 @@ PROFILE_NBATCH = 5
 
 
 def train_loop(model, train_dataloader, config, val_dataloader=None):
-    lr = config['optimizer']['params']['lr']
-    optimizer = torch.optim.Adam(model.parameters(), lr)
+    optimizer = torch.optim.AdamW(model.parameters(), **config['optimizer']['params'])
     epochs = trange(config['num_epochs'], desc="Epoch")
+
+    sched = config.get("scheduler")
+    if sched is not None:
+        Sched = {
+            "cyclic_lr": torch.optim.lr_scheduler.CyclicLR
+        }[sched["type"]]
+        args = sched.get("args", [])
+        kwargs = sched.get("kwargs", {})
+        scheduler = Sched(optimizer, *args, **kwargs)
+    else:
+        scheduler = None
+
 
     for epoch in epochs:
         epoch_stats = {}
@@ -72,7 +83,10 @@ def train_loop(model, train_dataloader, config, val_dataloader=None):
 
             # ffwd, compute training loss and acc
             loss, acc = train_step(model, X, label)
+
             optimizer.step()
+            if scheduler is not None:
+                scheduler.step()
 
             train_loss.update(loss)
             train_acc.update(acc)

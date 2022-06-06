@@ -1,0 +1,98 @@
+Using cuda
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+torch.Size([2, 16, 20, 12, 32, 32]) torch.Size([2, 16, 1, 12, 32, 32])
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform={'angle': 0.0}:
+ acc=0.8484941610325752, loss=0.46484912528727645
+
+For transform={'angle': 15.0}:
+ acc=0.7494622003687769, loss=0.7640997358825004
+
+For transform={'angle': 30.0}:
+ acc=0.5543177627535341, loss=1.3957852892749265
+
+For transform={'angle': 45.0}:
+ acc=0.3937461585740627, loss=1.8795052546298432
+
+For transform={'angle': 60.0}:
+ acc=0.48394283958205286, loss=1.6175694456951135
+
+For transform={'angle': 75.0}:
+ acc=0.6990242778119238, loss=0.9217604638630256
+
+For transform={'angle': 90.0}:
+ acc=0.8485325752919484, loss=0.4648506084959572
+
+For transform={'angle': 105.0}:
+ acc=0.7494237861094039, loss=0.7641050612105119
+
+For transform={'angle': 120.0}:
+ acc=0.5543561770129072, loss=1.3957798635654206
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform={'angle': 135.0}:
+ acc=0.3950522433927474, loss=1.8757643970423599
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform={'angle': 150.0}:
+ acc=0.4839044253226798, loss=1.617563094417715
+
+For transform={'angle': 165.0}:
+ acc=0.6990626920712969, loss=0.9217599337931673
+
+For transform=RotSVHN:
+ acc=0.3679701905347265, loss=1.921636582714306
+
+For transform={'angle': 180.0}:
+ acc=0.8484173325138291, loss=0.4648504857555242
+
+For transform={'angle': 195.0}:
+ acc=0.7494237861094039, loss=0.7641034778190334
+
+For transform={'angle': 210.0}:
+ acc=0.5544714197910264, loss=1.3957828205083118
+
+For transform={'angle': 225.0}:
+ acc=0.3919022741241549, loss=1.8833534401223537
+
+For transform={'angle': 240.0}:
+ acc=0.4839044253226798, loss=1.6175646969106285
+
+For transform={'angle': 255.0}:
+ acc=0.6989858635525507, loss=0.921764701692613
+
+For transform={'angle': 270.0}:
+ acc=0.8484941610325752, loss=0.4648484838973388
+
+For transform={'angle': 285.0}:
+ acc=0.7494237861094039, loss=0.7641038928527639
+
+For transform={'angle': 300.0}:
+ acc=0.554279348494161, loss=1.3957859455417572
+
+For transform={'angle': 315.0}:
+ acc=0.39386140135218195, loss=1.879507203098414
+
+For transform={'angle': 330.0}:
+ acc=0.4839044253226798, loss=1.6175687977027111
+
+For transform={'angle': 345.0}:
+ acc=0.6990242778119238, loss=0.9217590664122894
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform=RotSVHN:
+ acc=0.6360248924400738, loss=1.1220625000905076

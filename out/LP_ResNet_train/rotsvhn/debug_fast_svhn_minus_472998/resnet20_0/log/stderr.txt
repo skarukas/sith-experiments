@@ -1,0 +1,11 @@
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  x = torch.tensor(x)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  y = torch.tensor(y)
+/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.shifts = torch.tensor(shifts)
+Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
+Batch:   0%|          | 0/7859 [00:00<?, ?it/s][A
+Batch:   1%|          | 47/7859 [00:10<28:15,  4.61it/s, train_loss=2.27, train_acc=0.25, avg_tr_acc=0.106, avg_tr_loss=3.33][A
+Batch:   1%|1         | 95/7859 [00:20<27:28,  4.71it/s, train_loss=2.38, train_acc=0, avg_tr_acc=0.1, avg_tr_loss=2.86]     [A
+Batch:   2%|1         | 144/7859 [00:30<27:02,  4.76it/s, train_loss=2.6, train_acc=0.125, avg_tr_acc=0.0946, avg_tr_loss=2.74][A

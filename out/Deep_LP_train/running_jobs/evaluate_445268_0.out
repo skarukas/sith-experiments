@@ -1,6 +1,0 @@
-Task ID: 0
-Running in out/Deep_LP_train/mnist/bilinear_trim_new_442478/standard_0
-Using cuda
-
-For transform=MNIST_R:
- acc=0.9076, loss=0.30593295878123317

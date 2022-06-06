@@ -1,4 +1,4 @@
-
+import torch
 from torch import nn
 import torch.nn.functional as F
 from models.logpolar.layers import LogPolarConv
@@ -21,7 +21,7 @@ class DeepLPBlock(nn.Module):
     def __init__(
         self, in_planes, planes, 
         Activation=lambda x: x, pooling="max",
-        trim=0, lptransform=None,
+        trim=0, lptransform=None, dropout=0,
         device='cpu'):
         super().__init__()
 
@@ -29,6 +29,7 @@ class DeepLPBlock(nn.Module):
             lptransform = InterpolatedLogPolarTransform(tau_max=30, ntau=20, device=device)
 
         self.logpolar = lptransform
+        self.dropout = nn.Dropout(dropout)
         self.spatial_trim = Trim2d(trim)
         self.depth_pool = nn.AdaptiveAvgPool2d((1, 1)) if pooling == "average" else nn.AdaptiveMaxPool2d((1, 1))
         self.conv1 = nn.utils.weight_norm(nn.Conv2d(in_planes, planes, kernel_size=3))
@@ -48,6 +49,12 @@ class DeepLPBlock(nn.Module):
 
         out = self.spatial_trim(out)
         x = self.spatial_trim(x)
+
+        # append center pixel to filter map
+        """ x_expanded = x.unsqueeze(2).unsqueeze(2)
+        expanded_shape = (*x.shape[:2], 1, self.logpolar.num_angles, *x.shape[-2:])
+        x_expanded = x_expanded.expand(expanded_shape)
+        out = torch.cat((out, x_expanded), dim=2) """
 
         out = out.permute((0, 4, 5, 1, 2, 3))
         batchxy_shape = out.shape[:3]
@@ -73,6 +80,7 @@ class DeepLPBlock(nn.Module):
         out = self.bn2(out)
         out += self.shortcut(x)
         out = self.activation(out)
+        out = self.dropout(out)
         
         return out
 
@@ -81,7 +89,7 @@ class LPResNet(nn.Module):
     def __init__(
         self, block, num_blocks, num_classes=10, 
         pooling="max", act_func="relu", device="cpu",
-        **kwargs):
+        dropout=0, **kwargs):
         super().__init__()
 
         if isinstance(block, str):
@@ -107,6 +115,7 @@ class LPResNet(nn.Module):
         self.conv = nn.Conv2d(3, 16, 1)
         #self.conv = LogPolarConv(lp_params, device=device)
         self.activation = Activation()
+        self.dropout = dropout
 
         self.layer1 = self._make_layer(block, 16, num_blocks[0], trim=0, Activation=Activation)
         self.layer2 = self._make_layer(block, 32, num_blocks[1], trim=8, Activation=Activation)
@@ -122,7 +131,8 @@ class LPResNet(nn.Module):
         for trim in trims:
             layers.append(block(
                 self.in_planes, planes, trim=trim, 
-                pooling=self.pooling, Activation=Activation, device=self.device))
+                pooling=self.pooling, Activation=Activation, 
+                device=self.device, dropout=self.dropout))
             self.in_planes = planes
 
         return nn.Sequential(*layers)

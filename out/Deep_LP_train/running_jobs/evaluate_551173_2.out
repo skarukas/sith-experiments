@@ -1,0 +1,70 @@
+Task ID: 2
+Running in out/LP_ResNet_train/rotsvhn/svhn_weight_decay_533620/resnet44_2
+Using cuda
+Using downloaded and verified file: data/test_32x32.mat
+
+For transform={'angle': 0.0}:
+ acc=0.8809157959434543, loss=0.34079690405965807
+
+For transform={'angle': 15.0}:
+ acc=0.8202980946527351, loss=0.5360092335219231
+
+For transform={'angle': 30.0}:
+ acc=0.784841733251383, loss=0.6548177136067016
+
+For transform={'angle': 45.0}:
+ acc=0.7230331899200984, loss=0.8384957139320136
+
+For transform={'angle': 60.0}:
+ acc=0.7632145052243393, loss=0.7073154827858436
+
+For transform={'angle': 75.0}:
+ acc=0.794560540872772, loss=0.6038001915785778
+
+For transform={'angle': 90.0}:
+ acc=0.880838967424708, loss=0.34079716718777503
+
+For transform={'angle': 105.0}:
+ acc=0.8202596803933621, loss=0.5360111220740289
+
+For transform={'angle': 120.0}:
+ acc=0.7847649047326367, loss=0.6548174558148792
+
+For transform={'angle': 135.0}:
+ acc=0.7234557467732022, loss=0.8407616346173524
+
+For transform={'angle': 150.0}:
+ acc=0.7632913337430854, loss=0.7073190191528392
+
+For transform={'angle': 165.0}:
+ acc=0.794560540872772, loss=0.6038006997306107
+
+For transform={'angle': 180.0}:
+ acc=0.8809157959434543, loss=0.3407984842690892
+
+For transform={'angle': 195.0}:
+ acc=0.8202596803933621, loss=0.5360095377631812
+
+For transform={'angle': 210.0}:
+ acc=0.7847264904732637, loss=0.6548202777431041
+
+For transform={'angle': 225.0}:
+ acc=0.7235709895513215, loss=0.8389967507641554
+
+For transform={'angle': 240.0}:
+ acc=0.7633297480024586, loss=0.7073187173983706
+
+For transform={'angle': 255.0}:
+ acc=0.7945221266133989, loss=0.6038029209069268
+
+For transform={'angle': 270.0}:
+ acc=0.880838967424708, loss=0.34079858466666724
+
+For transform={'angle': 285.0}:
+ acc=0.8202596803933621, loss=0.5360109729955057
+
+For transform={'angle': 300.0}:
+ acc=0.7847264904732637, loss=0.6548182616883799
+
+For transform={'angle': 315.0}:
+ acc=0.7230331899200984, loss=0.838498902229987

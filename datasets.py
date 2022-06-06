@@ -504,13 +504,34 @@ class CIFAR10_Tensor(CIFAR10):
         img, target = super().__getitem__(index)
         img = torch.tensor(np.array(img)).float().div(255)
         img = img.permute(2, 0, 1) # put channels first
+        
+        img = (img - img.mean((1, 2), keepdim=True)) / img.std((1, 2),  keepdim=True)
         return img.to(self.device), target
 
 
 class SVHN_Tensor(SVHN):
-    def __init__(self, root, device='cpu', download=True, *args, **kwargs):
+    def __init__(        self, root, device='cpu', 
+        download=True, allowed_targets=range(10), 
+        *args, **kwargs):
         super().__init__(root, download=download, *args, **kwargs)
         self.device = device
+        # Put both data and targets on device in advance
+        self.data, self.targets = torch.tensor(self.data, device=device), torch.tensor(self.labels, device=device)
+
+        # re-index targets by filtered classes
+        index_map = {}
+        idx = 0
+        for target in allowed_targets:
+            if target not in index_map:
+                index_map[target] = idx
+                idx += 1
+
+        # filter targets
+        self.data, self.targets = zip(*[
+                (d, torch.tensor(index_map[t.item()]).to(device)) 
+                for d, t in zip(self.data, self.targets) if int(t.item()) in index_map
+        ])
+
 
     def __getitem__(self, index):
         """
@@ -520,10 +541,10 @@ class SVHN_Tensor(SVHN):
         Returns:
             tuple: (image, target) where target is index of the target class.
         """
-        img, target = super().__getitem__(index)
-        img = torch.tensor(np.array(img)).float().div(255)
-        img = img.permute(2, 0, 1) # put channels first
-        return img.to(self.device), target
+        img, target = self.data[index], self.targets[index]
+        img = img.float().div(255)
+        img = (img - img.mean((1, 2), keepdim=True)) / img.std((1, 2),  keepdim=True)
+        return img, target
 
 
 class RotSVHN(Dataset):
@@ -558,7 +579,7 @@ class RotSVHN(Dataset):
         path = join(self.out_dir, self.files[idx])
         X, label = torch.load(path, map_location=self.device)
         # subtract per-image mean
-        X = X - X.mean((1, 2), keepdim=True)
+        X = (X - X.mean((1, 2), keepdim=True)) / X.std((1, 2),  keepdim=True)
         return X, label.long() % 10
 
 

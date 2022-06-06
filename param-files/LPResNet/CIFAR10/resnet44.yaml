@@ -1,0 +1,26 @@
+model: 
+  type: lp_resnet
+  block: DeepLPBlock
+  num_blocks: 7
+  act_func: relu
+  out_classes: 10
+optimizer:
+  type: adam
+  params:
+    weight_decay: 0.01
+    lr: 0.001
+num_epochs: 40
+batch_size: 8
+train_data_dir: 
+  type: CIFAR10
+  kwargs:
+    root: data
+    train: True
+    download: True
+val_data_dir: 
+  type: CIFAR10
+  kwargs:
+    root: data
+    train: False
+    download: True
+collate: batch
