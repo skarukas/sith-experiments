@@ -1,35 +1,0 @@
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Batch:   0%|          | 0/9158 [00:00<?, ?it/s][A
-                                               [AEpoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Traceback (most recent call last):
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 252, in <module>
-    train_loop(model, train_dataloader, config, val_dataloader)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 74, in train_loop
-    loss, acc = train_step(model, X, label)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 115, in train_step
-    prediction = model(X)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/LPResNet.py", line 135, in forward
-    out = self.layer1(out)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/container.py", line 139, in forward
-    input = module(input)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/LPResNet.py", line 59, in forward
-    out = self.conv1(out)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 443, in forward
-    return self._conv_forward(input, self.weight, self.bias)
-  File "/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 439, in _conv_forward
-    return F.conv2d(input, weight, bias, self.stride,
-RuntimeError: Given groups=1, weight of size [16, 16, 3, 3], expected input[8192, 3, 20, 14] to have 16 channels, but got 3 channels instead

@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 245, in <module>
-    model = get_model(config)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/util.py", line 24, in get_model
-    model = LPResNet(**model_params, device=config['device'])
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/models/LPResNet.py", line 107, in __init__
-    self.conv = nn.Conv2D(3, 16, 1)
-AttributeError: module 'torch.nn' has no attribute 'Conv2D'

@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/train.py", line 228, in <module>
-    train_data = get_dataset(train_data_dir, device=config['device'])
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/datasets.py", line 49, in get_dataset
-    return DatasetClass(*dataset_params.get('args', []), **dataset_params.get('kwargs', {}), device=device)
-  File "/geode2/home/u080/skarukas/Carbonate/SITH/datasets.py", line 517, in __init__
-    self.data, self.targets = torch.tensor(self.data, device=device), torch.tensor(self.targets, device=device)
-AttributeError: 'SVHN_Tensor' object has no attribute 'targets'

@@ -1,365 +1,0 @@
-/geode2/home/u080/skarukas/Carbonate/SITH/models/logpolar/lptransform.py:158: UserWarning: Use of index_put_ on expanded tensors is deprecated. Please clone() the tensor before performing this operation. This also applies to advanced indexing e.g. tensor[indices] = tensor (Triggered internally at  /pytorch/aten/src/ATen/native/TensorAdvancedIndexing.cpp:395.)
-  tau[tau <= 0] = 0
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A/N/soft/rhel7/deeplearning/Python-3.9.6/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
-  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
-
-Batch:  13%|#2        | 200/1563 [00:10<01:08, 19.93it/s, train_loss=1.76, train_acc=0.281, avg_tr_acc=0.212, avg_tr_loss=2.11][A
-Batch:  27%|##6       | 415/1563 [00:20<00:55, 20.84it/s, train_loss=1.59, train_acc=0.5, avg_tr_acc=0.274, avg_tr_loss=1.96]  [A
-Batch:  40%|####      | 630/1563 [00:30<00:44, 21.13it/s, train_loss=1.91, train_acc=0.312, avg_tr_acc=0.307, avg_tr_loss=1.87][A
-Batch:  54%|#####4    | 845/1563 [00:40<00:33, 21.28it/s, train_loss=1.66, train_acc=0.406, avg_tr_acc=0.328, avg_tr_loss=1.82][A
-Batch:  68%|######7   | 1060/1563 [00:50<00:23, 21.36it/s, train_loss=1.63, train_acc=0.406, avg_tr_acc=0.348, avg_tr_loss=1.77][A
-Batch:  82%|########1 | 1275/1563 [01:00<00:13, 21.40it/s, train_loss=1.37, train_acc=0.625, avg_tr_acc=0.363, avg_tr_loss=1.73][A
-Batch:  95%|#########5| 1490/1563 [01:10<00:03, 21.37it/s, train_loss=1.61, train_acc=0.344, avg_tr_acc=0.375, avg_tr_loss=1.7] [A
-                                                                                                                               [AEpoch:   0%|          | 0/40 [01:21<?, ?it/s, train_loss=1.69, train_acc=0.379, val_loss=1.45, val_acc=0.483]Epoch:   2%|2         | 1/40 [01:21<52:57, 81.47s/it, train_loss=1.69, train_acc=0.379, val_loss=1.45, val_acc=0.483]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=1.44, train_acc=0.531, avg_tr_acc=0.474, avg_tr_loss=1.44][A
-Batch:  28%|##7       | 431/1563 [00:20<00:52, 21.50it/s, train_loss=1.77, train_acc=0.344, avg_tr_acc=0.475, avg_tr_loss=1.44][A
-Batch:  41%|####1     | 647/1563 [00:30<00:42, 21.50it/s, train_loss=1.82, train_acc=0.312, avg_tr_acc=0.477, avg_tr_loss=1.43][A
-Batch:  55%|#####5    | 862/1563 [00:40<00:32, 21.50it/s, train_loss=1.38, train_acc=0.406, avg_tr_acc=0.483, avg_tr_loss=1.42][A
-Batch:  69%|######8   | 1078/1563 [00:50<00:22, 21.50it/s, train_loss=1.21, train_acc=0.594, avg_tr_acc=0.489, avg_tr_loss=1.4][A
-Batch:  83%|########2 | 1294/1563 [01:00<00:12, 21.50it/s, train_loss=1.07, train_acc=0.531, avg_tr_acc=0.493, avg_tr_loss=1.39][A
-Batch:  97%|#########6| 1510/1563 [01:10<00:02, 21.50it/s, train_loss=1.3, train_acc=0.562, avg_tr_acc=0.499, avg_tr_loss=1.38] [A
-                                                                                                                               [AEpoch:   2%|2         | 1/40 [02:42<52:57, 81.47s/it, train_loss=1.38, train_acc=0.502, val_loss=1.29, val_acc=0.535]Epoch:   5%|5         | 2/40 [02:42<51:16, 80.97s/it, train_loss=1.38, train_acc=0.502, val_loss=1.29, val_acc=0.535]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 216/1563 [00:10<01:02, 21.51it/s, train_loss=1.75, train_acc=0.375, avg_tr_acc=0.535, avg_tr_loss=1.27][A
-Batch:  28%|##7       | 432/1563 [00:20<00:52, 21.50it/s, train_loss=1.2, train_acc=0.625, avg_tr_acc=0.54, avg_tr_loss=1.26]  [A
-Batch:  41%|####1     | 648/1563 [00:30<00:42, 21.50it/s, train_loss=1.47, train_acc=0.438, avg_tr_acc=0.542, avg_tr_loss=1.26][A
-Batch:  55%|#####5    | 864/1563 [00:40<00:32, 21.50it/s, train_loss=0.952, train_acc=0.688, avg_tr_acc=0.543, avg_tr_loss=1.26][A
-Batch:  69%|######9   | 1080/1563 [00:50<00:22, 21.51it/s, train_loss=1.53, train_acc=0.5, avg_tr_acc=0.547, avg_tr_loss=1.25]  [A
-Batch:  83%|########2 | 1296/1563 [01:00<00:12, 21.51it/s, train_loss=1.32, train_acc=0.469, avg_tr_acc=0.548, avg_tr_loss=1.25][A
-Batch:  97%|#########6| 1512/1563 [01:10<00:02, 21.51it/s, train_loss=1.36, train_acc=0.531, avg_tr_acc=0.551, avg_tr_loss=1.24][A
-                                                                                                                                [AEpoch:   5%|5         | 2/40 [04:02<51:16, 80.97s/it, train_loss=1.24, train_acc=0.552, val_loss=1.2, val_acc=0.569] Epoch:   8%|7         | 3/40 [04:02<49:49, 80.79s/it, train_loss=1.24, train_acc=0.552, val_loss=1.2, val_acc=0.569]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.50it/s, train_loss=1.04, train_acc=0.719, avg_tr_acc=0.577, avg_tr_loss=1.16][A
-Batch:  28%|##7       | 431/1563 [00:20<00:52, 21.50it/s, train_loss=1.35, train_acc=0.562, avg_tr_acc=0.583, avg_tr_loss=1.16][A
-Batch:  41%|####1     | 647/1563 [00:30<00:42, 21.50it/s, train_loss=1.27, train_acc=0.562, avg_tr_acc=0.586, avg_tr_loss=1.15][A
-Batch:  55%|#####5    | 862/1563 [00:40<00:32, 21.50it/s, train_loss=1.24, train_acc=0.594, avg_tr_acc=0.589, avg_tr_loss=1.15][A
-Batch:  69%|######8   | 1078/1563 [00:50<00:22, 21.50it/s, train_loss=1.05, train_acc=0.688, avg_tr_acc=0.591, avg_tr_loss=1.15][A
-Batch:  83%|########2 | 1294/1563 [01:00<00:12, 21.50it/s, train_loss=1, train_acc=0.594, avg_tr_acc=0.593, avg_tr_loss=1.14]   [A
-Batch:  97%|#########6| 1510/1563 [01:10<00:02, 21.50it/s, train_loss=0.91, train_acc=0.656, avg_tr_acc=0.595, avg_tr_loss=1.14][A
-                                                                                                                                [AEpoch:   8%|7         | 3/40 [05:23<49:49, 80.79s/it, train_loss=1.13, train_acc=0.595, val_loss=1.11, val_acc=0.605]Epoch:  10%|#         | 4/40 [05:23<48:26, 80.72s/it, train_loss=1.13, train_acc=0.595, val_loss=1.11, val_acc=0.605]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.50it/s, train_loss=0.793, train_acc=0.656, avg_tr_acc=0.62, avg_tr_loss=1.08][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.50it/s, train_loss=1.18, train_acc=0.594, avg_tr_acc=0.617, avg_tr_loss=1.07][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.50it/s, train_loss=1.09, train_acc=0.594, avg_tr_acc=0.62, avg_tr_loss=1.07] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.50it/s, train_loss=0.726, train_acc=0.656, avg_tr_acc=0.621, avg_tr_loss=1.06][A
-Batch:  69%|######8   | 1076/1563 [00:50<00:22, 21.50it/s, train_loss=1.15, train_acc=0.594, avg_tr_acc=0.62, avg_tr_loss=1.06] [A
-Batch:  83%|########2 | 1292/1563 [01:00<00:12, 21.50it/s, train_loss=1.11, train_acc=0.625, avg_tr_acc=0.623, avg_tr_loss=1.06][A
-Batch:  96%|#########6| 1508/1563 [01:10<00:02, 21.50it/s, train_loss=1.48, train_acc=0.531, avg_tr_acc=0.624, avg_tr_loss=1.05][A
-                                                                                                                                [AEpoch:  10%|#         | 4/40 [06:43<48:26, 80.72s/it, train_loss=1.05, train_acc=0.623, val_loss=1.05, val_acc=0.635]Epoch:  12%|#2        | 5/40 [06:43<47:04, 80.69s/it, train_loss=1.05, train_acc=0.623, val_loss=1.05, val_acc=0.635]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=1.07, train_acc=0.562, avg_tr_acc=0.655, avg_tr_loss=0.965][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.965, train_acc=0.594, avg_tr_acc=0.649, avg_tr_loss=0.982][A
-Batch:  41%|####1     | 646/1563 [00:30<00:42, 21.50it/s, train_loss=0.764, train_acc=0.75, avg_tr_acc=0.648, avg_tr_loss=0.986] [A
-Batch:  55%|#####5    | 862/1563 [00:40<00:32, 21.50it/s, train_loss=1.29, train_acc=0.5, avg_tr_acc=0.65, avg_tr_loss=0.984]   [A
-Batch:  69%|######8   | 1077/1563 [00:50<00:22, 21.50it/s, train_loss=1.11, train_acc=0.594, avg_tr_acc=0.647, avg_tr_loss=0.989][A
-Batch:  83%|########2 | 1292/1563 [01:00<00:12, 21.49it/s, train_loss=1.15, train_acc=0.625, avg_tr_acc=0.65, avg_tr_loss=0.986] [A
-Batch:  96%|#########6| 1508/1563 [01:10<00:02, 21.50it/s, train_loss=0.842, train_acc=0.719, avg_tr_acc=0.65, avg_tr_loss=0.985][A
-                                                                                                                                 [AEpoch:  12%|#2        | 5/40 [08:04<47:04, 80.69s/it, train_loss=0.985, train_acc=0.65, val_loss=0.988, val_acc=0.655]Epoch:  15%|#5        | 6/40 [08:04<45:42, 80.67s/it, train_loss=0.985, train_acc=0.65, val_loss=0.988, val_acc=0.655]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 214/1563 [00:10<01:03, 21.32it/s, train_loss=0.658, train_acc=0.75, avg_tr_acc=0.681, avg_tr_loss=0.898][A
-Batch:  27%|##7       | 429/1563 [00:20<00:52, 21.42it/s, train_loss=0.759, train_acc=0.812, avg_tr_acc=0.675, avg_tr_loss=0.922][A
-Batch:  41%|####1     | 644/1563 [00:30<00:42, 21.45it/s, train_loss=0.987, train_acc=0.625, avg_tr_acc=0.673, avg_tr_loss=0.925][A
-Batch:  55%|#####4    | 859/1563 [00:40<00:32, 21.46it/s, train_loss=0.77, train_acc=0.656, avg_tr_acc=0.671, avg_tr_loss=0.93]  [A
-Batch:  69%|######8   | 1074/1563 [00:50<00:22, 21.47it/s, train_loss=0.951, train_acc=0.719, avg_tr_acc=0.672, avg_tr_loss=0.927][A
-Batch:  82%|########2 | 1289/1563 [01:00<00:12, 21.47it/s, train_loss=0.922, train_acc=0.719, avg_tr_acc=0.671, avg_tr_loss=0.928][A
-Batch:  96%|#########6| 1504/1563 [01:10<00:02, 21.48it/s, train_loss=0.998, train_acc=0.625, avg_tr_acc=0.672, avg_tr_loss=0.929][A
-                                                                                                                                  [AEpoch:  15%|#5        | 6/40 [09:25<45:42, 80.67s/it, train_loss=0.929, train_acc=0.671, val_loss=0.943, val_acc=0.675]Epoch:  18%|#7        | 7/40 [09:25<44:23, 80.70s/it, train_loss=0.929, train_acc=0.671, val_loss=0.943, val_acc=0.675]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=1.21, train_acc=0.5, avg_tr_acc=0.698, avg_tr_loss=0.864][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=1.07, train_acc=0.656, avg_tr_acc=0.69, avg_tr_loss=0.878][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=1.06, train_acc=0.562, avg_tr_acc=0.688, avg_tr_loss=0.88][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.815, train_acc=0.812, avg_tr_acc=0.687, avg_tr_loss=0.888][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.924, train_acc=0.656, avg_tr_acc=0.689, avg_tr_loss=0.884][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.891, train_acc=0.719, avg_tr_acc=0.687, avg_tr_loss=0.885][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.65, train_acc=0.75, avg_tr_acc=0.686, avg_tr_loss=0.887]  [A
-                                                                                                                                [AEpoch:  18%|#7        | 7/40 [10:45<44:23, 80.70s/it, train_loss=0.888, train_acc=0.686, val_loss=0.918, val_acc=0.677]Epoch:  20%|##        | 8/40 [10:45<43:02, 80.69s/it, train_loss=0.888, train_acc=0.686, val_loss=0.918, val_acc=0.677]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.625, train_acc=0.812, avg_tr_acc=0.694, avg_tr_loss=0.859][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=1.05, train_acc=0.5, avg_tr_acc=0.698, avg_tr_loss=0.857]   [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.727, train_acc=0.75, avg_tr_acc=0.698, avg_tr_loss=0.862][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.83, train_acc=0.75, avg_tr_acc=0.7, avg_tr_loss=0.856]   [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=1.62, train_acc=0.531, avg_tr_acc=0.701, avg_tr_loss=0.854][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.986, train_acc=0.625, avg_tr_acc=0.701, avg_tr_loss=0.853][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.616, train_acc=0.875, avg_tr_acc=0.7, avg_tr_loss=0.851]  [A
-                                                                                                                                [AEpoch:  20%|##        | 8/40 [12:06<43:02, 80.69s/it, train_loss=0.852, train_acc=0.7, val_loss=0.931, val_acc=0.67]   Epoch:  22%|##2       | 9/40 [12:06<41:41, 80.68s/it, train_loss=0.852, train_acc=0.7, val_loss=0.931, val_acc=0.67]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.914, train_acc=0.625, avg_tr_acc=0.721, avg_tr_loss=0.788][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.596, train_acc=0.719, avg_tr_acc=0.718, avg_tr_loss=0.79] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.875, train_acc=0.719, avg_tr_acc=0.716, avg_tr_loss=0.797][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.654, train_acc=0.719, avg_tr_acc=0.716, avg_tr_loss=0.799][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.66, train_acc=0.719, avg_tr_acc=0.712, avg_tr_loss=0.81] [A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.726, train_acc=0.688, avg_tr_acc=0.711, avg_tr_loss=0.813][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.622, train_acc=0.75, avg_tr_acc=0.71, avg_tr_loss=0.815]  [A
-                                                                                                                                [AEpoch:  22%|##2       | 9/40 [13:27<41:41, 80.68s/it, train_loss=0.814, train_acc=0.711, val_loss=0.86, val_acc=0.7]Epoch:  25%|##5       | 10/40 [13:27<40:20, 80.68s/it, train_loss=0.814, train_acc=0.711, val_loss=0.86, val_acc=0.7]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=1.01, train_acc=0.625, avg_tr_acc=0.728, avg_tr_loss=0.769][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.632, train_acc=0.781, avg_tr_acc=0.727, avg_tr_loss=0.772][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.668, train_acc=0.719, avg_tr_acc=0.724, avg_tr_loss=0.783][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.952, train_acc=0.719, avg_tr_acc=0.724, avg_tr_loss=0.784][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.36, train_acc=0.875, avg_tr_acc=0.723, avg_tr_loss=0.786][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.8, train_acc=0.688, avg_tr_acc=0.722, avg_tr_loss=0.787] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.626, train_acc=0.812, avg_tr_acc=0.723, avg_tr_loss=0.786][A
-                                                                                                                                  [AEpoch:  25%|##5       | 10/40 [14:47<40:20, 80.68s/it, train_loss=0.786, train_acc=0.723, val_loss=0.864, val_acc=0.691]Epoch:  28%|##7       | 11/40 [14:47<38:59, 80.67s/it, train_loss=0.786, train_acc=0.723, val_loss=0.864, val_acc=0.691]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.788, train_acc=0.781, avg_tr_acc=0.739, avg_tr_loss=0.742][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.711, train_acc=0.781, avg_tr_acc=0.739, avg_tr_loss=0.746][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=1.03, train_acc=0.562, avg_tr_acc=0.735, avg_tr_loss=0.752] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.42it/s, train_loss=0.739, train_acc=0.719, avg_tr_acc=0.733, avg_tr_loss=0.756][A
-Batch:  69%|######8   | 1076/1563 [00:50<00:22, 21.45it/s, train_loss=0.746, train_acc=0.812, avg_tr_acc=0.733, avg_tr_loss=0.754][A
-Batch:  83%|########2 | 1292/1563 [01:00<00:12, 21.46it/s, train_loss=0.929, train_acc=0.688, avg_tr_acc=0.732, avg_tr_loss=0.756][A
-Batch:  96%|#########6| 1507/1563 [01:10<00:02, 21.47it/s, train_loss=1.08, train_acc=0.656, avg_tr_acc=0.733, avg_tr_loss=0.755] [A
-                                                                                                                                 [AEpoch:  28%|##7       | 11/40 [16:08<38:59, 80.67s/it, train_loss=0.756, train_acc=0.733, val_loss=0.838, val_acc=0.705]Epoch:  30%|###       | 12/40 [16:08<37:39, 80.69s/it, train_loss=0.756, train_acc=0.733, val_loss=0.838, val_acc=0.705]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.863, train_acc=0.719, avg_tr_acc=0.754, avg_tr_loss=0.696][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.481, train_acc=0.812, avg_tr_acc=0.749, avg_tr_loss=0.715][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.50it/s, train_loss=0.5, train_acc=0.844, avg_tr_acc=0.745, avg_tr_loss=0.725]  [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.877, train_acc=0.719, avg_tr_acc=0.742, avg_tr_loss=0.733][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.742, train_acc=0.812, avg_tr_acc=0.74, avg_tr_loss=0.738][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.855, train_acc=0.688, avg_tr_acc=0.74, avg_tr_loss=0.738][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.401, train_acc=0.875, avg_tr_acc=0.74, avg_tr_loss=0.739][A
-                                                                                                                                 [AEpoch:  30%|###       | 12/40 [17:29<37:39, 80.69s/it, train_loss=0.739, train_acc=0.74, val_loss=0.815, val_acc=0.717] Epoch:  32%|###2      | 13/40 [17:29<36:18, 80.68s/it, train_loss=0.739, train_acc=0.74, val_loss=0.815, val_acc=0.717]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.402, train_acc=0.844, avg_tr_acc=0.75, avg_tr_loss=0.715][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.661, train_acc=0.75, avg_tr_acc=0.752, avg_tr_loss=0.708][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.906, train_acc=0.625, avg_tr_acc=0.754, avg_tr_loss=0.701][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.678, train_acc=0.75, avg_tr_acc=0.752, avg_tr_loss=0.706] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.948, train_acc=0.625, avg_tr_acc=0.753, avg_tr_loss=0.706][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.503, train_acc=0.75, avg_tr_acc=0.751, avg_tr_loss=0.708] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.675, train_acc=0.719, avg_tr_acc=0.75, avg_tr_loss=0.71] [A
-                                                                                                                                [AEpoch:  32%|###2      | 13/40 [18:49<36:18, 80.68s/it, train_loss=0.711, train_acc=0.75, val_loss=0.782, val_acc=0.727]Epoch:  35%|###5      | 14/40 [18:49<34:57, 80.67s/it, train_loss=0.711, train_acc=0.75, val_loss=0.782, val_acc=0.727]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.594, train_acc=0.812, avg_tr_acc=0.767, avg_tr_loss=0.677][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.604, train_acc=0.781, avg_tr_acc=0.762, avg_tr_loss=0.673][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.884, train_acc=0.656, avg_tr_acc=0.76, avg_tr_loss=0.68]  [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.965, train_acc=0.688, avg_tr_acc=0.76, avg_tr_loss=0.682][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.837, train_acc=0.688, avg_tr_acc=0.759, avg_tr_loss=0.685][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.644, train_acc=0.688, avg_tr_acc=0.758, avg_tr_loss=0.687][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.886, train_acc=0.688, avg_tr_acc=0.757, avg_tr_loss=0.689][A
-                                                                                                                                  [AEpoch:  35%|###5      | 14/40 [20:10<34:57, 80.67s/it, train_loss=0.692, train_acc=0.756, val_loss=0.8, val_acc=0.717] Epoch:  38%|###7      | 15/40 [20:10<33:36, 80.67s/it, train_loss=0.692, train_acc=0.756, val_loss=0.8, val_acc=0.717]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.741, train_acc=0.75, avg_tr_acc=0.761, avg_tr_loss=0.666][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.744, train_acc=0.656, avg_tr_acc=0.762, avg_tr_loss=0.665][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.47it/s, train_loss=0.735, train_acc=0.656, avg_tr_acc=0.763, avg_tr_loss=0.663][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.968, train_acc=0.625, avg_tr_acc=0.762, avg_tr_loss=0.67] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.71, train_acc=0.781, avg_tr_acc=0.762, avg_tr_loss=0.67][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.566, train_acc=0.844, avg_tr_acc=0.761, avg_tr_loss=0.674][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.506, train_acc=0.812, avg_tr_acc=0.759, avg_tr_loss=0.678][A
-                                                                                                                                  [AEpoch:  38%|###7      | 15/40 [21:31<33:36, 80.67s/it, train_loss=0.678, train_acc=0.76, val_loss=0.851, val_acc=0.702]Epoch:  40%|####      | 16/40 [21:31<32:16, 80.67s/it, train_loss=0.678, train_acc=0.76, val_loss=0.851, val_acc=0.702]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.587, train_acc=0.719, avg_tr_acc=0.772, avg_tr_loss=0.647][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.377, train_acc=0.875, avg_tr_acc=0.774, avg_tr_loss=0.642][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.834, train_acc=0.812, avg_tr_acc=0.773, avg_tr_loss=0.645][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.378, train_acc=0.875, avg_tr_acc=0.773, avg_tr_loss=0.647][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.509, train_acc=0.812, avg_tr_acc=0.774, avg_tr_loss=0.649][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.532, train_acc=0.75, avg_tr_acc=0.772, avg_tr_loss=0.651] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.42it/s, train_loss=0.513, train_acc=0.812, avg_tr_acc=0.77, avg_tr_loss=0.655][A
-                                                                                                                                 [AEpoch:  40%|####      | 16/40 [22:52<32:16, 80.67s/it, train_loss=0.654, train_acc=0.77, val_loss=0.797, val_acc=0.722]Epoch:  42%|####2     | 17/40 [22:52<30:56, 80.70s/it, train_loss=0.654, train_acc=0.77, val_loss=0.797, val_acc=0.722]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.47it/s, train_loss=0.744, train_acc=0.75, avg_tr_acc=0.78, avg_tr_loss=0.625][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.689, train_acc=0.719, avg_tr_acc=0.778, avg_tr_loss=0.634][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.761, train_acc=0.719, avg_tr_acc=0.774, avg_tr_loss=0.64] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.66, train_acc=0.781, avg_tr_acc=0.773, avg_tr_loss=0.64] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.768, train_acc=0.656, avg_tr_acc=0.772, avg_tr_loss=0.642][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.32, train_acc=0.938, avg_tr_acc=0.773, avg_tr_loss=0.641] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.563, train_acc=0.812, avg_tr_acc=0.773, avg_tr_loss=0.645][A
-                                                                                                                                  [AEpoch:  42%|####2     | 17/40 [24:12<30:56, 80.70s/it, train_loss=0.645, train_acc=0.773, val_loss=0.785, val_acc=0.729]Epoch:  45%|####5     | 18/40 [24:12<29:35, 80.69s/it, train_loss=0.645, train_acc=0.773, val_loss=0.785, val_acc=0.729]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.655, train_acc=0.781, avg_tr_acc=0.784, avg_tr_loss=0.61][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.702, train_acc=0.75, avg_tr_acc=0.782, avg_tr_loss=0.616][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.508, train_acc=0.812, avg_tr_acc=0.783, avg_tr_loss=0.615][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.662, train_acc=0.75, avg_tr_acc=0.781, avg_tr_loss=0.618] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.47it/s, train_loss=0.844, train_acc=0.812, avg_tr_acc=0.779, avg_tr_loss=0.621][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.643, train_acc=0.781, avg_tr_acc=0.779, avg_tr_loss=0.625][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.607, train_acc=0.719, avg_tr_acc=0.778, avg_tr_loss=0.628][A
-                                                                                                                                  [AEpoch:  45%|####5     | 18/40 [25:33<29:35, 80.69s/it, train_loss=0.629, train_acc=0.778, val_loss=0.806, val_acc=0.723]Epoch:  48%|####7     | 19/40 [25:33<28:14, 80.69s/it, train_loss=0.629, train_acc=0.778, val_loss=0.806, val_acc=0.723]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.46it/s, train_loss=0.507, train_acc=0.719, avg_tr_acc=0.791, avg_tr_loss=0.597][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.47it/s, train_loss=0.636, train_acc=0.812, avg_tr_acc=0.789, avg_tr_loss=0.594][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.37, train_acc=0.844, avg_tr_acc=0.786, avg_tr_loss=0.607] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.66, train_acc=0.812, avg_tr_acc=0.786, avg_tr_loss=0.61] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.47it/s, train_loss=0.867, train_acc=0.625, avg_tr_acc=0.786, avg_tr_loss=0.611][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.804, train_acc=0.781, avg_tr_acc=0.784, avg_tr_loss=0.611][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.64, train_acc=0.781, avg_tr_acc=0.784, avg_tr_loss=0.615] [A
-                                                                                                                                 [AEpoch:  48%|####7     | 19/40 [26:54<28:14, 80.69s/it, train_loss=0.616, train_acc=0.783, val_loss=0.782, val_acc=0.729]Epoch:  50%|#####     | 20/40 [26:54<26:53, 80.69s/it, train_loss=0.616, train_acc=0.783, val_loss=0.782, val_acc=0.729]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.47it/s, train_loss=0.826, train_acc=0.594, avg_tr_acc=0.794, avg_tr_loss=0.567][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.736, train_acc=0.719, avg_tr_acc=0.789, avg_tr_loss=0.585][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.479, train_acc=0.844, avg_tr_acc=0.787, avg_tr_loss=0.592][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.65, train_acc=0.781, avg_tr_acc=0.787, avg_tr_loss=0.596] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.558, train_acc=0.781, avg_tr_acc=0.785, avg_tr_loss=0.602][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.47it/s, train_loss=0.82, train_acc=0.781, avg_tr_acc=0.784, avg_tr_loss=0.605] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.447, train_acc=0.938, avg_tr_acc=0.784, avg_tr_loss=0.605][A
-                                                                                                                                  [AEpoch:  50%|#####     | 20/40 [28:14<26:53, 80.69s/it, train_loss=0.605, train_acc=0.784, val_loss=0.748, val_acc=0.737]Epoch:  52%|#####2    | 21/40 [28:14<25:32, 80.68s/it, train_loss=0.605, train_acc=0.784, val_loss=0.748, val_acc=0.737]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.273, train_acc=0.938, avg_tr_acc=0.803, avg_tr_loss=0.558][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.88, train_acc=0.656, avg_tr_acc=0.801, avg_tr_loss=0.566] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.635, train_acc=0.75, avg_tr_acc=0.799, avg_tr_loss=0.575][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.447, train_acc=0.812, avg_tr_acc=0.795, avg_tr_loss=0.583][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.686, train_acc=0.781, avg_tr_acc=0.797, avg_tr_loss=0.579][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.629, train_acc=0.75, avg_tr_acc=0.794, avg_tr_loss=0.586] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.503, train_acc=0.906, avg_tr_acc=0.792, avg_tr_loss=0.59][A
-                                                                                                                                 [AEpoch:  52%|#####2    | 21/40 [29:35<25:32, 80.68s/it, train_loss=0.592, train_acc=0.791, val_loss=0.8, val_acc=0.723]  Epoch:  55%|#####5    | 22/40 [29:35<24:12, 80.67s/it, train_loss=0.592, train_acc=0.791, val_loss=0.8, val_acc=0.723]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 214/1563 [00:10<01:03, 21.32it/s, train_loss=0.426, train_acc=0.844, avg_tr_acc=0.806, avg_tr_loss=0.55][A
-Batch:  27%|##7       | 429/1563 [00:20<00:52, 21.42it/s, train_loss=0.632, train_acc=0.719, avg_tr_acc=0.795, avg_tr_loss=0.571][A
-Batch:  41%|####1     | 644/1563 [00:30<00:42, 21.45it/s, train_loss=0.439, train_acc=0.812, avg_tr_acc=0.797, avg_tr_loss=0.571][A
-Batch:  55%|#####4    | 859/1563 [00:40<00:32, 21.47it/s, train_loss=0.734, train_acc=0.781, avg_tr_acc=0.796, avg_tr_loss=0.571][A
-Batch:  69%|######8   | 1074/1563 [00:50<00:22, 21.48it/s, train_loss=0.446, train_acc=0.812, avg_tr_acc=0.796, avg_tr_loss=0.573][A
-Batch:  82%|########2 | 1289/1563 [01:00<00:12, 21.48it/s, train_loss=0.669, train_acc=0.781, avg_tr_acc=0.794, avg_tr_loss=0.579][A
-Batch:  96%|#########6| 1504/1563 [01:10<00:02, 21.48it/s, train_loss=0.685, train_acc=0.688, avg_tr_acc=0.794, avg_tr_loss=0.58] [A
-                                                                                                                                 [AEpoch:  55%|#####5    | 22/40 [30:56<24:12, 80.67s/it, train_loss=0.581, train_acc=0.793, val_loss=0.751, val_acc=0.741]Epoch:  57%|#####7    | 23/40 [30:56<22:51, 80.68s/it, train_loss=0.581, train_acc=0.793, val_loss=0.751, val_acc=0.741]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.761, train_acc=0.688, avg_tr_acc=0.807, avg_tr_loss=0.545][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.632, train_acc=0.75, avg_tr_acc=0.803, avg_tr_loss=0.552] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.522, train_acc=0.844, avg_tr_acc=0.8, avg_tr_loss=0.562] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.563, train_acc=0.812, avg_tr_acc=0.799, avg_tr_loss=0.564][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.626, train_acc=0.719, avg_tr_acc=0.798, avg_tr_loss=0.564][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.65, train_acc=0.719, avg_tr_acc=0.798, avg_tr_loss=0.565] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.525, train_acc=0.781, avg_tr_acc=0.798, avg_tr_loss=0.567][A
-                                                                                                                                  [AEpoch:  57%|#####7    | 23/40 [32:16<22:51, 80.68s/it, train_loss=0.567, train_acc=0.798, val_loss=0.769, val_acc=0.734]Epoch:  60%|######    | 24/40 [32:16<21:30, 80.67s/it, train_loss=0.567, train_acc=0.798, val_loss=0.769, val_acc=0.734]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.581, train_acc=0.688, avg_tr_acc=0.814, avg_tr_loss=0.517][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.257, train_acc=0.938, avg_tr_acc=0.809, avg_tr_loss=0.531][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.737, train_acc=0.656, avg_tr_acc=0.805, avg_tr_loss=0.544][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.715, train_acc=0.781, avg_tr_acc=0.803, avg_tr_loss=0.552][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.403, train_acc=0.875, avg_tr_acc=0.803, avg_tr_loss=0.553][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.427, train_acc=0.812, avg_tr_acc=0.803, avg_tr_loss=0.558][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.633, train_acc=0.781, avg_tr_acc=0.801, avg_tr_loss=0.56] [A
-                                                                                                                                 [AEpoch:  60%|######    | 24/40 [33:37<21:30, 80.67s/it, train_loss=0.56, train_acc=0.801, val_loss=0.758, val_acc=0.74]  Epoch:  62%|######2   | 25/40 [33:37<20:09, 80.66s/it, train_loss=0.56, train_acc=0.801, val_loss=0.758, val_acc=0.74]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.815, train_acc=0.719, avg_tr_acc=0.815, avg_tr_loss=0.523][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.542, train_acc=0.781, avg_tr_acc=0.81, avg_tr_loss=0.533] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.432, train_acc=0.812, avg_tr_acc=0.809, avg_tr_loss=0.538][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.354, train_acc=0.906, avg_tr_acc=0.806, avg_tr_loss=0.542][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.396, train_acc=0.875, avg_tr_acc=0.806, avg_tr_loss=0.545][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.997, train_acc=0.625, avg_tr_acc=0.804, avg_tr_loss=0.55] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.833, train_acc=0.75, avg_tr_acc=0.803, avg_tr_loss=0.554][A
-                                                                                                                                 [AEpoch:  62%|######2   | 25/40 [34:58<20:09, 80.66s/it, train_loss=0.553, train_acc=0.802, val_loss=0.742, val_acc=0.739]Epoch:  65%|######5   | 26/40 [34:58<18:49, 80.66s/it, train_loss=0.553, train_acc=0.802, val_loss=0.742, val_acc=0.739]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.428, train_acc=0.844, avg_tr_acc=0.816, avg_tr_loss=0.509][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.57, train_acc=0.719, avg_tr_acc=0.815, avg_tr_loss=0.516] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.522, train_acc=0.844, avg_tr_acc=0.814, avg_tr_loss=0.523][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.448, train_acc=0.844, avg_tr_acc=0.813, avg_tr_loss=0.524][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.654, train_acc=0.688, avg_tr_acc=0.812, avg_tr_loss=0.526][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.432, train_acc=0.781, avg_tr_acc=0.81, avg_tr_loss=0.532] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.598, train_acc=0.719, avg_tr_acc=0.809, avg_tr_loss=0.534][A
-                                                                                                                                  [AEpoch:  65%|######5   | 26/40 [36:18<18:49, 80.66s/it, train_loss=0.536, train_acc=0.808, val_loss=0.83, val_acc=0.712] Epoch:  68%|######7   | 27/40 [36:18<17:28, 80.65s/it, train_loss=0.536, train_acc=0.808, val_loss=0.83, val_acc=0.712]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.469, train_acc=0.812, avg_tr_acc=0.822, avg_tr_loss=0.495][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.376, train_acc=0.906, avg_tr_acc=0.818, avg_tr_loss=0.509][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.36, train_acc=0.906, avg_tr_acc=0.816, avg_tr_loss=0.515] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.42it/s, train_loss=0.356, train_acc=0.844, avg_tr_acc=0.813, avg_tr_loss=0.522][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.45it/s, train_loss=0.505, train_acc=0.812, avg_tr_acc=0.812, avg_tr_loss=0.524][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.46it/s, train_loss=0.315, train_acc=0.938, avg_tr_acc=0.811, avg_tr_loss=0.527][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.47it/s, train_loss=0.508, train_acc=0.844, avg_tr_acc=0.811, avg_tr_loss=0.529][A
-                                                                                                                                  [AEpoch:  68%|######7   | 27/40 [37:39<17:28, 80.65s/it, train_loss=0.53, train_acc=0.811, val_loss=0.779, val_acc=0.734]Epoch:  70%|#######   | 28/40 [37:39<16:08, 80.67s/it, train_loss=0.53, train_acc=0.811, val_loss=0.779, val_acc=0.734]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.356, train_acc=0.844, avg_tr_acc=0.817, avg_tr_loss=0.518][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.324, train_acc=0.875, avg_tr_acc=0.819, avg_tr_loss=0.507][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.528, train_acc=0.844, avg_tr_acc=0.82, avg_tr_loss=0.506] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.6, train_acc=0.781, avg_tr_acc=0.818, avg_tr_loss=0.51]  [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.413, train_acc=0.875, avg_tr_acc=0.817, avg_tr_loss=0.515][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.336, train_acc=0.875, avg_tr_acc=0.816, avg_tr_loss=0.518][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.489, train_acc=0.844, avg_tr_acc=0.815, avg_tr_loss=0.52] [A
-                                                                                                                                 [AEpoch:  70%|#######   | 28/40 [39:00<16:08, 80.67s/it, train_loss=0.521, train_acc=0.814, val_loss=0.776, val_acc=0.73]Epoch:  72%|#######2  | 29/40 [39:00<14:47, 80.68s/it, train_loss=0.521, train_acc=0.814, val_loss=0.776, val_acc=0.73]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.51, train_acc=0.812, avg_tr_acc=0.823, avg_tr_loss=0.495][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.256, train_acc=0.938, avg_tr_acc=0.819, avg_tr_loss=0.505][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.51, train_acc=0.75, avg_tr_acc=0.819, avg_tr_loss=0.501]  [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.477, train_acc=0.844, avg_tr_acc=0.818, avg_tr_loss=0.504][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.29, train_acc=0.906, avg_tr_acc=0.817, avg_tr_loss=0.507][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.49it/s, train_loss=0.311, train_acc=0.844, avg_tr_acc=0.817, avg_tr_loss=0.507][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.615, train_acc=0.719, avg_tr_acc=0.816, avg_tr_loss=0.512][A
-                                                                                                                                  [AEpoch:  72%|#######2  | 29/40 [40:20<14:47, 80.68s/it, train_loss=0.514, train_acc=0.816, val_loss=0.757, val_acc=0.741]Epoch:  75%|#######5  | 30/40 [40:20<13:26, 80.67s/it, train_loss=0.514, train_acc=0.816, val_loss=0.757, val_acc=0.741]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.49it/s, train_loss=0.604, train_acc=0.844, avg_tr_acc=0.832, avg_tr_loss=0.465][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.49it/s, train_loss=0.564, train_acc=0.719, avg_tr_acc=0.827, avg_tr_loss=0.481][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.438, train_acc=0.781, avg_tr_acc=0.824, avg_tr_loss=0.49] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.428, train_acc=0.844, avg_tr_acc=0.822, avg_tr_loss=0.493][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.25, train_acc=0.938, avg_tr_acc=0.821, avg_tr_loss=0.499][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.445, train_acc=0.875, avg_tr_acc=0.82, avg_tr_loss=0.504][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.49it/s, train_loss=0.752, train_acc=0.75, avg_tr_acc=0.819, avg_tr_loss=0.507][A
-                                                                                                                                 [AEpoch:  75%|#######5  | 30/40 [41:41<13:26, 80.67s/it, train_loss=0.506, train_acc=0.819, val_loss=0.764, val_acc=0.732]Epoch:  78%|#######7  | 31/40 [41:41<12:05, 80.66s/it, train_loss=0.506, train_acc=0.819, val_loss=0.764, val_acc=0.732]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.47it/s, train_loss=0.554, train_acc=0.875, avg_tr_acc=0.829, avg_tr_loss=0.475][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.484, train_acc=0.812, avg_tr_acc=0.828, avg_tr_loss=0.486][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.599, train_acc=0.75, avg_tr_acc=0.826, avg_tr_loss=0.489] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.528, train_acc=0.844, avg_tr_acc=0.826, avg_tr_loss=0.488][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.524, train_acc=0.812, avg_tr_acc=0.826, avg_tr_loss=0.489][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.551, train_acc=0.812, avg_tr_acc=0.824, avg_tr_loss=0.493][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.346, train_acc=0.844, avg_tr_acc=0.824, avg_tr_loss=0.496][A
-                                                                                                                                  [AEpoch:  78%|#######7  | 31/40 [43:02<12:05, 80.66s/it, train_loss=0.497, train_acc=0.823, val_loss=0.785, val_acc=0.726]Epoch:  80%|########  | 32/40 [43:02<10:45, 80.67s/it, train_loss=0.497, train_acc=0.823, val_loss=0.785, val_acc=0.726]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.264, train_acc=0.969, avg_tr_acc=0.836, avg_tr_loss=0.458][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.454, train_acc=0.906, avg_tr_acc=0.831, avg_tr_loss=0.475][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.371, train_acc=0.906, avg_tr_acc=0.829, avg_tr_loss=0.482][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.49it/s, train_loss=0.375, train_acc=0.875, avg_tr_acc=0.827, avg_tr_loss=0.486][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.506, train_acc=0.75, avg_tr_acc=0.825, avg_tr_loss=0.492][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.349, train_acc=0.906, avg_tr_acc=0.824, avg_tr_loss=0.492][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.43it/s, train_loss=0.386, train_acc=0.812, avg_tr_acc=0.823, avg_tr_loss=0.493][A
-                                                                                                                                  [AEpoch:  80%|########  | 32/40 [44:22<10:45, 80.67s/it, train_loss=0.493, train_acc=0.823, val_loss=0.771, val_acc=0.737]Epoch:  82%|########2 | 33/40 [44:22<09:24, 80.69s/it, train_loss=0.493, train_acc=0.823, val_loss=0.771, val_acc=0.737]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.754, train_acc=0.719, avg_tr_acc=0.834, avg_tr_loss=0.46][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.291, train_acc=0.938, avg_tr_acc=0.835, avg_tr_loss=0.466][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.881, train_acc=0.781, avg_tr_acc=0.833, avg_tr_loss=0.469][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.6, train_acc=0.844, avg_tr_acc=0.83, avg_tr_loss=0.477]   [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.49it/s, train_loss=0.496, train_acc=0.812, avg_tr_acc=0.829, avg_tr_loss=0.482][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.5, train_acc=0.812, avg_tr_acc=0.827, avg_tr_loss=0.485]  [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.425, train_acc=0.812, avg_tr_acc=0.827, avg_tr_loss=0.487][A
-                                                                                                                                  [AEpoch:  82%|########2 | 33/40 [45:43<09:24, 80.69s/it, train_loss=0.486, train_acc=0.827, val_loss=0.755, val_acc=0.743]Epoch:  85%|########5 | 34/40 [45:43<08:04, 80.68s/it, train_loss=0.486, train_acc=0.827, val_loss=0.755, val_acc=0.743]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.448, train_acc=0.875, avg_tr_acc=0.832, avg_tr_loss=0.466][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.472, train_acc=0.844, avg_tr_acc=0.832, avg_tr_loss=0.471][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.729, train_acc=0.656, avg_tr_acc=0.833, avg_tr_loss=0.461][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.351, train_acc=0.875, avg_tr_acc=0.831, avg_tr_loss=0.466][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.454, train_acc=0.812, avg_tr_acc=0.831, avg_tr_loss=0.47][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.512, train_acc=0.844, avg_tr_acc=0.829, avg_tr_loss=0.476][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.736, train_acc=0.719, avg_tr_acc=0.827, avg_tr_loss=0.48] [A
-                                                                                                                                 [AEpoch:  85%|########5 | 34/40 [47:04<08:04, 80.68s/it, train_loss=0.48, train_acc=0.827, val_loss=0.765, val_acc=0.738] Epoch:  88%|########7 | 35/40 [47:04<06:43, 80.67s/it, train_loss=0.48, train_acc=0.827, val_loss=0.765, val_acc=0.738]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.946, train_acc=0.75, avg_tr_acc=0.839, avg_tr_loss=0.446][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.362, train_acc=0.906, avg_tr_acc=0.837, avg_tr_loss=0.448][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.385, train_acc=0.844, avg_tr_acc=0.837, avg_tr_loss=0.45] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.869, train_acc=0.781, avg_tr_acc=0.835, avg_tr_loss=0.457][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.289, train_acc=0.938, avg_tr_acc=0.833, avg_tr_loss=0.464][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.858, train_acc=0.781, avg_tr_acc=0.831, avg_tr_loss=0.471][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.294, train_acc=0.906, avg_tr_acc=0.83, avg_tr_loss=0.473] [A
-                                                                                                                                 [AEpoch:  88%|########7 | 35/40 [48:24<06:43, 80.67s/it, train_loss=0.473, train_acc=0.83, val_loss=0.746, val_acc=0.747]Epoch:  90%|######### | 36/40 [48:24<05:22, 80.67s/it, train_loss=0.473, train_acc=0.83, val_loss=0.746, val_acc=0.747]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.152, train_acc=0.969, avg_tr_acc=0.841, avg_tr_loss=0.439][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.484, train_acc=0.844, avg_tr_acc=0.837, avg_tr_loss=0.456][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.49it/s, train_loss=0.554, train_acc=0.75, avg_tr_acc=0.834, avg_tr_loss=0.463] [A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.672, train_acc=0.812, avg_tr_acc=0.836, avg_tr_loss=0.46][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.559, train_acc=0.781, avg_tr_acc=0.834, avg_tr_loss=0.461][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.438, train_acc=0.875, avg_tr_acc=0.834, avg_tr_loss=0.46] [A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.572, train_acc=0.781, avg_tr_acc=0.833, avg_tr_loss=0.463][A
-                                                                                                                                  [AEpoch:  90%|######### | 36/40 [49:45<05:22, 80.67s/it, train_loss=0.463, train_acc=0.833, val_loss=0.737, val_acc=0.747]Epoch:  92%|#########2| 37/40 [49:45<04:01, 80.66s/it, train_loss=0.463, train_acc=0.833, val_loss=0.737, val_acc=0.747]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.47it/s, train_loss=0.406, train_acc=0.906, avg_tr_acc=0.846, avg_tr_loss=0.438][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.271, train_acc=0.875, avg_tr_acc=0.84, avg_tr_loss=0.45]  [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.462, train_acc=0.875, avg_tr_acc=0.839, avg_tr_loss=0.45][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.465, train_acc=0.844, avg_tr_acc=0.836, avg_tr_loss=0.457][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.228, train_acc=0.938, avg_tr_acc=0.834, avg_tr_loss=0.46][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.445, train_acc=0.875, avg_tr_acc=0.834, avg_tr_loss=0.462][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.397, train_acc=0.906, avg_tr_acc=0.834, avg_tr_loss=0.462][A
-                                                                                                                                  [AEpoch:  92%|#########2| 37/40 [51:06<04:01, 80.66s/it, train_loss=0.462, train_acc=0.835, val_loss=0.753, val_acc=0.748]Epoch:  95%|#########5| 38/40 [51:06<02:41, 80.67s/it, train_loss=0.462, train_acc=0.835, val_loss=0.753, val_acc=0.748]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.47it/s, train_loss=0.482, train_acc=0.719, avg_tr_acc=0.845, avg_tr_loss=0.434][A
-Batch:  28%|##7       | 430/1563 [00:20<00:53, 21.37it/s, train_loss=0.572, train_acc=0.812, avg_tr_acc=0.845, avg_tr_loss=0.438][A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.42it/s, train_loss=0.202, train_acc=0.906, avg_tr_acc=0.844, avg_tr_loss=0.442][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.45it/s, train_loss=0.581, train_acc=0.781, avg_tr_acc=0.842, avg_tr_loss=0.444][A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.46it/s, train_loss=0.336, train_acc=0.844, avg_tr_acc=0.84, avg_tr_loss=0.447][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.46it/s, train_loss=0.444, train_acc=0.844, avg_tr_acc=0.839, avg_tr_loss=0.451][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.47it/s, train_loss=0.641, train_acc=0.781, avg_tr_acc=0.838, avg_tr_loss=0.453][A
-                                                                                                                                  [AEpoch:  95%|#########5| 38/40 [52:26<02:41, 80.67s/it, train_loss=0.455, train_acc=0.837, val_loss=0.751, val_acc=0.744]Epoch:  98%|#########7| 39/40 [52:26<01:20, 80.69s/it, train_loss=0.455, train_acc=0.837, val_loss=0.751, val_acc=0.744]
-Batch:   0%|          | 0/1563 [00:00<?, ?it/s][A
-Batch:  14%|#3        | 215/1563 [00:10<01:02, 21.48it/s, train_loss=0.311, train_acc=0.938, avg_tr_acc=0.846, avg_tr_loss=0.425][A
-Batch:  28%|##7       | 430/1563 [00:20<00:52, 21.48it/s, train_loss=0.736, train_acc=0.75, avg_tr_acc=0.842, avg_tr_loss=0.435] [A
-Batch:  41%|####1     | 645/1563 [00:30<00:42, 21.48it/s, train_loss=0.426, train_acc=0.781, avg_tr_acc=0.841, avg_tr_loss=0.437][A
-Batch:  55%|#####5    | 860/1563 [00:40<00:32, 21.48it/s, train_loss=0.533, train_acc=0.719, avg_tr_acc=0.84, avg_tr_loss=0.445] [A
-Batch:  69%|######8   | 1075/1563 [00:50<00:22, 21.48it/s, train_loss=0.276, train_acc=0.844, avg_tr_acc=0.84, avg_tr_loss=0.445][A
-Batch:  83%|########2 | 1290/1563 [01:00<00:12, 21.48it/s, train_loss=0.276, train_acc=0.938, avg_tr_acc=0.84, avg_tr_loss=0.447][A
-Batch:  96%|#########6| 1505/1563 [01:10<00:02, 21.48it/s, train_loss=0.439, train_acc=0.844, avg_tr_acc=0.839, avg_tr_loss=0.449][A
-                                                                                                                                  [AEpoch:  98%|#########7| 39/40 [53:47<01:20, 80.69s/it, train_loss=0.449, train_acc=0.839, val_loss=0.766, val_acc=0.745]Epoch: 100%|##########| 40/40 [53:47<00:00, 80.69s/it, train_loss=0.449, train_acc=0.839, val_loss=0.766, val_acc=0.745]Epoch: 100%|##########| 40/40 [53:47<00:00, 80.69s/it, train_loss=0.449, train_acc=0.839, val_loss=0.766, val_acc=0.745]

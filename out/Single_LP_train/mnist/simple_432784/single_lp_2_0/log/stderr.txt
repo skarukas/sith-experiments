@@ -1,33 +1,0 @@
-/N/soft/sles15/deeplearning/Python-3.9.7/lib/python3.9/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:180.)
-  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:5: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  x = torch.tensor(x)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/interpolation.py:6: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  y = torch.tensor(y)
-/geode2/home/u080/skarukas/Carbonate/SITH/models/other_layers/ShiftedConv2d.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.shifts = torch.tensor(shifts)
-Epoch:   0%|          | 0/40 [00:00<?, ?it/s]/N/u/skarukas/BigRed200/.local/lib/python3.9/site-packages/pytorch_memlab/line_profiler/line_profiler.py:55: UserWarning: Could not extract a code object for the object SingleLPClassifier(
-  (activation): ReLU()
-  (dropout): Dropout(p=0.2, inplace=False)
-  (depth_pool): AdaptiveMaxPool2d(output_size=(1, 1))
-  (conv_layers): ModuleList(
-    (0): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1))
-    (1): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
-    (2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1))
-  )
-  (to_out): Linear(in_features=128, out_features=10, bias=True)
-  (logpolar): InterpolatedLogPolarTransform(
-    ntau=20, tau_range=1:30, ntheta=12, stride=1
-    (filterbank): ShiftedConv2d(
-      (pad): ConstantPad2d(padding=(0, 1, 0, 1), value=0)
-    )
-  )
-)
-  warnings.warn(
-
-Batch:   0%|          | 0/7500 [00:00<?, ?it/s][A
-Batch:   3%|2         | 221/7500 [00:10<05:29, 22.08it/s, train_loss=1.43, train_acc=0.625, avg_tr_acc=0.297, avg_tr_loss=2.02][A
-Batch:   6%|6         | 467/7500 [00:20<04:58, 23.53it/s, train_loss=1.42, train_acc=0.375, avg_tr_acc=0.406, avg_tr_loss=1.73][A
-Batch:  10%|9         | 713/7500 [00:30<04:42, 24.00it/s, train_loss=1.49, train_acc=0.375, avg_tr_acc=0.477, avg_tr_loss=1.54][A
-Batch:  13%|#2        | 959/7500 [00:40<04:30, 24.21it/s, train_loss=1.73, train_acc=0.375, avg_tr_acc=0.523, avg_tr_loss=1.41][A
-Batch:  16%|#6        | 1205/7500 [00:50<04:18, 24.33it/s, train_loss=1.14, train_acc=0.75, avg_tr_acc=0.559, avg_tr_loss=1.31][A
