@@ -52,7 +52,7 @@ if __name__ == "__main__":
         experiment_path = "out/Deep_LP_train/lp_mnist_output_prelinear_ab_1191050/control-med"
     data_dir = "data"
 
-    results_file = open(join(experiment_path, "evaluate_scale_results.yaml"), "w")
+    results_file = open(join(experiment_path, "evaluate_results.yaml"), "w")
     sys.stdout = Logger(join(experiment_path, "evaluate_out.txt"), sys.stdout)
     sys.stderr = Logger(join(experiment_path, "evaluate_err.txt"), sys.stderr)
 
