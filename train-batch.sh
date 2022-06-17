@@ -17,10 +17,14 @@
 module load deeplearning/2.6.0
 
 ParamFiles=(resnet20 resnet32 resnet44 resnet56)
+
+# output dir
 ExperimentRelativePath="rotvshn/svhn_std_max"
 
 ParamFile=${ParamFiles[$SLURM_ARRAY_TASK_ID]}
 EXPERIMENT_DIR="out/$SLURM_JOB_NAME/${ExperimentRelativePath}_${SLURM_ARRAY_JOB_ID}/${ParamFile}_${SLURM_ARRAY_TASK_ID}"
+
+# path of input YAML file
 ParamFile=param-files/LPResNet/RotSVHN/${ParamFile}.yaml
 
 mkdir -p $EXPERIMENT_DIR

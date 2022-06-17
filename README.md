@@ -38,7 +38,7 @@ Both `out` and `param-files` are organized like `model_name/dataset_name`.
 - A training run is specified by a YAML file, for example [this one for MNIST](param-files/Deep-LP/MNIST/rotation_test/standard.yaml).
 
 - These YAML files are loaded using `train_batch.sh`, which creates the models and trains them
-  - You'll have to specify the parent directory in `train_batch.sh` by editing `ExperimentRelativePath`, then put the filenames (without .yaml) in ParamFiles like this: `ParamFiles=(resnet20 resnet32 resnet44 resnet56)`. You'll have to change `#SBATCH --array=0-3` to select from that list (for example, if you have 3 param files you only need `--array=0-2`).
+  - Put the filenames (without .yaml) in `$ParamFiles` in `train_batch.sh` like this: `ParamFiles=(resnet20 resnet32 resnet44 resnet56)`. You'll have to change `#SBATCH --array=0-3` to select from that list (for example, if you have 3 param files you only need `--array=0-2`). To specify the parent directory of those YAML files, edit the second `ParamFile` prefix. Then edit `ExperimentRelativePath` to specify the output directory under `out/$SLURM_JOB_NAME`.
 
 ### Evaluation
 
