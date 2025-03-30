@@ -204,7 +204,7 @@ class LogPolarTransformV2(torch.nn.Module):
                  **kwargs):
         """
         A module for computing compressed log-polar transforms centered at various
-        locations in an image, based on SITH.
+        locations in an image, based on SITH (https://proceedings.mlr.press/v162/jacques22a.html)
 
         
         Parameters
